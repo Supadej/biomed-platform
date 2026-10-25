@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import json, sqlite3, os, hashlib, hmac, secrets, time, base64, re
 ROOT = Path(__file__).resolve().parent
-DB = ROOT / 'data' / 'biomed.sqlite3'
+DB = Path(os.environ.get('BIOMED_DATABASE_PATH', str(ROOT / 'data' / 'biomed.sqlite3'))).resolve()
 IS_KEY = 'biomed_is_v50_transactions'
 import sys
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
@@ -18,7 +18,7 @@ def connect():
     c.execute('PRAGMA foreign_keys=ON')
     return c
 def initialize():
-    DB.parent.mkdir(exist_ok=True)
+    DB.parent.mkdir(parents=True,exist_ok=True)
     with connect() as c:
         integration_api.initialize(c)
         c.executescript('''
@@ -104,6 +104,26 @@ def authorized_workspace(user,key,method):
     if key.startswith('biomed_budget'):return 'budget_view' in perms
     return True
 
+def allowed_origins():
+    values={'http://127.0.0.1:8765','http://localhost:8765'}
+    values.update(x.strip().rstrip('/') for x in os.environ.get('BIOMED_ALLOWED_ORIGINS','').split(',') if x.strip())
+    domain=os.environ.get('RAILWAY_PUBLIC_DOMAIN','').strip()
+    if domain:values.add('https://'+domain)
+    return values
+
+def valid_origin(handler):
+    origin=handler.headers.get('Origin')
+    return origin is None or origin in allowed_origins()
+
+def prepare_database():
+    """Copy the shipped database once; never replace an existing persistent DB."""
+    DB.parent.mkdir(parents=True,exist_ok=True)
+    seed=ROOT/'data'/'biomed.sqlite3'
+    if DB!=seed.resolve() and not DB.exists() and seed.is_file():
+        with sqlite3.connect('file:'+str(seed)+'?mode=ro',uri=True) as source:
+            with sqlite3.connect(DB) as target:source.backup(target)
+    initialize()
+
 class Handler(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Cache-Control','no-store')
@@ -143,14 +163,14 @@ class Handler(SimpleHTTPRequestHandler):
             return self.reply(200,dict(value=policy.read_filter(account_permissions(user),self.key(),row[0]),revision=row[1]) if row else dict(value=None,revision=0))
         if path=='/api/health':return self.reply(200,{'database':'SQLite','schema_version':1})
         resolved=Path(self.translate_path(self.path)).resolve()
-        if DB.parent.resolve() in resolved.parents or resolved.suffix=='.py':return self.send_error(403)
+        if any(d in resolved.parents for d in [DB.parent.resolve(),(ROOT/'data').resolve(),(ROOT/'.git').resolve()]) or resolved.suffix in ['.py','.sqlite3','.db','.wal','.shm']:return self.send_error(403)
         if path=='/app.html':
             self.send_response(302);self.send_header('Location','/biomed-is.html');self.end_headers();return
         super().do_GET()
     def integration_request(self,method):
         actor=session_account(self)
         if not actor:return self.reply(401,{'error':'Sign in required'})
-        if method=='POST' and self.headers.get('Origin') not in (None,'http://127.0.0.1:8765','http://localhost:8765'):return self.reply(403,{'error':'Invalid origin'})
+        if method=='POST' and not valid_origin(self):return self.reply(403,{'error':'Invalid origin'})
         try:
             parts=urlsplit(self.path);chunks=parts.path.strip('/').split('/')
             if len(chunks)!=4:raise ValueError('Invalid integration route')
@@ -173,7 +193,7 @@ class Handler(SimpleHTTPRequestHandler):
         if method=='GET':
             with connect() as c:rows=c.execute('SELECT system,payload FROM user_preferences WHERE account_id=?',(actor[0],)).fetchall()
             return self.reply(200,{k:json.loads(v) for k,v in rows})
-        if self.headers.get('Origin') not in (None,'http://127.0.0.1:8765','http://localhost:8765'):return self.reply(403,{'error':'Invalid origin'})
+        if not valid_origin(self):return self.reply(403,{'error':'Invalid origin'})
         try:
             length=int(self.headers.get('Content-Length','0'))
             if not 0<length<=4096:raise ValueError('Invalid preference size')
@@ -190,7 +210,7 @@ class Handler(SimpleHTTPRequestHandler):
         if path=='/api/website/uploads':
             actor=session_account(self)
             if not actor:return self.reply(401,{'error':'Sign in required'})
-            if self.headers.get('Origin') not in (None,'http://127.0.0.1:8765','http://localhost:8765'):return self.reply(403,{'error':'Invalid origin'})
+            if not valid_origin(self):return self.reply(403,{'error':'Invalid origin'})
             try:
                 perms=account_permissions(actor);policy.need(perms,'content');policy.need(perms,'portal.content.upload');policy.need(perms,'portal.content.create','portal.content.edit')
                 length=int(self.headers.get('Content-Length','0'))
@@ -202,7 +222,7 @@ class Handler(SimpleHTTPRequestHandler):
             except (ValueError,KeyError) as e:return self.reply(400,{'error':str(e)})
         if path not in ['/api/auth/login','/api/auth/logout','/api/auth/create']:return self.send_error(404)
         origin=self.headers.get('Origin')
-        if origin not in (None,'http://127.0.0.1:8765','http://localhost:8765'):return self.reply(403,{'error':'Invalid origin'})
+        if not valid_origin(self):return self.reply(403,{'error':'Invalid origin'})
         try:
             length=int(self.headers.get('Content-Length','0'))
             if not 0<length<=10000:raise ValueError('Invalid request')
@@ -245,7 +265,7 @@ class Handler(SimpleHTTPRequestHandler):
         actor=session_account(self)
         if not actor:return self.reply(401,{'error':'Sign in required'})
         if not authorized_workspace(actor,self.key(),'PUT' if not remove else 'DELETE'):return self.reply(403,{'error':'Module edit permission required'})
-        if self.headers.get('Origin') not in (None,'http://127.0.0.1:8765','http://localhost:8765'):return self.send_error(403)
+        if not valid_origin(self):return self.send_error(403)
         try:
             length=int(self.headers.get('Content-Length','0'))
             if not 0<length<=128*1024*1024:raise ValueError('Invalid request size')
@@ -273,8 +293,10 @@ class Handler(SimpleHTTPRequestHandler):
             self.reply(500,{'error':'Database write failed; check the server Terminal for details'})
 if __name__=='__main__':
     import sys,threading,webbrowser
-    os.chdir(ROOT);initialize()
-    server=ThreadingHTTPServer(('127.0.0.1',8765),Handler)
-    print('Biomed local SQLite: http://127.0.0.1:8765/biomed-is.html',flush=True)
-    if sys.platform=='darwin':threading.Timer(.5,lambda:webbrowser.open('http://127.0.0.1:8765/biomed-is.html')).start()
+    os.chdir(ROOT);prepare_database()
+    port=int(os.environ.get('PORT','8765'))
+    host=os.environ.get('BIOMED_HOST','0.0.0.0' if os.environ.get('RAILWAY_ENVIRONMENT_ID') or os.environ.get('PORT') else '127.0.0.1')
+    server=ThreadingHTTPServer((host,port),Handler)
+    print(f'Biomed server listening on {host}:{port}',flush=True)
+    if sys.platform=='darwin' and host=='127.0.0.1':threading.Timer(.5,lambda:webbrowser.open(f'http://127.0.0.1:{port}/biomed-is.html')).start()
     server.serve_forever()
