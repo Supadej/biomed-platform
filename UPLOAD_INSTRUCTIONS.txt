@@ -1,0 +1,5 @@
+Upload the extracted files to the ROOT of Supadej/biomed-platform, replacing matching files. Commit and allow Railway to redeploy. Include both new files ui-icons.js and mobile-icons.css. This package has no database and no server configuration. It removes the BIOMED V46 badge, retains the earlier partner-strip removal, and standardizes navigation icons and mobile touch areas. The back-to-top button is retained with a matching SVG icon.
+
+Checks: all changed inline JavaScript parses; shared icons use a 24px viewBox, 18px rendering, currentColor and consistent stroke; mobile navigation controls use 44px minimum touch targets; build badge absent from all page/fragment files. Real-device mobile visual verification has not been performed.
+
+After deployment, refresh with Command+Shift+R.
