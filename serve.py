@@ -10,6 +10,7 @@ import sys
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 import permissions_policy as policy
 import integration_api
+import budget_demo_comparison
 from public_website import project_public
 from website_files import decode_upload,public_reference,validate_references
 from urllib.parse import quote,parse_qs
@@ -43,6 +44,7 @@ def initialize():
         if portal and portal[0]:
             value=json.loads(portal[0])
             if policy.migrate_portal(value):c.execute("UPDATE workspace SET value=?,revision=revision+1 WHERE key='biomed_portal_v33_clean'",(encode(value),))
+        budget_demo_comparison.apply(c)
 def encode(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'))
 def project(c,value):
     data=json.loads(value)
