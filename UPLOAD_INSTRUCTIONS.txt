@@ -1,1 +1,5 @@
-Extract and replace index.html in the ROOT of Supadej/biomed-platform. Commit and redeploy Railway. No database or server changes are included. The patch uses the current repository index.html and preserves the shared headers and earlier updates. Links with ?portal=1 now hide the public website before its first paint and open Staff Portal as soon as its markup and handlers are parsed, rather than waiting for website images and the window load event. Existing URLs and permissions stay in use. Refresh after deployment.
+Upload index.html, brand-category.js and public_website.py to the ROOT of Supadej/biomed-platform, replacing matching files. Commit and redeploy Railway. No database reset is needed.
+
+Staff Portal > Website & Administration > Brands > Edit > Website category: Diagnostics or Life Science Research > Save brand. For a new brand the category must be selected. Solution field stays separate for areas such as Allergy/Immunology/Cell biology. The catalogue shows the saved category, which controls the website category filters. Existing records retain their previous inferred grouping until edited. Public website visitors receive only the public brand fields.
+
+The update retains the current repository header and direct Staff Portal entry changes.

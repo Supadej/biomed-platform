@@ -27,4 +27,12 @@ def project_public(portal):
         for key in ['photos','attachments']:
             out[key]=[{'id':str(f['id']),'name':str(f.get('name','Attachment')),'mime':str(f.get('mime','')),'url':'/api/website/files/'+str(f['id'])} for f in item.get(key,[]) if isinstance(f,dict) and re.fullmatch('[a-f0-9]{32}',str(f.get('id','')))]
         content.append(out)
-    return {'siteSections':sections,'content':content}
+    brands=[]
+    for item in portal.get('brands',[]):
+        if not isinstance(item,dict) or item.get('active') is False:continue
+        out={k:str(item.get(k,'')) for k in ['id','name','category','field','description','html']}
+        out['url']=safe_url(item.get('url'))
+        logo=str(item.get('logo',''))
+        out['logo']=logo if len(logo)<=850000 and re.fullmatch(r'data:image/(?:png|jpeg|webp|gif);base64,[A-Za-z0-9+/=\s]+',logo) else safe_url(logo)
+        brands.append(out)
+    return {'siteSections':sections,'content':content,'brands':brands}
