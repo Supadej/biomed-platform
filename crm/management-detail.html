@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Animation for max reached */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+        .animate-shake {
+            animation: shake 0.3s ease-in-out;
+        }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Alert Bar -->
+    <div id="alert-bar" class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-lg px-4"></div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumbs text-sm mb-4">
+            <ul>
+                <li><a href="management.html"><i class="fas fa-cog mr-1"></i>Management</a></li>
+                <li><a href="management.html#users"><i class="fas fa-users mr-1"></i>Users</a></li>
+                <li class="text-primary font-semibold" id="breadcrumbUserName">Loading...</li>
+            </ul>
+        </div>
+
+        <!-- User Detail Card -->
+        <div class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="card-title text-2xl">
+                        <i class="fas fa-user-edit text-primary mr-2"></i>
+                        User Management
+                    </h2>
+                    <div class="badge badge-primary badge-outline" id="userIdBadge">ID: --</div>
+                </div>
+
+                <!-- Profile Picture Section -->
+                <div class="flex flex-col items-center mb-6 p-4 bg-base-200 rounded-lg">
+                    <div class="avatar placeholder mb-3">
+                        <div class="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 cursor-pointer hover:opacity-80 transition-opacity bg-neutral text-neutral-content" onclick="uploadProfilePic()">
+                            <img id="profilePicPreview" src="/crm/assets/default-avatar.svg" alt="Profile" />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline btn-primary gap-2" onclick="uploadProfilePic()">
+                        <i class="fas fa-camera"></i>
+                        เปลี่ยนรูปโปรไฟล์
+                    </button>
+                    <p class="text-xs text-base-content/50 mt-2">คลิกที่รูปหรือปุ่มเพื่ออัปโหลด (รูปจะถูก resize เป็น 300x300)</p>
+                </div>
+
+                <!-- Two Column Layout for Form -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Left Column: Account & Personal Info -->
+                    <div class="space-y-4">
+                        <div class="divider divider-start text-sm font-semibold text-primary">
+                            <i class="fas fa-key mr-2"></i>Account Info
+                        </div>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Username</legend>
+                            <input type="text" id="username" class="input input-bordered w-full" placeholder="Enter username">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Password</legend>
+                            <input type="password" id="password" class="input input-bordered w-full" placeholder="Leave blank to keep current">
+                            <p class="text-xs text-base-content/50 mt-1">เว้นว่างถ้าไม่ต้องการเปลี่ยน</p>
+                        </fieldset>
+
+                        <!-- Enabled Status -->
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Account Status</legend>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 rounded-lg border border-base-300 hover:bg-base-200 transition-colors" id="enabledLabel">
+                                <input type="checkbox" id="user-enabled" class="toggle toggle-success toggle-lg" onchange="confirmEnabledChange(event)">
+                                <div>
+                                    <span class="font-medium" id="enabledStatusText">Enabled</span>
+                                    <p class="text-xs text-base-content/50">ผู้ใช้สามารถเข้าสู่ระบบได้</p>
+                                </div>
+                                <span id="enabledBadge" class="badge badge-success ml-auto">Active</span>
+                            </label>
+                        </fieldset>
+
+                        <div class="divider divider-start text-sm font-semibold text-secondary">
+                            <i class="fas fa-id-card mr-2"></i>Personal Info
+                        </div>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">First Name</legend>
+                            <input type="text" id="first-name" class="input input-bordered w-full" placeholder="Enter first name">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Last Name</legend>
+                            <input type="text" id="last-name" class="input input-bordered w-full" placeholder="Enter last name">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Middle Name</legend>
+                            <input type="text" id="middle-name" class="input input-bordered w-full" placeholder="Enter middle name (optional)">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Position</legend>
+                            <input type="text" id="position" class="input input-bordered w-full" placeholder="Enter position">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Employed Date</legend>
+                            <input type="date" id="employed-date" class="input input-bordered w-full">
+                        </fieldset>
+                    </div>
+
+                    <!-- Right Column: Contact Info -->
+                    <div class="space-y-4">
+                        <div class="divider divider-start text-sm font-semibold text-accent">
+                            <i class="fas fa-address-book mr-2"></i>Contact Info
+                        </div>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Email</legend>
+                            <input type="email" id="email" class="input input-bordered w-full" placeholder="Enter email">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Phone Number</legend>
+                            <input type="text" id="phone-number" class="input input-bordered w-full" placeholder="Enter phone number">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Sub Email</legend>
+                            <input type="email" id="sub-email" class="input input-bordered w-full" placeholder="Enter secondary email (optional)">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Sub Phone Number</legend>
+                            <input type="text" id="sub-phone-number" class="input input-bordered w-full" placeholder="Enter secondary phone (optional)">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Address</legend>
+                            <input type="text" id="address" class="input input-bordered w-full" placeholder="Enter address">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Line ID</legend>
+                            <input type="text" id="line-id" class="input input-bordered w-full" placeholder="Enter Line ID">
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Sale Code</legend>
+                            <input type="text" id="sale-code" class="input input-bordered w-full" placeholder="Enter sale code" disabled>
+                            <p class="text-xs text-base-content/50 mt-1">Obsoleted field</p>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <!-- Full Width Section: Reporting & Assignments -->
+                <div class="mt-6 space-y-4">
+                    <div class="divider divider-start text-sm font-semibold text-warning">
+                        <i class="fas fa-sitemap mr-2"></i>Reporting Structure
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Report To</legend>
+                            <select id="report-to" class="select select-bordered w-full">
+                                <option value="">-- Select Manager --</option>
+                            </select>
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Coach</legend>
+                            <select id="coach" class="select select-bordered w-full">
+                                <option value="">-- Select Coach --</option>
+                            </select>
+                        </fieldset>
+                    </div>
+
+                    <div class="divider divider-start text-sm font-semibold text-info">
+                        <i class="fas fa-tags mr-2"></i>Assignments
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Products</legend>
+                            <div id="productsMultiSelect"></div>
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend">Sale Areas</legend>
+                            <div id="saleAreasMultiSelect"></div>
+                        </fieldset>
+                    </div>
+
+                    <div class="divider divider-start text-sm font-semibold text-error">
+                        <i class="fas fa-shield-alt mr-2"></i>Permissions
+                    </div>
+                    
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">System Permissions</legend>
+                        <div id="permissionsMultiSelect"></div>
+                        <p class="text-xs text-base-content/50 mt-1">สิทธิ์การเข้าถึงระบบ</p>
+                    </fieldset>
+                    
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Individual Permissions</legend>
+                        <div class="space-y-3">
+                            <!-- Add Individual Permission -->
+                            <div class="flex flex-wrap gap-2 items-end bg-base-200 p-3 rounded-lg">
+                                <div class="flex-1 min-w-[150px]">
+                                    <label class="label label-text text-xs">User</label>
+                                    <select id="individualPermUser" class="select select-bordered select-sm w-full">
+                                        <option value="">-- Select User --</option>
+                                    </select>
+                                </div>
+                                <div class="flex-1 min-w-[150px]">
+                                    <label class="label label-text text-xs">Permission Type</label>
+                                    <select id="individualPermType" class="select select-bordered select-sm w-full">
+                                        <option value="">-- Select Permission --</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-primary gap-1" onclick="addIndividualPermission()">
+                                    <i class="fas fa-plus"></i>
+                                    Add
+                                </button>
+                            </div>
+                            <!-- Individual Permissions List -->
+                            <div id="individualPermissionsList" class="flex flex-wrap gap-2 min-h-[40px] p-2 border border-base-300 rounded-lg bg-base-100">
+                                <span class="text-base-content/50 text-sm">No individual permissions</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-base-content/50 mt-1">สิทธิ์พิเศษสำหรับผู้ใช้เฉพาะราย</p>
+                    </fieldset>
+                </div>
+
+                <!-- Actions -->
+                <div class="card-actions justify-between mt-8 pt-4 border-t border-base-300">
+                    <button type="button" class="btn btn-error btn-outline gap-2" onclick="deleteUser()">
+                        <i class="fas fa-trash"></i>
+                        Delete User
+                    </button>
+                    <div class="flex gap-2">
+                        <a href="management.html" class="btn btn-ghost gap-2">
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </a>
+                        <button type="button" class="btn btn-primary gap-2" onclick="saveUserData()">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Enabled Confirmation Modal -->
+    <dialog id="enabledConfirmModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg flex items-center gap-2" id="enabledModalTitle">
+                <i class="fas fa-exclamation-triangle text-warning"></i>
+                Confirm Status Change
+            </h3>
+            <p class="py-4" id="enabledModalMessage">Are you sure you want to change the user's account status?</p>
+            <div class="modal-action">
+                <button class="btn btn-ghost" onclick="cancelEnabledChange()">Cancel</button>
+                <button class="btn btn-warning" id="enabledConfirmBtn" onclick="applyEnabledChange()">Confirm</button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button onclick="cancelEnabledChange()">close</button>
+        </form>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-4 bg-base-200 text-base-content mt-8">
+        <aside>
+            <p>© 2024 Biomed Diagnostics - ERP System v2.0</p>
+        </aside>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="biomed-global.js"></script>
+    <script src="biomed-multiselect.js"></script>
+    <script src="biomed-manage-detail.js"></script>
+    <script src="biomed-quickNav.js"></script>
+    
+    <script>
+        // Theme functions
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('biomed-theme', theme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('biomed-theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+        
+        // Clear cache
+        function clearCache() {
+            if (confirm('ต้องการล้าง Cache หรือไม่?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                location.reload();
+            }
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('ต้องการออกจากระบบหรือไม่?')) {
+                removeToken();
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

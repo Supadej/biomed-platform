@@ -1,0 +1,764 @@
+/**
+ * Event Calendar CSS - daisyUI Theme Override
+ * Styles for Event Calendar to match daisyUI theme
+ */
+
+/* ================================
+   Event Calendar Theme Override
+   ================================ */
+
+/* Main calendar container */
+.ec {
+    --ec-bg-color: oklch(var(--b1));
+    --ec-text-color: oklch(var(--bc));
+    --ec-border-color: #e5e7eb;
+    --ec-highlight-color: oklch(var(--p) / 0.1);
+    --ec-active-bg-color: oklch(var(--p));
+    --ec-today-bg-color: oklch(var(--a) / 0.15);
+    --ec-button-bg-color: oklch(var(--b2));
+    --ec-button-active-bg-color: oklch(var(--p));
+    
+    font-family: 'Noto Sans Thai', sans-serif !important;
+    background: oklch(var(--b1));
+    border-radius: 0.5rem;
+}
+
+/* Make grid lines thinner and lighter */
+.ec td, .ec th {
+    border-width: 1px !important;
+    border-color: #e5e7eb !important;
+}
+
+.ec-days, .ec-day {
+    border-color: #e5e7eb !important;
+}
+
+/* Header toolbar */
+.ec-toolbar {
+    padding: 1rem;
+    background: oklch(var(--b2));
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 0;
+}
+
+.ec-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: oklch(var(--bc));
+}
+
+/* Navigation buttons */
+.ec-button {
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    color: oklch(var(--bc));
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+.ec-button:hover {
+    background: oklch(var(--b3));
+    border-color: oklch(var(--p));
+}
+
+.ec-button.ec-active {
+    background: oklch(var(--p));
+    color: oklch(var(--pc));
+    border-color: oklch(var(--p));
+}
+
+.ec-prev, .ec-next {
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ec-prev:hover, .ec-next:hover {
+    background: oklch(var(--p));
+    color: oklch(var(--pc));
+    border-color: oklch(var(--p));
+}
+
+/* Day headers */
+.ec-day-head {
+    background: oklch(var(--b2));
+    color: oklch(var(--bc));
+    font-weight: 600;
+    padding: 0.75rem 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* Day cells */
+.ec-day {
+    border-color: #e5e7eb;
+    background: #ffffff;
+    min-height: 100px;
+    transition: background 0.15s ease;
+}
+
+.ec-day:hover {
+    background: #f9fafb;
+}
+
+.ec-day.ec-today {
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.ec-day.ec-today .ec-day-head {
+    background: #f59e0b;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ec-day.ec-other-month {
+    background: #f9fafb;
+}
+
+.ec-day.ec-other-month .ec-day-head {
+    color: rgba(107, 114, 128, 0.4);
+}
+
+/* Day number */
+.ec-day-head {
+    font-size: 0.875rem;
+    padding: 0.25rem;
+}
+
+/* Events */
+.ec-event {
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.75rem;
+    /*margin: 0.125rem 0.25rem;*/
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ec-event:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.ec-event-title {
+    width: 100%;
+}
+
+/* Event popup/tooltip */
+.ec-popup {
+    position: absolute;
+    z-index: 1000;
+    max-width: 400px;
+    min-width: 280px;
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    padding: 0;
+    overflow: hidden;
+}
+
+.ec-popup-inner {
+    padding: 1rem;
+}
+
+/* Popup event items */
+.ec-popup .ec-event {
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+}
+
+.ec-popup .ec-event:last-child {
+    margin-bottom: 0;
+}
+
+/* List view */
+.ec-list {
+    background: oklch(var(--b1));
+}
+
+.ec-list .ec-day {
+    background: oklch(var(--b2));
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+    padding: 0.75rem 1rem;
+}
+
+.ec-list .ec-event {
+    background: oklch(var(--b1));
+    border-left: 4px solid oklch(var(--p));
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+}
+
+/* Time grid */
+.ec-time {
+    color: oklch(var(--bc) / 0.6);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.ec-line {
+    border-color: oklch(var(--b3));
+}
+
+.ec-now-indicator {
+    border-color: oklch(var(--er));
+}
+
+/* ================================
+   Mini Calendar Styles
+   ================================ */
+
+.mini-calendar {
+    user-select: none;
+}
+
+.mini-calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 0.875rem;
+    position: relative;
+}
+
+.mini-calendar-day:hover {
+    background: #e5e7eb;
+}
+
+.mini-calendar-day.today {
+    background: #f59e0b;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.mini-calendar-day.selected {
+    background: #3b82f6;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.mini-calendar-day.other-month {
+    color: rgba(107, 114, 128, 0.4);
+}
+
+.mini-calendar-day.has-events::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #3b82f6;
+    border-radius: 50%;
+}
+
+.mini-calendar-day.has-events.selected::after,
+.mini-calendar-day.has-events.today::after {
+    background: #ffffff;
+}
+
+/* Event dot indicator (inline element) */
+.event-dot {
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #3b82f6;
+    border-radius: 50%;
+    display: block;
+}
+
+.mini-calendar-day.selected .event-dot,
+.mini-calendar-day.today .event-dot {
+    background: #ffffff;
+}
+
+/* ================================
+   Day List View Styles
+   ================================ */
+
+.day-event-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: oklch(var(--b1));
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 4px solid oklch(var(--p));
+}
+
+.day-event-item:hover {
+    background: oklch(var(--b2));
+    transform: translateX(2px);
+}
+
+.day-event-time {
+    font-size: 0.75rem;
+    color: oklch(var(--bc) / 0.6);
+    font-weight: 600;
+    min-width: 50px;
+}
+
+.day-event-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.day-event-title {
+    font-weight: 600;
+    color: oklch(var(--bc));
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.day-event-attendee {
+    font-size: 0.75rem;
+    color: oklch(var(--bc) / 0.6);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.day-event-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ================================
+   Event Modal Styles
+   ================================ */
+
+/* User badge in modal */
+.main-user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Log item styles */
+.log-item {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid #3b82f6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.log-item.system {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.log-item.file {
+    border-left-color: #10b981;
+}
+
+.log-item.binder {
+    border-left-color: #8b5cf6;
+}
+
+.log-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.log-item-user {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: #1f2937;
+}
+
+.log-item-time {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+}
+
+.log-item-content {
+    font-size: 0.8125rem;
+    color: #374151;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+.log-item-type {
+    display: block;
+    width: fit-content;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.log-item-type.change {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.log-item-type.text {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.log-item-type.file {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.log-item-type.binder {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+/* Log change details */
+.log-change-detail {
+    background: #f9fafb;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.log-change-field {
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.log-change-old {
+    color: #ef4444;
+    text-decoration: line-through;
+}
+
+.log-change-new {
+    color: #10b981;
+    font-weight: 500;
+}
+
+.log-change-arrow {
+    color: #9ca3af;
+    margin: 0 0.25rem;
+}
+
+/* ================================
+   Toast Styles
+   ================================ */
+
+.toast-item {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ================================
+   Loading Overlay
+   ================================ */
+
+#loadingOverlay.active {
+    display: flex !important;
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+
+@media (max-width: 1024px) {
+    .ec-toolbar {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .ec-button {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    
+    .ec-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .ec-center {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    .ec-button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.6875rem;
+    }
+}
+
+/* ================================
+   Custom Scrollbar
+   ================================ */
+
+.ec-content::-webkit-scrollbar,
+#logsContainer::-webkit-scrollbar,
+#dayListContainer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ec-content::-webkit-scrollbar-track,
+#logsContainer::-webkit-scrollbar-track,
+#dayListContainer::-webkit-scrollbar-track {
+    background: oklch(var(--b2));
+    border-radius: 3px;
+}
+
+.ec-content::-webkit-scrollbar-thumb,
+#logsContainer::-webkit-scrollbar-thumb,
+#dayListContainer::-webkit-scrollbar-thumb {
+    background: oklch(var(--b3));
+    border-radius: 3px;
+}
+
+.ec-content::-webkit-scrollbar-thumb:hover,
+#logsContainer::-webkit-scrollbar-thumb:hover,
+#dayListContainer::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--p));
+}
+
+/* ================================
+   Animation Classes
+   ================================ */
+
+.animate-in {
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ================================
+   Control Panel & MultiSelect Overflow Fix
+   ================================ */
+
+/* Allow collapse content to overflow for dropdowns */
+.collapse-content {
+    overflow: visible !important;
+}
+
+/* Ensure the collapse container can show dropdown outside */
+.collapse {
+    overflow: visible !important;
+    z-index: 30;
+    position: relative;
+}
+
+/* MultiSelect dropdown should appear above other content */
+.multiselect-dropdown {
+    position: absolute;
+    z-index: 1000 !important;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    margin-top: 0.25rem;
+}
+
+/* Form control needs relative positioning for dropdown */
+.form-control {
+    position: relative;
+    z-index: 1;
+}
+
+/* When dropdown is open, boost z-index */
+.form-control:focus-within {
+    z-index: 50;
+}
+
+/* Ensure grid doesn't clip the dropdown */
+.collapse-content .grid {
+    overflow: visible;
+}
+
+/* Tabs should be below dropdown */
+.tabs {
+    position: relative;
+    z-index: 10;
+}
+
+/* ================================
+   Modal Fieldset Styles
+   ================================ */
+/* ================================
+   Modal Form Styles
+   ================================ */
+
+/* Modal scroll areas */
+.modal-box {
+    overflow: hidden;
+}
+
+/* Ensure form-control in modal can show dropdown */
+#eventModal .form-control {
+    position: relative;
+    z-index: auto;
+}
+
+/* Ensure form inputs have solid backgrounds */
+#eventModal .input,
+#eventModal .select,
+#eventModal .textarea {
+    background: #ffffff !important;
+}
+
+/* Native select dropdown styling */
+#eventModal select,
+#eventModal select option {
+    background: #ffffff !important;
+    color: #1f2937 !important;
+}
+
+/* When form-control has open dropdown, bump z-index */
+#eventModal .form-control:focus-within {
+    z-index: 100;
+}
+
+/* ================================
+   MultiSelect Styles
+   ================================ */
+
+/* MODAL MultiSelect Fix - Ensure solid backgrounds */
+#eventModal .multi-select,
+.modal .multi-select {
+    background: oklch(var(--b1)) !important;
+    border: 1px solid oklch(var(--b3)) !important;
+    border-radius: 0.5rem;
+}
+
+/* Dropdown solid background */
+#eventModal .multiselect-dropdown,
+.modal .multiselect-dropdown {
+    background: oklch(var(--b1)) !important;
+    border: 1px solid oklch(var(--b3)) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important;
+    z-index: 99999 !important;
+}
+
+/* Each option solid background */
+#eventModal .multi-select-item,
+.modal .multi-select-item {
+    background: oklch(var(--b1)) !important;
+    padding: 0.5rem 0.75rem !important;
+    border-bottom: 1px solid oklch(var(--b3)/0.3);
+}
+
+/* Hover effect for options */
+#eventModal .multi-select-item:hover,
+.modal .multi-select-item:hover {
+    background: oklch(var(--b2)) !important;
+}
+
+/* Selected item background */
+#eventModal .multi-select-item.selected,
+.modal .multi-select-item.selected {
+    background: oklch(var(--p) / 0.15) !important;
+}
+
+/* Checkbox styling inside options */
+#eventModal .multi-select-item input[type="checkbox"],
+.modal .multi-select-item input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+/* Hide event time in calendar */
+.ec-event-time {
+    display: none !important;
+}
+
+/* Tags/Badge container */
+#eventModal .multi-select-tags,
+.modal .multi-select-tags {
+    background: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.25rem;
+}
+
+/* Arrow rotation when open */
+.multi-select[data-open="true"] [data-ms-arrow] {
+    transform: rotate(180deg);
+}
+

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Kanban scrollable */
+        .kanban-container {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            height: calc(100vh - 220px);
+        }
+        
+        .kanban-column {
+            min-width: 280px;
+            max-width: 320px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Large screen: columns grow to fill space */
+        @media (min-width: 1024px) {
+            .kanban-column {
+                max-width: none;
+                flex-shrink: 1;
+                flex-grow: 1;
+                min-width: 240px;
+            }
+        }
+
+        /* Custom scrollbar for kanban */
+        .kanban-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .kanban-container::-webkit-scrollbar-track {
+            background: oklch(var(--b3));
+            border-radius: 4px;
+        }
+        .kanban-container::-webkit-scrollbar-thumb {
+            background: oklch(var(--p));
+            border-radius: 4px;
+        }
+        
+        /* Activity card styling */
+        .activity-card {
+            transition: all 0.2s ease;
+            border-left: 4px solid;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Badge status colors */
+        .status-dropped { background-color: oklch(var(--er)); }
+        .status-inactive { background-color: oklch(var(--wa)); }
+        .status-active { background-color: oklch(var(--su)); }
+        
+        /* Custom border card (for activities) */
+        .biomed-bordercard {
+            border-radius: 0.5rem;
+            border-left-width: 4px;
+            border-left-style: solid;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: white;
+        }
+        
+        /* Bootstrap compatibility classes */
+        .m-0 { margin: 0 !important; }
+        .m-1 { margin: 0.25rem !important; }
+        .m-2 { margin: 0.5rem !important; }
+        .p-0 { padding: 0 !important; }
+        .p-1 { padding: 0.25rem !important; }
+        .p-2 { padding: 0.5rem !important; }
+        .py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+        .my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+        .ms-auto { margin-left: auto !important; }
+        .me-1 { margin-right: 0.25rem !important; }
+        
+        .fw-bold { font-weight: 700 !important; }
+        .text-small { font-size: 0.75rem !important; }
+        .auto-fit { font-size: 0.75rem !important; }
+        
+        .d-flex { display: flex !important; }
+        .d-none { display: none !important; }
+        .d-inline { display: inline !important; }
+        .flex-wrap { flex-wrap: wrap !important; }
+        .justify-content-evenly { justify-content: space-evenly !important; }
+        .align-middle { vertical-align: middle !important; }
+        
+        .text-danger { color: oklch(var(--er)) !important; }
+        .text-warning { color: oklch(var(--wa)) !important; }
+        .text-success { color: oklch(var(--su)) !important; }
+        .text-dark { color: oklch(var(--bc)) !important; }
+        .text-wrap { white-space: normal !important; word-wrap: break-word !important; }
+        
+        .bg-info { background-color: oklch(var(--in)) !important; }
+        .bg-danger { background-color: oklch(var(--er)) !important; }
+        .bg-warning { background-color: oklch(var(--wa)) !important; }
+        .bg-success { background-color: oklch(var(--su)) !important; }
+        
+        .rounded { border-radius: 0.375rem !important; }
+        .rounded-pill { border-radius: 9999px !important; }
+        
+        /* Badge styles for JS compatibility */
+        .badge.bg-primary { background-color: oklch(var(--p)) !important; color: oklch(var(--pc)) !important; }
+        .badge.bg-secondary { background-color: oklch(var(--s)) !important; color: oklch(var(--sc)) !important; }
+        .badge.bg-success { background-color: oklch(var(--su)) !important; color: white !important; }
+        .badge.bg-danger { background-color: oklch(var(--er)) !important; color: white !important; }
+        .badge.bg-warning { background-color: oklch(var(--wa)) !important; color: white !important; }
+        .badge.bg-info { background-color: oklch(var(--in)) !important; color: white !important; }
+        
+        /* Flaticon icons fix */
+        .fi { display: inline-flex; align-items: center; }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Alert Bar -->
+    <div class="px-4 lg:px-6 pt-2" id="alert-bar">
+    </div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Page Header -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <!-- Left: Breadcrumb & Title -->
+            <div class="flex items-center gap-3">
+                <div class="breadcrumbs text-sm">
+                    <ul>
+                        <li><a href="project.html" class="text-primary"><i class="fas fa-project-diagram mr-1"></i>Projects</a></li>
+                        <li><span id="projectName" class="font-semibold">Loading...</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Right: Actions -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Add Pipeline Button -->
+                <button class="btn btn-outline btn-secondary btn-sm" onclick="createModalPopup()">
+                    <i class="fas fa-layer-group"></i> Add Pipeline
+                </button>
+                
+                <!-- Add Activity Button -->
+                <button class="btn btn-primary btn-sm" onclick="createLeadPopup()">
+                    <i class="fas fa-plus"></i> Add Activity
+                </button>
+            </div>
+        </div>
+
+        <!-- View Tabs -->
+        <div role="tablist" class="tabs tabs-box mb-4">
+            <a role="tab" class="tab tab-active" id="tabKanban" onclick="switchTab('kanban')">
+                <i class="fas fa-columns mr-2"></i>Kanban
+            </a>
+            <a role="tab" class="tab" id="tabTable" onclick="switchTab('table')">
+                <i class="fas fa-table mr-2"></i>Table
+            </a>
+            <a role="tab" class="tab" id="tabViz" onclick="switchTab('viz')">
+                <i class="fas fa-chart-pie mr-2"></i>Visualization
+            </a>
+        </div>
+        
+        <!-- Kanban View -->
+        <div id="viewKanban" class="card bg-base-200/50 shadow-sm">
+            <div class="card-body p-4">
+                <!-- Pipeline columns will be inserted here by JS -->
+                <div class="kanban-container" id="pipelineContainer">
+                    <div class="flex items-center justify-center w-full py-16 text-base-content/50">
+                        <span class="loading loading-spinner loading-lg mr-3"></span>
+                        กำลังโหลด Pipeline...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table View -->
+        <div id="viewTable" class="card bg-base-100 shadow-sm hidden">
+            <div class="card-body p-4">
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra table-sm">
+                        <thead>
+                            <tr class="bg-primary text-primary-content">
+                                <th class="w-12">#</th>
+                                <th>ชื่อ Activity</th>
+                                <th>Pipeline</th>
+                                <th>ผู้รับผิดชอบ</th>
+                                <th>สถานะ</th>
+                                <th>อัปเดตล่าสุด</th>
+                                <th class="w-20">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td colspan="7" class="text-center py-8">
+                                    <span class="loading loading-spinner loading-md mr-2"></span>
+                                    กำลังโหลดข้อมูล...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visualization View -->
+        <div id="viewViz" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <!-- Activities by Pipeline -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-layer-group text-primary mr-2"></i>
+                            Activities by Pipeline
+                        </h3>
+                        <div id="chartPipeline" class="h-64 flex items-center justify-center">
+                            <span class="loading loading-spinner loading-md"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Status Overview -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-chart-pie text-secondary mr-2"></i>
+                            Status Overview
+                        </h3>
+                        <div id="chartStatus" class="h-64 flex items-center justify-center">
+                            <span class="loading loading-spinner loading-md"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activities by User -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-users text-accent mr-2"></i>
+                            Activities by User
+                        </h3>
+                        <div id="chartUser" class="h-64 flex items-center justify-center">
+                            <span class="loading loading-spinner loading-md"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="card bg-base-100 shadow-sm md:col-span-2 xl:col-span-3">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm mb-4">
+                            <i class="fas fa-chart-bar text-info mr-2"></i>
+                            Summary Statistics
+                        </h3>
+                        <div class="stats stats-vertical lg:stats-horizontal shadow w-full" id="summaryStats">
+                            <div class="stat">
+                                <div class="stat-figure text-primary">
+                                    <i class="fas fa-tasks text-3xl"></i>
+                                </div>
+                                <div class="stat-title">Total Activities</div>
+                                <div class="stat-value text-primary" id="statTotal">0</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-figure text-success">
+                                    <i class="fas fa-check-circle text-3xl"></i>
+                                </div>
+                                <div class="stat-title">Active</div>
+                                <div class="stat-value text-success" id="statActive">0</div>
+                                <div class="stat-desc" id="statActivePercent">0%</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-figure text-warning">
+                                    <i class="fas fa-exclamation-triangle text-3xl"></i>
+                                </div>
+                                <div class="stat-title">Warning</div>
+                                <div class="stat-value text-warning" id="statWarn">0</div>
+                                <div class="stat-desc" id="statWarnPercent">0%</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-figure text-error">
+                                    <i class="fas fa-times-circle text-3xl"></i>
+                                </div>
+                                <div class="stat-title">Inactive</div>
+                                <div class="stat-value text-error" id="statInactive">0</div>
+                                <div class="stat-desc" id="statInactivePercent">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pipeline Modal -->
+    <dialog id="pipelineModal" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4" id="pipelineModalTitle">
+                <i class="fas fa-layer-group text-primary mr-2"></i>
+                Add Pipeline
+            </h3>
+            
+            <div class="space-y-4">
+                <label class="floating-label w-full">
+                    <input type="text" class="input input-md w-full" id="pipelineTitle" placeholder="Pipeline Name">
+                    <span>Pipeline Name</span>
+                </label>
+                
+                <label class="floating-label w-full">
+                    <input type="number" class="input input-md w-full" id="pipelineOrder" placeholder="Order" value="0">
+                    <span>Order</span>
+                </label>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <button class="btn btn-primary" id="pipelineActionBtn" onclick="createCRMPipeline()">
+                    <i class="fas fa-plus mr-1"></i> <span id="pipelineActionText">Create</span>
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Delete Pipeline Confirmation Modal -->
+    <dialog id="deletePipelineModal" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold text-error">
+                <i class="fas fa-exclamation-triangle mr-2"></i>ยืนยันการลบ Pipeline
+            </h3>
+            <p class="py-4">คุณต้องการลบ Pipeline นี้หรือไม่? กรุณาย้ายหรือลบ Activities ทั้งหมดใน Pipeline นี้ก่อน</p>
+            <div class="space-y-4">
+                <label class="floating-label w-full">
+                    <input type="text" class="input input-md w-full" id="deletePipelineTitleDisplay" readonly>
+                    <span>Pipeline Name</span>
+                </label>
+            </div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <button class="btn btn-error" id="deletePipelineBtn">
+                    <i class="fas fa-trash mr-1"></i>Delete Pipeline
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Activity Modal -->
+    <dialog id="leadModal" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4">
+                <i class="fas fa-tasks text-primary mr-2"></i>
+                Create Activity
+            </h3>
+            
+            <div class="space-y-4">
+                <label class="floating-label w-full">
+                    <input type="text" class="input input-md w-full" id="leadName" placeholder="Activity Name">
+                    <span>Activity Name</span>
+                </label>
+                
+                <label class="floating-label w-full">
+                    <select class="select select-md w-full" id="pipelineDropdown">
+                        <option value="" disabled selected>Select Pipeline</option>
+                    </select>
+                    <span>Pipeline</span>
+                </label>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <button class="btn btn-primary" onclick="createLead()">
+                    <i class="fas fa-plus mr-1"></i> Create Activity
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Biomed Scripts -->
+    <script src="biomed-global.js"></script>
+    <script src="biomed-project-overview.js"></script>
+    <script src="biomed-quickNav.js"></script>
+    
+    <script>
+        // Theme functions
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('biomed-theme', theme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('biomed-theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+        
+        // Clear cache
+        function clearCache() {
+            if (confirm('ต้องการล้าง Cache หรือไม่?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                location.reload();
+            }
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('ต้องการออกจากระบบหรือไม่?')) {
+                removeToken();
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Bootstrap Modal API Shim for daisyUI dialogs
+        window.bootstrap = window.bootstrap || {};
+        window.bootstrap.Modal = class {
+            constructor(selector, options = {}) {
+                this.element = typeof selector === 'string' 
+                    ? document.querySelector(selector) 
+                    : selector;
+            }
+            show() {
+                if (this.element && typeof this.element.showModal === 'function') {
+                    this.element.showModal();
+                }
+            }
+            hide() {
+                if (this.element && typeof this.element.close === 'function') {
+                    this.element.close();
+                }
+            }
+            toggle() {
+                if (this.element) {
+                    if (this.element.open) {
+                        this.hide();
+                    } else {
+                        this.show();
+                    }
+                }
+            }
+            static getInstance(element) {
+                return new bootstrap.Modal(element);
+            }
+            static getOrCreateInstance(element) {
+                return new bootstrap.Modal(element);
+            }
+        };
+    </script>
+</body>
+
+</html>

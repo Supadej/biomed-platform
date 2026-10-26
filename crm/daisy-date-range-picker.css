@@ -1,0 +1,259 @@
+/**
+ * DaisyUI Date Range Picker - CSS Styles
+ * Additional styles for the date range picker component
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================================================
+   CONTAINER STYLES
+   ============================================================================ */
+.daisy-date-range-picker {
+    --drp-calendar-width: 280px;
+    --drp-day-size: 36px;
+    --drp-border-radius: var(--rounded-box, 1rem);
+    --drp-transition: all 0.2s ease;
+}
+
+/* ============================================================================
+   INPUT WRAPPER
+   ============================================================================ */
+.daisy-date-range-picker .input-wrapper {
+    cursor: pointer;
+}
+
+.daisy-date-range-picker input[readonly] {
+    cursor: pointer;
+    background-color: oklch(var(--b1));
+}
+
+.daisy-date-range-picker input[readonly]:focus {
+    outline: none;
+}
+
+/* ============================================================================
+   DROPDOWN STYLES
+   ============================================================================ */
+.daisy-date-range-picker .dropdown-content {
+    animation: drp-fadeIn 0.15s ease-out;
+}
+
+@keyframes drp-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================================
+   CALENDAR GRID
+   ============================================================================ */
+.daisy-date-range-picker .calendar-grid {
+    width: var(--drp-calendar-width);
+}
+
+.daisy-date-range-picker .calendar-grid .btn {
+    transition: var(--drp-transition);
+}
+
+/* Day hover effects */
+.daisy-date-range-picker .calendar-grid .btn:not(.btn-disabled):hover {
+    transform: scale(1.05);
+}
+
+/* Range selection styling */
+.daisy-date-range-picker .calendar-grid .btn.range-start {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.daisy-date-range-picker .calendar-grid .btn.range-end {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.daisy-date-range-picker .calendar-grid .btn.in-range {
+    border-radius: 0;
+}
+
+/* ============================================================================
+   PRESETS PANEL
+   ============================================================================ */
+.daisy-date-range-picker .presets-panel .btn {
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.daisy-date-range-picker .presets-panel .btn:hover {
+    background-color: oklch(var(--b2));
+}
+
+.daisy-date-range-picker .presets-panel .btn.active {
+    background-color: oklch(var(--p) / 0.1);
+    color: oklch(var(--p));
+}
+
+/* ============================================================================
+   MONTH NAVIGATION
+   ============================================================================ */
+.daisy-date-range-picker .month-nav {
+    user-select: none;
+}
+
+.daisy-date-range-picker .month-nav .btn-circle {
+    transition: var(--drp-transition);
+}
+
+.daisy-date-range-picker .month-nav .btn-circle:hover {
+    background-color: oklch(var(--b2));
+}
+
+/* ============================================================================
+   RESPONSIVE STYLES
+   ============================================================================ */
+@media (max-width: 768px) {
+    .daisy-date-range-picker .dropdown-content {
+        position: fixed !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        max-width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+        overflow: auto;
+    }
+    
+    .daisy-date-range-picker .dropdown-content > div {
+        flex-direction: column;
+    }
+    
+    .daisy-date-range-picker .presets-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-right: none;
+        border-bottom: 1px solid oklch(var(--bc) / 0.1);
+        padding-right: 0;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .daisy-date-range-picker .calendars-container {
+        flex-direction: column;
+    }
+    
+    .daisy-date-range-picker .calendar-grid {
+        width: 100%;
+    }
+}
+
+/* ============================================================================
+   DARK MODE ADJUSTMENTS
+   ============================================================================ */
+[data-theme="dark"] .daisy-date-range-picker .calendar-grid .btn.in-range,
+.dark .daisy-date-range-picker .calendar-grid .btn.in-range {
+    background-color: oklch(var(--b3));
+}
+
+/* ============================================================================
+   SIZE VARIANTS
+   ============================================================================ */
+.daisy-date-range-picker.drp-xs {
+    --drp-calendar-width: 220px;
+    --drp-day-size: 28px;
+}
+
+.daisy-date-range-picker.drp-sm {
+    --drp-calendar-width: 250px;
+    --drp-day-size: 32px;
+}
+
+.daisy-date-range-picker.drp-lg {
+    --drp-calendar-width: 320px;
+    --drp-day-size: 40px;
+}
+
+.daisy-date-range-picker.drp-xl {
+    --drp-calendar-width: 360px;
+    --drp-day-size: 44px;
+}
+
+/* ============================================================================
+   THEME VARIANTS
+   ============================================================================ */
+.daisy-date-range-picker[data-theme="primary"] .calendar-grid .btn.selected {
+    background-color: oklch(var(--p));
+    color: oklch(var(--pc));
+}
+
+.daisy-date-range-picker[data-theme="secondary"] .calendar-grid .btn.selected {
+    background-color: oklch(var(--s));
+    color: oklch(var(--sc));
+}
+
+.daisy-date-range-picker[data-theme="accent"] .calendar-grid .btn.selected {
+    background-color: oklch(var(--a));
+    color: oklch(var(--ac));
+}
+
+/* ============================================================================
+   LOADING STATE
+   ============================================================================ */
+.daisy-date-range-picker.loading .dropdown-content {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.daisy-date-range-picker.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border: 2px solid oklch(var(--p));
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: drp-spin 0.6s linear infinite;
+}
+
+@keyframes drp-spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* ============================================================================
+   DISABLED STATE
+   ============================================================================ */
+.daisy-date-range-picker.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.daisy-date-range-picker.disabled input {
+    cursor: not-allowed;
+}
+
+/* ============================================================================
+   ERROR STATE
+   ============================================================================ */
+.daisy-date-range-picker.error input {
+    border-color: oklch(var(--er));
+}
+
+.daisy-date-range-picker.error input:focus {
+    outline-color: oklch(var(--er));
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+@media print {
+    .daisy-date-range-picker .dropdown-content {
+        display: none !important;
+    }
+}

@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Visualization - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <!-- Sigma.js & Graphology (WebGL-based - much faster than D3 SVG) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphology/0.25.4/graphology.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.4.0/sigma.min.js"></script>
+    
+    <script src="biomed-global.js" defer></script>
+    <script src="biomed-network.js" defer></script>
+    <script src="biomed-quickNav.js" defer></script>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        #sigma-container {
+            width: 100%;
+            height: calc(100vh - 180px);
+            min-height: 500px;
+            background: oklch(var(--b2));
+            border-radius: 0.75rem;
+        }
+        
+        /* Legend styles */
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        /* Controls overlay */
+        .controls-overlay {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+        
+        /* Node info tooltip */
+        .node-tooltip {
+            position: absolute;
+            padding: 0.5rem 0.75rem;
+            background: oklch(var(--b1));
+            border: 1px solid oklch(var(--b3));
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            font-size: 0.75rem;
+            pointer-events: none;
+            z-index: 20;
+            display: none;
+        }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Alert Bar -->
+    <div class="px-4 lg:px-6 pt-2" id="alert-bar"></div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+            <div>
+                <h1 class="text-2xl font-bold flex items-center gap-3">
+                    <i class="fas fa-project-diagram text-primary"></i>
+                    Network Visualization
+                    <span class="badge badge-info badge-sm">Beta</span>
+                </h1>
+                <p class="text-sm text-base-content/60 mt-1">
+                    Explore relationships between Users, Contacts, Events, Leads, Activities & Tickets
+                </p>
+            </div>
+            
+            <!-- Controls -->
+            <div class="flex flex-wrap gap-2">
+                <a href="visualization.html" class="btn btn-primary btn-sm gap-2">
+                    <i class="fas fa-table"></i> Pivot
+                </a>
+                <button class="btn btn-outline btn-sm gap-2" id="toggleLayoutBtn" onclick="toggleLayout()">
+                    <i class="fas fa-play"></i>
+                    <span id="layoutBtnText">Start Layout</span>
+                </button>
+                <button class="btn btn-outline btn-sm gap-2" onclick="resetCamera()">
+                    <i class="fas fa-compress-arrows-alt"></i> Reset View
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Info -->
+        <div id="filterInfo" class="alert alert-info mb-4 hidden">
+            <i class="fas fa-filter"></i>
+            <span id="filterText">Showing filtered view</span>
+        </div>
+
+        <!-- Graph Container Card -->
+        <div class="card bg-base-100 shadow-sm">
+            <div class="card-body p-4 relative">
+                <!-- Legend -->
+                <div class="flex flex-wrap gap-4 mb-3">
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #FFD700;"></div>
+                        <span>User</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #FFB6A7;"></div>
+                        <span>Contact</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #A9DFBF;"></div>
+                        <span>Event</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #F9AFAF;"></div>
+                        <span>Lead</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #F7DC6F;"></div>
+                        <span>Activity</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #D2B4DE;"></div>
+                        <span>Ticket</span>
+                    </div>
+                </div>
+                
+                <!-- Sigma Container -->
+                <div id="sigma-container"></div>
+                
+                <!-- Node Tooltip -->
+                <div id="node-tooltip" class="node-tooltip"></div>
+                
+                <!-- Loading Overlay -->
+                <div id="loading-overlay" class="absolute inset-0 flex items-center justify-center bg-base-100/80 rounded-xl">
+                    <div class="text-center">
+                        <span class="loading loading-spinner loading-lg text-primary"></span>
+                        <p class="mt-2 text-sm text-base-content/60">Loading network data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats shadow mt-4 w-full">
+            <div class="stat">
+                <div class="stat-figure text-primary">
+                    <i class="fas fa-circle-nodes text-2xl"></i>
+                </div>
+                <div class="stat-title">Total Nodes</div>
+                <div class="stat-value text-primary" id="nodeCount">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-figure text-secondary">
+                    <i class="fas fa-link text-2xl"></i>
+                </div>
+                <div class="stat-title">Total Edges</div>
+                <div class="stat-value text-secondary" id="edgeCount">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-figure text-accent">
+                    <i class="fas fa-eye text-2xl"></i>
+                </div>
+                <div class="stat-title">View Mode</div>
+                <div class="stat-value text-accent text-lg" id="viewMode">All</div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="collapse collapse-arrow bg-base-100 shadow-sm mt-4">
+            <input type="checkbox" />
+            <div class="collapse-title font-medium">
+                <i class="fas fa-info-circle text-info mr-2"></i>How to use
+            </div>
+            <div class="collapse-content text-sm">
+                <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Zoom:</strong> Use mouse wheel or pinch gesture</li>
+                    <li><strong>Pan:</strong> Click and drag the background</li>
+                    <li><strong>Drag Node:</strong> Click and drag a node to move it</li>
+                    <li><strong>Open Detail:</strong> Double-click a node to open its detail page</li>
+                    <li><strong>Hover:</strong> Hover over a node to see its name and highlight connections</li>
+                    <li><strong>Layout:</strong> Click "Start Layout" to auto-arrange nodes</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Theme functions
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('biomed-theme', theme);
+        }
+        const savedTheme = localStorage.getItem('biomed-theme');
+        if (savedTheme) setTheme(savedTheme);
+        
+        function goBack() {
+            history.back();
+        }
+    </script>
+</body>
+</html>

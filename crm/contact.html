@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <!-- jQuery (for compatibility) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Flaticon icons fix */
+        .fi { display: inline-flex; align-items: center; }
+        
+        /* Bootstrap compatibility */
+        .m-0 { margin: 0 !important; }
+        .p-0 { padding: 0 !important; }
+        .d-none { display: none !important; }
+        .d-flex { display: flex !important; }
+        .text-small { font-size: 0.75rem !important; }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Alert Bar -->
+    <div class="px-4 lg:px-6 pt-2" id="alert-bar">
+    </div>
+
+    <!-- Contact Modal -->
+    <dialog id="contactModal" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4" id="contactModalTitle">
+                <i class="fas fa-user-plus text-primary mr-2"></i>
+                Add/Edit Contact
+            </h3>
+            
+            <div class="space-y-4">
+                <input type="hidden" id="contactId" value="">
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Name</span></label>
+                    <input type="text" class="input input-bordered w-full" id="contactName" placeholder="Contact Name">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Email</span></label>
+                    <input type="email" class="input input-bordered w-full" id="contactEmail" placeholder="Contact Email">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Address</span></label>
+                    <input type="text" class="input input-bordered w-full" id="contactAddress" placeholder="Contact Address">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Phone</span></label>
+                    <input type="tel" class="input input-bordered w-full" id="contactPhone" placeholder="Contact Phone">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Position</span></label>
+                    <input type="text" class="input input-bordered w-full" id="contactPosition" placeholder="Contact Position">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Department</span></label>
+                    <input type="text" class="input input-bordered w-full" readonly id="contactDepartment" placeholder="To be implemented">
+                </div>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Close</button>
+                </form>
+                <button class="btn btn-error" id="deleteContactBtn" onclick="deleteContact()">
+                    <i class="fas fa-trash mr-1"></i> Delete
+                </button>
+                <button class="btn btn-primary" onclick="addContact()">
+                    <i class="fas fa-save mr-1"></i> Save Contact
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+
+
+    <!-- Billing Modal -->
+    <dialog id="billingModal" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4" id="billingModalTitle">
+                <i class="fas fa-file-invoice text-secondary mr-2"></i>
+                Add/Edit Billing
+            </h3>
+            
+            <div class="space-y-4">
+                <input type="hidden" id="billingId" value="">
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Main Contact</span></label>
+                    <select class="select select-bordered w-full" id="mainContactsSelecter">
+                        <option value="" disabled selected>Select Contact</option>
+                    </select>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Billing Name</span></label>
+                    <input type="text" class="input input-bordered w-full" id="billingName" placeholder="Billing Name">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Email</span></label>
+                    <input type="email" class="input input-bordered w-full" id="billingEmail" placeholder="Billing Email">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Address</span></label>
+                    <input type="text" class="input input-bordered w-full" id="billingAddress" placeholder="Billing Address">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Phone</span></label>
+                    <input type="tel" class="input input-bordered w-full" id="billingPhone" placeholder="Billing Phone">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Tax ID</span></label>
+                    <input type="text" class="input input-bordered w-full" id="billingTaxID" placeholder="Billing TaxID">
+                </div>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Close</button>
+                </form>
+                <button class="btn btn-error" id="deleteBillingBtn" onclick="deleteBilling()">
+                    <i class="fas fa-trash mr-1"></i> Delete
+                </button>
+                <button class="btn btn-secondary" onclick="addBilling()">
+                    <i class="fas fa-save mr-1"></i> Save Billing
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Page Header -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3">
+                <h1 class="text-2xl font-bold">
+                    <i class="fi fi-rr-review text-primary mr-2"></i>
+                    Contact Management
+                </h1>
+            </div>
+            
+            <!-- Add Buttons -->
+            <div class="flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="openContactModal()">
+                    <i class="fas fa-plus"></i> Add Contact
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div role="tablist" class="tabs tabs-box mb-4">
+            <a role="tab" class="tab tab-active" id="tabContacts" onclick="switchContactTab('contacts')">
+                <i class="fi fi-rr-user-add mr-2"></i>Contacts
+            </a>
+            <a role="tab" class="tab" id="tabBilling" onclick="switchContactTab('billing')">
+                <i class="fi fi-rr-file-invoice mr-2"></i>Billing/Delivery Address
+            </a>
+        </div>
+
+        <!-- Mini Statistics -->
+        <div class="stats stats-horizontal shadow mb-4 w-full bg-base-100">
+            <div class="stat py-3 px-4">
+                <div class="stat-figure text-primary">
+                    <i class="fas fa-users text-2xl"></i>
+                </div>
+                <div class="stat-title text-xs">Total Contacts</div>
+                <div class="stat-value text-primary text-2xl" id="statTotalContacts">0</div>
+            </div>
+            
+            <div class="stat py-3 px-4">
+                <div class="stat-figure text-secondary">
+                    <i class="fas fa-file-invoice text-2xl"></i>
+                </div>
+                <div class="stat-title text-xs">Billing Addresses</div>
+                <div class="stat-value text-secondary text-2xl" id="statTotalBillings">0</div>
+            </div>
+            
+            <div class="stat py-3 px-4">
+                <div class="stat-figure text-accent">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </div>
+                <div class="stat-title text-xs">With Email</div>
+                <div class="stat-value text-accent text-2xl" id="statWithEmail">0</div>
+            </div>
+            
+            <div class="stat py-3 px-4">
+                <div class="stat-figure text-info">
+                    <i class="fas fa-phone text-2xl"></i>
+                </div>
+                <div class="stat-title text-xs">With Phone</div>
+                <div class="stat-value text-info text-2xl" id="statWithPhone">0</div>
+            </div>
+        </div>
+
+        <!-- Contacts Table View -->
+        <div id="contactDiv" class="card bg-base-100 shadow-sm">
+            <div class="card-body p-4">
+                <!-- Search & Filter -->
+                <div class="flex flex-wrap gap-2 mb-4 items-center">
+                    <div class="join flex-1 max-w-md">
+                        <input type="text" class="input input-bordered join-item w-full" id="contactSearchInput" placeholder="Search contacts..." onkeyup="filterContacts()">
+                        <button class="btn btn-primary join-item">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-outline export hidden" onclick="exportContacts()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+                
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra table-sm" id="contactTable">
+                        <thead>
+                            <tr class="bg-primary text-primary-content">
+                                <th class="w-16">ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th class="w-32">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactTableBody">
+                            <tr>
+                                <td colspan="8" class="text-center py-8">
+                                    <span class="loading loading-spinner loading-md mr-2"></span>
+                                    กำลังโหลดข้อมูล...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing Table View -->
+        <div id="billingDiv" class="card bg-base-100 shadow-sm hidden">
+            <div class="card-body p-4">
+                <!-- Search & Filter -->
+                <div class="flex flex-wrap gap-2 mb-4 items-center">
+                    <div class="join flex-1 max-w-md">
+                        <input type="text" class="input input-bordered join-item w-full" id="billingSearchInput" placeholder="Search billing..." onkeyup="filterBillings()">
+                        <button class="btn btn-secondary join-item">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-outline export hidden" onclick="exportBillings()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+                
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra table-sm" id="billingTable">
+                        <thead>
+                            <tr class="bg-secondary text-secondary-content">
+                                <th class="w-16">ID</th>
+                                <th>Contact</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Tax ID</th>
+                                <th class="w-24">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="billingTableBody">
+                            <tr>
+                                <td colspan="8" class="text-center py-8">
+                                    <span class="loading loading-spinner loading-md mr-2"></span>
+                                    กำลังโหลดข้อมูล...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="biomed-global.js"></script>
+    <script src="biomed-contact.js"></script>
+    <script src="biomed-billing.js"></script>
+    <script src="biomed-quickNav.js"></script>
+    
+    <script>
+        // Theme functions
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('biomed-theme', theme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('biomed-theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+        
+        // Clear cache
+        function clearCache() {
+            if (confirm('ต้องการล้าง Cache หรือไม่?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                location.reload();
+            }
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('ต้องการออกจากระบบหรือไม่?')) {
+                removeToken();
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Tab switching
+        function switchContactTab(tab) {
+            document.getElementById('tabContacts').classList.remove('tab-active');
+            document.getElementById('tabBilling').classList.remove('tab-active');
+            document.getElementById('contactDiv').classList.add('hidden');
+            document.getElementById('billingDiv').classList.add('hidden');
+            
+            if (tab === 'contacts') {
+                document.getElementById('tabContacts').classList.add('tab-active');
+                document.getElementById('contactDiv').classList.remove('hidden');
+            } else {
+                document.getElementById('tabBilling').classList.add('tab-active');
+                document.getElementById('billingDiv').classList.remove('hidden');
+            }
+        }
+        
+        // Bootstrap Modal API Shim for daisyUI dialogs
+        window.bootstrap = window.bootstrap || {};
+        window.bootstrap.Modal = class {
+            constructor(selector, options = {}) {
+                this.element = typeof selector === 'string' 
+                    ? document.querySelector(selector) 
+                    : selector;
+            }
+            show() {
+                if (this.element && typeof this.element.showModal === 'function') {
+                    this.element.showModal();
+                }
+            }
+            hide() {
+                if (this.element && typeof this.element.close === 'function') {
+                    this.element.close();
+                }
+            }
+            toggle() {
+                if (this.element) {
+                    if (this.element.open) {
+                        this.hide();
+                    } else {
+                        this.show();
+                    }
+                }
+            }
+            static getInstance(element) {
+                return new bootstrap.Modal(element);
+            }
+            static getOrCreateInstance(element) {
+                return new bootstrap.Modal(element);
+            }
+        };
+        
+        // Open modal functions
+        function openContactModal(contactId = null) {
+            document.getElementById('contactId').value = contactId || '';
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactAddress').value = '';
+            document.getElementById('contactPhone').value = '';
+            document.getElementById('contactPosition').value = '';
+            document.getElementById('contactDepartment').value = '';
+            document.getElementById('contactModal').showModal();
+        }
+        
+        function openBillingModal(billingId = null) {
+            document.getElementById('billingId').value = billingId || '';
+            document.getElementById('billingName').value = '';
+            document.getElementById('billingEmail').value = '';
+            document.getElementById('billingAddress').value = '';
+            document.getElementById('billingPhone').value = '';
+            document.getElementById('billingTaxID').value = '';
+            document.getElementById('billingModal').showModal();
+        }
+        
+        // Filter functions
+        function filterContacts() {
+            const search = document.getElementById('contactSearchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#contactTableBody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(search) ? '' : 'none';
+            });
+        }
+        
+        function filterBillings() {
+            const search = document.getElementById('billingSearchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#billingTableBody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(search) ? '' : 'none';
+            });
+        }
+        
+        // Export functions
+        function exportContacts() {
+            if (!masterContacts || masterContacts.length === 0) {
+                xalert('ไม่มีข้อมูลสำหรับ Export', 1, 3000);
+                return;
+            }
+            
+            const headers = ['ID', 'Name', 'Email', 'Address', 'Phone', 'Position', 'Department'];
+            const rows = masterContacts.map(c => [
+                c.Id || '',
+                c.Name || '',
+                c.Email || '',
+                c.Address || '',
+                c.Phone || '',
+                c.Position || '',
+                c.DepartmentID || ''
+            ]);
+            
+            exportToCSV('contacts.csv', headers, rows);
+        }
+        
+        function exportBillings() {
+            if (!masterBillings || masterBillings.length === 0) {
+                xalert('ไม่มีข้อมูลสำหรับ Export', 1, 3000);
+                return;
+            }
+            
+            const headers = ['ID', 'Contact', 'Name', 'Email', 'Address', 'Phone', 'TaxID'];
+            const rows = masterBillings.map(b => [
+                b.Id || '',
+                getContactName(b.ContactId) || '',
+                b.Name || '',
+                b.Email || '',
+                b.Address || '',
+                b.Phone || '',
+                b.TaxID || ''
+            ]);
+            
+            exportToCSV('billings.csv', headers, rows);
+        }
+        
+        // CSV Export helper
+        function exportToCSV(filename, headers, rows) {
+            const BOM = '\uFEFF';
+            let csv = BOM + headers.join(',') + '\n';
+            
+            rows.forEach(row => {
+                csv += row.map(cell => {
+                    const value = String(cell).replace(/"/g, '""');
+                    return '"' + value + '"';
+                }).join(',') + '\n';
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(link.href);
+            
+            xalert('Export สำเร็จ!', 0, 3000);
+        }
+    </script>
+</body>
+
+</html>
