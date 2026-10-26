@@ -172,8 +172,6 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
             with connect() as c:row=c.execute('SELECT value,revision FROM workspace WHERE key=?',(self.key(),)).fetchone()
             return self.reply(200,dict(value=policy.read_filter(account_permissions(user),self.key(),row[0]),revision=row[1]) if row else dict(value=None,revision=0))
         if path.startswith('/reference/') or path=='/reference':return self.send_error(404)
-        if path in ('/crm/','/crm/index.html','/crm/login.html'):
-            self.send_response(302);self.send_header('Location','/?portal=1');self.end_headers();return
         if path.startswith('/crm/') and (path.endswith('.html') or path=='/crm/'):
             actor=session_account(self)
             if not actor:
