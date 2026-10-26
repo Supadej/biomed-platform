@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpdesk - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="/crm/dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <!-- Bootstrap Table (for table view) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.6/dist/bootstrap-table.min.css">
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Kanban scrollable */
+        .kanban-container {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            height: calc(100vh - 200px);
+        }
+        
+        .kanban-column {
+            min-width: 280px;
+            max-width: 280px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Large screen: columns grow to fill space */
+        @media (min-width: 1024px) {
+            .kanban-column {
+                max-width: none;
+                flex-shrink: 1;
+                flex-grow: 1;
+                min-width: 240px;
+            }
+        }
+        
+        /* Ticket card styling */
+        .ticket-card {
+            transition: all 0.2s ease;
+            border-left: 4px solid;
+        }
+        
+        .ticket-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Priority colors */
+        .priority-none { border-left-color: oklch(var(--bc)/0.3); }
+        .priority-low { border-left-color: oklch(var(--in)); }
+        .priority-normal { border-left-color: oklch(var(--su)); }
+        .priority-high { border-left-color: oklch(var(--wa)); }
+        .priority-urgent { border-left-color: oklch(var(--er)); }
+        .priority-critical { border-left-color: #dc2626; }
+        
+        /* Search dropdown */
+        .search-dropdown {
+            width: 400px;
+            max-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: absolute;
+            right: 0;
+        }
+        
+        /* noUiSlider overrides for daisyUI theme */
+        .noUi-connect {
+            background: oklch(var(--p));
+        }
+        
+        .noUi-handle {
+            border-color: oklch(var(--p));
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .noUi-tooltip {
+            background: oklch(var(--p));
+            color: white;
+            border: none;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+        }
+        
+        /* Badge status colors */
+        .status-dropped { background-color: oklch(var(--er)); color: white; }
+        .status-inactive { background-color: oklch(var(--wa)); color: white; }
+        .status-active { background-color: oklch(var(--su)); color: white; }
+
+        /* Custom scrollbar for kanban */
+        .kanban-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .kanban-container::-webkit-scrollbar-track {
+            background: oklch(var(--b3));
+            border-radius: 4px;
+        }
+        
+        .kanban-container::-webkit-scrollbar-thumb {
+            background: oklch(var(--p));
+            border-radius: 4px;
+        }
+
+        /* Tickets list in column */
+        .tickets-list {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .tickets-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .tickets-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .tickets-list::-webkit-scrollbar-thumb {
+            background: oklch(var(--bc)/0.2);
+            border-radius: 2px;
+        }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script><style id="staff-native-shell">body{background:#f2f6f8!important;}#navbar{position:sticky;top:0;z-index:120;background:#fff;box-shadow:0 2px 12px #143b5112}.staff-shell-top{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:13px 22px;background:#fff;border-bottom:1px solid #e0e8ed;font:500 14px system-ui;color:#16374b}.staff-shell-top .staffbrand{font-weight:800;font-size:17px;margin-right:auto}.staff-shell-top a{color:#25566f;text-decoration:none;padding:9px;border-radius:8px}.staff-shell-top a.active{background:#e6f1f8;color:#094c73}.staff-shell-modules{display:flex;gap:9px;padding:10px 20px;flex-wrap:wrap;background:#fff}.staff-shell-modules a{font:500 13px system-ui;text-decoration:none;color:#30576b;border:1px solid #dce5eb;border-radius:8px;padding:8px 12px}.staff-shell-modules a.active{background:#0e567a;color:white;border-color:#0e567a}body>main{max-width:none!important;width:100%!important} @media(max-width:650px){.staff-shell-top{padding:9px 12px}.staff-shell-modules{padding:9px 12px}}</style></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"><div class="staff-shell-top"><a class="staffbrand" href="/?portal=1">◈ Biomed · Staff Portal</a><a href="/?portal=1">Staff Portal</a><a href="/biomed-is.html">Biomed IS</a><a href="/biomed-budget.html">Budgeting</a></div><nav class="staff-shell-modules" aria-label="Staff Portal CRM"><a class="" href="/staff-crm/calendar.html">Calendar</a><a class="" href="/staff-crm/sales-plan.html">Sales Plan</a><a class="" href="/staff-crm/project-activity.html">Project & Activity</a><a class="active" href="/staff-crm/external-helpdesk.html">External Helpdesk</a></nav></div>
+    
+
+    <!-- Alert Bar -->
+    <div class="px-4 lg:px-6 pt-2">
+        <div id="alert-bar"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Page Header -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <!-- Left: Title -->
+            <div class="flex items-center gap-3">
+                <h1 class="text-2xl font-bold text-base-content">
+                    <i class="fa-solid fa-headset text-primary mr-2"></i>Helpdesk
+                </h1>
+            </div>
+            
+            <!-- Right: Actions -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- View Toggle -->
+                <div class="join">
+                    <button class="btn btn-sm join-item btn-active" id="cardViewBtn" onclick="toggleViewMode('card')">
+                        <i class="fa-solid fa-grip"></i> Kanban
+                    </button>
+                    <button class="btn btn-sm join-item" id="tableViewBtn" onclick="toggleViewMode('table')">
+                        <i class="fa-solid fa-table"></i> Table
+                    </button>
+                    <button class="btn btn-sm join-item" id="vizViewBtn" onclick="toggleViewMode('viz')">
+                        <i class="fa-solid fa-chart-pie"></i> Viz
+                    </button>
+                </div>
+                
+                <!-- Search Filter Dropdown -->
+                <div class="dropdown dropdown-end">
+                    <button tabindex="0" class="btn btn-outline btn-sm">
+                        <i class="fa-solid fa-filter"></i> Filter
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    <div tabindex="0" class="dropdown-content z-50 bg-base-100 rounded-box shadow-xl p-4 m-0 search-dropdown">
+                        <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-filter text-primary"></i> Search & Filter
+                        </h3>
+                        
+                        <!-- Title Search -->
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">ชื่อ Ticket</span>
+                            </label>
+                            <input type="text" id="ticketQuery" placeholder="ค้นหาชื่อ ticket..." class="input input-bordered input-sm w-full">
+                        </div>
+                        
+                        <!-- Quarter Mode Toggle -->
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">Quarter Mode</span>
+                            </label>
+                            <div class="join w-full">
+                                <button id="hdBtnFYQ" class="btn btn-sm join-item flex-1 btn-active" onclick="setHelpdeskQuarterMode('fiscal')">
+                                    <i class="fas fa-building text-xs"></i> FYQ
+                                </button>
+                                <button id="hdBtnYQ" class="btn btn-sm join-item flex-1" onclick="setHelpdeskQuarterMode('standard')">
+                                    <i class="fas fa-calendar text-xs"></i> YQ
+                                </button>
+                                <button id="hdBtnManual" class="btn btn-sm join-item flex-1" onclick="setHelpdeskQuarterMode('manual')">
+                                    <i class="fas fa-calendar-day text-xs"></i> Manual
+                                </button>
+                            </div>
+                            <label class="label py-0">
+                                <span class="label-text-alt text-base-content/50" id="hdQuarterModeDesc">Fiscal Year Quarter (Q1=May-Jul)</span>
+                            </label>
+                        </div>
+
+                        <!-- Quarter Slider (shown in FYQ/YQ modes) -->
+                        <div id="hdQuarterSlidersContainer">
+                            <!-- Creation Date Range Slider -->
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">วันที่สร้าง</span>
+                                </label>
+                                <div id="creationRangeSlider" class="px-2 py-4"></div>
+                            </div>
+                        </div>
+
+                        <!-- Manual Date Inputs (shown in Manual mode) -->
+                        <div id="hdManualDateContainer" class="hidden">
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">วันที่สร้าง (เริ่ม)</span>
+                                </label>
+                                <input type="date" id="hdManualCreationStart" class="input input-bordered input-sm w-full">
+                            </div>
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">วันที่สร้าง (ถึง)</span>
+                                </label>
+                                <input type="date" id="hdManualCreationEnd" class="input input-bordered input-sm w-full">
+                            </div>
+                        </div>
+
+                        <!-- Priority Range Slider -->
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">Priority</span>
+                            </label>
+                            <div id="prioritySlider" class="px-2 py-4"></div>
+                        </div>
+                        
+                        <!-- MultiSelect Filters -->
+                        <div class="divider my-2"></div>
+                        
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">ผู้สร้าง</span>
+                            </label>
+                            <div id="userFilter"></div>
+                        </div>
+
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">ผู้รับผิดชอบ</span>
+                            </label>
+                            <div id="assignFilter"></div>
+                        </div>
+                        
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">Contact</span>
+                            </label>
+                            <div id="contactFilter"></div>
+                        </div>
+
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">สินค้า</span>
+                            </label>
+                            <div id="productFilter"></div>
+                        </div>
+                        
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text font-medium">พื้นที่ขาย</span>
+                            </label>
+                            <div id="saleAreaFilter"></div>
+                        </div>
+                        
+                        <div class="flex gap-2 mt-4">
+                            <button class="btn btn-ghost btn-sm flex-1" onclick="clearFilters()">
+                                <i class="fa-solid fa-times"></i> ล้างตัวกรอง
+                            </button>
+                            <button class="btn btn-primary btn-sm flex-1" onclick="applyFilters()">
+                                <i class="fa-solid fa-search"></i> ค้นหา
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Pipeline Button -->
+                <button class="btn btn-outline btn-secondary btn-sm" onclick="createModalPopup()">
+                    <i class="fa-solid fa-layer-group"></i> Add Pipeline
+                </button>
+                
+                <!-- Add Ticket Button -->
+                <button class="btn btn-primary btn-sm" onclick="createTicketPopup()">
+                    <i class="fa-solid fa-plus"></i> Add Ticket
+                </button>
+            </div>
+        </div>
+        
+        <!-- Kanban Board (Card View) -->
+        <div class="card bg-base-100 shadow-sm" id="cardViewContainer">
+            <div class="card-body p-4">
+                <div class="kanban-container" id="pipelineContainer">
+                    <!-- Pipeline columns will be inserted here by JS -->
+                    <div class="flex items-center justify-center py-16 text-base-content/50 w-full">
+                        <span class="loading loading-spinner loading-lg mr-3"></span>
+                        กำลังโหลด Pipeline...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Table View (Hidden by default) -->
+        <div class="card bg-base-100 shadow-sm hidden" id="tableContainer">
+            <div class="card-body p-4 overflow-x-auto">
+                <table id="ticketTable" class="table table-zebra w-full">
+                    <!-- Table will be rendered by JS -->
+                </table>
+            </div>
+        </div>
+        
+        <!-- Visualization View (Hidden by default) -->
+        <div class="hidden" id="vizContainer">
+            <!-- Row 1: Summary Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-3 text-center">
+                        <p class="text-xs text-base-content/60">Total Tickets</p>
+                        <p class="text-2xl font-bold text-primary" id="vizTotalTickets">0</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-3 text-center">
+                        <p class="text-xs text-base-content/60">Active</p>
+                        <p class="text-2xl font-bold text-success" id="vizActiveTickets">0</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-3 text-center">
+                        <p class="text-xs text-base-content/60">Inactive (>30d)</p>
+                        <p class="text-2xl font-bold text-warning" id="vizInactiveTickets">0</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-3 text-center">
+                        <p class="text-xs text-base-content/60">Dropped (>90d)</p>
+                        <p class="text-2xl font-bold text-error" id="vizDroppedTickets">0</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-3 text-center">
+                        <p class="text-xs text-base-content/60">On Time Rate</p>
+                        <p class="text-2xl font-bold text-info" id="vizOnTimeRate">0%</p>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-3 text-center">
+                        <p class="text-xs text-base-content/60">Avg Response (days)</p>
+                        <p class="text-2xl font-bold text-secondary" id="vizAvgResponse">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2: Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- Tickets by Pipeline -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-layer-group text-primary mr-2"></i>Tickets by Pipeline
+                        </h3>
+                        <div id="chartPipeline" class="h-64"></div>
+                    </div>
+                </div>
+                
+                <!-- Tickets by Priority -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-flag text-warning mr-2"></i>Tickets by Priority
+                        </h3>
+                        <div id="chartPriority" class="h-64"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 3: More Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- Tickets by Job Type -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-briefcase text-info mr-2"></i>Tickets by Job Type
+                        </h3>
+                        <div id="chartJobType" class="h-64"></div>
+                    </div>
+                </div>
+                
+                <!-- Tickets by Instrument -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-microscope text-secondary mr-2"></i>Tickets by Instrument
+                        </h3>
+                        <div id="chartInstrument" class="h-64"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 4: Time-based & User Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- Tickets by Month (Timeline) -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-chart-line text-success mr-2"></i>Tickets Timeline (Monthly)
+                        </h3>
+                        <div id="chartTimeline" class="h-64"></div>
+                    </div>
+                </div>
+                
+                <!-- Tickets by Assignee -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-user-check text-primary mr-2"></i>Tickets by Assignee
+                        </h3>
+                        <div id="chartAssignee" class="h-64"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 5: Product & SaleArea -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- Tickets by Product -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-box text-accent mr-2"></i>Tickets by Product
+                        </h3>
+                        <div id="chartProduct" class="h-64"></div>
+                    </div>
+                </div>
+                
+                <!-- Tickets by Sale Area -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-map-marker-alt text-error mr-2"></i>Tickets by Sale Area
+                        </h3>
+                        <div id="chartSaleArea" class="h-64"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 6: Response Analysis -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Response On Time Analysis -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-clock text-warning mr-2"></i>Response On Time Analysis
+                        </h3>
+                        <div id="chartOnTime" class="h-64"></div>
+                    </div>
+                </div>
+                
+                <!-- Status Distribution -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-chart-pie text-info mr-2"></i>Ticket Status Distribution
+                        </h3>
+                        <div id="chartStatus" class="h-64"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 7: Time Analysis by Pipeline -->
+            <div class="grid grid-cols-1 gap-4 mt-4">
+                <!-- Time Between Create and Update by Pipeline (Box Plot) -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="font-bold text-base mb-3">
+                            <i class="fa-solid fa-hourglass-half text-secondary mr-2"></i>ระยะเวลาระหว่าง Create Date กับ Update Date By Pipeline
+                            <span class="text-xs text-base-content/50 ml-2">(คลิกที่จุดเพื่อดูรายละเอียด Ticket)</span>
+                        </h3>
+                        <div id="chartTimeByPipeline" style="height: 400px; position: relative;">
+                            <canvas id="chartTimeByPipelineCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pipeline Modal -->
+    <dialog id="pipelineModal" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4" id="pipelineModalTitle">
+                <i class="fa-solid fa-layer-group text-primary mr-2"></i>Add Pipeline
+            </h3>
+            
+            <div class="space-y-4">
+                <input type="hidden" id="pipelineId" value="">
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">ชื่อ Pipeline</span>
+                    </label>
+                    <input type="text" id="pipelineName" class="input input-bordered" placeholder="ชื่อ Pipeline">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">ลำดับ</span>
+                    </label>
+                    <input type="number" id="pipelineOrder" class="input input-bordered" placeholder="1" value="1">
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">สี</span>
+                    </label>
+                    <input type="color" id="pipelineColor" class="w-full h-10 rounded-lg cursor-pointer" value="#6366f1">
+                </div>
+            </div>
+            
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">ยกเลิก</button>
+                </form>
+                <button class="btn btn-primary" onclick="savePipeline()">
+                    <i class="fa-solid fa-save mr-1"></i> บันทึก
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Ticket Modal -->
+    <dialog id="ticketModal" class="modal">
+        <div class="modal-box max-w-2xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4" id="ticketModalTitle">
+                <i class="fa-solid fa-ticket text-primary mr-2"></i>Add Ticket
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="hidden" id="ticketId" value="">
+                
+                <div class="form-control md:col-span-2">
+                    <label class="label">
+                        <span class="label-text font-medium">ชื่อ Ticket</span>
+                    </label>
+                    <input type="text" id="ticketName" class="input input-bordered" placeholder="ชื่อ Ticket">
+                </div>
+                
+                <div class="form-control md:col-span-2">
+                    <label class="label">
+                        <span class="label-text font-medium">รายละเอียด</span>
+                    </label>
+                    <textarea id="ticketDescription" class="textarea textarea-bordered h-24" placeholder="รายละเอียด"></textarea>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Pipeline</span>
+                    </label>
+                    <select id="ticketPipeline" class="select select-bordered">
+                        <!-- Options will be populated by JS -->
+                    </select>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Priority</span>
+                    </label>
+                    <select id="ticketPriority" class="select select-bordered">
+                        <option value="0">💤 No Priority</option>
+                        <option value="1">🧊 Low</option>
+                        <option value="2" selected>⚒️ Normal</option>
+                        <option value="3">⚡ High</option>
+                        <option value="4">🔥 Urgent</option>
+                        <option value="5">❤️‍🔥 Critical</option>
+                    </select>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Contact</span>
+                    </label>
+                    <select id="ticketContact" class="select select-bordered">
+                        <!-- Options will be populated by JS -->
+                    </select>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">สินค้า</span>
+                    </label>
+                    <select id="ticketProduct" class="select select-bordered">
+                        <!-- Options will be populated by JS -->
+                    </select>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">พื้นที่ขาย</span>
+                    </label>
+                    <select id="ticketSaleArea" class="select select-bordered">
+                        <!-- Options will be populated by JS -->
+                    </select>
+                </div>
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">วันที่คาดหวัง</span>
+                    </label>
+                    <input type="date" id="ticketExpectedDate" class="input input-bordered">
+                </div>
+                
+                <div class="form-control md:col-span-2">
+                    <label class="label">
+                        <span class="label-text font-medium">ผู้รับผิดชอบ</span>
+                    </label>
+                    <div id="ticketAssignContainer"></div>
+                </div>
+            </div>
+            
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">ยกเลิก</button>
+                </form>
+                <button class="btn btn-primary" onclick="saveTicket()">
+                    <i class="fa-solid fa-save mr-1"></i> บันทึก
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Ticket Detail Modal -->
+    <dialog id="ticketDetailModal" class="modal">
+        <div class="modal-box max-w-3xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <div id="ticketDetailContent">
+                <!-- Detail content will be populated by JS -->
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/libs/jsPDF/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    
+    <!-- Chart.js + Box Plot Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sgratzl/chartjs-chart-boxplot@4.4.0/build/index.umd.min.js"></script>
+    
+   
+    
+    <!-- Custom Components -->
+    <script src="/crm/biomed-multiselect.js"></script>
+    <script src="/crm/biomed-rangeslider.js"></script>
+    
+    <!-- Biomed Scripts -->
+    <script src="/crm/biomed-global.js"></script>
+    <script src="/crm/biomed-helpdesk.js"></script>
+    <script src="/crm/biomed-quickNav.js"></script>
+    
+    <script>
+        // Theme functions
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('biomed-theme', theme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('biomed-theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+        
+        // Clear cache
+        function clearCache() {
+            if (confirm('ต้องการล้าง Cache หรือไม่?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                location.reload();
+            }
+        }
+        
+        // Logout
+        function logout() {
+            if (confirm('ต้องการออกจากระบบหรือไม่?')) {
+                removeToken();
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

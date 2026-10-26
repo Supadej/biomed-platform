@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Detail - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Clickable field for contacts/users */
+        .clickable-field {
+            cursor: pointer;
+            min-height: 2.75rem;
+            max-height: 6rem;
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+            justify-content: flex-start !important;
+            gap: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid oklch(var(--b3));
+            border-radius: 0.5rem;
+            background: oklch(var(--b1));
+            transition: all 0.2s ease;
+        }
+        .clickable-field .badge,
+        #modalContactsList .badge {
+            justify-content: flex-start !important;
+            text-align: left !important;
+            padding-right: 0.625rem !important;
+            padding-left: 0.625rem !important;
+            max-width: 12rem;
+            display: inline-flex;
+            overflow: hidden;
+        }
+        .clickable-field .badge .badge-text,
+        #modalContactsList .badge .badge-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .clickable-field:hover {
+            border-color: oklch(var(--p));
+            box-shadow: 0 0 0 3px oklch(var(--p) / 0.1);
+        }
+        
+        /* Bootstrap compatibility classes for JS-generated content */
+        .m-0 { margin: 0 !important; }
+        .m-1 { margin: 0.25rem !important; }
+        .m-2 { margin: 0.5rem !important; }
+        .p-0 { padding: 0 !important; }
+        .p-1 { padding: 0.25rem !important; }
+        .p-2 { padding: 0.5rem !important; }
+        .py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+        .my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+        .ms-auto { margin-left: auto !important; }
+        .me-1 { margin-right: 0.25rem !important; }
+        
+        .fw-bold { font-weight: 700 !important; }
+        .text-small { font-size: 0.75rem !important; }
+        .auto-fit { font-size: 0.75rem !important; }
+        
+        .d-flex { display: flex !important; }
+        .d-none { display: none !important; }
+        .flex-wrap { flex-wrap: wrap !important; }
+        .justify-content-evenly { justify-content: space-evenly !important; }
+        .align-middle { vertical-align: middle !important; }
+        
+        .text-danger { color: oklch(var(--er)) !important; }
+        .text-warning { color: oklch(var(--wa)) !important; }
+        .text-success { color: oklch(var(--su)) !important; }
+        .text-dark { color: oklch(var(--bc)) !important; }
+        .text-wrap { white-space: normal !important; word-wrap: break-word !important; }
+        
+        .bg-info { background-color: oklch(var(--in)) !important; }
+        .bg-danger { background-color: oklch(var(--er)) !important; }
+        .bg-warning { background-color: oklch(var(--wa)) !important; }
+        .bg-success { background-color: oklch(var(--su)) !important; }
+        
+        .rounded { border-radius: 0.375rem !important; }
+        .rounded-pill { border-radius: 9999px !important; }
+        
+        /* Pipeline Steps styling */
+        #pipelineSelection .step {
+            font-size: 0.75rem;
+            min-width: 5rem;
+        }
+        #pipelineSelection .step::before {
+            font-size: 0.65rem;
+        }
+        
+        /* Log section styling */
+        .log-item {
+            background: #ffffff;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid #3b82f6;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .log-item.system {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .log-item.file {
+            border-left-color: #10b981;
+        }
+        .log-item.binder {
+            border-left-color: #8b5cf6;
+        }
+        .log-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .log-item-user {
+            font-weight: 600;
+            font-size: 0.8125rem;
+            color: #1f2937;
+        }
+        .log-item-time {
+            font-size: 0.6875rem;
+            color: #9ca3af;
+        }
+        .log-item-content {
+            font-size: 0.8125rem;
+            color: #374151;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+        .log-item-type {
+            display: block;
+            width: fit-content;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .log-item-type.change {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .log-item-type.text {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        .log-item-type.file {
+            background: #d1fae5;
+            color: #059669;
+        }
+        .log-item-type.binder {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+        
+        /* Flaticon icons fix */
+        .fi { display: inline-flex; align-items: center; }
+        
+        /* Badge styles for JS compatibility */
+        .badge.bg-primary { background-color: oklch(var(--p)) !important; color: oklch(var(--pc)) !important; }
+        .badge.bg-secondary { background-color: oklch(var(--s)) !important; color: oklch(var(--sc)) !important; }
+        .badge.bg-success { background-color: oklch(var(--su)) !important; color: white !important; }
+        .badge.bg-danger { background-color: oklch(var(--er)) !important; color: white !important; }
+        .badge.bg-warning { background-color: oklch(var(--wa)) !important; color: white !important; }
+        .badge.bg-info { background-color: oklch(var(--in)) !important; color: white !important; }
+        
+        /* Fix for select elements */
+        select.select { min-height: 2.5rem; }
+        
+        /* Inventory search results */
+        .inventory-search-results {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .inventory-search-results .product-item {
+            border: 1px solid oklch(var(--b3));
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .inventory-search-results .product-item:hover {
+            background-color: oklch(var(--b2));
+            border-color: oklch(var(--p));
+        }
+        .inventory-search-results .product-item.selected {
+            background-color: oklch(var(--p) / 0.1);
+            border-color: oklch(var(--p));
+        }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Alert Bar -->
+    <div class="px-4 lg:px-6 pt-2" id="alert-bar">
+    </div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Pipeline Status Selection -->
+        <div class="flex justify-center my-4 overflow-x-auto">
+            <ul class="steps steps-horizontal" id="pipelineSelection">
+                <!-- Pipeline steps will be inserted by JS -->
+            </ul>
+        </div>
+
+        <!-- Main Layout: Detail + Log -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+            <!-- Ticket Detail Card -->
+            <div class="xl:col-span-8">
+                <div class="card bg-base-100 shadow-sm" id="ticketdetail">
+                    <div class="card-body">
+                        <!-- Header -->
+                        <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                            <h2 class="card-title">
+                                <i class="fas fa-headset text-primary mr-2"></i>
+                                Ticket Detail
+                                <button class="btn btn-secondary btn-xs ml-2" id="d3Button">
+                                    <i class="fas fa-project-diagram mr-1"></i> D3 <span class="badge badge-xs badge-warning">Beta</span>
+                                </button>
+                            </h2>
+                            <div class="flex gap-2">
+                                <button class="btn btn-ghost btn-sm" type="button" onclick="shareLead()">
+                                    <i class="fas fa-share-alt"></i> Share
+                                </button>
+                                <button class="btn btn-primary btn-sm" type="button" id="button-save" onclick="updateLead()">
+                                    <i class="fas fa-save"></i> Save
+                                </button>
+                                <button class="btn btn-error btn-sm" type="button" id="button-delete" 
+                                    onclick="document.getElementById('deleteConfirmModal').showModal()">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Section: General -->
+                        <div class="divider divider-start text-sm font-semibold text-base-content/70">
+                            <i class="fas fa-info-circle mr-2"></i>General
+                        </div>
+
+                        <!-- Title -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Title</legend>
+                            <input type="text" id="leadName" class="input input-bordered w-full" placeholder="Ticket title...">
+                        </fieldset>
+
+                        <!-- Problem -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Problem</legend>
+                            <textarea id="problem" class="textarea textarea-bordered w-full h-28" placeholder="Describe the problem..."></textarea>
+                        </fieldset>
+
+                        <!-- Contacts -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend"><i class="fas fa-address-book text-info mr-1"></i>Contacts</legend>
+                            <div class="clickable-field" id="mainContactsList" onclick="contactsModal()">
+                                <span class="text-base-content/50 text-sm">Click to select contacts...</span>
+                            </div>
+                        </fieldset>
+
+                        <!-- Involved Users -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend"><i class="fas fa-users text-secondary mr-1"></i>Involved Users</legend>
+                            <div class="clickable-field" id="mainUsersList" onclick="usersModal()">
+                                <span class="text-base-content/50 text-sm">Click to select users...</span>
+                            </div>
+                        </fieldset>
+
+                        <!-- Area Code & Product -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Area Code</legend>
+                                <select id="saleArea" class="select select-bordered w-full">
+                                    <option value="">Select area...</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Product</legend>
+                                <select id="product" class="select select-bordered w-full">
+                                    <option value="">Select product...</option>
+                                </select>
+                            </fieldset>
+                        </div>
+
+                        <!-- Creation Date -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Creation Date</legend>
+                            <input type="datetime-local" id="creation" class="input input-bordered w-full" readonly>
+                        </fieldset>
+
+                        <!-- Ticket Creator -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend"><i class="fas fa-user-edit text-accent mr-1"></i>Ticket Creator</legend>
+                            <input type="text" id="ticketCreator" class="input input-bordered w-full bg-base-200" readonly>
+                            <input type="hidden" id="ticketCreatorId">
+                        </fieldset>
+
+                        <!-- Section: Classification -->
+                        <div class="divider divider-start text-sm font-semibold text-base-content/70 mt-6">
+                            <i class="fas fa-tags mr-2"></i>Classification
+                        </div>
+
+                        <!-- Assigned Responsible -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Assigned Responsible</legend>
+                            <select id="assignedUser" class="select select-bordered w-full">
+                                <option value="">Select user...</option>
+                            </select>
+                        </fieldset>
+
+                        <!-- Priority -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Priority</legend>
+                            <div id="priorityContainer" class="w-full"></div>
+                        </fieldset>
+
+                        <!-- Section: Service Details -->
+                        <div class="divider divider-start text-sm font-semibold text-base-content/70 mt-6">
+                            <i class="fas fa-wrench mr-2"></i>Service Details
+                        </div>
+
+                        <!-- Job Number -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Job Number</legend>
+                            <input type="text" id="JobNumber" class="input input-bordered w-full" placeholder="Enter job number...">
+                        </fieldset>
+
+                        <!-- Solution -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Solution</legend>
+                            <textarea id="solution" class="textarea textarea-bordered w-full h-28" placeholder="Describe the solution..."></textarea>
+                        </fieldset>
+
+                        <!-- Instrumental & Model -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Instrumental</legend>
+                                <input type="text" id="instumental" class="input input-bordered w-full" placeholder="Instrument name...">
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Model</legend>
+                                <input type="text" id="model" class="input input-bordered w-full" placeholder="Model number...">
+                            </fieldset>
+                        </div>
+
+                        <!-- Serial Number -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Serial Number</legend>
+                            <input type="text" id="serialNumber" class="input input-bordered w-full" placeholder="Serial number...">
+                        </fieldset>
+
+                        <!-- Instrumental Status & Job Type -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Instrumental Status</legend>
+                                <select id="instumentalStatus" class="select select-bordered w-full">
+                                    <option value="0">In Warranty</option>
+                                    <option value="1">Reagent Rental</option>
+                                    <option value="2">Out of Warranty</option>
+                                    <option value="3">Company Property</option>
+                                    <option value="4">Service Contract</option>
+                                    <option value="5">Customer Property</option>
+                                    <option value="6">Other</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Application Support</legend>
+                                <select id="jobType" class="select select-bordered w-full">
+                                    <option value="0">Sale Support</option>
+                                    <option value="1">Maintenance</option>
+                                    <option value="2">Installation</option>
+                                    <option value="3">Scheduled Maintenance</option>
+                                    <option value="4">Relocation</option>
+                                    <option value="5">Repair</option>
+                                    <option value="6">Training</option>
+                                    <option value="7">Update</option>
+                                    <option value="8">Calibration</option>
+                                    <option value="9">Upgrade</option>
+                                    <option value="10">Uninstallation</option>
+                                    <option value="11">Preventive Maintenance</option>
+                                    <option value="12">Other</option>
+                                </select>
+                            </fieldset>
+                        </div>
+
+                        <!-- Response On Time Checkbox -->
+                        <fieldset class="fieldset mb-3">
+                            <legend class="fieldset-legend">Response Timeline</legend>
+                            <label class="label cursor-pointer justify-start gap-3">
+                                <input type="checkbox" id="respondedWithinTimeline" class="checkbox checkbox-primary">
+                                <span class="label-text">Responded to request within given timeline?</span>
+                            </label>
+                        </fieldset>
+
+                        <!-- Section: Spare Parts & Items -->
+                        <div class="divider divider-start text-sm font-semibold text-base-content/70 mt-6">
+                            <i class="fas fa-box mr-2"></i>Spare Parts & Items
+                        </div>
+
+                        <!-- Items Table -->
+                        <div class="flex justify-between items-center mb-3">
+                            <h6 class="font-semibold">Items Used</h6>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openAddItemModal()">
+                                <i class="fas fa-plus-circle mr-1"></i> Add Item
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="table table-zebra table-sm" id="helpDeskItemsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order/Part No.</th>
+                                        <th>Purpose</th>
+                                        <th>Cat Number</th>
+                                        <th>Quantity</th>
+                                        <th>Billable</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="helpDeskItemsTableBody">
+                                    <!-- Items will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Log Section -->
+            <div class="xl:col-span-4">
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-base">
+                            <i class="fas fa-history text-primary mr-2"></i>Activity Log
+                        </h3>
+
+                        <!-- Log Actions -->
+                        <div class="flex flex-wrap gap-2 my-3">
+                            <button class="btn btn-ghost btn-xs" onclick="addFile()">
+                                <i class="fas fa-paperclip"></i> File
+                            </button>
+                            <button class="btn btn-ghost btn-xs" id="bindingBtn" onclick="addBinder()">
+                                <i class="fas fa-link"></i> Pickup
+                            </button>
+                            <button class="btn btn-success btn-xs hidden" id="dropBtn" onclick="dropBinder()">
+                                <i class="fas fa-check"></i> Drop
+                            </button>
+                            <button class="btn btn-error btn-xs hidden" id="cancelBtn" onclick="cancelBinder()">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button class="btn btn-primary btn-xs" onclick="addText()" id="addLogBtn">
+                                <i class="fas fa-plus"></i> Add Log
+                            </button>
+                            <button class="btn btn-success btn-xs hidden" onclick="sendText()" id="saveLogBtn">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+
+                        <!-- Log Input -->
+                        <div class="hidden mb-3" id="logTextarea">
+                            <textarea id="logTextareaValue" class="textarea textarea-bordered w-full h-20" placeholder="Write your log..."></textarea>
+                        </div>
+
+                        <!-- Log List -->
+                        <div class="overflow-y-auto max-h-[60vh]" id="logList">
+                            <div class="text-center text-base-content/50 py-8">
+                                <i class="fas fa-clipboard-list text-3xl mb-2"></i>
+                                <p class="text-sm">No logs yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Contacts Modal -->
+    <dialog id="multiContactModal" class="modal">
+        <div class="modal-box w-11/12 max-w-3xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4">
+                <i class="fas fa-address-book text-primary mr-2"></i>Select Contacts
+            </h3>
+            
+            <div class="space-y-4">
+                <!-- Combined Preview -->
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Selected Contacts</legend>
+                    <div class="clickable-field min-h-12" id="modalContactsList">
+                        <span class="text-base-content/50 text-sm">No contacts selected</span>
+                    </div>
+                </fieldset>
+
+                <!-- Main Contact -->
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Main Contact</legend>
+                    <div id="mainContactMS"></div>
+                </fieldset>
+
+                <!-- Additional Contacts -->
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Additional Contacts</legend>
+                    <div id="additionalContactsMS"></div>
+                </fieldset>
+                
+                <!-- Hidden selects for backward compatibility -->
+                <select class="hidden" id="mainContactsSelecter"></select>
+                <select class="hidden" id="contactsSelecter" multiple></select>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-primary">Done</button>
+                </form>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Users Modal -->
+    <dialog id="multiSelectModal" class="modal">
+        <div class="modal-box w-11/12 max-w-3xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4">
+                <i class="fas fa-users text-secondary mr-2"></i>Select Users
+            </h3>
+            
+            <div class="space-y-4">
+                <!-- Combined Preview -->
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Selected Users</legend>
+                    <div class="clickable-field min-h-12" id="modalUsersList">
+                        <span class="text-base-content/50 text-sm">No users selected</span>
+                    </div>
+                </fieldset>
+
+                <!-- Users MultiSelect -->
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Select Users</legend>
+                    <div id="usersMS"></div>
+                </fieldset>
+
+                <!-- Groups MultiSelect -->
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Select Groups</legend>
+                    <div id="groupsMS"></div>
+                </fieldset>
+                
+                <!-- Hidden selects for backward compatibility -->
+                <select class="hidden" id="usersSelecter" multiple></select>
+                <select class="hidden" id="groupSelecter" multiple></select>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-primary">Done</button>
+                </form>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Delete Confirmation Modal -->
+    <dialog id="deleteConfirmModal" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold text-error">
+                <i class="fas fa-exclamation-triangle mr-2"></i>Confirm Delete
+            </h3>
+            <p class="py-4">Are you sure you want to delete this ticket? This action cannot be undone.</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <button class="btn btn-error" onclick="document.getElementById('deleteConfirmModal').close(); deleteLead();">
+                    <i class="fas fa-trash mr-1"></i>Delete
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Add Item Modal -->
+    <dialog id="addItemModal" class="modal">
+        <div class="modal-box w-11/12 max-w-2xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4">
+                <i class="fas fa-plus-circle text-primary mr-2"></i>Add Item/Spare Part
+            </h3>
+            
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Order/Part Number</legend>
+                        <input type="text" id="itemOrder" class="input input-bordered w-full" placeholder="e.g., PART-001" readonly>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Cat Number</legend>
+                        <input type="text" id="itemCategory" class="input input-bordered w-full" placeholder="e.g., CAT-001">
+                    </fieldset>
+                </div>
+
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Purpose</legend>
+                    <textarea id="itemDescription" class="textarea textarea-bordered w-full" rows="2" placeholder="Purpose or usage description"></textarea>
+                </fieldset>
+
+                <!-- Inventory Search Collapse -->
+                <div class="collapse collapse-arrow bg-base-200 rounded-box">
+                    <input type="checkbox" />
+                    <div class="collapse-title font-medium">
+                        <i class="fas fa-search mr-2"></i>Inventory Product Search (Optional)
+                    </div>
+                    <div class="collapse-content">
+                        <div class="space-y-3 pt-2">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Product Name</legend>
+                                <input type="text" id="itemInventoryProductName" class="input input-bordered w-full input-sm" placeholder="Search by product name...">
+                            </fieldset>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Brand</legend>
+                                    <select id="itemInventoryBrand" class="select select-bordered w-full select-sm">
+                                        <option value="">All Brands</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Product Type</legend>
+                                    <select id="itemInventoryType" class="select select-bordered w-full select-sm">
+                                        <option value="">All Types</option>
+                                        <option value="Reagent">Reagent</option>
+                                        <option value="Instumental">Instumental</option>
+                                        <option value="Accessory">Accessory</option>
+                                        <option value="Generic">Generic</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Brand Type</legend>
+                                    <select id="itemInventoryBrandType" class="select select-bordered w-full select-sm">
+                                        <option value="">All Brand Types</option>
+                                        <option value="Diagnostic">Diagnostic</option>
+                                        <option value="Research">Research</option>
+                                        <option value="Generic">Generic</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Distributor</legend>
+                                    <select id="itemInventoryDistributor" class="select select-bordered w-full select-sm">
+                                        <option value="">All Distributors</option>
+                                        <option value="Biomed">Biomed</option>
+                                        <option value="TAS">TAS</option>
+                                        <option value="Generic">Generic</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="flex justify-end gap-2">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="searchInventoryProducts('add')">
+                                    <i class="fas fa-search mr-1"></i> Search
+                                </button>
+                                <button type="button" class="btn btn-ghost btn-sm" onclick="clearInventorySelection('add')">
+                                    <i class="fas fa-times mr-1"></i> Clear
+                                </button>
+                            </div>
+                            
+                            <div id="inventorySearchResults" class="hidden">
+                                <div class="border border-base-300 rounded-lg p-2 max-h-48 overflow-y-auto" id="inventorySearchResultsContent">
+                                </div>
+                            </div>
+                            
+                            <div class="text-sm">
+                                Selected: <span id="selectedInventoryProduct" class="font-bold text-primary">None</span>
+                                <input type="hidden" id="itemInventoryProduct">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Quantity</legend>
+                        <input type="number" id="itemQuantity" class="input input-bordered w-full" min="1" value="1">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Billable</legend>
+                        <select id="itemBillable" class="select select-bordered w-full">
+                            <option value="true">Yes - Bill Customer</option>
+                            <option value="false">No - Internal Use</option>
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <button class="btn btn-primary" onclick="saveHelpDeskItem()">
+                    <i class="fas fa-plus mr-1"></i>Add Item
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Edit Item Modal -->
+    <dialog id="editItemModal" class="modal">
+        <div class="modal-box w-11/12 max-w-2xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4">
+                <i class="fas fa-edit text-primary mr-2"></i>Edit Item/Spare Part
+            </h3>
+            
+            <input type="hidden" id="editItemId">
+            
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Order/Part Number</legend>
+                        <input type="text" id="editItemOrder" class="input input-bordered w-full" readonly>
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Cat Number</legend>
+                        <input type="text" id="editItemCategory" class="input input-bordered w-full">
+                    </fieldset>
+                </div>
+
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Purpose</legend>
+                    <textarea id="editItemDescription" class="textarea textarea-bordered w-full" rows="2"></textarea>
+                </fieldset>
+
+                <!-- Inventory Search Collapse -->
+                <div class="collapse collapse-arrow bg-base-200 rounded-box">
+                    <input type="checkbox" />
+                    <div class="collapse-title font-medium">
+                        <i class="fas fa-search mr-2"></i>Inventory Product Search (Optional)
+                    </div>
+                    <div class="collapse-content">
+                        <div class="space-y-3 pt-2">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">Product Name</legend>
+                                <input type="text" id="editItemInventoryProductName" class="input input-bordered w-full input-sm" placeholder="Search by product name...">
+                            </fieldset>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Brand</legend>
+                                    <select id="editItemInventoryBrand" class="select select-bordered w-full select-sm">
+                                        <option value="">All Brands</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Product Type</legend>
+                                    <select id="editItemInventoryType" class="select select-bordered w-full select-sm">
+                                        <option value="">All Types</option>
+                                        <option value="Reagent">Reagent</option>
+                                        <option value="Instumental">Instumental</option>
+                                        <option value="Accessory">Accessory</option>
+                                        <option value="Generic">Generic</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Brand Type</legend>
+                                    <select id="editItemInventoryBrandType" class="select select-bordered w-full select-sm">
+                                        <option value="">All Brand Types</option>
+                                        <option value="Diagnostic">Diagnostic</option>
+                                        <option value="Research">Research</option>
+                                        <option value="Generic">Generic</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset-legend">Distributor</legend>
+                                    <select id="editItemInventoryDistributor" class="select select-bordered w-full select-sm">
+                                        <option value="">All Distributors</option>
+                                        <option value="Biomed">Biomed</option>
+                                        <option value="TAS">TAS</option>
+                                        <option value="Generic">Generic</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="flex justify-end gap-2">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="searchInventoryProducts('edit')">
+                                    <i class="fas fa-search mr-1"></i> Search
+                                </button>
+                                <button type="button" class="btn btn-ghost btn-sm" onclick="clearInventorySelection('edit')">
+                                    <i class="fas fa-times mr-1"></i> Clear
+                                </button>
+                            </div>
+                            
+                            <div id="editInventorySearchResults" class="hidden">
+                                <div class="border border-base-300 rounded-lg p-2 max-h-48 overflow-y-auto" id="editInventorySearchResultsContent">
+                                </div>
+                            </div>
+                            
+                            <div class="text-sm">
+                                Selected: <span id="editSelectedInventoryProduct" class="font-bold text-primary">None</span>
+                                <input type="hidden" id="editItemInventoryProduct">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Quantity</legend>
+                        <input type="number" id="editItemQuantity" class="input input-bordered w-full" min="1">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Billable</legend>
+                        <select id="editItemBillable" class="select select-bordered w-full">
+                            <option value="true">Yes - Bill Customer</option>
+                            <option value="false">No - Internal Use</option>
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancel</button>
+                </form>
+                <button class="btn btn-primary" onclick="updateHelpDeskItem()">
+                    <i class="fas fa-save mr-1"></i>Update Item
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="biomed-multiselect.js"></script>
+    <script src="biomed-rangeslider.js"></script>
+    
+    <!-- MultiSelect Helper Functions -->
+    <script>
+        // MultiSelect instances
+        var mainContactMS = null;
+        var additionalContactsMS = null;
+        var usersMS = null;
+        var groupsMS = null;
+        var allContactOptions = [];
+        var allUsersOptions = [];
+        var groupsData = {};
+
+        // Initialize Contact MultiSelects
+        function initContactMultiSelects(options) {
+            allContactOptions = options;
+            
+            if (mainContactMS) mainContactMS.destroy();
+            if (additionalContactsMS) additionalContactsMS.destroy();
+            
+            mainContactMS = new MultiSelect('mainContactMS', {
+                options: options,
+                placeholder: 'เลือก Main Contact...',
+                badgeClass: 'badge-info',
+                checkboxClass: 'checkbox-info',
+                searchable: true,
+                showSelectAll: false,
+                maxSelect: 1,
+                text: { noResults: 'ไม่พบข้อมูล' },
+                onChange: function(values) { onMainContactChange(values); }
+            });
+            
+            additionalContactsMS = new MultiSelect('additionalContactsMS', {
+                options: options,
+                placeholder: 'เลือก Additional Contacts...',
+                badgeClass: 'badge-accent',
+                checkboxClass: 'checkbox-accent',
+                searchable: true,
+                showSelectAll: true,
+                text: { noResults: 'ไม่พบข้อมูล' },
+                onChange: function(values) { onAdditionalContactsChange(values); }
+            });
+        }
+        
+        function onMainContactChange(values) {
+            var mainValue = values.length > 0 ? values[0] : null;
+            var hiddenMain = document.getElementById('mainContactsSelecter');
+            if (hiddenMain) hiddenMain.value = mainValue || '';
+            
+            if (mainValue && additionalContactsMS) {
+                var currentAdditional = additionalContactsMS.getValues();
+                if (currentAdditional.includes(mainValue)) {
+                    additionalContactsMS.setValues(currentAdditional.filter(v => v !== mainValue));
+                }
+            }
+            updateContactsPreview();
+        }
+        
+        function onAdditionalContactsChange(values) {
+            if (mainContactMS) {
+                var mainValue = mainContactMS.getValues()[0];
+                if (mainValue && values.includes(mainValue)) {
+                    additionalContactsMS.setValues(values.filter(v => v !== mainValue));
+                    return;
+                }
+            }
+            var hiddenSelect = document.getElementById('contactsSelecter');
+            if (hiddenSelect) {
+                Array.from(hiddenSelect.options).forEach(opt => {
+                    opt.selected = values.includes(opt.value);
+                });
+            }
+            updateContactsPreview();
+        }
+        
+        function setMainContactValue(value) {
+            if (mainContactMS && value) mainContactMS.setValues([value.toString()]);
+            updateContactsPreview();
+        }
+        
+        function setAdditionalContactValues(values) {
+            if (additionalContactsMS) additionalContactsMS.setValues(values);
+            updateContactsPreview();
+        }
+
+        function updateContactsPreview() {
+            var previewContainer = document.getElementById('modalContactsList');
+            var mainContactsListEl = document.getElementById('mainContactsList');
+            if (!previewContainer) return;
+            
+            previewContainer.innerHTML = '';
+            var mainValues = mainContactMS ? mainContactMS.getSelected() : [];
+            var mainContact = mainValues.length > 0 ? mainValues[0] : null;
+            
+            if (mainContact) {
+                var mainBadge = document.createElement('span');
+                mainBadge.className = 'badge badge-info gap-1 py-2 px-2.5 text-xs font-medium';
+                mainBadge.innerHTML = '<i class="fas fa-star text-xs mr-1"></i><span class="badge-text">' + mainContact.label + '</span>';
+                previewContainer.appendChild(mainBadge);
+            }
+            
+            var additionalContacts = additionalContactsMS ? additionalContactsMS.getSelected() : [];
+            additionalContacts.forEach(function(contact) {
+                var badge = document.createElement('span');
+                badge.className = 'badge badge-accent gap-1 py-2 px-2.5 text-xs font-medium';
+                badge.innerHTML = '<span class="badge-text">' + contact.label + '</span>';
+                previewContainer.appendChild(badge);
+            });
+            
+            if (previewContainer.children.length === 0) {
+                previewContainer.innerHTML = '<span class="text-base-content/50 text-sm">No contacts selected</span>';
+            }
+            
+            if (mainContactsListEl) mainContactsListEl.innerHTML = previewContainer.innerHTML;
+        }
+
+        // Initialize Users MultiSelects
+        function initUsersMultiSelects(usersOptions, groupsOptions) {
+            allUsersOptions = usersOptions;
+            
+            if (usersMS) usersMS.destroy();
+            if (groupsMS) groupsMS.destroy();
+            
+            usersMS = new MultiSelect('usersMS', {
+                options: usersOptions,
+                placeholder: 'เลือก Users...',
+                badgeClass: 'badge-secondary',
+                checkboxClass: 'checkbox-secondary',
+                searchable: true,
+                showSelectAll: true,
+                text: { noResults: 'ไม่พบข้อมูล' },
+                onChange: function(values) { onUsersChange(values); }
+            });
+            
+            groupsMS = new MultiSelect('groupsMS', {
+                options: groupsOptions,
+                placeholder: 'เลือก Groups...',
+                badgeClass: 'badge-accent',
+                checkboxClass: 'checkbox-accent',
+                searchable: true,
+                showSelectAll: false,
+                text: { noResults: 'ไม่พบข้อมูล' },
+                onChange: function(values) { onGroupsChange(values); }
+            });
+            
+            updateUsersPreview();
+        }
+        
+        function setGroupsData(groupMembersMap) {
+            groupsData = groupMembersMap;
+        }
+        
+        function onUsersChange(values) {
+            var hiddenSelect = document.getElementById('usersSelecter');
+            if (hiddenSelect) {
+                Array.from(hiddenSelect.options).forEach(opt => {
+                    opt.selected = values.includes(opt.value);
+                });
+            }
+            updateUsersPreview();
+        }
+        
+        function onGroupsChange(values) {
+            if (!values || values.length === 0) return;
+            var lastGroupId = values[values.length - 1];
+            var groupUserIds = groupsData[lastGroupId];
+            if (groupUserIds && groupUserIds.length > 0 && usersMS) {
+                var currentUsers = usersMS.getValues();
+                var newUsers = [...new Set([...currentUsers, ...groupUserIds.map(String)])];
+                usersMS.setValues(newUsers);
+            }
+        }
+        
+        function updateUsersPreview() {
+            var previewContainer = document.getElementById('modalUsersList');
+            var mainUsersListEl = document.getElementById('mainUsersList');
+            if (!previewContainer) return;
+            
+            previewContainer.innerHTML = '';
+            var selectedUsers = usersMS ? usersMS.getSelected() : [];
+            
+            selectedUsers.forEach(function(user) {
+                var badge = document.createElement('span');
+                badge.className = 'badge badge-secondary gap-1 py-2 px-2.5 text-xs font-medium';
+                badge.innerHTML = '<span class="badge-text">' + user.label + '</span>';
+                previewContainer.appendChild(badge);
+            });
+            
+            if (previewContainer.children.length === 0) {
+                previewContainer.innerHTML = '<span class="text-base-content/50 text-sm">No users selected</span>';
+            }
+            
+            if (mainUsersListEl) mainUsersListEl.innerHTML = previewContainer.innerHTML;
+        }
+        
+        function setUsersValues(values) {
+            if (usersMS) usersMS.setValues(values.map(String));
+            updateUsersPreview();
+        }
+        
+        function getSelectedUserIds() {
+            return usersMS ? usersMS.getValues() : [];
+        }
+
+        // Legacy compatibility
+        function initAdditionalContactsMS(options) { initContactMultiSelects(options); }
+        function setContactCheckboxValues(values) { setAdditionalContactValues(values); }
+        function modalContactsUpdate() { updateContactsPreview(); }
+
+        // Pipeline Steps Helper
+        var selectedPipelineId = null;
+        
+        function selectPipelineStep(pipelineId) {
+            selectedPipelineId = pipelineId;
+            var steps = document.querySelectorAll('#pipelineSelection .step');
+            var reachedSelected = false;
+            
+            steps.forEach(function(step) {
+                var stepPipelineId = parseInt(step.getAttribute('data-pipeline-id'));
+                if (!reachedSelected) {
+                    step.classList.add('step-primary');
+                    if (stepPipelineId === pipelineId) reachedSelected = true;
+                } else {
+                    step.classList.remove('step-primary');
+                }
+            });
+        }
+        
+        function getSelectedPipelineId() {
+            return selectedPipelineId;
+        }
+    </script>
+    
+    <!-- Biomed Scripts -->
+    <script src="biomed-global.js"></script>
+    <script src="biomed-helpdesk-detail.js"></script>
+    <script src="biomed-global-log.js"></script>
+    <script src="xairan.js"></script>
+    <script src="biomed-quickNav.js"></script>
+    
+    <script>
+        // Theme functions
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('biomed-theme', theme);
+        }
+        
+        const savedTheme = localStorage.getItem('biomed-theme');
+        if (savedTheme) setTheme(savedTheme);
+        
+        function clearCache() {
+            if (confirm('ต้องการล้าง Cache หรือไม่?')) {
+                sessionStorage.clear();
+                localStorage.clear();
+                location.reload();
+            }
+        }
+        
+        function logout() {
+            if (confirm('ต้องการออกจากระบบหรือไม่?')) {
+                sessionStorage.clear();
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Bootstrap Modal API Shim for daisyUI dialogs
+        window.bootstrap = window.bootstrap || {};
+        window.bootstrap.Modal = class {
+            constructor(selector, options = {}) {
+                this.element = typeof selector === 'string' ? document.querySelector(selector) : selector;
+            }
+            show() { if (this.element && this.element.showModal) this.element.showModal(); }
+            hide() { if (this.element && this.element.close) this.element.close(); }
+            toggle() { 
+                if (this.element) {
+                    if (this.element.open) this.element.close();
+                    else this.element.showModal();
+                }
+            }
+            static getInstance(element) { return new window.bootstrap.Modal(element); }
+            static getOrCreateInstance(element) { return new window.bootstrap.Modal(element); }
+        };
+
+        // Modal helper functions for compatibility
+        function contactsModal() {
+            document.getElementById('multiContactModal').showModal();
+        }
+        
+        function usersModal() {
+            document.getElementById('multiSelectModal').showModal();
+        }
+        
+        function openAddItemModal() {
+            document.getElementById('addItemModal').showModal();
+        }
+        
+        function openEditItemModal() {
+            document.getElementById('editItemModal').showModal();
+        }
+    </script>
+</body>
+
+</html>

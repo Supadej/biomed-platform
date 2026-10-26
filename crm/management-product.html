@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Target card hover effect */
+        .target-card {
+            transition: all 0.2s ease;
+        }
+        .target-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Scrollable container for target cards */
+        .targets-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: oklch(var(--bc)/0.2) transparent;
+        }
+        .targets-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .targets-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .targets-scroll::-webkit-scrollbar-thumb {
+            background: oklch(var(--bc)/0.2);
+            border-radius: 3px;
+        }
+        
+        /* Sale Area vertical label */
+        .area-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+        
+        /* Timeline scrollable */
+        .timeline-scroll {
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+        
+        /* Gantt Chart Styles */
+        .gantt-container {
+            min-width: 800px;
+        }
+        .gantt-row {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid oklch(var(--bc)/0.1);
+        }
+        .gantt-row:last-child {
+            border-bottom: none;
+        }
+        .gantt-label {
+            width: 120px;
+            flex-shrink: 0;
+            padding: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            background: oklch(var(--b2));
+            border-right: 1px solid oklch(var(--bc)/0.1);
+        }
+        .gantt-bars {
+            flex: 1;
+            position: relative;
+            height: 60px;
+            min-height: 60px;
+        }
+        .gantt-bar {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 8px;
+            min-width: 50px;
+        }
+        .gantt-bar:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .gantt-header {
+            display: flex;
+            border-bottom: 2px solid oklch(var(--bc)/0.2);
+            background: oklch(var(--b2));
+        }
+        .gantt-header-label {
+            width: 120px;
+            flex-shrink: 0;
+            padding: 0.5rem 0.75rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: oklch(var(--bc)/0.6);
+            display: flex;
+            align-items: flex-end;
+            height: 70px;
+        }
+        .gantt-header-months {
+            flex: 1;
+            display: flex;
+            height: 70px;
+            align-items: flex-end;
+            padding-bottom: 4px;
+        }
+        .gantt-month {
+            flex: 1;
+            text-align: left;
+            padding: 0 2px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: oklch(var(--bc)/0.7);
+            border-left: 1px solid oklch(var(--bc)/0.1);
+            white-space: nowrap;
+            transform: rotate(-60deg);
+            transform-origin: left bottom;
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .gantt-month:first-child {
+            border-left: none;
+        }
+        .gantt-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            pointer-events: none;
+        }
+        .gantt-grid-line {
+            flex: 1;
+            border-left: 1px solid oklch(var(--bc)/0.08);
+            background: transparent;
+        }
+        .gantt-grid-line:nth-child(odd) {
+            background: oklch(var(--bc)/0.02);
+        }
+        .gantt-grid-line:first-child {
+            border-left: none;
+        }
+        .gantt-header-months .gantt-month-cell {
+            flex: 1;
+            border-left: 1px solid oklch(var(--bc)/0.08);
+        }
+        .gantt-header-months .gantt-month-cell:first-child {
+            border-left: none;
+        }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Alert Bar -->
+    <div id="alert-bar" class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-lg px-4"></div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumbs text-sm mb-4">
+            <ul>
+                <li><a href="management.html"><i class="fas fa-cog mr-1"></i>Management</a></li>
+                <li><a href="management.html#products"><i class="fas fa-box mr-1"></i>Products</a></li>
+                <li class="text-primary font-semibold" id="breadcrumbProductName">Loading...</li>
+            </ul>
+        </div>
+
+        <!-- Product Info Card -->
+        <div class="card bg-base-100 shadow-lg mb-6">
+            <div class="card-body">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="card-title text-2xl">
+                        <i class="fas fa-box text-primary mr-2"></i>
+                        Product Information
+                    </h2>
+                    <div class="badge badge-primary badge-outline" id="productIdBadge">ID: --</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Product Name</legend>
+                        <input type="text" id="productName" class="input input-bordered w-full" placeholder="Enter product name">
+                    </fieldset>
+                    
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Description</legend>
+                        <input type="text" id="productDescription" class="input input-bordered w-full" placeholder="Enter product description">
+                    </fieldset>
+                </div>
+                
+                <div class="card-actions justify-end mt-4">
+                    <button type="button" class="btn btn-error btn-outline gap-2" onclick="deleteProduct()">
+                        <i class="fas fa-trash"></i>
+                        Delete Product
+                    </button>
+                    <button type="button" class="btn btn-primary gap-2" onclick="saveGroup()">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Target Timeline Card -->
+        <div class="card bg-base-100 shadow-lg mb-6">
+            <div class="card-body">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="card-title text-xl">
+                        <i class="fas fa-chart-line text-secondary mr-2"></i>
+                        Target Timeline Overview
+                    </h2>
+                    <button class="btn btn-ghost btn-sm gap-2" onclick="reloadTimeline()">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+                
+                <!-- Gantt-style Timeline by Sale Area -->
+                <div class="overflow-x-auto" id="timelineContainer">
+                    <div class="flex items-center justify-center py-8">
+                        <span class="loading loading-dots loading-lg text-primary"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Target Management Section -->
+        <div class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="card-title text-xl">
+                        <i class="fas fa-bullseye text-accent mr-2"></i>
+                        Target Management by Sale Area
+                    </h2>
+                    <div class="flex items-center gap-3">
+                        <!-- Quarter Mode Toggle -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-base-content/50" id="targetQuarterModeDesc">Fiscal Year</span>
+                            <div class="join">
+                                <button id="targetBtnFYQ" class="btn btn-xs join-item btn-active" onclick="setTargetQuarterMode('fiscal')">
+                                    FYQ
+                                </button>
+                                <button id="targetBtnYQ" class="btn btn-xs join-item" onclick="setTargetQuarterMode('standard')">
+                                    YQ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-sm text-base-content/60">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Save targets individually
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sale Area List Container -->
+                <div id="SaleAreaList" class="space-y-4">
+                    <!-- Sale Area rows will be populated by JavaScript -->
+                    <div class="flex items-center justify-center py-8">
+                        <span class="loading loading-dots loading-lg text-primary"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-4 bg-base-200 text-base-content mt-8">
+        <aside>
+            <p>Â© 2024 Biomed Diagnostics - ERP System v2.0</p>
+        </aside>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="biomed-global.js"></script>
+    <script src="biomed-manage-product.js"></script>
+    <script src="biomed-quickNav.js"></script>
+</body>
+
+</html>
