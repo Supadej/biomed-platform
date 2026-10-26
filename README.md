@@ -1,17 +1,16 @@
-# Biomed complete test workspace — granular roles and permissions
+# Biomed complete platform with CRM
 
-This complete package includes the website, Staff Portal, Biomed IS, Budgeting and fictional test data.
+This package includes the website, Staff Portal, Biomed IS, Budgeting, CRM and the existing fictional test data. Read **CRM_INTEGRATION_GUIDE.md** for permissions, bridge settings, source limitations and deployment instructions.
 
-Stop the previous Biomed server with Control+C. Save the ZIP to Downloads, then run:
+Extract to a new test directory. Stop the previous local Biomed server with Control+C, then run from the extracted project folder:
 
 ```bash
-unzip -o "$HOME/Downloads/Biomed_Workspace_Improvements_Mac.zip" -d "$HOME/Downloads" &&
-cd "$HOME/Downloads/Biomed_Workspace_Improvements_Mac" &&
-chmod +x START_ON_MAC.command &&
-./START_ON_MAC.command
+bash start.sh
 ```
 
-Open http://127.0.0.1:8765/?portal=1 and press Command+Shift+R.
+Alternatively run `python3 serve.py`, or double-click `START_ON_MAC.command` on macOS. Sign in at `http://127.0.0.1:8765/?portal=1`, then choose **CRM**. Use the existing shared account; CRM has no separate password.
+
+For an existing server update, retain the persistent database and volume. **Do not overwrite your server database with the included demo database.** Startup adds CRM tables and System Admin permissions. This package has not been deployed to Railway. SQL Server files are staging/export tools; the live server still uses SQLite.
 
 Sample administrator: `testadmin@example.invalid`
 Password: `TEST-Only-ChangeMe-2026!`

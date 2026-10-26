@@ -11,4 +11,5 @@ printf 'Website: http://127.0.0.1:%s/\n' "$PORT"
 printf 'Staff Portal: http://127.0.0.1:%s/?portal=1\n' "$PORT"
 printf 'Biomed IS: http://127.0.0.1:%s/biomed-is.html?source=1\n' "$PORT"
 printf 'Budgeting: http://127.0.0.1:%s/biomed-budget.html\n' "$PORT"
+printf 'CRM: http://127.0.0.1:%s/crm/index.html\n' "$PORT"
 python3 serve.py

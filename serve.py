@@ -10,6 +10,7 @@ import sys
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 import permissions_policy as policy
 import integration_api
+import crm_api,crm_http
 import budget_demo_comparison
 from public_website import project_public
 from website_files import decode_upload,public_reference,validate_references
@@ -22,6 +23,7 @@ def initialize():
     DB.parent.mkdir(parents=True,exist_ok=True)
     with connect() as c:
         integration_api.initialize(c)
+        crm_api.initialize(c)
         c.executescript('''
         PRAGMA journal_mode=WAL;
         CREATE TABLE IF NOT EXISTS workspace(key TEXT PRIMARY KEY,value TEXT,revision INTEGER NOT NULL);
@@ -126,7 +128,12 @@ def prepare_database():
             with sqlite3.connect(DB) as target:source.backup(target)
     initialize()
 
-class Handler(SimpleHTTPRequestHandler):
+crm_http.configure(connect,lambda h:session_account(h),lambda a:account_permissions(a),lambda h:valid_origin(h))
+class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
+    def do_HEAD(self):
+        path=urlsplit(self.path).path
+        if path.startswith(('/reference','/data','/crm/storage/')) or Path(path).suffix in ['.py','.sqlite3','.sql','.zip']:return self.send_error(404)
+        super().do_HEAD()
     def end_headers(self):
         self.send_header('Cache-Control','no-store')
         super().end_headers()
@@ -137,6 +144,7 @@ class Handler(SimpleHTTPRequestHandler):
     def key(self):return unquote(urlsplit(self.path).path[len('/api/storage/'):])
     def do_GET(self):
         path=urlsplit(self.path).path
+        if path.startswith(('/biomedapi/','/api/crm/','/crm/storage/')) or re.fullmatch(r'/crm/assets/profile/[a-f0-9-]{36}\.jpg',path):return self.crm_request('GET')
         if path=='/api/preferences/quick-access':return self.quick_preferences('GET')
         if path.startswith('/api/integrations/'):
             return self.integration_request('GET')
@@ -163,9 +171,17 @@ class Handler(SimpleHTTPRequestHandler):
             if not authorized_workspace(user,self.key(),'GET'):return self.reply(403,{'error':'Module view permission required'})
             with connect() as c:row=c.execute('SELECT value,revision FROM workspace WHERE key=?',(self.key(),)).fetchone()
             return self.reply(200,dict(value=policy.read_filter(account_permissions(user),self.key(),row[0]),revision=row[1]) if row else dict(value=None,revision=0))
+        if path.startswith('/reference/') or path=='/reference':return self.send_error(404)
+        if path.startswith('/crm/') and (path.endswith('.html') or path=='/crm/'):
+            actor=session_account(self)
+            if not actor:
+                self.send_response(302);self.send_header('Location','/?portal=1&next='+quote(path+('?' + urlsplit(self.path).query if urlsplit(self.path).query else ''),safe=''));self.end_headers();return
+            if 'crm_view' not in account_permissions(actor):return self.reply(403,{'error':'CRM application access is required. Ask your Staff Portal administrator.'})
+            if path=='/crm/login.html':
+                self.send_response(302);self.send_header('Location','/crm/index.html');self.end_headers();return
         if path=='/api/health':return self.reply(200,{'database':'SQLite','schema_version':1})
         resolved=Path(self.translate_path(self.path)).resolve()
-        if any(d in resolved.parents for d in [DB.parent.resolve(),(ROOT/'data').resolve(),(ROOT/'.git').resolve()]) or resolved.suffix in ['.py','.sqlite3','.db','.wal','.shm']:return self.send_error(403)
+        if any(d in resolved.parents for d in [DB.parent.resolve(),(ROOT/'data').resolve(),(ROOT/'.git').resolve(),(ROOT/'reference').resolve()]) or resolved.suffix in ['.py','.sqlite3','.db','.wal','.shm']:return self.send_error(403)
         if path=='/app.html':
             self.send_response(302);self.send_header('Location','/biomed-is.html');self.end_headers();return
         super().do_GET()
@@ -200,12 +216,13 @@ class Handler(SimpleHTTPRequestHandler):
             length=int(self.headers.get('Content-Length','0'))
             if not 0<length<=4096:raise ValueError('Invalid preference size')
             data=json.loads(self.rfile.read(length));system=data.get('system');items=data.get('items')
-            if system not in ['is','portal','budget'] or not isinstance(items,list) or len(items)>12 or any(not isinstance(x,str) or not re.fullmatch(r'[a-z0-9_-]{1,64}',x) for x in items):raise ValueError('Choose at most 12 shortcuts')
+            if system not in ['is','portal','budget','crm'] or not isinstance(items,list) or len(items)>12 or any(not isinstance(x,str) or not re.fullmatch(r'[a-z0-9_-]{1,64}',x) for x in items):raise ValueError('Choose at most 12 shortcuts')
             with connect() as c:c.execute('INSERT OR REPLACE INTO user_preferences VALUES(?,?,?)',(actor[0],system,encode(list(dict.fromkeys(items)))))
             return self.reply(200,{'saved':True})
         except (ValueError,TypeError):return self.reply(400,{'error':'Invalid preferences'})
     def do_POST(self):
         path=urlsplit(self.path).path
+        if path.startswith(('/biomedapi/','/api/crm/','/crm/storage/')) or re.fullmatch(r'/crm/assets/profile/[a-f0-9-]{36}\.jpg',path):return self.crm_request('POST')
         if path=='/api/preferences/quick-access':return self.quick_preferences('POST')
         if path.startswith('/api/integrations/'):
             return self.integration_request('POST')
@@ -260,8 +277,12 @@ class Handler(SimpleHTTPRequestHandler):
         except sqlite3.IntegrityError:return self.reply(409,{'error':'An account already uses that email'})
         except (ValueError,KeyError):return self.reply(400,{'error':'Invalid request'})
         except Exception:return self.reply(500,{'error':'Authentication request failed'})
-    def do_PUT(self):self.mutate(False)
-    def do_DELETE(self):self.mutate(True)
+    def do_PUT(self):
+        if urlsplit(self.path).path.startswith(('/biomedapi/','/api/crm/')):return self.crm_request('PUT')
+        self.mutate(False)
+    def do_DELETE(self):
+        if urlsplit(self.path).path.startswith(('/biomedapi/','/api/crm/')):return self.crm_request('DELETE')
+        self.mutate(True)
     def mutate(self,remove):
         if not urlsplit(self.path).path.startswith('/api/storage/'):return self.send_error(404)
         actor=session_account(self)

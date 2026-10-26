@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "permissions": [
     {
       "key": "is_view",
@@ -4835,6 +4835,1401 @@
       "action": "reconcile",
       "legacy": "",
       "introduced": 5
+    },
+    {
+      "key": "crm_view",
+      "module": "access.crm_view",
+      "label": "CRM application access",
+      "group": "Application access",
+      "action": "access",
+      "legacy": "crm_view",
+      "introduced": 6
+    },
+    {
+      "key": "integration_crm",
+      "module": "access.integration_crm",
+      "label": "CRM bridge settings",
+      "group": "Staff Portal · Module access",
+      "action": "access",
+      "legacy": "integration_crm",
+      "introduced": 6
+    },
+    {
+      "key": "portal.integration_crm.view",
+      "module": "portal.integration_crm",
+      "label": "CRM bridge settings",
+      "group": "Staff Portal · Website and administration",
+      "action": "view",
+      "legacy": "integration_crm",
+      "introduced": 6
+    },
+    {
+      "key": "crm.dashboard.view",
+      "module": "crm.dashboard",
+      "label": "CRM overview",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.view",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.create",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.edit",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.delete",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.import",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.export",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.view_all",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "view_all",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.leads.assign",
+      "module": "crm.leads",
+      "label": "Sales leads & opportunities",
+      "group": "CRM · Sales, service and operations",
+      "action": "assign",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.pipelines.view",
+      "module": "crm.pipelines",
+      "label": "CRM pipeline stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.pipelines.create",
+      "module": "crm.pipelines",
+      "label": "CRM pipeline stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.pipelines.edit",
+      "module": "crm.pipelines",
+      "label": "CRM pipeline stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.pipelines.delete",
+      "module": "crm.pipelines",
+      "label": "CRM pipeline stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.pipelines.import",
+      "module": "crm.pipelines",
+      "label": "CRM pipeline stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.pipelines.export",
+      "module": "crm.pipelines",
+      "label": "CRM pipeline stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.contacts.view",
+      "module": "crm.contacts",
+      "label": "Customer contacts",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.contacts.create",
+      "module": "crm.contacts",
+      "label": "Customer contacts",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.contacts.edit",
+      "module": "crm.contacts",
+      "label": "Customer contacts",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.contacts.delete",
+      "module": "crm.contacts",
+      "label": "Customer contacts",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.contacts.import",
+      "module": "crm.contacts",
+      "label": "Customer contacts",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.contacts.export",
+      "module": "crm.contacts",
+      "label": "Customer contacts",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.organizations.view",
+      "module": "crm.organizations",
+      "label": "Customer organizations",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.organizations.create",
+      "module": "crm.organizations",
+      "label": "Customer organizations",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.organizations.edit",
+      "module": "crm.organizations",
+      "label": "Customer organizations",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.organizations.delete",
+      "module": "crm.organizations",
+      "label": "Customer organizations",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.organizations.import",
+      "module": "crm.organizations",
+      "label": "Customer organizations",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.organizations.export",
+      "module": "crm.organizations",
+      "label": "Customer organizations",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.departments.view",
+      "module": "crm.departments",
+      "label": "Customer departments",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.departments.create",
+      "module": "crm.departments",
+      "label": "Customer departments",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.departments.edit",
+      "module": "crm.departments",
+      "label": "Customer departments",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.departments.delete",
+      "module": "crm.departments",
+      "label": "Customer departments",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.departments.import",
+      "module": "crm.departments",
+      "label": "Customer departments",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.departments.export",
+      "module": "crm.departments",
+      "label": "Customer departments",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.billing.view",
+      "module": "crm.billing",
+      "label": "Billing information",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.billing.create",
+      "module": "crm.billing",
+      "label": "Billing information",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.billing.edit",
+      "module": "crm.billing",
+      "label": "Billing information",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.billing.delete",
+      "module": "crm.billing",
+      "label": "Billing information",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.billing.import",
+      "module": "crm.billing",
+      "label": "Billing information",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.billing.export",
+      "module": "crm.billing",
+      "label": "Billing information",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.view",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.create",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.edit",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.delete",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.import",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.export",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.view_all",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "view_all",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.events.assign",
+      "module": "crm.events",
+      "label": "Events & calendar",
+      "group": "CRM · Sales, service and operations",
+      "action": "assign",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.projects.view",
+      "module": "crm.projects",
+      "label": "Projects",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.projects.create",
+      "module": "crm.projects",
+      "label": "Projects",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.projects.edit",
+      "module": "crm.projects",
+      "label": "Projects",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.projects.delete",
+      "module": "crm.projects",
+      "label": "Projects",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.projects.import",
+      "module": "crm.projects",
+      "label": "Projects",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.projects.export",
+      "module": "crm.projects",
+      "label": "Projects",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.project_stages.view",
+      "module": "crm.project_stages",
+      "label": "Project stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.project_stages.create",
+      "module": "crm.project_stages",
+      "label": "Project stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.project_stages.edit",
+      "module": "crm.project_stages",
+      "label": "Project stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.project_stages.delete",
+      "module": "crm.project_stages",
+      "label": "Project stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.project_stages.import",
+      "module": "crm.project_stages",
+      "label": "Project stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.project_stages.export",
+      "module": "crm.project_stages",
+      "label": "Project stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.view",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.create",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.edit",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.delete",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.import",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.export",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.view_all",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "view_all",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.activities.assign",
+      "module": "crm.activities",
+      "label": "Project activities",
+      "group": "CRM · Sales, service and operations",
+      "action": "assign",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.view",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.create",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.edit",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.delete",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.import",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.export",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.view_all",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "view_all",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.tickets.assign",
+      "module": "crm.tickets",
+      "label": "CRM service tickets",
+      "group": "CRM · Sales, service and operations",
+      "action": "assign",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_stages.view",
+      "module": "crm.ticket_stages",
+      "label": "Service ticket stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_stages.create",
+      "module": "crm.ticket_stages",
+      "label": "Service ticket stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_stages.edit",
+      "module": "crm.ticket_stages",
+      "label": "Service ticket stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_stages.delete",
+      "module": "crm.ticket_stages",
+      "label": "Service ticket stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_stages.import",
+      "module": "crm.ticket_stages",
+      "label": "Service ticket stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_stages.export",
+      "module": "crm.ticket_stages",
+      "label": "Service ticket stages",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_items.view",
+      "module": "crm.ticket_items",
+      "label": "Service ticket items",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_items.create",
+      "module": "crm.ticket_items",
+      "label": "Service ticket items",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_items.edit",
+      "module": "crm.ticket_items",
+      "label": "Service ticket items",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_items.delete",
+      "module": "crm.ticket_items",
+      "label": "Service ticket items",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_items.import",
+      "module": "crm.ticket_items",
+      "label": "Service ticket items",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.ticket_items.export",
+      "module": "crm.ticket_items",
+      "label": "Service ticket items",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.inventory.view",
+      "module": "crm.inventory",
+      "label": "CRM inventory products",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.inventory.create",
+      "module": "crm.inventory",
+      "label": "CRM inventory products",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.inventory.edit",
+      "module": "crm.inventory",
+      "label": "CRM inventory products",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.inventory.delete",
+      "module": "crm.inventory",
+      "label": "CRM inventory products",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.inventory.import",
+      "module": "crm.inventory",
+      "label": "CRM inventory products",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.inventory.export",
+      "module": "crm.inventory",
+      "label": "CRM inventory products",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.stock.view",
+      "module": "crm.stock",
+      "label": "CRM stock movements",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.stock.edit",
+      "module": "crm.stock",
+      "label": "CRM stock movements",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.stock.export",
+      "module": "crm.stock",
+      "label": "CRM stock movements",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.brands.view",
+      "module": "crm.brands",
+      "label": "CRM inventory brands",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.brands.create",
+      "module": "crm.brands",
+      "label": "CRM inventory brands",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.brands.edit",
+      "module": "crm.brands",
+      "label": "CRM inventory brands",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.brands.delete",
+      "module": "crm.brands",
+      "label": "CRM inventory brands",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.brands.import",
+      "module": "crm.brands",
+      "label": "CRM inventory brands",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.brands.export",
+      "module": "crm.brands",
+      "label": "CRM inventory brands",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.products.view",
+      "module": "crm.products",
+      "label": "CRM portfolio products",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.products.create",
+      "module": "crm.products",
+      "label": "CRM portfolio products",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.products.edit",
+      "module": "crm.products",
+      "label": "CRM portfolio products",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.products.delete",
+      "module": "crm.products",
+      "label": "CRM portfolio products",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.products.import",
+      "module": "crm.products",
+      "label": "CRM portfolio products",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.products.export",
+      "module": "crm.products",
+      "label": "CRM portfolio products",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.targets.view",
+      "module": "crm.targets",
+      "label": "CRM sales targets",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.targets.create",
+      "module": "crm.targets",
+      "label": "CRM sales targets",
+      "group": "CRM · Sales, service and operations",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.targets.edit",
+      "module": "crm.targets",
+      "label": "CRM sales targets",
+      "group": "CRM · Sales, service and operations",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.targets.delete",
+      "module": "crm.targets",
+      "label": "CRM sales targets",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.targets.import",
+      "module": "crm.targets",
+      "label": "CRM sales targets",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.targets.export",
+      "module": "crm.targets",
+      "label": "CRM sales targets",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.users.view",
+      "module": "crm.users",
+      "label": "CRM employee profiles",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.users.edit",
+      "module": "crm.users",
+      "label": "CRM employee profiles",
+      "group": "CRM · Integration and administration",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.users.import",
+      "module": "crm.users",
+      "label": "CRM employee profiles",
+      "group": "CRM · Integration and administration",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.users.export",
+      "module": "crm.users",
+      "label": "CRM employee profiles",
+      "group": "CRM · Integration and administration",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.groups.view",
+      "module": "crm.groups",
+      "label": "CRM user groups",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.groups.create",
+      "module": "crm.groups",
+      "label": "CRM user groups",
+      "group": "CRM · Integration and administration",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.groups.edit",
+      "module": "crm.groups",
+      "label": "CRM user groups",
+      "group": "CRM · Integration and administration",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.groups.delete",
+      "module": "crm.groups",
+      "label": "CRM user groups",
+      "group": "CRM · Integration and administration",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.groups.import",
+      "module": "crm.groups",
+      "label": "CRM user groups",
+      "group": "CRM · Integration and administration",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.groups.export",
+      "module": "crm.groups",
+      "label": "CRM user groups",
+      "group": "CRM · Integration and administration",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.territories.view",
+      "module": "crm.territories",
+      "label": "Sales areas / territories",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.territories.create",
+      "module": "crm.territories",
+      "label": "Sales areas / territories",
+      "group": "CRM · Integration and administration",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.territories.edit",
+      "module": "crm.territories",
+      "label": "Sales areas / territories",
+      "group": "CRM · Integration and administration",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.territories.delete",
+      "module": "crm.territories",
+      "label": "Sales areas / territories",
+      "group": "CRM · Integration and administration",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.territories.import",
+      "module": "crm.territories",
+      "label": "Sales areas / territories",
+      "group": "CRM · Integration and administration",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.territories.export",
+      "module": "crm.territories",
+      "label": "Sales areas / territories",
+      "group": "CRM · Integration and administration",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.relationships.view",
+      "module": "crm.relationships",
+      "label": "Relationship visualization",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.logs.view",
+      "module": "crm.logs",
+      "label": "CRM logs & audit",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.logs.create",
+      "module": "crm.logs",
+      "label": "CRM logs & audit",
+      "group": "CRM · Integration and administration",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.logs.edit",
+      "module": "crm.logs",
+      "label": "CRM logs & audit",
+      "group": "CRM · Integration and administration",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.logs.export",
+      "module": "crm.logs",
+      "label": "CRM logs & audit",
+      "group": "CRM · Integration and administration",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.shortcuts.view",
+      "module": "crm.shortcuts",
+      "label": "Personal CRM shortcuts",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.shortcuts.create",
+      "module": "crm.shortcuts",
+      "label": "Personal CRM shortcuts",
+      "group": "CRM · Integration and administration",
+      "action": "create",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.shortcuts.edit",
+      "module": "crm.shortcuts",
+      "label": "Personal CRM shortcuts",
+      "group": "CRM · Integration and administration",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.shortcuts.delete",
+      "module": "crm.shortcuts",
+      "label": "Personal CRM shortcuts",
+      "group": "CRM · Integration and administration",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.shortcuts.import",
+      "module": "crm.shortcuts",
+      "label": "Personal CRM shortcuts",
+      "group": "CRM · Integration and administration",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.shortcuts.export",
+      "module": "crm.shortcuts",
+      "label": "Personal CRM shortcuts",
+      "group": "CRM · Integration and administration",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.finance.view",
+      "module": "crm.finance",
+      "label": "Linked IS / Budget snapshots",
+      "group": "CRM · Sales, service and operations",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.finance.import",
+      "module": "crm.finance",
+      "label": "Linked IS / Budget snapshots",
+      "group": "CRM · Sales, service and operations",
+      "action": "import",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.finance.export",
+      "module": "crm.finance",
+      "label": "Linked IS / Budget snapshots",
+      "group": "CRM · Sales, service and operations",
+      "action": "export",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.bridges.view",
+      "module": "crm.bridges",
+      "label": "CRM bridge settings",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.bridges.edit",
+      "module": "crm.bridges",
+      "label": "CRM bridge settings",
+      "group": "CRM · Integration and administration",
+      "action": "edit",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.bridges.reconcile",
+      "module": "crm.bridges",
+      "label": "CRM bridge settings",
+      "group": "CRM · Integration and administration",
+      "action": "reconcile",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.files.view",
+      "module": "crm.files",
+      "label": "CRM attachments",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.files.upload",
+      "module": "crm.files",
+      "label": "CRM attachments",
+      "group": "CRM · Integration and administration",
+      "action": "upload",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.settings.view",
+      "module": "crm.settings",
+      "label": "CRM schema & settings",
+      "group": "CRM · Integration and administration",
+      "action": "view",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.stock.delete",
+      "module": "crm.stock",
+      "label": "CRM stock movements",
+      "group": "CRM · Sales, service and operations",
+      "action": "delete",
+      "legacy": "",
+      "introduced": 6
+    },
+    {
+      "key": "crm.logs.view_all",
+      "module": "crm.logs",
+      "label": "CRM logs & audit",
+      "group": "CRM · Integration and administration",
+      "action": "view_all",
+      "legacy": "",
+      "introduced": 6
     }
   ],
   "transactions": {
@@ -4922,6 +6317,306 @@
     "sales",
     "pipeline",
     "tenders",
-    "integration_is"
-  ]
+    "integration_is",
+    "integration_crm"
+  ],
+  "crmModules": {
+    "dashboard": {
+      "label": "CRM overview",
+      "actions": [
+        "view"
+      ]
+    },
+    "leads": {
+      "label": "Sales leads & opportunities",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export",
+        "view_all",
+        "assign"
+      ]
+    },
+    "pipelines": {
+      "label": "CRM pipeline stages",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "contacts": {
+      "label": "Customer contacts",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "organizations": {
+      "label": "Customer organizations",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "departments": {
+      "label": "Customer departments",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "billing": {
+      "label": "Billing information",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "events": {
+      "label": "Events & calendar",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export",
+        "view_all",
+        "assign"
+      ]
+    },
+    "projects": {
+      "label": "Projects",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "project_stages": {
+      "label": "Project stages",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "activities": {
+      "label": "Project activities",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export",
+        "view_all",
+        "assign"
+      ]
+    },
+    "tickets": {
+      "label": "CRM service tickets",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export",
+        "view_all",
+        "assign"
+      ]
+    },
+    "ticket_stages": {
+      "label": "Service ticket stages",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "ticket_items": {
+      "label": "Service ticket items",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "inventory": {
+      "label": "CRM inventory products",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "stock": {
+      "label": "CRM stock movements",
+      "actions": [
+        "view",
+        "edit",
+        "export",
+        "delete"
+      ]
+    },
+    "brands": {
+      "label": "CRM inventory brands",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "products": {
+      "label": "CRM portfolio products",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "targets": {
+      "label": "CRM sales targets",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "users": {
+      "label": "CRM employee profiles",
+      "actions": [
+        "view",
+        "edit",
+        "import",
+        "export"
+      ]
+    },
+    "groups": {
+      "label": "CRM user groups",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "territories": {
+      "label": "Sales areas / territories",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "relationships": {
+      "label": "Relationship visualization",
+      "actions": [
+        "view"
+      ]
+    },
+    "logs": {
+      "label": "CRM logs & audit",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "export",
+        "view_all"
+      ]
+    },
+    "shortcuts": {
+      "label": "Personal CRM shortcuts",
+      "actions": [
+        "view",
+        "create",
+        "edit",
+        "delete",
+        "import",
+        "export"
+      ]
+    },
+    "finance": {
+      "label": "Linked IS / Budget snapshots",
+      "actions": [
+        "view",
+        "import",
+        "export"
+      ]
+    },
+    "bridges": {
+      "label": "CRM bridge settings",
+      "actions": [
+        "view",
+        "edit",
+        "reconcile"
+      ]
+    },
+    "files": {
+      "label": "CRM attachments",
+      "actions": [
+        "view",
+        "upload"
+      ]
+    },
+    "settings": {
+      "label": "CRM schema & settings",
+      "actions": [
+        "view"
+      ]
+    }
+  }
 }
