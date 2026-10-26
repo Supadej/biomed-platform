@@ -1,1 +1,604 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Calendar · Staff Portal</title><link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/staff-crm/native.css"><script src="/workspace-header.js" defer></script><script src="/staff-crm/staff-crm-header.js" defer></script><script src="/staff-crm/native-app.js" defer></script></head><body data-module="calendar"><div id="navbar"><header class="bm-workspace-header" data-system="portal"><div class="bm-header-brand"><span class="bm-header-logo"><img src="/biomed-logo.png" alt="Biomed Diagnostics"></span><div class="bm-header-title"><strong>Staff Portal</strong><small>Employee workspace</small></div></div><nav class="system-switcher p-head-actions bm-header-links" aria-label="Systems"><button type="button" class="sysbtn bm-language-button" data-no-translate id="staff-crm-language" aria-label="Switch between English and Thai">EN / ไทย</button><a class="sysbtn" href="/">Website</a><a class="sysbtn active" aria-current="page" href="/?portal=1">Staff Portal</a><a class="sysbtn" href="/biomed-is.html?source=1">Biomed IS</a><a class="sysbtn" href="/biomed-budget.html">Budgeting</a><a class="sysbtn soft bm-header-mail" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Outlook Mail ↗</a></nav><div class="bm-header-account"><span class="sysuser" id="staff-crm-session-user"></span><button type="button" class="sysbtn bm-header-signout" id="staff-crm-signout">Sign out</button></div></header><nav class="staff-context-nav" aria-label="Staff Portal functions"><span class="staff-context-label">Overview</span><a class="active" href="/staff-crm/calendar.html">Calendar</a><a class="" href="/staff-crm/sales-plan.html">Sales Plan</a><a class="" href="/staff-crm/project-activity.html">Project &amp; Activity</a><a class="" href="/staff-crm/external-helpdesk.html">External Helpdesk</a></nav></div><main class="main"><div class="page-title"><div><p class="eyebrow">Biomed · Staff Portal</p><h1 id="heading">Calendar</h1><p>Manage records, statuses and assignments within Staff Portal.</p></div><div class="page-buttons"><button id="import" hidden>Generate from Biomed IS</button><button id="add" class="primary">+ Add new</button></div></div><div id="alertBar" class="notice" hidden></div><section id="formPanel" class="panel" hidden><div class="split"><h2 id="formTitle">New record</h2><button id="cancelForm" type="button">Close</button></div><form id="editForm" class="form-grid"></form></section><section id="sourcePanel" class="panel" hidden><h2>Generate leads from Biomed IS</h2><p>Select the source documents. Previously linked records cannot be duplicated.</p><div id="sources" class="source-list"></div><div class="form-actions"><button id="importCancel">Cancel</button><button id="importConfirm" class="primary">Generate selected leads</button></div></section><section class="panel"><div class="toolbar"><input id="search" placeholder="Search name, customer, owner or details…" aria-label="Search records"><select id="statusFilter" aria-label="Filter by status"><option value="">All statuses</option></select><span id="count">Loading…</span></div><div id="recordList" class="table-scroll"></div></section></main></body></html>
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="/crm/dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Event Calendar -->
+    <link rel="stylesheet" href="/crm/calendar3/event-calendar.min.css">
+    <script src="/crm/calendar3/event-calendar.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/crm/biomed-event.css">
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script><style id="staff-native-shell">body{background:#f2f6f8!important;}#navbar{position:sticky;top:0;z-index:120;background:#fff;box-shadow:0 2px 12px #143b5112}.staff-shell-top{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:13px 22px;background:#fff;border-bottom:1px solid #e0e8ed;font:500 14px system-ui;color:#16374b}.staff-shell-top .staffbrand{font-weight:800;font-size:17px;margin-right:auto}.staff-shell-top a{color:#25566f;text-decoration:none;padding:9px;border-radius:8px}.staff-shell-top a.active{background:#e6f1f8;color:#094c73}.staff-shell-modules{display:flex;gap:9px;padding:10px 20px;flex-wrap:wrap;background:#fff}.staff-shell-modules a{font:500 13px system-ui;text-decoration:none;color:#30576b;border:1px solid #dce5eb;border-radius:8px;padding:8px 12px}.staff-shell-modules a.active{background:#0e567a;color:white;border-color:#0e567a}body>main{max-width:none!important;width:100%!important} @media(max-width:650px){.staff-shell-top{padding:9px 12px}.staff-shell-modules{padding:9px 12px}}</style></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Navbar (shared) -->
+    <div id="navbar"><div class="staff-shell-top"><a class="staffbrand" href="/?portal=1">◈ Biomed · Staff Portal</a><a href="/?portal=1">Staff Portal</a><a href="/biomed-is.html">Biomed IS</a><a href="/biomed-budget.html">Budgeting</a></div><nav class="staff-shell-modules" aria-label="Staff Portal CRM"><a class="active" href="/staff-crm/calendar.html">Calendar</a><a class="" href="/staff-crm/sales-plan.html">Sales Plan</a><a class="" href="/staff-crm/project-activity.html">Project & Activity</a><a class="" href="/staff-crm/external-helpdesk.html">External Helpdesk</a></nav></div>
+    
+
+    <!-- Alert Bar -->
+    <div class="px-4 lg:px-6 pt-2">
+        <div id="alertBar" class="alert alert-info shadow-sm">
+            <i class="fa-solid fa-calendar-alt"></i>
+            <span>กำลังโหลดข้อมูล...</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Page Header -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <!-- Left: Title -->
+            <div class="flex items-center gap-3">
+                <h1 class="text-2xl font-bold text-base-content">
+                    <i class="fa-solid fa-calendar-alt text-primary mr-2"></i>Event Calendar
+                </h1>
+            </div>
+            
+            <!-- Right: Actions -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- View Toggle (Desktop) -->
+                <div class="join hidden lg:flex">
+                    <button class="btn btn-sm join-item btn-active" id="calendarViewBtn" onclick="toggleViewMode('calendar')">
+                        <i class="fa-solid fa-calendar"></i> Calendar
+                    </button>
+                    <button class="btn btn-sm join-item" id="tableViewBtn" onclick="toggleViewMode('table')">
+                        <i class="fa-solid fa-table"></i> Table
+                    </button>
+                    <button class="btn btn-sm join-item" id="vizViewBtn" onclick="toggleViewMode('stats')">
+                        <i class="fa-solid fa-chart-bar"></i> Viz
+                    </button>
+                </div>
+                
+<!-- Create Event Button -->
+                <button class="btn btn-primary btn-sm" onclick="openEventModal()">
+                    <i class="fas fa-plus"></i> <span class="hidden sm:inline">สร้าง Event</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Control Panel Collapse -->
+        <div class="collapse collapse-arrow bg-base-100 shadow-sm rounded-box mb-4">
+            <input type="checkbox" id="controlPanelToggle">
+            <div class="collapse-title font-medium flex items-center gap-2">
+                <i class="fas fa-sliders-h text-primary"></i> Control Panel
+                <div class="badge badge-ghost badge-sm">คลิกเพื่อขยาย</div>
+            </div>
+            <div class="collapse-content">
+                <!-- Title Row with inline label -->
+                <div class="mb-4 pt-2">
+                    <label class="input w-full">
+                        <i class="fas fa-search opacity-50"></i>
+                        <input type="text" id="queryTitlePanel" class="grow" placeholder="ค้นหาชื่อ event...">
+                    </label>
+                </div>
+                
+                <!-- Date Range Filter (Hidden on Calendar tab) -->
+                <div id="dateRangeFilter" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 hidden">
+                    <!-- Start Date -->
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">วันเริ่มต้น</legend>
+                        <input type="date" id="filterStartDate" class="input input-bordered w-full">
+                    </fieldset>
+                    
+                    <!-- End Date -->
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">วันสิ้นสุด</legend>
+                        <input type="date" id="filterEndDate" class="input input-bordered w-full">
+                    </fieldset>
+                </div>
+                
+                <!-- Filters Row -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Users -->
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">ผู้รับผิดชอบ</legend>
+                        <div id="usersFilterPanelContainer"></div>
+                    </fieldset>
+                    
+                    <!-- Contacts -->
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">ผู้ติดต่อ</legend>
+                        <div id="contactsFilterPanelContainer"></div>
+                    </fieldset>
+                    
+                    <!-- Products -->
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">สินค้า</legend>
+                        <div id="productsFilterPanelContainer"></div>
+                    </fieldset>
+                </div>
+                
+                <!-- Checkbox and Search Button -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 mt-4">
+                    <label class="label cursor-pointer justify-start gap-2">
+                        <input type="checkbox" id="onlyMainResponsiblePanel" class="checkbox checkbox-sm checkbox-primary">
+                        <span class="label-text">แสดงเฉพาะผู้รับผิดชอบหลัก</span>
+                    </label>
+                    <div class="flex-1"></div>
+                    <button class="btn btn-primary btn-sm" onclick="querySearch()">
+                        <i class="fas fa-search"></i> ค้นหา
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar/Table View Tabs removed - using top buttons instead -->
+
+        <!-- Calendar View -->
+        <div id="calendarView" class="block">
+            <!-- Desktop: Full Calendar -->
+            <div class="hidden lg:block bg-base-100 rounded-box shadow-sm p-4">
+                <div id="ec" class="event-calendar-container"></div>
+            </div>
+            
+            <!-- Mobile: Mini Calendar + Day List -->
+            <div class="lg:hidden">
+                <!-- Mini Calendar -->
+                <div class="bg-base-100 rounded-box shadow-sm p-4 mb-4">
+                    <div class="mini-calendar" id="miniCalendar">
+                        <!-- Mini Calendar Header -->
+                        <div class="flex items-center justify-between mb-4">
+                            <button class="btn btn-ghost btn-sm btn-circle" onclick="miniCalendarPrev()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <h3 class="font-bold text-lg" id="miniCalendarTitle">ธันวาคม 2025</h3>
+                            <button class="btn btn-ghost btn-sm btn-circle" onclick="miniCalendarNext()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Mini Calendar Grid -->
+                        <div class="grid grid-cols-7 gap-1 text-center text-sm">
+                            <div class="font-bold text-base-content/60">อา</div>
+                            <div class="font-bold text-base-content/60">จ</div>
+                            <div class="font-bold text-base-content/60">อ</div>
+                            <div class="font-bold text-base-content/60">พ</div>
+                            <div class="font-bold text-base-content/60">พฤ</div>
+                            <div class="font-bold text-base-content/60">ศ</div>
+                            <div class="font-bold text-base-content/60">ส</div>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 text-center mt-2" id="miniCalendarDays">
+                            <!-- Days will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day List View -->
+                <div class="bg-base-100 rounded-box shadow-sm">
+                    <div class="p-4 border-b border-base-200">
+                        <h3 class="font-bold flex items-center gap-2">
+                            <i class="fas fa-list text-primary"></i>
+                            <span id="dayListTitle">วันนี้</span>
+                        </h3>
+                    </div>
+                    <div class="p-2" id="dayListContainer">
+                        <!-- Events will be populated by JS -->
+                        <div class="text-center text-base-content/50 py-8">
+                            <i class="fas fa-calendar-day text-4xl mb-2"></i>
+                            <p>เลือกวันที่จาก Calendar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table View -->
+        <div id="tableView" class="hidden">
+            <div class="bg-base-100 rounded-box shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead class="bg-base-200">
+                            <tr>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('title')">ชื่อ Event <i id="mainSortIconTitle" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('startDate')">วันเริ่ม <i id="mainSortIconStartDate" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('endDate')">วันสิ้นสุด <i id="mainSortIconEndDate" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('mainUser')">ผู้รับผิดชอบหลัก <i id="mainSortIconMainUser" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('attendees')">ผู้ร่วมงาน <i id="mainSortIconAttendees" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('product')">Product <i id="mainSortIconProduct" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap">Plan</th>
+                                <th class="whitespace-nowrap">Report</th>
+                                <th class="whitespace-nowrap cursor-pointer select-none hover:bg-base-300 transition-colors" onclick="sortMainTable('status')">สถานะ <i id="mainSortIconStatus" class="fas fa-sort text-base-content/30 ml-1"></i></th>
+                                <th class="whitespace-nowrap">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventsTableBody">
+                            <!-- Table rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics View -->
+        <div id="statsView" class="hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                <!-- Summary Cards Row -->
+                <div class="stats shadow bg-base-100 col-span-full">
+                    <div class="stat">
+                        <div class="stat-figure text-primary">
+                            <i class="fas fa-calendar-check text-3xl"></i>
+                        </div>
+                        <div class="stat-title">Events ทั้งหมด</div>
+                        <div class="stat-value text-primary" id="statTotalEvents">0</div>
+                        <div class="stat-desc">ในช่วงเวลาที่เลือก</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-success">
+                            <i class="fas fa-check-circle text-3xl"></i>
+                        </div>
+                        <div class="stat-title">เสร็จสิ้น</div>
+                        <div class="stat-value text-success" id="statWithReport">0</div>
+                        <div class="stat-desc" id="statReportPercent">ผ่านไปแล้วและมี Report</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-error">
+                            <i class="fas fa-exclamation-circle text-3xl"></i>
+                        </div>
+                        <div class="stat-title">ต้องการ Report</div>
+                        <div class="stat-value text-error" id="statAllDay">0</div>
+                        <div class="stat-desc" id="statAllDayPercent">ผ่านไปแต่ยังไม่มี Report</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-info">
+                            <i class="fas fa-users text-3xl"></i>
+                        </div>
+                        <div class="stat-title">ผู้รับผิดชอบ</div>
+                        <div class="stat-value text-info" id="statUniqueUsers">0</div>
+                        <div class="stat-desc">คนที่มี Events</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-secondary">
+                            <i class="fas fa-calendar-alt text-3xl"></i>
+                        </div>
+                        <div class="stat-title">รอดำเนินการ</div>
+                        <div class="stat-value text-secondary" id="statUniqueContacts">0</div>
+                        <div class="stat-desc">กำลังจะมา + นัดหมาย</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-figure text-accent">
+                            <i class="fas fa-box text-3xl"></i>
+                        </div>
+                        <div class="stat-title">Products</div>
+                        <div class="stat-value text-accent" id="statUniqueProducts">0</div>
+                        <div class="stat-desc">ที่เกี่ยวข้อง</div>
+                    </div>
+                </div>
+
+                <!-- Events by User Chart -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-user-chart text-primary"></i> Events แยกตามผู้รับผิดชอบหลัก
+                        </h3>
+                        <div id="chartEventsByUser" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Events by Day of Week Chart -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-calendar-week text-success"></i> Events แยกตามวันในสัปดาห์
+                        </h3>
+                        <div id="chartEventsByDayOfWeek" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Events by Month Chart -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-chart-line text-info"></i> Events แยกตามเดือน
+                        </h3>
+                        <div id="chartEventsByMonth" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Events by Product Chart -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-box text-warning"></i> Events แยกตาม Product
+                        </h3>
+                        <div id="chartEventsByProduct" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Event Status Chart -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-chart-pie text-secondary"></i> สถานะ Event
+                        </h3>
+                        <div id="chartEventsByContact" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Events Timeline (Daily Count) -->
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-chart-area text-accent"></i> Events Timeline (รายวัน)
+                        </h3>
+                        <div id="chartEventsTimeline" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Events Duration Distribution -->
+                <div class="card bg-base-100 shadow-sm col-span-full lg:col-span-1">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-hourglass-half text-error"></i> ระยะเวลา Event (ชั่วโมง)
+                        </h3>
+                        <div id="chartEventsDuration" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- Attendees Distribution Chart -->
+                <div class="card bg-base-100 shadow-sm col-span-full lg:col-span-1">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-user-friends text-primary"></i> จำนวนผู้ร่วมงานต่อ Event
+                        </h3>
+                        <div id="chartAttendeesDistribution" class="h-64"></div>
+                    </div>
+                </div>
+
+                <!-- User Workload Heatmap -->
+                <div class="card bg-base-100 shadow-sm col-span-full">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm">
+                            <i class="fas fa-th text-info"></i> Workload Heatmap (ผู้รับผิดชอบ x วันในสัปดาห์)
+                        </h3>
+                        <div id="chartWorkloadHeatmap" class="h-80 overflow-x-auto"></div>
+                    </div>
+                </div>
+
+                <!-- All Events List -->
+                <div class="card bg-base-100 shadow-sm col-span-full">
+                    <div class="card-body">
+                        <h3 class="card-title text-sm" id="allEventsTitle">
+                            <i class="fas fa-list text-secondary"></i> Events ทั้งหมด (<span id="allEventsCount">0</span> รายการ)
+                        </h3>
+                        <div class="overflow-x-auto">
+                            <table class="table table-sm table-zebra" id="allEventsTable">
+                                <thead>
+                                    <tr>
+                                        <th class="cursor-pointer hover:bg-base-300" onclick="sortEventsTable('title')">
+                                            ชื่อ Event <i class="fas fa-sort text-base-content/30 ml-1" id="sortIconTitle"></i>
+                                        </th>
+                                        <th class="cursor-pointer hover:bg-base-300" onclick="sortEventsTable('date')">
+                                            วันที่ <i class="fas fa-sort text-base-content/30 ml-1" id="sortIconDate"></i>
+                                        </th>
+                                        <th class="cursor-pointer hover:bg-base-300" onclick="sortEventsTable('user')">
+                                            ผู้รับผิดชอบ <i class="fas fa-sort text-base-content/30 ml-1" id="sortIconUser"></i>
+                                        </th>
+                                        <th class="cursor-pointer hover:bg-base-300" onclick="sortEventsTable('status')">
+                                            สถานะ <i class="fas fa-sort text-base-content/30 ml-1" id="sortIconStatus"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentEventsTable">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Event Modal -->
+    <dialog id="eventModal" class="modal" oncancel="event.preventDefault()">
+        <div class="modal-box w-11/12 max-w-6xl h-[90vh] max-h-[90vh] p-0 flex flex-col overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-4 border-b border-base-200 bg-base-100 sticky top-0 z-10">
+                <h3 class="font-bold text-lg flex items-center gap-2">
+                    <i class="fas fa-calendar-alt text-primary"></i>
+                    <span id="modalTitle">Event Details</span>
+                </h3>
+                <div class="flex items-center gap-2">
+                    <!-- QuickNav Button -->
+                    <button class="btn btn-ghost btn-sm btn-circle" onclick="openQuickNavFromModal()" title="Quick Navigation (Ctrl+K)">
+                        <i class="fas fa-compass"></i>
+                    </button>
+                    <div id="eventActionButtons" class="flex gap-2">
+                        <button class="btn btn-success btn-sm" onclick="saveEvent()">
+                            <i class="fas fa-save"></i> บันทึก
+                        </button>
+                        <button class="btn btn-error btn-sm" onclick="confirmDeleteEvent()" id="deleteEventBtn">
+                            <i class="fas fa-trash"></i> ลบ
+                        </button>
+                    </div>
+                    <div id="deleteConfirmButtons" class="hidden flex gap-2">
+                        <span class="text-sm text-error my-auto">ยืนยันการลบ?</span>
+                        <button class="btn btn-error btn-sm" onclick="deleteEventConfirmed()">ใช่</button>
+                        <button class="btn btn-ghost btn-sm" onclick="cancelDelete()">ไม่</button>
+                    </div>
+                    <button class="btn btn-ghost btn-sm btn-circle" onclick="closeEventModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Modal Body - Two Columns -->
+            <div class="flex-1 overflow-y-auto overflow-x-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                    <!-- Left Column: Event Details -->
+                    <div class="lg:col-span-2 p-6 lg:border-r border-base-200">
+                        <!-- Main User Badge -->
+                        <div class="mb-6" id="mainUserBadgeContainer">
+                            <!-- Will be populated by JS -->
+                        </div>
+                        
+                        <!-- Title -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend">ชื่อ Event</legend>
+                            <input type="text" id="eventTitle" placeholder="ระบุชื่อ event..." class="input w-full">
+                        </fieldset>
+                        
+                        <!-- Responsibles -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-users text-secondary mr-1"></i> ผู้รับผิดชอบร่วม</legend>
+                            <div id="eventUsersContainer" class="w-full"></div>
+                        </fieldset>
+                        
+                        <!-- Quick Tag (Groups) -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-tag text-accent mr-1"></i> Quick Tag (กลุ่ม)</legend>
+                            <select id="eventGroup" class="select w-full">
+                                <option value="" disabled selected>เลือกกลุ่ม...</option>
+                            </select>
+                        </fieldset>
+                        
+                        <!-- Contacts -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-address-book text-info mr-1"></i> ผู้ติดต่อ</legend>
+                            <div id="eventContactsContainer" class="w-full"></div>
+                        </fieldset>
+                        
+                        <!-- Date/Time Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">วันเริ่มต้น</legend>
+                                <input type="datetime-local" id="eventStartDate" class="input w-full">
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">วันสิ้นสุด</legend>
+                                <input type="datetime-local" id="eventEndDate" class="input w-full">
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <legend class="fieldset-legend">&nbsp;</legend>
+                                <label class="flex items-center gap-3 cursor-pointer border border-base-300 bg-base-100 rounded-lg px-4 h-12">
+                                    <input type="checkbox" id="eventAllDay" class="checkbox checkbox-primary">
+                                    <span class="label-text">ทั้งวัน</span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        
+                        <!-- Products -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-box text-warning mr-1"></i> สินค้า</legend>
+                            <div id="eventProductsContainer" class="w-full"></div>
+                        </fieldset>
+                        
+                        <!-- Plan -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-clipboard-list text-primary mr-1"></i> แผนงาน (Plan)</legend>
+                            <textarea id="eventPlan" class="textarea w-full h-28" placeholder="ระบุแผนงาน..."></textarea>
+                        </fieldset>
+                        
+                        <!-- Report -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-file-alt text-success mr-1"></i> รายงาน (Report)</legend>
+                            <textarea id="eventReport" class="textarea w-full h-28" placeholder="ระบุรายงาน..."></textarea>
+                        </fieldset>
+                        
+                        <!-- Comment -->
+                        <fieldset class="fieldset mb-4">
+                            <legend class="fieldset-legend"><i class="fas fa-comment text-base-content/60 mr-1"></i> หมายเหตุ (Comment)</legend>
+                            <textarea id="eventComment" class="textarea w-full h-20" placeholder="ระบุหมายเหตุ..."></textarea>
+                        </fieldset>
+                    </div>
+                    
+                    <!-- Right Column: Logs -->
+                    <div class="lg:col-span-1 bg-base-200/30 flex flex-col">
+                        <div class="p-4 border-b border-base-200 bg-primary/10">
+                            <h4 class="font-bold flex items-center gap-2">
+                                <i class="fas fa-history text-primary"></i> Activity Logs
+                            </h4>
+                        </div>
+                        
+                        <!-- Log Actions -->
+                        <div class="p-3 border-b border-base-200 flex flex-wrap gap-2">
+                            <button class="btn btn-xs btn-ghost" onclick="addLogFile()">
+                                <i class="fas fa-paperclip"></i> ไฟล์
+                            </button>
+                            <button class="btn btn-xs btn-ghost" id="bindingBtn" onclick="pickupBinder()">
+                                <i class="fas fa-link"></i> Pickup
+                            </button>
+                            <button class="btn btn-xs btn-success hidden" id="dropBtn" onclick="dropBinder()">
+                                <i class="fas fa-check"></i> Drop
+                            </button>
+                            <button class="btn btn-xs btn-error hidden" id="cancelBinderBtn" onclick="cancelBinder()">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button class="btn btn-xs btn-primary" id="addLogBtn" onclick="showLogInput()">
+                                <i class="fas fa-plus"></i> เพิ่ม Log
+                            </button>
+                        </div>
+                        
+                        <!-- Log Input (hidden by default) -->
+                        <div class="p-3 border-b border-base-200 hidden bg-base-100" id="logInputContainer">
+                            <textarea id="logTextInput" class="textarea textarea-bordered w-full h-20 text-sm" placeholder="เขียน log..."></textarea>
+                            <div class="flex justify-end gap-2 mt-2">
+                                <button class="btn btn-xs btn-ghost" onclick="hideLogInput()">ยกเลิก</button>
+                                <button class="btn btn-xs btn-success" onclick="saveLogEntry()">
+                                    <i class="fas fa-save"></i> บันทึก
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Logs List -->
+                        <div class="flex-1 p-3" id="logsContainer">
+                            <!-- Logs will be populated by JS -->
+                            <div class="text-center text-base-content/50 py-8" id="logsPlaceholder">
+                                <i class="fas fa-clipboard-list text-3xl mb-2"></i>
+                                <p class="text-sm">ยังไม่มี log</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Backdrop that doesn't close modal on click -->
+        <div class="modal-backdrop"></div>
+    </dialog>
+
+    <!-- Toast Container -->
+    <div class="toast toast-end z-50" id="toastContainer">
+        <!-- Toasts will be added here -->
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-base-300/80 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <div class="flex flex-col items-center gap-4">
+            <span class="loading loading-spinner loading-lg text-primary"></span>
+            <span class="text-base-content font-medium">กำลังโหลด...</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/crm/biomed-global.js"></script>
+    <script src="/crm/biomed-global-log.js"></script>
+    <script src="/crm/biomed-multiselect.js"></script>
+    <script src="/crm/biomed-event.js"></script>
+    <script src="/crm/biomed-quickNav.js"></script>
+</body>
+
+</html>
