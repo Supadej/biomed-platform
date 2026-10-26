@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Report - Biomed CRM</title>
+    
+    <!-- Tailwind CSS + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="./xairan.js" defer></script>
+    <script src="/report-branding.js"></script><script src="./ticket-report.js" defer></script>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200 py-8"><div id="navbar"></div><script src="biomed-navbar.js"></script>
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Main Card -->
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <div id="crm-report-header"></div><!-- Header -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div>
+                        <h1 class="text-3xl font-bold flex items-center gap-3">
+                            <i class="fas fa-ticket-alt text-primary"></i>
+                            Ticket Report
+                            <span class="text-base-content/70">#<span id="ticketId"></span></span>
+                        </h1>
+                        <p class="text-xl text-base-content/80 mt-2" id="ticketTitle"></p>
+                    </div>
+                    <div class="badge badge-primary badge-lg gap-2">
+                        <i class="fas fa-circle text-xs"></i>
+                        New
+                    </div>
+                </div>
+
+                <!-- Timestamps -->
+                <div class="flex flex-wrap gap-4 text-sm text-base-content/60 mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Created: <span id="createdDate" class="font-medium"></span></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Last Update: <span id="updateDate" class="font-medium"></span></span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Problem & Solution Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend text-error">
+                            <i class="fas fa-exclamation-circle mr-1"></i> Problem
+                        </legend>
+                        <textarea 
+                            class="textarea textarea-bordered w-full h-32 bg-error/5" 
+                            id="ticketProblem" 
+                            readonly
+                        ></textarea>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend text-success">
+                            <i class="fas fa-check-circle mr-1"></i> Solution
+                        </legend>
+                        <textarea 
+                            class="textarea textarea-bordered w-full h-32 bg-success/5" 
+                            id="ticketSolution" 
+                            readonly
+                        ></textarea>
+                    </fieldset>
+                </div>
+
+                <div class="divider">
+                    <i class="fas fa-cog"></i> Equipment Details
+                </div>
+
+                <!-- Equipment Details -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">
+                            <i class="fas fa-user mr-1"></i> Customer
+                        </legend>
+                        <input 
+                            type="text" 
+                            class="input input-bordered w-full" 
+                            id="ticketMaincontact" 
+                            readonly
+                        />
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">
+                            <i class="fas fa-microscope mr-1"></i> Instrumental
+                        </legend>
+                        <input 
+                            type="text" 
+                            class="input input-bordered w-full" 
+                            id="ticketInstrumental" 
+                            readonly
+                        />
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">
+                            <i class="fas fa-cube mr-1"></i> Model
+                        </legend>
+                        <input 
+                            type="text" 
+                            class="input input-bordered w-full" 
+                            id="ticketModel" 
+                            readonly
+                        />
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">
+                            <i class="fas fa-barcode mr-1"></i> Serial Number
+                        </legend>
+                        <input 
+                            type="text" 
+                            class="input input-bordered w-full" 
+                            id="ticketSerialNumber" 
+                            readonly
+                        />
+                    </fieldset>
+                </div>
+
+                <div class="divider">
+                    <i class="fas fa-users"></i> Personnel
+                </div>
+
+                <!-- Personnel Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Requester Card -->
+                    <div class="card card-border bg-base-200/50">
+                        <div class="card-body p-4">
+                            <div class="flex items-center gap-4">
+                                <div class="avatar">
+                                    <div class="w-20 rounded-xl ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        <img 
+                                            id="requesterImg" 
+                                            src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" 
+                                            alt="Requester"
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="badge badge-outline badge-primary mb-1">
+                                        <i class="fas fa-user-tag mr-1"></i> Requester
+                                    </div>
+                                    <h3 class="font-bold text-lg" id="requesterName"></h3>
+                                    <p class="text-sm text-base-content/60" id="requesterPosition"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Responsible Person Card -->
+                    <div class="card card-border bg-base-200/50">
+                        <div class="card-body p-4">
+                            <div class="flex items-center gap-4">
+                                <div class="avatar">
+                                    <div class="w-20 rounded-xl ring ring-secondary ring-offset-base-100 ring-offset-2">
+                                        <img 
+                                            id="reponsibleImg" 
+                                            src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" 
+                                            alt="Responsible Person"
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="badge badge-outline badge-secondary mb-1">
+                                        <i class="fas fa-user-shield mr-1"></i> Responsible Person
+                                    </div>
+                                    <h3 class="font-bold text-lg" id="reponsibleName"></h3>
+                                    <p class="text-sm text-base-content/60" id="responsiblePosition"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Actions -->
+                <div class="card-actions justify-center mt-8">
+                    <button class="btn btn-outline btn-sm gap-2" onclick="window.print()">
+                        <i class="fas fa-print"></i> Print Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biomed Branding -->
+        <div class="text-center mt-6 text-base-content/40 text-sm">
+            <span class="font-semibold text-primary">Biomed</span><span class="font-semibold text-secondary">Diagnostics</span>
+            <span class="mx-2">|</span>
+            Ticket Report System
+        </div>
+    </div>
+<script>document.getElementById("crm-report-header").innerHTML=BiomedReportBranding.header({title:"CRM service ticket report",orientation:"portrait"});const style=document.createElement("style");style.textContent=BiomedReportBranding.styles;document.head.append(style)</script></body>
+</html>

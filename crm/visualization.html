@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<script src="/crm/crm-session.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization - Biomed CRM</title>
+    
+    <!-- Tailwind + daisyUI -->
+    <link rel="stylesheet" href="dist/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <!-- WebDataRocks Pivot Table -->
+    <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet"/>
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    
+    <style>
+        * { font-family: 'Noto Sans Thai', sans-serif; }
+        
+        /* Loader */
+        #loader { display: flex; }
+        #loader.hidden { display: none; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: oklch(var(--p) / 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: oklch(var(--p) / 0.5); }
+        
+        /* WebDataRocks customization */
+        #pivotContainer {
+            height: calc(100vh - 280px);
+            min-height: 400px;
+        }
+        
+        /* Override WebDataRocks toolbar to match theme */
+        .wdr-toolbar {
+            background: oklch(var(--b1)) !important;
+            border-bottom: 1px solid oklch(var(--bc) / 0.1) !important;
+        }
+        
+        .wdr-toolbar-group-content {
+            background: oklch(var(--b1)) !important;
+        }
+        
+        .wdr-toolbar-group-content span {
+            color: oklch(var(--bc)) !important;
+        }
+        
+        .wdr-toolbar-ui {
+            background: oklch(var(--b2)) !important;
+            border-color: oklch(var(--bc) / 0.1) !important;
+        }
+        
+        .wdr-toolbar-ui:hover {
+            background: oklch(var(--p) / 0.1) !important;
+        }
+        
+        /* Grid styling */
+        .wdr-grid-panel {
+            background: oklch(var(--b1)) !important;
+        }
+        
+        /* Data source tabs */
+        .data-source-tab {
+            transition: all 0.2s ease;
+        }
+        .data-source-tab.active {
+            background: oklch(var(--p)) !important;
+            color: oklch(var(--pc)) !important;
+        }
+        
+        /* Stats cards */
+        .stat-card {
+            background: linear-gradient(145deg, oklch(var(--b1)) 0%, oklch(var(--b2)) 100%);
+            border: 1px solid oklch(var(--bc) / 0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px -4px oklch(var(--bc) / 0.15);
+        }
+        
+        /* Chart container */
+        #chartContainer {
+            height: calc(100vh - 350px);
+            min-height: 400px;
+        }
+        
+        /* Series config item */
+        .series-config-item {
+            background: oklch(var(--b2));
+            border: 1px solid oklch(var(--bc) / 0.1);
+            transition: all 0.2s ease;
+        }
+        .series-config-item:hover {
+            border-color: oklch(var(--p) / 0.3);
+        }
+        
+        /* Color preview */
+        .color-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid oklch(var(--bc) / 0.2);
+            cursor: pointer;
+        }
+        
+        /* Chart type button */
+        .chart-type-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: oklch(var(--b1));
+            border: 1px solid oklch(var(--bc) / 0.1);
+        }
+        .chart-type-btn:hover {
+            background: oklch(var(--p) / 0.1);
+        }
+        .chart-type-btn.active {
+            background: oklch(var(--p));
+            color: oklch(var(--pc));
+            border-color: oklch(var(--p));
+        }
+        
+        /* Filter dropdown */
+        .dropdown-content.filter-dropdown {
+            width: 380px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        /* View toggle buttons */
+        .join .btn.btn-active {
+            background: oklch(var(--p));
+            color: oklch(var(--pc));
+            border-color: oklch(var(--p));
+        }
+    </style>
+<link rel="stylesheet" href="/workspace-header.css"><link rel="stylesheet" href="/mobile-icons.css"><link rel="stylesheet" href="/crm/crm-overrides.css">
+<script src="/crm/crm-language.js" defer></script></head>
+
+<body class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-200">
+    <!-- Loader -->
+    <div id="loader" class="fixed inset-0 bg-base-100/95 backdrop-blur-md z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="relative">
+                <span class="loading loading-ring loading-lg text-primary"></span>
+                <span class="loading loading-ring loading-lg text-secondary absolute inset-0 animate-ping opacity-30"></span>
+            </div>
+            <p class="mt-4 text-base-content/60 font-medium">กำลังโหลดข้อมูล...</p>
+        </div>
+    </div>
+    <!-- Navbar (shared) -->
+    <div id="navbar"></div>
+    <script src="biomed-navbar.js"></script>
+
+    <!-- Main Content -->
+    <main class="p-4 lg:p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <h1 class="text-2xl font-bold text-base-content">
+                        <i class="fas fa-chart-bar text-primary mr-2"></i>Data Visualization
+                    </h1>
+                    
+                    <!-- Search Filter Dropdown -->
+                    <div class="dropdown">
+                        <button tabindex="0" class="btn btn-outline btn-sm">
+                            <i class="fas fa-filter"></i> Filter
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div tabindex="0" class="dropdown-content z-50 bg-base-100 rounded-box shadow-xl p-4 m-0" style="width: 380px; max-height: 80vh; overflow-y: auto;">
+                            <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                                <i class="fas fa-filter text-primary"></i> Search & Filter
+                            </h3>
+                            
+                            <!-- Title Search -->
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">ค้นหา Lead</span>
+                                </label>
+                                <input type="text" id="searchQuery" placeholder="Search by name, company..." class="input input-bordered input-sm w-full">
+                            </div>
+                            
+                            <!-- MultiSelect Filters -->
+                            <div class="divider my-2">ตัวกรอง</div>
+                            
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">ผู้รับผิดชอบ</span>
+                                </label>
+                                <select id="filterUser" class="select select-bordered select-sm w-full">
+                                    <option value="">-- ทั้งหมด --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">สินค้า</span>
+                                </label>
+                                <select id="filterProduct" class="select select-bordered select-sm w-full">
+                                    <option value="">-- ทั้งหมด --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">พื้นที่ขาย</span>
+                                </label>
+                                <select id="filterSaleArea" class="select select-bordered select-sm w-full">
+                                    <option value="">-- ทั้งหมด --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-control mb-3">
+                                <label class="label py-1">
+                                    <span class="label-text font-medium">Pipeline</span>
+                                </label>
+                                <select id="filterPipeline" class="select select-bordered select-sm w-full">
+                                    <option value="">-- ทั้งหมด --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="flex gap-2 mt-4">
+                                <button class="btn btn-ghost btn-sm flex-1" onclick="clearFilters()">
+                                    <i class="fas fa-times"></i> ล้างตัวกรอง
+                                </button>
+                                <button class="btn btn-primary btn-sm flex-1" onclick="applyFilters()">
+                                    <i class="fas fa-search"></i> ค้นหา
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: View Toggle -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <!-- View Toggle (Pivot/Chart/Network) -->
+                    <div class="join">
+                        <button class="btn btn-sm join-item btn-active" id="pivotViewBtn" onclick="toggleViewMode('pivot')">
+                            <i class="fas fa-table"></i> Pivot
+                        </button>
+                        <button class="btn btn-sm join-item" id="chartViewBtn" onclick="toggleViewMode('chart')">
+                            <i class="fas fa-chart-pie"></i> Chart
+                        </button>
+                        <a href="d3.html" class="btn btn-sm join-item">
+                            <i class="fas fa-project-diagram"></i> Network
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert Bar -->
+        <div id="alert-bar" class="mb-4"></div>
+
+
+        <!-- Stats Summary -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6" id="statsContainer">
+            <div class="stat-card rounded-2xl p-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-base-content/50 uppercase tracking-wider">Total Records</p>
+                        <p class="text-2xl font-bold text-primary" id="stat-total">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card rounded-2xl p-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center">
+                        <i class="fas fa-check-circle text-success text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-base-content/50 uppercase tracking-wider">Achieved</p>
+                        <p class="text-2xl font-bold text-success" id="stat-achieved">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card rounded-2xl p-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-warning/10 flex items-center justify-center">
+                        <i class="fas fa-bullseye text-warning text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-base-content/50 uppercase tracking-wider">Target</p>
+                        <p class="text-2xl font-bold text-warning" id="stat-target">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card rounded-2xl p-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-info/10 flex items-center justify-center">
+                        <i class="fas fa-percentage text-info text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-base-content/50 uppercase tracking-wider">Achievement %</p>
+                        <p class="text-2xl font-bold text-info" id="stat-percent">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pivot View Container -->
+        <div id="pivotViewContainer" class="card bg-base-100 shadow-xl overflow-hidden">
+            <div class="card-body p-0">
+                <div id="pivotContainer"></div>
+            </div>
+        </div>
+        
+        <!-- Chart View Container (Hidden by default) -->
+        <div id="chartViewContainer" class="card bg-base-100 shadow-xl overflow-hidden hidden">
+            <div class="card-body p-4">
+                <!-- Chart Header -->
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold">Interactive Chart</h2>
+                            <p class="text-xs text-base-content/50">Visualize pivot data with customizable charts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-2 flex-wrap">
+                        <button class="btn btn-primary btn-sm gap-2" onclick="openChartConfig()">
+                            <i class="fas fa-cog"></i> Configure Chart
+                        </button>
+                        <button class="btn btn-ghost btn-sm gap-2" onclick="refreshChart()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <button class="btn btn-ghost btn-sm gap-2" onclick="downloadChart()">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Chart Canvas -->
+                <div id="chartContainer" class="w-full relative">
+                    <canvas id="pivotChart"></canvas>
+                    <div id="chartPlaceholder" class="absolute inset-0 flex items-center justify-center bg-base-200/50 rounded-xl">
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar text-4xl text-base-content/20 mb-2"></i>
+                            <p class="text-base-content/40">Click "Configure Chart" to create visualization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Chart Configuration Modal -->
+    <dialog id="chartConfigModal" class="modal">
+        <div class="modal-box w-11/12 max-w-4xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            
+            <h3 class="font-bold text-lg mb-4">
+                <i class="fas fa-cog text-primary mr-2"></i>Chart Configuration
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Left: Data Selection -->
+                <div class="space-y-4">
+                    <div class="bg-base-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-sm mb-3 flex items-center gap-2">
+                            <i class="fas fa-table text-primary"></i> Data Selection
+                        </h4>
+                        
+                        <!-- Row (X-Axis) Selection -->
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text text-xs font-medium">X-Axis (Row Field)</span>
+                            </label>
+                            <select id="xAxisField" class="select select-bordered select-sm w-full">
+                                <option value="">-- Select Row Field --</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Group By (Legend) Selection -->
+                        <div class="form-control mb-3">
+                            <label class="label py-1">
+                                <span class="label-text text-xs font-medium"><i class="fas fa-layer-group mr-1"></i>Group By (Legend)</span>
+                                <span class="label-text-alt text-xs text-primary">Optional</span>
+                            </label>
+                            <select id="groupByField" class="select select-bordered select-sm w-full">
+                                <option value="">-- No Grouping --</option>
+                            </select>
+                            <div class="form-control mt-1">
+                                <label class="label cursor-pointer py-0">
+                                    <span class="label-text text-xs">Include Total</span>
+                                    <input type="checkbox" id="showTotal" class="checkbox checkbox-primary checkbox-xs" checked>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Measures (Y-Axis) Selection -->
+                        <div class="form-control">
+                            <label class="label py-1">
+                                <span class="label-text text-xs font-medium">Y-Axis (Measures)</span>
+                                <span class="label-text-alt text-xs">Select multiple</span>
+                            </label>
+                            <div id="measuresContainer" class="space-y-2 max-h-40 overflow-y-auto p-2 bg-base-100 rounded-lg">
+                                <!-- Measures checkboxes will be added here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart Options -->
+                    <div class="bg-base-200 rounded-xl p-4">
+                        <h4 class="font-semibold text-sm mb-3 flex items-center gap-2">
+                            <i class="fas fa-sliders-h text-primary"></i> Chart Options
+                        </h4>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="form-control">
+                                <label class="label py-1">
+                                    <span class="label-text text-xs">Chart Title</span>
+                                </label>
+                                <input type="text" id="chartTitle" class="input input-bordered input-sm" placeholder="Enter title...">
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label py-1">
+                                    <span class="label-text text-xs">Legend Position</span>
+                                </label>
+                                <select id="legendPosition" class="select select-bordered select-sm">
+                                    <option value="top">Top</option>
+                                    <option value="bottom">Bottom</option>
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                    <option value="none">Hidden</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label cursor-pointer py-1">
+                                    <span class="label-text text-xs">Show Data Labels</span>
+                                    <input type="checkbox" id="showDataLabels" class="checkbox checkbox-primary checkbox-sm">
+                                </label>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label cursor-pointer py-1">
+                                    <span class="label-text text-xs">Stacked Chart</span>
+                                    <input type="checkbox" id="stackedChart" class="checkbox checkbox-primary checkbox-sm">
+                                </label>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label cursor-pointer py-1">
+                                    <span class="label-text text-xs">Show Grid Lines</span>
+                                    <input type="checkbox" id="showGridLines" class="checkbox checkbox-primary checkbox-sm" checked>
+                                </label>
+                            </div>
+                            
+                            <div class="form-control">
+                                <label class="label cursor-pointer py-1">
+                                    <span class="label-text text-xs">Animation</span>
+                                    <input type="checkbox" id="enableAnimation" class="checkbox checkbox-primary checkbox-sm" checked>
+                                </label>
+                            </div>
+                            
+                            <div class="form-control col-span-2">
+                                <label class="label cursor-pointer py-1 bg-primary/10 rounded-lg px-2">
+                                    <span class="label-text text-xs"><i class="fas fa-layer-group mr-1"></i>Compare by Year</span>
+                                    <input type="checkbox" id="stackByYear" class="checkbox checkbox-primary checkbox-sm">
+                                </label>
+                                <span class="text-[10px] text-base-content/50 ml-2">Compare same period across years</span>
+                            </div>
+                            
+                            <div class="form-control col-span-2">
+                                <label class="label cursor-pointer py-1 bg-secondary/10 rounded-lg px-2">
+                                    <span class="label-text text-xs"><i class="fas fa-calendar-alt mr-1"></i>Display as Quarter</span>
+                                    <input type="checkbox" id="displayAsQuarter" class="checkbox checkbox-secondary checkbox-sm">
+                                </label>
+                                <span class="text-[10px] text-base-content/50 ml-2">Convert to Q1-Q4 (Fiscal Year: May-Apr)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Series Configuration -->
+                <div class="space-y-4">
+                    <div class="bg-base-200 rounded-xl p-4 h-full">
+                        <h4 class="font-semibold text-sm mb-3 flex items-center gap-2">
+                            <i class="fas fa-layer-group text-primary"></i> Series Configuration
+                            <span class="badge badge-sm badge-primary" id="seriesCount">0</span>
+                        </h4>
+                        
+                        <div id="seriesConfigContainer" class="space-y-3 max-h-80 overflow-y-auto">
+                            <div class="text-center py-8 text-base-content/40">
+                                <i class="fas fa-info-circle text-2xl mb-2"></i>
+                                <p class="text-sm">Select measures to configure series</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Actions -->
+            <div class="modal-action">
+                <button class="btn btn-ghost" onclick="chartConfigModal.close()">Cancel</button>
+                <button class="btn btn-primary gap-2" onclick="applyChartConfig()">
+                    <i class="fas fa-check"></i> Apply & Generate Chart
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="biomed-global.js"></script>
+    <script src="biomed-visualization.js"></script>
+    <script src="biomed-quickNav.js"></script>
+    
+    <script>
+        // ====================================
+        // View Mode Toggle (Pivot/Chart)
+        // ====================================
+        let currentView = 'pivot';
+        
+        function toggleViewMode(mode) {
+            currentView = mode;
+            
+            // Update button states
+            const pivotBtn = document.getElementById('pivotViewBtn');
+            const chartBtn = document.getElementById('chartViewBtn');
+            
+            if (mode === 'pivot') {
+                pivotBtn.classList.add('btn-active');
+                chartBtn.classList.remove('btn-active');
+                document.getElementById('pivotViewContainer').classList.remove('hidden');
+                document.getElementById('chartViewContainer').classList.add('hidden');
+            } else {
+                pivotBtn.classList.remove('btn-active');
+                chartBtn.classList.add('btn-active');
+                document.getElementById('pivotViewContainer').classList.add('hidden');
+                document.getElementById('chartViewContainer').classList.remove('hidden');
+            }
+        }
+        
+        // ====================================
+        // Filter Functions
+        // ====================================
+        let originalPivotData = [];
+        let filterOptions = {
+            users: new Set(),
+            products: new Set(),
+            saleAreas: new Set(),
+            pipelines: new Set()
+        };
+        
+        function populateFilterDropdowns() {
+            if (!originalPivotData || originalPivotData.length === 0) return;
+            
+            // Clear and collect unique values
+            filterOptions = {
+                users: new Set(),
+                products: new Set(),
+                saleAreas: new Set(),
+                pipelines: new Set()
+            };
+            
+            originalPivotData.forEach(item => {
+                if (item.MainUser) filterOptions.users.add(item.MainUser);
+                if (item.Product) filterOptions.products.add(item.Product);
+                if (item.SaleArea) filterOptions.saleAreas.add(item.SaleArea);
+                if (item.Pipeline) filterOptions.pipelines.add(item.Pipeline);
+            });
+            
+            // Populate User dropdown
+            const userSelect = document.getElementById('filterUser');
+            userSelect.innerHTML = '<option value="">-- ทั้งหมด --</option>';
+            Array.from(filterOptions.users).sort().forEach(user => {
+                userSelect.innerHTML += `<option value="${user}">${user}</option>`;
+            });
+            
+            // Populate Product dropdown
+            const productSelect = document.getElementById('filterProduct');
+            productSelect.innerHTML = '<option value="">-- ทั้งหมด --</option>';
+            Array.from(filterOptions.products).sort().forEach(product => {
+                productSelect.innerHTML += `<option value="${product}">${product}</option>`;
+            });
+            
+            // Populate SaleArea dropdown
+            const saleAreaSelect = document.getElementById('filterSaleArea');
+            saleAreaSelect.innerHTML = '<option value="">-- ทั้งหมด --</option>';
+            Array.from(filterOptions.saleAreas).sort().forEach(area => {
+                saleAreaSelect.innerHTML += `<option value="${area}">${area}</option>`;
+            });
+            
+            // Populate Pipeline dropdown
+            const pipelineSelect = document.getElementById('filterPipeline');
+            pipelineSelect.innerHTML = '<option value="">-- ทั้งหมด --</option>';
+            Array.from(filterOptions.pipelines).sort().forEach(pipeline => {
+                pipelineSelect.innerHTML += `<option value="${pipeline}">${pipeline}</option>`;
+            });
+        }
+        
+        function clearFilters() {
+            document.getElementById('searchQuery').value = '';
+            document.getElementById('filterUser').value = '';
+            document.getElementById('filterProduct').value = '';
+            document.getElementById('filterSaleArea').value = '';
+            document.getElementById('filterPipeline').value = '';
+            
+            // Reset to original data
+            if (originalPivotData && originalPivotData.length > 0) {
+                currentPivotData = [...originalPivotData];
+                updateStats(currentPivotData);
+                
+                // Refresh pivot if available
+                if (typeof pivot !== 'undefined' && pivot.updateData) {
+                    pivot.updateData({ data: currentPivotData });
+                }
+                
+                // Refresh chart if exists
+                if (chartConfig.xAxisField && chartConfig.measures.length > 0) {
+                    generateChart();
+                }
+            }
+        }
+        
+        function applyFilters() {
+            if (!originalPivotData || originalPivotData.length === 0) {
+                xalert('ไม่มีข้อมูลให้กรอง', 1);
+                return;
+            }
+            
+            const searchQuery = document.getElementById('searchQuery').value.toLowerCase().trim();
+            const filterUser = document.getElementById('filterUser').value;
+            const filterProduct = document.getElementById('filterProduct').value;
+            const filterSaleArea = document.getElementById('filterSaleArea').value;
+            const filterPipeline = document.getElementById('filterPipeline').value;
+            
+            // Filter data
+            let filteredData = originalPivotData.filter(item => {
+                // Search query filter
+                if (searchQuery) {
+                    const searchFields = [
+                        item.Name || '',
+                        item.MainCustomer || '',
+                        item.MainUser || '',
+                        item.Product || '',
+                        item.SaleArea || ''
+                    ].join(' ').toLowerCase();
+                    
+                    if (!searchFields.includes(searchQuery)) return false;
+                }
+                
+                // User filter
+                if (filterUser && item.MainUser !== filterUser) return false;
+                
+                // Product filter
+                if (filterProduct && item.Product !== filterProduct) return false;
+                
+                // SaleArea filter
+                if (filterSaleArea && item.SaleArea !== filterSaleArea) return false;
+                
+                // Pipeline filter
+                if (filterPipeline && item.Pipeline !== filterPipeline) return false;
+                
+                return true;
+            });
+            
+            if (filteredData.length === 0) {
+                xalert('ไม่พบข้อมูลที่ตรงกับเงื่อนไข', 1);
+                return;
+            }
+            
+            // Update current data
+            currentPivotData = filteredData;
+            updateStats(filteredData);
+            
+            // Refresh pivot if available
+            if (typeof pivot !== 'undefined' && pivot.updateData) {
+                pivot.updateData({ data: filteredData });
+            }
+            
+            // Refresh chart if exists
+            if (chartConfig.xAxisField && chartConfig.measures.length > 0) {
+                generateChart();
+            }
+            
+            // Close dropdown
+            document.activeElement.blur();
+            xalert(`พบ ${filteredData.length} รายการที่ตรงกับเงื่อนไข`, 0);
+        }
+
+        // ====================================
+        // Chart.js Integration with WebDataRocks
+        // ====================================
+        
+        // Global chart instance
+        let pivotChartInstance = null;
+        let currentPivotData = null;
+        let chartConfig = {
+            xAxisField: '',
+            measures: [],
+            series: {},
+            title: '',
+            legendPosition: 'top',
+            showDataLabels: false,
+            stacked: false,
+            showGridLines: true,
+            enableAnimation: true,
+            stackByYear: false,
+            groupByField: '',
+            showTotal: true,
+            displayAsQuarter: false  // Convert months to fiscal quarters
+        };
+        
+        // Color palette for series
+        const colorPalette = [
+            { bg: 'rgba(59, 130, 246, 0.6)', border: 'rgb(59, 130, 246)' },      // Blue
+            { bg: 'rgba(16, 185, 129, 0.6)', border: 'rgb(16, 185, 129)' },      // Green
+            { bg: 'rgba(245, 158, 11, 0.6)', border: 'rgb(245, 158, 11)' },      // Amber
+            { bg: 'rgba(239, 68, 68, 0.6)', border: 'rgb(239, 68, 68)' },        // Red
+            { bg: 'rgba(139, 92, 246, 0.6)', border: 'rgb(139, 92, 246)' },      // Purple
+            { bg: 'rgba(236, 72, 153, 0.6)', border: 'rgb(236, 72, 153)' },      // Pink
+            { bg: 'rgba(6, 182, 212, 0.6)', border: 'rgb(6, 182, 212)' },        // Cyan
+            { bg: 'rgba(249, 115, 22, 0.6)', border: 'rgb(249, 115, 22)' },      // Orange
+            { bg: 'rgba(34, 197, 94, 0.6)', border: 'rgb(34, 197, 94)' },        // Emerald
+            { bg: 'rgba(168, 85, 247, 0.6)', border: 'rgb(168, 85, 247)' }       // Violet
+        ];
+        
+        // Helper function to apply opacity to color
+        function applyOpacityToColor(color, opacity) {
+            // Handle rgb format
+            if (color.startsWith('rgb(')) {
+                return color.replace('rgb(', 'rgba(').replace(')', `, ${opacity})`);
+            }
+            // Handle rgba format
+            if (color.startsWith('rgba(')) {
+                return color.replace(/,\s*[\d.]+\)$/, `, ${opacity})`);
+            }
+            // Handle hex format
+            if (color.startsWith('#')) {
+                const hex = color.slice(1);
+                const r = parseInt(hex.slice(0, 2), 16);
+                const g = parseInt(hex.slice(2, 4), 16);
+                const b = parseInt(hex.slice(4, 6), 16);
+                return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+            }
+            return color;
+        }
+        
+        // Helper function to convert YYYY-MM to fiscal quarter (Biomed fiscal year)
+        // Q1: May-Jul, Q2: Aug-Oct, Q3: Nov-Jan, Q4: Feb-Apr
+        function dateToFiscalQuarter(dateStr) {
+            const match = dateStr.match(/^(\d{4})-(\d{1,2})(?:-\d{1,2})?$/);
+            if (!match) return dateStr; // Return original if not a date
+            
+            const year = parseInt(match[1]);
+            const month = parseInt(match[2]);
+            
+            // Determine fiscal quarter and fiscal year
+            // Fiscal year starts in May
+            let fiscalYear, quarter;
+            
+            if (month >= 5 && month <= 7) {
+                // Q1: May-July
+                quarter = 'Q1';
+                fiscalYear = year + 1; // FY2025 for May 2024
+            } else if (month >= 8 && month <= 10) {
+                // Q2: August-October
+                quarter = 'Q2';
+                fiscalYear = year + 1;
+            } else if (month >= 11 || month === 1) {
+                // Q3: November-January
+                quarter = 'Q3';
+                fiscalYear = month >= 11 ? year + 1 : year;
+            } else {
+                // Q4: February-April (months 2, 3, 4)
+                quarter = 'Q4';
+                fiscalYear = year;
+            }
+            
+            return `Y${fiscalYear}-${quarter}`;
+        }
+        
+        // Chart type configurations
+        const chartTypes = {
+            bar: { icon: 'fa-chart-bar', label: 'Bar', type: 'bar', fill: true },
+            line: { icon: 'fa-chart-line', label: 'Line', type: 'line', fill: false, tension: 0 },
+            smoothLine: { icon: 'fa-wave-square', label: 'Smooth', type: 'line', fill: false, tension: 0.4 },
+            area: { icon: 'fa-chart-area', label: 'Area', type: 'line', fill: true, tension: 0 },
+            smoothArea: { icon: 'fa-mountain', label: 'Smooth Area', type: 'line', fill: true, tension: 0.4 },
+            dashed: { icon: 'fa-grip-lines', label: 'Dashed', type: 'line', fill: false, tension: 0, borderDash: [5, 5] },
+            dashedSmooth: { icon: 'fa-water', label: 'Dashed Smooth', type: 'line', fill: false, tension: 0.4, borderDash: [5, 5] },
+            scatter: { icon: 'fa-braille', label: 'Scatter', type: 'scatter', fill: false }
+        };
+        
+        // Store pivot data when loaded
+        function storePivotData(data) {
+            currentPivotData = data;
+            // Store original data for filtering
+            if (!originalPivotData || originalPivotData.length === 0 || originalPivotData.length !== data.length) {
+                originalPivotData = [...data];
+                populateFilterDropdowns();
+            }
+            updateFieldSelections();
+        }
+        
+        // Extract unique field names from pivot data
+        function getAvailableFields() {
+            if (!currentPivotData || currentPivotData.length === 0) return { rows: [], measures: [] };
+            
+            const sample = currentPivotData[0];
+            const rows = [];
+            const measures = [];
+            
+            for (const key in sample) {
+                const value = sample[key];
+                if (typeof value === 'number') {
+                    measures.push(key);
+                } else if (typeof value === 'string' || value === null) {
+                    rows.push(key);
+                }
+            }
+            
+            return { rows, measures };
+        }
+        
+        // Update field selection dropdowns
+        function updateFieldSelections() {
+            const fields = getAvailableFields();
+            
+            // Update X-Axis dropdown
+            const xAxisSelect = document.getElementById('xAxisField');
+            xAxisSelect.innerHTML = '<option value="">-- Select Row Field --</option>';
+            fields.rows.forEach(field => {
+                const option = document.createElement('option');
+                option.value = field;
+                option.textContent = formatFieldName(field);
+                xAxisSelect.appendChild(option);
+            });
+            
+            // Update Group By dropdown
+            const groupBySelect = document.getElementById('groupByField');
+            groupBySelect.innerHTML = '<option value="">-- No Grouping --</option>';
+            fields.rows.forEach(field => {
+                const option = document.createElement('option');
+                option.value = field;
+                option.textContent = formatFieldName(field);
+                groupBySelect.appendChild(option);
+            });
+            
+            // Update Measures checkboxes
+            const measuresContainer = document.getElementById('measuresContainer');
+            measuresContainer.innerHTML = '';
+            fields.measures.forEach((measure, index) => {
+                const div = document.createElement('div');
+                div.className = 'form-control';
+                div.innerHTML = `
+                    <label class="label cursor-pointer py-1 px-2 hover:bg-base-200 rounded-lg">
+                        <span class="label-text text-xs">${formatFieldName(measure)}</span>
+                        <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" 
+                               value="${measure}" onchange="updateSeriesConfig()">
+                    </label>
+                `;
+                measuresContainer.appendChild(div);
+            });
+        }
+        
+        // Format field name for display
+        function formatFieldName(name) {
+            return name
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, str => str.toUpperCase())
+                .trim();
+        }
+        
+        // Update series configuration when measures change
+        function updateSeriesConfig() {
+            const measuresContainer = document.getElementById('measuresContainer');
+            const checkboxes = measuresContainer.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedMeasures = Array.from(checkboxes).map(cb => cb.value);
+            
+            document.getElementById('seriesCount').textContent = selectedMeasures.length;
+            
+            const seriesContainer = document.getElementById('seriesConfigContainer');
+            
+            if (selectedMeasures.length === 0) {
+                seriesContainer.innerHTML = `
+                    <div class="text-center py-8 text-base-content/40">
+                        <i class="fas fa-info-circle text-2xl mb-2"></i>
+                        <p class="text-sm">Select measures to configure series</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            seriesContainer.innerHTML = '';
+            selectedMeasures.forEach((measure, index) => {
+                const colorIndex = index % colorPalette.length;
+                
+                // Preserve existing config if it exists, otherwise create default
+                const existingConfig = chartConfig.series[measure];
+                const isTargetField = measure.toLowerCase().includes('target');
+                
+                const config = existingConfig || {
+                    chartType: 'bar',
+                    color: colorPalette[colorIndex].border,
+                    yAxisID: index === 0 ? 'y' : 'y1',
+                    label: formatFieldName(measure),
+                    aggregation: isTargetField ? 'max' : 'sum'
+                };
+                
+                // Only set aggregation if not already set
+                if (!config.aggregation) {
+                    config.aggregation = isTargetField ? 'max' : 'sum';
+                }
+                
+                chartConfig.series[measure] = config;
+                
+                const div = document.createElement('div');
+                div.className = 'series-config-item rounded-xl p-3';
+                div.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-sm">${formatFieldName(measure)}</span>
+                        <div class="flex items-center gap-2">
+                            <input type="color" value="${config.color}" 
+                                   class="color-preview" 
+                                   onchange="updateSeriesColor('${measure}', this.value)">
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-1 mb-2">
+                        ${Object.entries(chartTypes).map(([key, ct]) => `
+                            <div class="chart-type-btn ${config.chartType === key ? 'active' : ''}" 
+                                 onclick="setSeriesChartType('${measure}', '${key}')"
+                                 title="${ct.label}">
+                                <i class="fas ${ct.icon} text-xs"></i>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="flex items-center gap-1">
+                            <label class="text-xs text-base-content/60">Y:</label>
+                            <select class="select select-bordered select-xs flex-1" 
+                                    onchange="updateSeriesYAxis('${measure}', this.value)">
+                                <option value="y" ${config.yAxisID === 'y' ? 'selected' : ''}>Left</option>
+                                <option value="y1" ${config.yAxisID === 'y1' ? 'selected' : ''}>Right</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <label class="text-xs text-base-content/60">Agg:</label>
+                            <select class="select select-bordered select-xs flex-1" 
+                                    onchange="updateSeriesAggregation('${measure}', this.value)">
+                                <option value="sum" ${config.aggregation === 'sum' ? 'selected' : ''}>Sum</option>
+                                <option value="max" ${config.aggregation === 'max' ? 'selected' : ''}>Max</option>
+                                <option value="min" ${config.aggregation === 'min' ? 'selected' : ''}>Min</option>
+                                <option value="avg" ${config.aggregation === 'avg' ? 'selected' : ''}>Avg</option>
+                                <option value="count" ${config.aggregation === 'count' ? 'selected' : ''}>Count</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+                seriesContainer.appendChild(div);
+            });
+        }
+        
+        // Update series color
+        function updateSeriesColor(measure, color) {
+            if (chartConfig.series[measure]) {
+                chartConfig.series[measure].color = color;
+            }
+        }
+        
+        // Set series chart type
+        function setSeriesChartType(measure, type) {
+            if (chartConfig.series[measure]) {
+                chartConfig.series[measure].chartType = type;
+                updateSeriesConfig();
+            }
+        }
+        
+        // Update series Y-axis
+        function updateSeriesYAxis(measure, yAxisID) {
+            if (chartConfig.series[measure]) {
+                chartConfig.series[measure].yAxisID = yAxisID;
+            }
+        }
+        
+        // Update series aggregation type
+        function updateSeriesAggregation(measure, aggregation) {
+            if (chartConfig.series[measure]) {
+                chartConfig.series[measure].aggregation = aggregation;
+            }
+        }
+        
+        // Open chart configuration modal
+        function openChartConfig() {
+            if (!currentPivotData || currentPivotData.length === 0) {
+                xalert('No data available. Please wait for pivot data to load.', 1);
+                return;
+            }
+            updateFieldSelections();
+            
+            // Restore saved configuration values
+            restoreChartConfigUI();
+            
+            document.getElementById('chartConfigModal').showModal();
+        }
+        
+        // Restore chart configuration UI from saved config
+        function restoreChartConfigUI() {
+            // Restore X-Axis selection
+            if (chartConfig.xAxisField) {
+                document.getElementById('xAxisField').value = chartConfig.xAxisField;
+            }
+            
+            // Restore Group By selection
+            if (chartConfig.groupByField) {
+                document.getElementById('groupByField').value = chartConfig.groupByField;
+            }
+            
+            // Restore measures checkboxes
+            if (chartConfig.measures && chartConfig.measures.length > 0) {
+                const measuresContainer = document.getElementById('measuresContainer');
+                const checkboxes = measuresContainer.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => {
+                    cb.checked = chartConfig.measures.includes(cb.value);
+                });
+                // Update series config display
+                updateSeriesConfig();
+            }
+            
+            // Restore other options
+            document.getElementById('chartTitle').value = chartConfig.title || '';
+            document.getElementById('legendPosition').value = chartConfig.legendPosition || 'top';
+            document.getElementById('showDataLabels').checked = chartConfig.showDataLabels || false;
+            document.getElementById('stackedChart').checked = chartConfig.stacked || false;
+            document.getElementById('showGridLines').checked = chartConfig.showGridLines !== false;
+            document.getElementById('enableAnimation').checked = chartConfig.enableAnimation !== false;
+            document.getElementById('stackByYear').checked = chartConfig.stackByYear || false;
+            document.getElementById('displayAsQuarter').checked = chartConfig.displayAsQuarter || false;
+            document.getElementById('showTotal').checked = chartConfig.showTotal !== false;
+        }
+        
+        // Apply chart configuration and generate chart
+        function applyChartConfig() {
+            const xAxisField = document.getElementById('xAxisField').value;
+            if (!xAxisField) {
+                xalert('Please select an X-Axis field.', 1);
+                return;
+            }
+            
+            const measuresContainer = document.getElementById('measuresContainer');
+            const checkboxes = measuresContainer.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedMeasures = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (selectedMeasures.length === 0) {
+                xalert('Please select at least one measure.', 1);
+                return;
+            }
+            
+            // Update config
+            chartConfig.xAxisField = xAxisField;
+            chartConfig.measures = selectedMeasures;
+            chartConfig.title = document.getElementById('chartTitle').value;
+            chartConfig.legendPosition = document.getElementById('legendPosition').value;
+            chartConfig.showDataLabels = document.getElementById('showDataLabels').checked;
+            chartConfig.stacked = document.getElementById('stackedChart').checked;
+            chartConfig.showGridLines = document.getElementById('showGridLines').checked;
+            chartConfig.enableAnimation = document.getElementById('enableAnimation').checked;
+            chartConfig.stackByYear = document.getElementById('stackByYear').checked;
+            chartConfig.displayAsQuarter = document.getElementById('displayAsQuarter').checked;
+            chartConfig.groupByField = document.getElementById('groupByField').value;
+            chartConfig.showTotal = document.getElementById('showTotal').checked;
+            
+            // Close modal and generate chart
+            document.getElementById('chartConfigModal').close();
+            generateChart();
+        }
+        
+        // Generate the chart
+        function generateChart() {
+            if (!currentPivotData || !chartConfig.xAxisField || chartConfig.measures.length === 0) {
+                return;
+            }
+            
+            // Hide placeholder
+            document.getElementById('chartPlaceholder').style.display = 'none';
+            
+            // Check if X-axis is date format (YYYY-MM)
+            const isDateAxis = currentPivotData.some(item => {
+                const val = item[chartConfig.xAxisField];
+                return val && /^\d{4}-\d{1,2}(-\d{1,2})?$/.test(val);
+            });
+            
+            // Check if X-axis is already quarter format (Y2025-Q1)
+            const isQuarterAxis = currentPivotData.some(item => {
+                const val = item[chartConfig.xAxisField];
+                return val && /^Y\d{4}-Q[1-4]$/.test(val);
+            });
+            
+            // Determine if we should convert to quarter
+            const shouldConvertToQuarter = isDateAxis && chartConfig.displayAsQuarter;
+            
+            // Aggregate data by X-axis field with support for different aggregation types
+            const aggregatedData = {};
+            const aggregationCounts = {}; // For calculating averages
+            // Track unique targets per X-axis value for proper target deduplication
+            const uniqueTargets = {};
+            
+            currentPivotData.forEach(item => {
+                let xValue = item[chartConfig.xAxisField] || 'N/A';
+                
+                // Convert to quarter if enabled
+                if (shouldConvertToQuarter) {
+                    xValue = dateToFiscalQuarter(xValue);
+                }
+                
+                if (!aggregatedData[xValue]) {
+                    aggregatedData[xValue] = {};
+                    aggregationCounts[xValue] = {};
+                    uniqueTargets[xValue] = new Set();
+                    chartConfig.measures.forEach(m => {
+                        const agg = chartConfig.series[m]?.aggregation || 'sum';
+                        if (agg === 'min') {
+                            aggregatedData[xValue][m] = Infinity;
+                        } else if (agg === 'max') {
+                            aggregatedData[xValue][m] = -Infinity;
+                        } else {
+                            aggregatedData[xValue][m] = 0;
+                        }
+                        aggregationCounts[xValue][m] = 0;
+                    });
+                }
+                
+                // Track unique target for this X value
+                const targetKey = item.UniqueTargetKey || item.TargetId || null;
+                const isNewTarget = targetKey && !uniqueTargets[xValue].has(targetKey);
+                if (targetKey) {
+                    uniqueTargets[xValue].add(targetKey);
+                }
+                
+                chartConfig.measures.forEach(m => {
+                    const value = item[m] || 0;
+                    const agg = chartConfig.series[m]?.aggregation || 'sum';
+                    const isTargetMeasure = m.toLowerCase().includes('target');
+                    
+                    // For target measures with max aggregation, only count unique targets
+                    if (isTargetMeasure && agg === 'max' && !isNewTarget && targetKey) {
+                        // Skip duplicate target - already counted
+                        return;
+                    }
+                    
+                    switch (agg) {
+                        case 'sum':
+                        case 'avg':
+                            aggregatedData[xValue][m] += value;
+                            aggregationCounts[xValue][m]++;
+                            break;
+                        case 'max':
+                            if (value > aggregatedData[xValue][m]) {
+                                aggregatedData[xValue][m] = value;
+                            }
+                            break;
+                        case 'min':
+                            if (value < aggregatedData[xValue][m]) {
+                                aggregatedData[xValue][m] = value;
+                            }
+                            break;
+                        case 'count':
+                            aggregatedData[xValue][m]++;
+                            break;
+                    }
+                });
+            });
+            
+            // Finalize aggregated data (calculate averages, handle infinity)
+            Object.keys(aggregatedData).forEach(xValue => {
+                chartConfig.measures.forEach(m => {
+                    const agg = chartConfig.series[m]?.aggregation || 'sum';
+                    if (agg === 'avg' && aggregationCounts[xValue][m] > 0) {
+                        aggregatedData[xValue][m] /= aggregationCounts[xValue][m];
+                    }
+                    // Handle infinity values (no data found for min/max)
+                    if (aggregatedData[xValue][m] === Infinity || aggregatedData[xValue][m] === -Infinity) {
+                        aggregatedData[xValue][m] = 0;
+                    }
+                });
+            });
+            
+            // Sort labels
+            const sortedLabels = Object.keys(aggregatedData).sort((a, b) => {
+                // Check for YYYY-MM or YYYY-MM-DD date format first
+                const datePatternA = a.match(/^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/);
+                const datePatternB = b.match(/^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/);
+                
+                if (datePatternA && datePatternB) {
+                    const yearA = parseInt(datePatternA[1]);
+                    const yearB = parseInt(datePatternB[1]);
+                    if (yearA !== yearB) return yearA - yearB;
+                    
+                    const monthA = parseInt(datePatternA[2]);
+                    const monthB = parseInt(datePatternB[2]);
+                    if (monthA !== monthB) return monthA - monthB;
+                    
+                    const dayA = datePatternA[3] ? parseInt(datePatternA[3]) : 0;
+                    const dayB = datePatternB[3] ? parseInt(datePatternB[3]) : 0;
+                    return dayA - dayB;
+                }
+                
+                const quarterPatternA = a.match(/Y(\d{4})-Q(\d)/i);
+                const quarterPatternB = b.match(/Y(\d{4})-Q(\d)/i);
+                
+                if (quarterPatternA && quarterPatternB) {
+                    const yearA = parseInt(quarterPatternA[1]);
+                    const yearB = parseInt(quarterPatternB[1]);
+                    if (yearA !== yearB) return yearA - yearB;
+                    return parseInt(quarterPatternA[2]) - parseInt(quarterPatternB[2]);
+                }
+                
+                const numA = parseFloat(a);
+                const numB = parseFloat(b);
+                
+                if (!isNaN(numA) && !isNaN(numB)) {
+                    return numA - numB;
+                }
+                
+                return a.localeCompare(b, 'th', { sensitivity: 'base' });
+            });
+            
+            let labels, datasets, displayLabels;
+            
+            // stackByYear applies to date axis (can work with or without quarter conversion)
+            if (isDateAxis && chartConfig.stackByYear) {
+                // Stack by year - X-axis shows month or quarter, different series per year
+                const currentYear = new Date().getFullYear();
+                const dataByYear = {};
+                
+                // Check if grouping is also enabled
+                const hasGrouping = chartConfig.groupByField && chartConfig.groupByField !== chartConfig.xAxisField;
+                const groupValues = new Set();
+                
+                if (hasGrouping) {
+                    currentPivotData.forEach(item => {
+                        const groupVal = item[chartConfig.groupByField];
+                        if (groupVal) groupValues.add(groupVal);
+                    });
+                }
+                
+                const groups = hasGrouping ? Array.from(groupValues).sort((a, b) => 
+                    a.localeCompare(b, 'th', { sensitivity: 'base' })
+                ) : ['_all'];
+                
+                // Group data by year and period (month or quarter)
+                // Also track counts for averaging and initialize with proper values for min/max
+                const dataByYearCounts = {};
+                const periodLabels = new Set(); // Will hold month keys (01-12) or quarter keys (Q1-Q4)
+                
+                // Helper to get fiscal year and quarter from date
+                const getFiscalYearAndQuarter = (year, month) => {
+                    let fiscalYear, quarter;
+                    if (month >= 5 && month <= 7) {
+                        quarter = 'Q1';
+                        fiscalYear = year + 1;
+                    } else if (month >= 8 && month <= 10) {
+                        quarter = 'Q2';
+                        fiscalYear = year + 1;
+                    } else if (month >= 11 || month === 1) {
+                        quarter = 'Q3';
+                        fiscalYear = month >= 11 ? year + 1 : year;
+                    } else {
+                        quarter = 'Q4';
+                        fiscalYear = year;
+                    }
+                    return { fiscalYear, quarter };
+                };
+                
+                // First pass: collect all unique periods
+                currentPivotData.forEach(item => {
+                    const xValue = item[chartConfig.xAxisField];
+                    if (!xValue) return;
+                    
+                    const match = xValue.match(/^(\d{4})-(\d{1,2})(?:-\d{1,2})?$/);
+                    if (match) {
+                        const year = parseInt(match[1]);
+                        const month = parseInt(match[2]);
+                        
+                        if (shouldConvertToQuarter) {
+                            const { fiscalYear, quarter } = getFiscalYearAndQuarter(year, month);
+                            periodLabels.add(quarter);
+                            if (!dataByYear[fiscalYear]) {
+                                dataByYear[fiscalYear] = {};
+                                dataByYearCounts[fiscalYear] = {};
+                            }
+                        } else {
+                            const monthKey = month.toString().padStart(2, '0');
+                            periodLabels.add(monthKey);
+                            if (!dataByYear[year]) {
+                                dataByYear[year] = {};
+                                dataByYearCounts[year] = {};
+                            }
+                        }
+                    }
+                });
+                
+                // Initialize data structure for each year and period
+                Object.keys(dataByYear).forEach(yearKey => {
+                    const year = parseInt(yearKey);
+                    periodLabels.forEach(period => {
+                        if (!dataByYear[year][period]) {
+                            dataByYear[year][period] = {};
+                            dataByYearCounts[year][period] = {};
+                            groups.forEach(g => {
+                                dataByYear[year][period][g] = {};
+                                dataByYearCounts[year][period][g] = {};
+                                chartConfig.measures.forEach(m => {
+                                    const agg = chartConfig.series[m]?.aggregation || 'sum';
+                                    if (agg === 'min') {
+                                        dataByYear[year][period][g][m] = Infinity;
+                                    } else if (agg === 'max') {
+                                        dataByYear[year][period][g][m] = -Infinity;
+                                    } else {
+                                        dataByYear[year][period][g][m] = 0;
+                                    }
+                                    dataByYearCounts[year][period][g][m] = 0;
+                                });
+                            });
+                            // Total for this period
+                            dataByYear[year][period]['_total'] = {};
+                            dataByYearCounts[year][period]['_total'] = {};
+                            chartConfig.measures.forEach(m => {
+                                const agg = chartConfig.series[m]?.aggregation || 'sum';
+                                if (agg === 'min') {
+                                    dataByYear[year][period]['_total'][m] = Infinity;
+                                } else if (agg === 'max') {
+                                    dataByYear[year][period]['_total'][m] = -Infinity;
+                                } else {
+                                    dataByYear[year][period]['_total'][m] = 0;
+                                }
+                                dataByYearCounts[year][period]['_total'][m] = 0;
+                            });
+                        }
+                    });
+                });
+                
+                // Track unique targets per year/period/group
+                const yearUniqueTargets = {};
+                
+                // Helper function to apply aggregation with target deduplication
+                const applyAggregation = (container, countContainer, measure, value, targetKey, uniqueSet) => {
+                    const agg = chartConfig.series[measure]?.aggregation || 'sum';
+                    const isTargetMeasure = measure.toLowerCase().includes('target');
+                    
+                    // For target measures with max agg, skip if we've seen this target
+                    if (isTargetMeasure && agg === 'max' && targetKey && uniqueSet) {
+                        if (uniqueSet.has(targetKey)) {
+                            return; // Skip duplicate
+                        }
+                        uniqueSet.add(targetKey);
+                    }
+                    
+                    switch (agg) {
+                        case 'sum':
+                        case 'avg':
+                            container[measure] += value;
+                            countContainer[measure]++;
+                            break;
+                        case 'max':
+                            if (value > container[measure]) {
+                                container[measure] = value;
+                            }
+                            countContainer[measure]++;
+                            break;
+                        case 'min':
+                            if (value < container[measure]) {
+                                container[measure] = value;
+                            }
+                            countContainer[measure]++;
+                            break;
+                        case 'count':
+                            container[measure]++;
+                            countContainer[measure]++;
+                            break;
+                    }
+                };
+                
+                // Populate data
+                currentPivotData.forEach(item => {
+                    const xValue = item[chartConfig.xAxisField];
+                    if (!xValue) return;
+                    
+                    const match = xValue.match(/^(\d{4})-(\d{1,2})(?:-\d{1,2})?$/);
+                    if (match) {
+                        const calendarYear = parseInt(match[1]);
+                        const month = parseInt(match[2]);
+                        const groupValue = hasGrouping ? item[chartConfig.groupByField] : '_all';
+                        const targetKey = item.UniqueTargetKey || item.TargetId || null;
+                        
+                        // Determine the year and period key based on mode
+                        let year, periodKey;
+                        if (shouldConvertToQuarter) {
+                            const { fiscalYear, quarter } = getFiscalYearAndQuarter(calendarYear, month);
+                            year = fiscalYear;
+                            periodKey = quarter;
+                        } else {
+                            year = calendarYear;
+                            periodKey = month.toString().padStart(2, '0');
+                        }
+                        
+                        // Initialize unique target tracking for this year/period if needed
+                        if (!yearUniqueTargets[year]) yearUniqueTargets[year] = {};
+                        if (!yearUniqueTargets[year][periodKey]) yearUniqueTargets[year][periodKey] = {};
+                        if (!yearUniqueTargets[year][periodKey][groupValue]) {
+                            yearUniqueTargets[year][periodKey][groupValue] = new Set();
+                        }
+                        if (!yearUniqueTargets[year][periodKey]['_total']) {
+                            yearUniqueTargets[year][periodKey]['_total'] = new Set();
+                        }
+                        
+                        if (dataByYear[year] && dataByYear[year][periodKey]) {
+                            if (groupValue && dataByYear[year][periodKey][groupValue]) {
+                                chartConfig.measures.forEach(m => {
+                                    const value = item[m] || 0;
+                                    applyAggregation(
+                                        dataByYear[year][periodKey][groupValue], 
+                                        dataByYearCounts[year][periodKey][groupValue], 
+                                        m, value, targetKey,
+                                        yearUniqueTargets[year][periodKey][groupValue]
+                                    );
+                                    applyAggregation(
+                                        dataByYear[year][periodKey]['_total'], 
+                                        dataByYearCounts[year][periodKey]['_total'], 
+                                        m, value, targetKey,
+                                        yearUniqueTargets[year][periodKey]['_total']
+                                    );
+                                });
+                            } else if (!hasGrouping) {
+                                chartConfig.measures.forEach(m => {
+                                    const value = item[m] || 0;
+                                    applyAggregation(
+                                        dataByYear[year][periodKey]['_all'], 
+                                        dataByYearCounts[year][periodKey]['_all'], 
+                                        m, value, targetKey,
+                                        yearUniqueTargets[year][periodKey]['_all']
+                                    );
+                                    applyAggregation(
+                                        dataByYear[year][periodKey]['_total'], 
+                                        dataByYearCounts[year][periodKey]['_total'], 
+                                        m, value, targetKey,
+                                        yearUniqueTargets[year][periodKey]['_total']
+                                    );
+                                });
+                            }
+                        }
+                    }
+                });
+                
+                // Finalize averages and handle infinity
+                Object.keys(dataByYear).forEach(year => {
+                    Object.keys(dataByYear[year]).forEach(period => {
+                        Object.keys(dataByYear[year][period]).forEach(group => {
+                            chartConfig.measures.forEach(m => {
+                                const agg = chartConfig.series[m]?.aggregation || 'sum';
+                                const count = dataByYearCounts[year][period][group][m];
+                                if (agg === 'avg' && count > 0) {
+                                    dataByYear[year][period][group][m] /= count;
+                                }
+                                // Handle infinity
+                                if (dataByYear[year][period][group][m] === Infinity || 
+                                    dataByYear[year][period][group][m] === -Infinity) {
+                                    dataByYear[year][period][group][m] = 0;
+                                }
+                            });
+                        });
+                    });
+                });
+                
+                // Sort period labels and create display labels
+                if (shouldConvertToQuarter) {
+                    // Sort quarters: Q1, Q2, Q3, Q4
+                    labels = Array.from(periodLabels).sort((a, b) => {
+                        const orderA = parseInt(a.replace('Q', ''));
+                        const orderB = parseInt(b.replace('Q', ''));
+                        return orderA - orderB;
+                    });
+                    displayLabels = labels; // Q1, Q2, Q3, Q4
+                } else {
+                    // Sort months and convert to names
+                    labels = Array.from(periodLabels).sort((a, b) => parseInt(a) - parseInt(b));
+                    const monthNames = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    displayLabels = labels.map(m => monthNames[parseInt(m)]);
+                }
+                
+                // For chart data access, use labels (period keys)
+                
+                // Get years sorted (current year last)
+                const years = Object.keys(dataByYear).map(y => parseInt(y)).sort((a, b) => a - b);
+                
+                // Dash patterns for older years
+                const dashPatterns = [
+                    [1, 1],      // Dotted (oldest)
+                    [2, 2],      // Small dash
+                    [4, 4],      // Medium dash
+                    [8, 4],      // Long dash
+                    [12, 4, 4, 4], // Dash-dot
+                    []           // Solid (current year)
+                ];
+                
+                // Create datasets
+                datasets = [];
+                
+                if (hasGrouping) {
+                    // With grouping: create series for each measure × group × year
+                    chartConfig.measures.forEach((measure, measureIndex) => {
+                        const seriesConfig = chartConfig.series[measure] || {};
+                        const chartTypeConfig = chartTypes[seriesConfig.chartType || 'bar'];
+                        const baseColor = seriesConfig.color || colorPalette[measureIndex % colorPalette.length].border;
+                        
+                        groups.forEach((group, groupIndex) => {
+                            const groupColorIndex = (measureIndex * groups.length + groupIndex) % colorPalette.length;
+                            const groupBaseColor = colorPalette[groupColorIndex].border;
+                            
+                            years.forEach((year, yearIndex) => {
+                                const yearsFromCurrent = currentYear - year;
+                                const isCurrentYear = year === currentYear;
+                                
+                                const opacity = isCurrentYear ? 1 : Math.max(0.25, 1 - (yearsFromCurrent * 0.2));
+                                
+                                let borderDash = [];
+                                let borderDashOffset = 0;
+                                if (!isCurrentYear) {
+                                    const dashIndex = Math.min(yearsFromCurrent - 1, dashPatterns.length - 2);
+                                    borderDash = dashPatterns[dashIndex] || [4, 4];
+                                    borderDashOffset = (yearsFromCurrent - 1) * 3;
+                                }
+                                
+                                const colorWithOpacity = applyOpacityToColor(groupBaseColor, opacity);
+                                const bgColorWithOpacity = applyOpacityToColor(groupBaseColor, opacity * 0.3);
+                                
+                                const data = labels.map(month => {
+                                    return dataByYear[year] && dataByYear[year][month] && dataByYear[year][month][group]
+                                        ? (dataByYear[year][month][group][measure] || 0) : 0;
+                                });
+                                
+                                if (data.some(v => v > 0)) {
+                                    datasets.push({
+                                        label: `${formatFieldName(measure)} - ${group} (${year})`,
+                                        data: data,
+                                        type: chartTypeConfig.type,
+                                        backgroundColor: chartTypeConfig.fill ? bgColorWithOpacity : colorWithOpacity,
+                                        borderColor: colorWithOpacity,
+                                        borderWidth: isCurrentYear ? 3 : 2,
+                                        tension: chartTypeConfig.tension || 0,
+                                        fill: chartTypeConfig.fill || false,
+                                        borderDash: isCurrentYear ? (chartTypeConfig.borderDash || []) : borderDash,
+                                        borderDashOffset: borderDashOffset,
+                                        yAxisID: seriesConfig.yAxisID || 'y',
+                                        pointRadius: isCurrentYear ? 5 : 3,
+                                        pointHoverRadius: isCurrentYear ? 7 : 5,
+                                        order: isCurrentYear ? 1 : (years.length - yearIndex + 1),
+                                        _year: year,
+                                        _group: group,
+                                        _measure: measure
+                                    });
+                                }
+                            });
+                        });
+                        
+                        // Add total line for each year if enabled
+                        if (chartConfig.showTotal) {
+                            years.forEach((year, yearIndex) => {
+                                const yearsFromCurrent = currentYear - year;
+                                const isCurrentYear = year === currentYear;
+                                
+                                const opacity = isCurrentYear ? 1 : Math.max(0.35, 1 - (yearsFromCurrent * 0.15));
+                                const colorWithOpacity = applyOpacityToColor(baseColor, opacity);
+                                
+                                let borderDash = [8, 4];
+                                let borderDashOffset = 0;
+                                if (!isCurrentYear) {
+                                    borderDashOffset = (yearsFromCurrent - 1) * 4;
+                                }
+                                
+                                const data = labels.map(month => {
+                                    return dataByYear[year] && dataByYear[year][month] && dataByYear[year][month]['_total']
+                                        ? (dataByYear[year][month]['_total'][measure] || 0) : 0;
+                                });
+                                
+                                if (data.some(v => v > 0)) {
+                                    datasets.push({
+                                        label: `${formatFieldName(measure)} - Total (${year})`,
+                                        data: data,
+                                        type: 'line',
+                                        backgroundColor: 'transparent',
+                                        borderColor: colorWithOpacity,
+                                        borderWidth: isCurrentYear ? 4 : 2,
+                                        tension: 0.2,
+                                        fill: false,
+                                        borderDash: borderDash,
+                                        borderDashOffset: borderDashOffset,
+                                        yAxisID: seriesConfig.yAxisID || 'y',
+                                        pointRadius: isCurrentYear ? 6 : 4,
+                                        pointHoverRadius: isCurrentYear ? 8 : 6,
+                                        pointStyle: 'rectRot',
+                                        order: 0,
+                                        _year: year,
+                                        _isTotal: true,
+                                        _measure: measure
+                                    });
+                                }
+                            });
+                        }
+                    });
+                    
+                } else {
+                    // No grouping - original year comparison behavior
+                    chartConfig.measures.forEach((measure, measureIndex) => {
+                        const seriesConfig = chartConfig.series[measure] || {};
+                        const chartTypeConfig = chartTypes[seriesConfig.chartType || 'bar'];
+                        const baseColor = seriesConfig.color || colorPalette[measureIndex % colorPalette.length].border;
+                        
+                        years.forEach((year, yearIndex) => {
+                            const yearsFromCurrent = currentYear - year;
+                            const isCurrentYear = year === currentYear;
+                            
+                            const opacity = isCurrentYear ? 1 : Math.max(0.25, 1 - (yearsFromCurrent * 0.2));
+                            
+                            let borderDash = [];
+                            let borderDashOffset = 0;
+                            if (!isCurrentYear) {
+                                const dashIndex = Math.min(yearsFromCurrent - 1, dashPatterns.length - 2);
+                                borderDash = dashPatterns[dashIndex] || [4, 4];
+                                borderDashOffset = (yearsFromCurrent - 1) * 3;
+                            }
+                            
+                            const colorWithOpacity = applyOpacityToColor(baseColor, opacity);
+                            const bgColorWithOpacity = applyOpacityToColor(baseColor, opacity * 0.3);
+                            
+                            const data = labels.map(month => {
+                                return dataByYear[year] && dataByYear[year][month] && dataByYear[year][month]['_all']
+                                    ? (dataByYear[year][month]['_all'][measure] || 0) : 0;
+                            });
+                            
+                            if (data.some(v => v > 0)) {
+                                datasets.push({
+                                    label: `${seriesConfig.label || formatFieldName(measure)} (${year})`,
+                                    data: data,
+                                    type: chartTypeConfig.type,
+                                    backgroundColor: chartTypeConfig.fill ? bgColorWithOpacity : colorWithOpacity,
+                                    borderColor: colorWithOpacity,
+                                    borderWidth: isCurrentYear ? 3 : 2,
+                                    tension: chartTypeConfig.tension || 0,
+                                    fill: chartTypeConfig.fill || false,
+                                    borderDash: isCurrentYear ? (chartTypeConfig.borderDash || []) : borderDash,
+                                    borderDashOffset: borderDashOffset,
+                                    yAxisID: seriesConfig.yAxisID || 'y',
+                                    pointRadius: isCurrentYear ? 5 : 3,
+                                    pointHoverRadius: isCurrentYear ? 7 : 5,
+                                    order: isCurrentYear ? 1 : (years.length - yearIndex + 1),
+                                    _year: year,
+                                    _measure: measure
+                                });
+                            }
+                        });
+                    });
+                }
+                
+                labels = displayLabels;            } else {
+                // Normal mode - no year stacking
+                labels = sortedLabels;
+                
+                // Check if grouping is enabled
+                if (chartConfig.groupByField && chartConfig.groupByField !== chartConfig.xAxisField) {
+                    // Group By mode - create separate series for each group value
+                    const groupValues = new Set();
+                    currentPivotData.forEach(item => {
+                        const groupVal = item[chartConfig.groupByField];
+                        if (groupVal) groupValues.add(groupVal);
+                    });
+                    
+                    const groups = Array.from(groupValues).sort((a, b) => 
+                        a.localeCompare(b, 'th', { sensitivity: 'base' })
+                    );
+                    
+                    // Aggregate data by X-axis and group with aggregation support
+                    const groupedData = {};
+                    const groupedCounts = {};
+                    const totalData = {};
+                    const totalCounts = {};
+                    
+                    labels.forEach(label => {
+                        groupedData[label] = {};
+                        groupedCounts[label] = {};
+                        groups.forEach(group => {
+                            groupedData[label][group] = {};
+                            groupedCounts[label][group] = {};
+                            chartConfig.measures.forEach(m => {
+                                const agg = chartConfig.series[m]?.aggregation || 'sum';
+                                if (agg === 'min') {
+                                    groupedData[label][group][m] = Infinity;
+                                } else if (agg === 'max') {
+                                    groupedData[label][group][m] = -Infinity;
+                                } else {
+                                    groupedData[label][group][m] = 0;
+                                }
+                                groupedCounts[label][group][m] = 0;
+                            });
+                        });
+                        totalData[label] = {};
+                        totalCounts[label] = {};
+                        chartConfig.measures.forEach(m => {
+                            const agg = chartConfig.series[m]?.aggregation || 'sum';
+                            if (agg === 'min') {
+                                totalData[label][m] = Infinity;
+                            } else if (agg === 'max') {
+                                totalData[label][m] = -Infinity;
+                            } else {
+                                totalData[label][m] = 0;
+                            }
+                            totalCounts[label][m] = 0;
+                        });
+                    });
+                    
+                    // Track unique targets for proper deduplication
+                    const groupUniqueTargets = {};
+                    labels.forEach(label => {
+                        groupUniqueTargets[label] = {};
+                        groups.forEach(group => {
+                            groupUniqueTargets[label][group] = new Set();
+                        });
+                        groupUniqueTargets[label]['_total'] = new Set();
+                    });
+                    
+                    // Helper for group aggregation with target deduplication
+                    const applyGroupAggregation = (container, countContainer, measure, value, targetKey, uniqueSet) => {
+                        const agg = chartConfig.series[measure]?.aggregation || 'sum';
+                        const isTargetMeasure = measure.toLowerCase().includes('target');
+                        
+                        // For target measures with max agg, skip if we've seen this target
+                        if (isTargetMeasure && agg === 'max' && targetKey) {
+                            if (uniqueSet.has(targetKey)) {
+                                return; // Skip duplicate
+                            }
+                            uniqueSet.add(targetKey);
+                        }
+                        
+                        switch (agg) {
+                            case 'sum':
+                            case 'avg':
+                                container[measure] += value;
+                                countContainer[measure]++;
+                                break;
+                            case 'max':
+                                if (value > container[measure]) {
+                                    container[measure] = value;
+                                }
+                                countContainer[measure]++;
+                                break;
+                            case 'min':
+                                if (value < container[measure]) {
+                                    container[measure] = value;
+                                }
+                                countContainer[measure]++;
+                                break;
+                            case 'count':
+                                container[measure]++;
+                                countContainer[measure]++;
+                                break;
+                        }
+                    };
+                    
+                    currentPivotData.forEach(item => {
+                        let xValue = item[chartConfig.xAxisField] || 'N/A';
+                        
+                        // Convert to quarter if enabled
+                        if (shouldConvertToQuarter) {
+                            xValue = dateToFiscalQuarter(xValue);
+                        }
+                        
+                        const groupValue = item[chartConfig.groupByField];
+                        const targetKey = item.UniqueTargetKey || item.TargetId || null;
+                        
+                        if (groupedData[xValue] && groupValue && groupedData[xValue][groupValue]) {
+                            chartConfig.measures.forEach(m => {
+                                const value = item[m] || 0;
+                                applyGroupAggregation(
+                                    groupedData[xValue][groupValue], 
+                                    groupedCounts[xValue][groupValue], 
+                                    m, value, targetKey, 
+                                    groupUniqueTargets[xValue][groupValue]
+                                );
+                                applyGroupAggregation(
+                                    totalData[xValue], 
+                                    totalCounts[xValue], 
+                                    m, value, targetKey,
+                                    groupUniqueTargets[xValue]['_total']
+                                );
+                            });
+                        }
+                    });
+                    
+                    // Finalize averages and handle infinity
+                    labels.forEach(label => {
+                        groups.forEach(group => {
+                            chartConfig.measures.forEach(m => {
+                                const agg = chartConfig.series[m]?.aggregation || 'sum';
+                                const count = groupedCounts[label][group][m];
+                                if (agg === 'avg' && count > 0) {
+                                    groupedData[label][group][m] /= count;
+                                }
+                                if (groupedData[label][group][m] === Infinity || groupedData[label][group][m] === -Infinity) {
+                                    groupedData[label][group][m] = 0;
+                                }
+                            });
+                        });
+                        chartConfig.measures.forEach(m => {
+                            const agg = chartConfig.series[m]?.aggregation || 'sum';
+                            const count = totalCounts[label][m];
+                            if (agg === 'avg' && count > 0) {
+                                totalData[label][m] /= count;
+                            }
+                            if (totalData[label][m] === Infinity || totalData[label][m] === -Infinity) {
+                                totalData[label][m] = 0;
+                            }
+                        });
+                    });
+                    
+                    datasets = [];
+                    let colorIndex = 0;
+                    
+                    // Create datasets for each measure and group combination
+                    chartConfig.measures.forEach((measure, measureIndex) => {
+                        const seriesConfig = chartConfig.series[measure] || {};
+                        const chartTypeConfig = chartTypes[seriesConfig.chartType || 'bar'];
+                        const baseColor = seriesConfig.color || colorPalette[measureIndex % colorPalette.length].border;
+                        
+                        groups.forEach((group, groupIndex) => {
+                            const groupColorIndex = (measureIndex * groups.length + groupIndex) % colorPalette.length;
+                            const color = colorPalette[groupColorIndex].border;
+                            
+                            const data = labels.map(label => groupedData[label][group][measure] || 0);
+                            
+                            // Only add if has data
+                            if (data.some(v => v > 0)) {
+                                datasets.push({
+                                    label: `${formatFieldName(measure)} - ${group}`,
+                                    data: data,
+                                    type: chartTypeConfig.type,
+                                    backgroundColor: chartTypeConfig.fill ? applyOpacityToColor(color, 0.3) : color,
+                                    borderColor: color,
+                                    borderWidth: 2,
+                                    tension: chartTypeConfig.tension || 0,
+                                    fill: chartTypeConfig.fill || false,
+                                    borderDash: chartTypeConfig.borderDash || [],
+                                    yAxisID: seriesConfig.yAxisID || 'y',
+                                    pointRadius: 4,
+                                    pointHoverRadius: 6,
+                                    order: chartTypeConfig.type === 'line' ? 1 : 2,
+                                    _group: group,
+                                    _measure: measure
+                                });
+                            }
+                        });
+                        
+                        // Add total line if enabled
+                        if (chartConfig.showTotal) {
+                            const totalLineData = labels.map(label => totalData[label][measure] || 0);
+                            
+                            if (totalLineData.some(v => v > 0)) {
+                                datasets.push({
+                                    label: `${formatFieldName(measure)} - Total`,
+                                    data: totalLineData,
+                                    type: 'line',
+                                    backgroundColor: 'transparent',
+                                    borderColor: baseColor,
+                                    borderWidth: 3,
+                                    tension: 0.2,
+                                    fill: false,
+                                    borderDash: [8, 4],
+                                    yAxisID: seriesConfig.yAxisID || 'y',
+                                    pointRadius: 5,
+                                    pointHoverRadius: 7,
+                                    pointStyle: 'rectRot',
+                                    order: 0, // Total on top
+                                    _isTotal: true,
+                                    _measure: measure
+                                });
+                            }
+                        }
+                    });
+                    
+                } else {
+                    // No grouping - original behavior
+                    datasets = chartConfig.measures.map((measure, index) => {
+                        const seriesConfig = chartConfig.series[measure] || {};
+                        const chartTypeConfig = chartTypes[seriesConfig.chartType || 'bar'];
+                        const colorIndex = index % colorPalette.length;
+                        const color = seriesConfig.color || colorPalette[colorIndex].border;
+                        
+                        return {
+                            label: seriesConfig.label || formatFieldName(measure),
+                            data: labels.map(label => aggregatedData[label][measure] || 0),
+                            type: chartTypeConfig.type,
+                            backgroundColor: chartTypeConfig.fill ? color.replace('rgb', 'rgba').replace(')', ', 0.3)') : color,
+                            borderColor: color,
+                            borderWidth: 2,
+                            tension: chartTypeConfig.tension || 0,
+                            fill: chartTypeConfig.fill || false,
+                            borderDash: chartTypeConfig.borderDash || [],
+                            yAxisID: seriesConfig.yAxisID || 'y',
+                            pointRadius: chartTypeConfig.type === 'scatter' ? 6 : 4,
+                            pointHoverRadius: chartTypeConfig.type === 'scatter' ? 8 : 6,
+                            order: chartTypeConfig.type === 'line' ? 1 : 2
+                        };
+                    });
+                }
+            }
+            
+            // Determine if secondary Y-axis is needed
+            const hasSecondaryAxis = datasets.some(d => d.yAxisID === 'y1');
+            
+            // Chart configuration
+            const config = {
+                type: 'bar', // Base type, will be overridden per dataset
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: chartConfig.enableAnimation ? { duration: 750 } : false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        title: {
+                            display: !!chartConfig.title,
+                            text: chartConfig.title,
+                            font: { size: 16, weight: 'bold' }
+                        },
+                        legend: {
+                            display: chartConfig.legendPosition !== 'none',
+                            position: chartConfig.legendPosition === 'none' ? 'top' : chartConfig.legendPosition
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) label += ': ';
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('th-TH').format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        datalabels: chartConfig.showDataLabels ? {
+                            display: true,
+                            anchor: 'end',
+                            align: 'top',
+                            formatter: (value) => {
+                                if (value >= 1000000) return (value / 1000000).toFixed(1) + 'M';
+                                if (value >= 1000) return (value / 1000).toFixed(1) + 'K';
+                                return value.toLocaleString();
+                            },
+                            font: { size: 10 }
+                        } : { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: chartConfig.showGridLines },
+                            stacked: chartConfig.stacked
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            grid: { display: chartConfig.showGridLines },
+                            stacked: chartConfig.stacked,
+                            ticks: {
+                                callback: function(value) {
+                                    if (value >= 1000000) return (value / 1000000).toFixed(1) + 'M';
+                                    if (value >= 1000) return (value / 1000).toFixed(1) + 'K';
+                                    return value;
+                                }
+                            }
+                        }
+                    }
+                },
+                plugins: chartConfig.showDataLabels ? [ChartDataLabels] : []
+            };
+            
+            // Add secondary Y-axis if needed
+            if (hasSecondaryAxis) {
+                config.options.scales.y1 = {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    grid: { drawOnChartArea: false },
+                    stacked: chartConfig.stacked,
+                    ticks: {
+                        callback: function(value) {
+                            if (value >= 1000000) return (value / 1000000).toFixed(1) + 'M';
+                            if (value >= 1000) return (value / 1000).toFixed(1) + 'K';
+                            return value;
+                        }
+                    }
+                };
+            }
+            
+            // Destroy existing chart
+            if (pivotChartInstance) {
+                pivotChartInstance.destroy();
+            }
+            
+            // Create new chart
+            const ctx = document.getElementById('pivotChart').getContext('2d');
+            pivotChartInstance = new Chart(ctx, config);
+        }
+        
+        // Refresh chart with current config
+        function refreshChart() {
+            if (chartConfig.xAxisField && chartConfig.measures.length > 0) {
+                generateChart();
+            } else {
+                xalert('Please configure the chart first.', 1);
+            }
+        }
+        
+        // Download chart as image
+        function downloadChart() {
+            if (!pivotChartInstance) {
+                xalert('No chart to export. Please generate a chart first.', 1);
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.download = `chart-${new Date().toISOString().split('T')[0]}.png`;
+            link.href = pivotChartInstance.toBase64Image();
+            link.click();
+        }
+        
+        // ====================================
+        // Theme & Utility Functions
+        // ====================================
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update chart colors if exists
+            if (pivotChartInstance) {
+                setTimeout(generateChart, 100);
+            }
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+        
+        function clearCache() {
+            sessionStorage.clear();
+            location.reload();
+        }
+        
+        function logout() {
+            sessionStorage.clear();
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+        
+        // Data source switching
+        function switchDataSource(source) {
+            // Update tab states
+            document.querySelectorAll('#tab-leads, #tab-events, #tab-helpdesk').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            const activeTab = document.getElementById('tab-' + source);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+            
+            // Reset data and filters
+            currentPivotData = null;
+            originalPivotData = [];
+            chartConfig.series = {};
+            
+            // Clear filters
+            document.getElementById('searchQuery').value = '';
+            document.getElementById('filterUser').value = '';
+            document.getElementById('filterProduct').value = '';
+            document.getElementById('filterSaleArea').value = '';
+            document.getElementById('filterPipeline').value = '';
+            
+            if (pivotChartInstance) {
+                pivotChartInstance.destroy();
+                pivotChartInstance = null;
+            }
+            document.getElementById('chartPlaceholder').style.display = 'flex';
+            
+            // Call appropriate data loader
+            switch(source) {
+                case 'leads':
+                    if (typeof PivotLeads === 'function') PivotLeads();
+                    break;
+                case 'events':
+                    if (typeof PivotEvents === 'function') PivotEvents();
+                    break;
+                case 'helpdesk':
+                    if (typeof PivotHelpDesk === 'function') PivotHelpDesk();
+                    break;
+            }
+        }
+        
+        // Update stats display
+        function updateStats(data) {
+            if (!data || !Array.isArray(data)) return;
+            
+            // Store data for chart
+            storePivotData(data);
+            
+            document.getElementById('stat-total').textContent = data.length.toLocaleString();
+            
+            const totalAchieved = data.reduce((sum, item) => sum + (item.AchivedRevenue || 0), 0);
+            const totalTarget = data.reduce((sum, item) => sum + (item.TargetValueForAggregation || 0), 0);
+            
+            document.getElementById('stat-achieved').textContent = formatCurrency(totalAchieved);
+            document.getElementById('stat-target').textContent = formatCurrency(totalTarget);
+            
+            const percent = totalTarget > 0 ? ((totalAchieved / totalTarget) * 100).toFixed(1) : 0;
+            document.getElementById('stat-percent').textContent = percent + '%';
+        }
+        
+        function formatCurrency(value) {
+            if (value >= 1000000) {
+                return (value / 1000000).toFixed(1) + 'M';
+            } else if (value >= 1000) {
+                return (value / 1000).toFixed(1) + 'K';
+            }
+            return value.toLocaleString();
+        }
+        
+        // Hide loader when ready
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

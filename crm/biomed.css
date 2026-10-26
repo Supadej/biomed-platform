@@ -1,0 +1,427 @@
+body {
+  font-family: "Noto Sans Thai Looped", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 90%;
+}
+.auto-fit {
+    width: fit-content;
+
+}
+.img-upload:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+.img-upload:hover::before {
+    color: #ffffff;
+    content: "Upload";
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.5s infinite;
+}
+
+.img-fit{
+    width: 100%;
+    height: fit-content;
+}
+
+.biomed-bg-black
+{
+    background-color: #000000;
+}
+.biomed-bg-dark
+{
+    background-color: #F7E7CE;
+}
+.biomed-bg-accent
+{
+    background-color: #fca311;
+    color: #000000;
+}
+.biomed-bg-light
+{
+    background-color: #f6f7fa;
+}
+.biomed-bg-white
+{
+    background-color: #ffffff;
+}
+.biomed-hover {
+    transition: 0.3s;
+    color: black;
+}
+.biomed-hover:visited{
+    color: black;
+}
+.biomed-hover:active{
+    color: white;
+}
+.biomed-hover:hover{
+    background-color: white;
+    font-weight: bold;
+    color: #000000;
+}
+.biomed-disabled-nav{
+    color: #B8860B!important;
+}
+
+
+
+.biomed-container {
+    position: relative;
+    width: 50%;
+  }
+  
+.biomed-image {
+display: block;
+width: 100%;
+height: auto;
+}
+
+.biomed-overlay {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: .5s ease;
+background-color: #008CBA;
+}
+
+.biomed-container:hover .biomed-overlay {
+opacity: 0.8;
+}
+
+.biomed-text {
+color: white;
+font-size: 20px;
+position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.biomed-badge {
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: 2px;
+    padding: 2px;
+    display: inline-block;
+    min-width: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+.text-rotate-90 {
+    transform: rotate(90deg);
+}
+
+.text-rotate-180 {
+    transform: rotate(180deg);
+}
+
+.text-rotate-270 {
+    transform: rotate(270deg)translateY(-1px)translateX(-11px);
+    font-size: 70%;
+    
+}
+.text-rotate-270-big {
+    transform: rotate(270deg)translateX(-100px)translateY(-75%);
+    
+}
+
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #9F9F9F #DFE9EB;
+}*/
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #9F9F9F;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #808080;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #949494;
+  }
+
+  .biomed-bordercard{
+    border-style: solid;
+    border-width: 0px;
+    border-left-style: solid;
+    border-left-width: 5px;
+    box-shadow: #808080 0px 0px 2px 0px;
+  }
+  .bt-sm{
+    font-size: 90%;
+  }
+  .fire {
+    color: #f5f5f5; /* Light text color */
+    text-align:center; /* Center alignment of text */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-size: 80px; /* Text size */
+    /* Multi-layered text-shadow for fire effect */
+    text-shadow:
+    0px -1px 3px #fff, /* Innermost layer - intense heat (white) */
+    0px -2px 6px #FF3, /* Second layer - core of flame (yellow) */
+    0px -6px 12px #F90, /* Middle layer - body of flame (orange) */
+    0px -10px 20px #C33; /* Outermost layer - edges of flame (red) */
+   }
+   /* Define the animation named "flicker" */
+@keyframes flicker {
+  /* Initial state of animation */
+  0%, 
+  /* Final state of animation */
+  100% { 
+      text-shadow: 
+          0 -1px 3px #fff, /* Innermost layer - intense heat (white) */
+          0 -2px 6px #FF3, /* Second layer - core of flame (yellow) */
+          0 -6px 12px #F90, /* Middle layer - body of flame (orange) */
+          0 -10px 20px #C33; /* Outermost layer - edges of flame (red) */
+  }
+  /* Middle state of animation */
+  50% { 
+      text-shadow: 
+          0 -2px 6px #fff, /* Innermost layer - intense heat (white) */
+          0 -4px 12px #FF3, /* Second layer - core of flame (yellow) */
+          0 -8px 16px #F90, /* Middle layer - body of flame (orange) */
+          0 -12px 24px #C33; /* Outermost layer - edges of flame (red) */
+  }
+}
+
+.fire {
+  /* Apply the "flicker" animation to the .fire class */
+  animation: flicker 2s infinite;
+}
+
+/* Base styling shared across all levels */
+[class^="fire-text-"] {
+  font-size: 48px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Level 0: Ashes */
+.fire-text-0 {
+  color: #666666; /* Gray ash color */
+  text-shadow: 
+      0 0 2px #999999,
+      0 0 5px #888888;
+}
+
+/* Level 1: Dim */
+.fire-text-1 {
+  color: #ff4500; /* Orange-red */
+  text-shadow: 
+      0 0 3px #fff,
+      0 0 6px #ff4500;
+  animation: flicker1 2s infinite alternate;
+}
+
+/* Level 2: Lit */
+.fire-text-2 {
+  color: #ff4500;
+  text-shadow: 
+      0 0 4px #fff,
+      0 0 8px #ff4500,
+      0 0 12px #ff4500;
+  animation: flicker2 1.8s infinite alternate;
+}
+
+/* Level 3: On Fire */
+.fire-text-3 {
+  color: #ff4500;
+  text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #ff4500,
+      0 0 30px #ff4500;
+  animation: flicker3 1.5s infinite alternate;
+}
+
+/* Level 4: More Fire */
+.fire-text-4 {
+  color: #ff4500;
+  text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #ff4500,
+      0 0 30px #ff4500,
+      0 0 40px #ff4500,
+      0 0 55px #ff4500;
+  animation: flicker4 1.2s infinite alternate;
+}
+
+/* Level 5: BURN */
+.fire-text-5 {
+  color: #ff2000; /* Brighter red */
+  text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #ff4500,
+      0 0 30px #ff4500,
+      0 0 40px #ff4500,
+      0 0 55px #ff4500,
+      0 0 75px #ff2000;
+  animation: flicker5 0.8s infinite alternate;
+}
+
+/* Animations for each level */
+@keyframes flicker1 {
+  50% { text-shadow: 0 0 4px #fff, 0 0 8px #ff8c00; }
+}
+
+@keyframes flicker2 {
+  50% { text-shadow: 0 0 5px #fff, 0 0 10px #ff4500, 0 0 15px #ff8c00; }
+}
+
+@keyframes flicker3 {
+  50% { text-shadow: 0 0 6px #fff, 0 0 15px #fff, 0 0 25px #ff8c00, 0 0 35px #ff8c00; }
+}
+
+@keyframes flicker4 {
+  50% { text-shadow: 0 0 6px #fff, 0 0 15px #fff, 0 0 25px #ff8c00, 0 0 35px #ff8c00, 0 0 45px #ff8c00; }
+}
+
+@keyframes flicker5 {
+  50% { text-shadow: 0 0 7px #fff, 0 0 15px #fff, 0 0 30px #ff8c00, 0 0 40px #ff8c00, 0 0 50px #ff8c00, 0 0 65px #ff8c00; }
+}
+
+/* Base styling for all divs */
+[class^="fire-container-"] {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Flame effect using ::before */
+[class^="fire-container-"]::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Level 0: Ashes */
+.fire-container-0 {
+  background: #333; /* Dark gray base */
+  color: #999;
+}
+
+.fire-container-0::before {
+  background: linear-gradient(to top, #666 10%, transparent 50%);
+  opacity: 0.3;
+}
+
+/* Level 1: Dim */
+.fire-container-1::before {
+  background: linear-gradient(to top, #ff4500 20%, transparent 70%);
+  opacity: 0.5;
+  animation: dimFlame 3s infinite ease-in-out;
+}
+
+/* Level 2: Lit */
+.fire-container-2::before {
+  background: linear-gradient(to top, #ff4500 30%, #ff8c00 60%, transparent 90%);
+  opacity: 0.7;
+  animation: litFlame 2s infinite ease-in-out;
+}
+
+/* Level 3: On Fire */
+.fire-container-3::before {
+  background: linear-gradient(to top, #ff4500 40%, #ff8c00 70%, #ffd700 90%, transparent);
+  opacity: 0.85;
+  animation: fireFlame 1.5s infinite ease-in-out;
+}
+
+/* Level 4: More Fire */
+.fire-container-4::before {
+  background: linear-gradient(to top, #ff2000 50%, #ff4500 70%, #ff8c00 85%, #ffd700 95%, transparent);
+  opacity: 0.9;
+  animation: moreFireFlame 1.2s infinite ease-in-out;
+}
+
+/* Level 5: BURN */
+.fire-container-5::before {
+  background: linear-gradient(to top, #ff0000 60%, #ff2000 75%, #ff4500 85%, #ff8c00 95%, #ffd700);
+  opacity: 1;
+  animation: burnFlame 0.8s infinite ease-in-out;
+}
+
+/* Flame Animations */
+@keyframes dimFlame {
+  0%, 100% { transform: scaleY(0.9); opacity: 0.5; }
+  50% { transform: scaleY(1); opacity: 0.6; }
+}
+
+@keyframes litFlame {
+  0%, 100% { transform: scaleY(0.85) translateX(-5px); opacity: 0.7; }
+  50% { transform: scaleY(1.05) translateX(5px); opacity: 0.8; }
+}
+
+@keyframes fireFlame {
+  0%, 100% { transform: scaleY(0.8) translateX(-8px); opacity: 0.85; }
+  50% { transform: scaleY(1.1) translateX(8px); opacity: 0.95; }
+}
+
+@keyframes moreFireFlame {
+  0%, 100% { transform: scaleY(0.75) translateX(-10px); opacity: 0.9; }
+  25% { transform: scaleY(1.15) translateX(10px); opacity: 1; }
+  75% { transform: scaleY(1.1) translateX(-5px); opacity: 0.95; }
+}
+
+@keyframes burnFlame {
+  0% { transform: scaleY(0.7) translateX(-15px); opacity: 0.9; }
+  25% { transform: scaleY(1.2) translateX(15px); opacity: 1; }
+  50% { transform: scaleY(0.9) translateX(-10px); opacity: 0.95; }
+  75% { transform: scaleY(1.25) translateX(10px); opacity: 1; }
+}
