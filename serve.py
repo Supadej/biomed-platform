@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 import permissions_policy as policy
 import integration_api
 import crm_api,crm_http
+import staff_modules
 import budget_demo_comparison
 from public_website import project_public
 from website_files import decode_upload,public_reference,validate_references
@@ -46,6 +47,7 @@ def initialize():
         if portal and portal[0]:
             value=json.loads(portal[0])
             if policy.migrate_portal(value):c.execute("UPDATE workspace SET value=?,revision=revision+1 WHERE key='biomed_portal_v33_clean'",(encode(value),))
+        staff_modules.init(c)
         budget_demo_comparison.apply(c)
 def encode(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'))
 def project(c,value):
@@ -144,6 +146,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
     def key(self):return unquote(urlsplit(self.path).path[len('/api/storage/'):])
     def do_GET(self):
         path=urlsplit(self.path).path
+        if path.startswith('/api/staff-crm/'):return self.staff_module_request('GET')
         if path.startswith(('/biomedapi/','/api/crm/','/crm/storage/')) or re.fullmatch(r'/crm/assets/profile/[a-f0-9-]{36}\.jpg',path):return self.crm_request('GET')
         if path=='/api/preferences/quick-access':return self.quick_preferences('GET')
         if path.startswith('/api/integrations/'):
@@ -185,6 +188,24 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         if path=='/app.html':
             self.send_response(302);self.send_header('Location','/biomed-is.html');self.end_headers();return
         super().do_GET()
+    def staff_module_request(self,method):
+        actor=session_account(self)
+        if not actor:return self.reply(401,{'error':'Sign in through Staff Portal first'})
+        if method!='GET' and not valid_origin(self):return self.reply(403,{'error':'Invalid origin'})
+        try:
+            parts=urlsplit(self.path).path.strip('/').split('/')
+            if len(parts)!=4:raise ValueError('Invalid Staff Portal route')
+            _,_,module,action=parts
+            body={}
+            if method!='GET':
+                n=int(self.headers.get('Content-Length','0'))
+                if n<0 or n>1024*1024:raise ValueError('Maximum request size is 1MB')
+                body=json.loads(self.rfile.read(n)) if n else {}
+            with connect() as c:
+                result=staff_modules.handle(c,module,action,method,body,account_permissions(actor),actor,parse_qs(urlsplit(self.path).query))
+            return self.reply(200,result)
+        except PermissionError as e:return self.reply(403,{'error':str(e)})
+        except (ValueError,TypeError,KeyError,sqlite3.Error) as e:return self.reply(400,{'error':str(e)})
     def integration_request(self,method):
         actor=session_account(self)
         if not actor:return self.reply(401,{'error':'Sign in required'})
@@ -222,6 +243,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         except (ValueError,TypeError):return self.reply(400,{'error':'Invalid preferences'})
     def do_POST(self):
         path=urlsplit(self.path).path
+        if path.startswith('/api/staff-crm/'):return self.staff_module_request('POST')
         if path.startswith(('/biomedapi/','/api/crm/','/crm/storage/')) or re.fullmatch(r'/crm/assets/profile/[a-f0-9-]{36}\.jpg',path):return self.crm_request('POST')
         if path=='/api/preferences/quick-access':return self.quick_preferences('POST')
         if path.startswith('/api/integrations/'):
