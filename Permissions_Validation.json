@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "server_http_auth_and_actions": "passed",
+    "custom_role_without_reserved_role_name": "passed",
+    "transaction_and_master_action_denials": "passed",
+    "revenue_cogs_salary_isolation": "passed",
+    "separate_budget_approval_stages": "passed",
+    "hidden_records_preserved_during_partial_saves": "passed",
+    "role_escalation_denied": "passed",
+    "permission_removal_survives_restart": "passed",
+    "portal_session_and_catalog_simulated_dom": "passed",
+    "is_and_budget_simulated_dom": "passed",
+    "concurrent_merge": "passed"
+  },
+  "permission_count": 583,
+  "validation_limit": "UI rendering tested with a simulated DOM; a native browser session was not exercised in this environment."
+}
