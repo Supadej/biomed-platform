@@ -12,7 +12,7 @@ chmod +x START_ON_MAC.command
 ./START_ON_MAC.command
 ```
 
-- Staff Portal: http://127.0.0.1:8765/?portal=1. Sign in with `testadmin@example.invalid` and password `TEST-Only-ChangeMe-2026!`. Other sample accounts use the same password: `testdirector@example.invalid`, `testops@example.invalid`, `testmanager@example.invalid`, `testaccounting@example.invalid`, `testemployee1@example.invalid`, and `testemployee2@example.invalid`. These credentials are for this fictional test database only; change or delete them before any shared deployment.
+- Staff Portal: http://127.0.0.1:8765/?portal=1. Use an account from your existing database. This ZIP contains no seeded test accounts. For a deliberately fresh installation, create the first administrator with python3 setup_admin.py.
 - Biomed IS: http://127.0.0.1:8765/biomed-is.html
 - Budgeting: http://127.0.0.1:8765/biomed-budget.html
 
@@ -26,7 +26,7 @@ Budgeting includes FY2026 and FY2027, each with 39 product lines, 144 expense li
 
 ## Suggested tests
 
-1. Sign in as `testadmin@example.invalid` with the test-only password above. The sample administrator can access the modules based on its role permissions. Then open Biomed IS or Budgeting from the shared application navigation.
+1. Sign in with your configured administrator account. The sample administrator can access the modules based on its role permissions. Then open Biomed IS or Budgeting from the shared application navigation.
 2. View Stock Inventory. Product TEST-P003 has a held lot; TEST-OLD lots are expired. Product TEST-P040 is inactive and has no stock.
 3. Filter document registers by Draft, Pending or Approved. Open the document trace to follow a purchasing or sales chain. Approved records are fixtures, not evidence that the original SQL behavior is implemented.
 4. In Portal → Quotations/Pipeline, find the approved quotation containing TEST-P026 and mark it Won with a reason, then choose whether to generate an Order. The quotation containing TEST-P031 is already Won with no order, so it offers Generate IS Order.
