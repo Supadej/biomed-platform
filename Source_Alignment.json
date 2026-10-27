@@ -1,0 +1,114 @@
+{
+  "basis": "biomed23.zip",
+  "documents": {
+    "quotation": {
+      "source": "Quotation.aspx",
+      "headerFields": 36,
+      "lineFields": 10
+    },
+    "sales-order": {
+      "source": "Order.aspx",
+      "headerFields": 40,
+      "lineFields": 11
+    },
+    "customer-order": {
+      "source": "Order.aspx",
+      "headerFields": 40,
+      "lineFields": 11
+    },
+    "invoice": {
+      "source": "Invoice.aspx",
+      "headerFields": 36,
+      "lineFields": 11
+    },
+    "borrowing": {
+      "source": "Borrow.aspx",
+      "headerFields": 35,
+      "lineFields": 8
+    },
+    "withdrawal": {
+      "source": "Withdrawal.aspx",
+      "headerFields": 12,
+      "lineFields": 0
+    },
+    "credit-note": {
+      "source": "Creditnote.aspx",
+      "headerFields": 11,
+      "lineFields": 4
+    },
+    "purchase-order": {
+      "source": "PO.aspx",
+      "headerFields": 20,
+      "lineFields": 11
+    },
+    "supplier-confirm": {
+      "source": "PO_Confirm.aspx",
+      "headerFields": 28,
+      "lineFields": 12
+    },
+    "delivery-in": {
+      "source": "I_StockIN.aspx",
+      "headerFields": 6,
+      "lineFields": 18
+    },
+    "delivery-out": {
+      "source": "I_Stock_Out.aspx",
+      "headerFields": 0,
+      "lineFields": 6
+    },
+    "check-in": {
+      "source": "CheckIn.aspx",
+      "headerFields": 1,
+      "lineFields": 6
+    },
+    "check-out": {
+      "source": "CheckOut.aspx",
+      "headerFields": 1,
+      "lineFields": 4
+    },
+    "return-product": {
+      "source": "Return_Product.aspx",
+      "headerFields": 22,
+      "lineFields": 4
+    },
+    "stock-count": {
+      "source": "Check_Stock.aspx",
+      "headerFields": 0,
+      "lineFields": 5
+    },
+    "stock-transfer": {
+      "source": "I_Stock_Move.aspx",
+      "headerFields": 0,
+      "lineFields": 6
+    }
+  },
+  "masters": {
+    "customers": {
+      "source": "M_Customer.aspx",
+      "fields": 23
+    },
+    "suppliers": {
+      "source": "M_Supplier.aspx",
+      "fields": 9
+    },
+    "products": {
+      "source": "M_Product.aspx",
+      "fields": 18
+    },
+    "warehouses": {
+      "source": "M_Area_store.aspx",
+      "fields": 10
+    }
+  },
+  "extensionsWithoutDedicatedOriginalPage": [
+    "purchase-request",
+    "debit-note",
+    "payment-receipt",
+    "stock-adjust"
+  ],
+  "limits": [
+    "Database-driven dropdown options, original numbering and SQL approval conditions require database verification.",
+    "Original report templates are indexed; local reports remain independent.",
+    "Browser-local storage is not sized for a 300,000-product catalogue."
+  ]
+}
