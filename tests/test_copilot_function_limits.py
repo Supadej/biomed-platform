@@ -31,7 +31,7 @@ class Limits(unittest.TestCase):
   self.assertEqual(len(ids),len(set(ids)))
   for key in ['portal.expenses','portal.payments','portal.hrprofiles','portal.calendar','crm.leads','crm.tickets','crm.activities','is.purchase-order','is.invoice','budget.products','budget.ledger']:
    self.assertIn(key,ids)
-  self.assertFalse(next(r for r in rows if r['id']=='portal.hrprofiles')['connected'])
+  self.assertTrue(all(r["connected"] for r in rows))
  def test_validation_and_role_revocation(self):
   with self.assertRaises(ValueError):access.validate({'functions':{'arbitrary.sql':True}})
   with self.assertRaises(ValueError):access.validate({'functions':{'portal.tasks':'true'}})
