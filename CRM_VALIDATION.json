@@ -1,0 +1,16 @@
+{
+  "baseCommit": "d227472",
+  "catalogVersion": 6,
+  "crmPermissionCount": 153,
+  "sqlSchemaTableCount": 37,
+  "pythonRegressionTests": 49,
+  "crmRegressionTests": 10,
+  "existingJavaScriptChecks": "workflow, autocomplete, language and website suites passed",
+  "crmScriptSyntax": "all top-level CRM scripts passed node --check",
+  "localAssets": "no missing local script/style/image references in CRM HTML",
+  "browserAcceptance": "Not performed; desktop/mobile deployment acceptance required",
+  "sourceOriginalArchiveSha256": "f86c04a09e7efe37127ec0474d7a87225571247117cdf995ba2123a31eafea0f",
+  "databaseRuntime": "SQLite",
+  "SQLServer": "2012 staging schema and export utility; no runtime adapter",
+  "deployment": "download only; not pushed to GitHub or deployed to Railway"
+}
