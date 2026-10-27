@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "permissions": [
     {
       "key": "is_view",
@@ -6347,6 +6347,30 @@
       "action": "edit",
       "legacy": "catalogue_manager",
       "introduced": 8
+    },
+    {
+      "key": "ai.internal.use",
+      "module": "ai",
+      "label": "Use internal AI assistant",
+      "group": "AI assistants",
+      "action": "view",
+      "introduced": 9
+    },
+    {
+      "key": "ai.developer",
+      "module": "ai",
+      "label": "Use developer guidance assistant",
+      "group": "AI assistants",
+      "action": "view",
+      "introduced": 9
+    },
+    {
+      "key": "ai.settings.manage",
+      "module": "ai",
+      "label": "Manage website and internal AI switches",
+      "group": "AI assistants",
+      "action": "manage",
+      "introduced": 9
     }
   ],
   "transactions": {

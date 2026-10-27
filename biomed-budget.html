@@ -230,4 +230,4 @@ const budgetActionFunctions=['newFiscalYear','switchFiscalYear','updateBudget','
 for(const name of budgetActionFunctions){const original=window[name];window[name]=function(...args){if(!BiomedPermissions.require(budgetRequired(name,args))){args[0]?.preventDefault?.();return}return original.apply(this,args)}}
 
 if(new URLSearchParams(location.search).get('tab')==='is_bridge')appTab='is_bridge';render();
-</script><script src="search-favorites.js?v=2"></script></body></html>
+</script><script src="search-favorites.js?v=2"></script><script src="/internal-ai-widget.js" defer></script></body></html>

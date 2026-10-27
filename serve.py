@@ -14,6 +14,7 @@ import crm_api,crm_http,portal_crm
 import budget_demo_comparison
 import portal_extensions
 import web_catalog
+import ai_chat_api
 from public_website import project_public
 from website_files import decode_upload,public_reference,validate_references
 from urllib.parse import quote,parse_qs
@@ -26,6 +27,7 @@ def initialize():
     with connect() as c:
         integration_api.initialize(c)
         web_catalog.init(c)
+        ai_chat_api.init(c)
         crm_api.initialize(c)
         portal_crm.initialize(c)
         c.executescript('''
@@ -152,6 +154,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
     def key(self):return unquote(urlsplit(self.path).path[len('/api/storage/'):])
     def do_GET(self):
         path=urlsplit(self.path).path
+        if path.startswith('/api/ai/'):return ai_chat_api.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
         if path.startswith('/api/catalog/') and path!='/api/catalog/enquiry':return web_catalog.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
         if path.startswith(('/biomedapi/','/api/crm/','/crm/storage/')) or re.fullmatch(r'/crm/assets/profile/[a-f0-9-]{36}\.jpg',path):return self.crm_request('GET')
         if path in ['/api/preferences/search-favorites','/api/portal/quotation-snapshot'] or path.startswith('/api/portal/attachments'):return portal_extensions.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
@@ -229,6 +232,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         except (ValueError,TypeError):return self.reply(400,{'error':'Invalid preferences'})
     def do_POST(self):
         path=urlsplit(self.path).path
+        if path.startswith('/api/ai/'):return ai_chat_api.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
         if path.startswith('/api/catalog/'):return web_catalog.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
         if path.startswith(('/biomedapi/','/api/crm/','/crm/storage/')) or re.fullmatch(r'/crm/assets/profile/[a-f0-9-]{36}\.jpg',path):return self.crm_request('POST')
         if path in ['/api/preferences/search-favorites','/api/portal/quotation-snapshot'] or path.startswith('/api/portal/attachments'):return portal_extensions.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
