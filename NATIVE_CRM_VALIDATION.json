@@ -1,0 +1,59 @@
+{
+  "python_tests": 78,
+  "result": "passed",
+  "native_form_tests": 10,
+  "workflow_board_tests": 7,
+  "interaction_checks": [
+    "Calendar cell quick creation and existing event editing",
+    "Odoo-style forms, inline items, Save/Discard and Save & New",
+    "Custom sales stage creation, rename, colour and reordering",
+    "Sales Plan target cards and exact 100% incentive threshold matching",
+    "Persistent native drag/drop and accessible Move to control",
+    "Occupied sales stage removal with reassignment",
+    "Helpdesk custom stages and touch-handle movement",
+    "Project-specific stages and activity completion state",
+    "Details expansion/collapse across all requested trackers",
+    "Linked payment source details and leave/training evidence controls",
+    "Incentive editing preserves existing claim terms and amounts",
+    "Demo submission and approval controls",
+    "Named favorites restore filters after navigation; hidden parent rows hide details",
+    "Native CRM favorite restores register, product line and search through asynchronous redraws via the real API",
+    "Non-leave requests omit leave category, including historical polluted records",
+    "All row actions grouped; responsive grids and in-flow favorite panels",
+    "850 linked quotations filtered/paginated at 40 rows with one source read per draw",
+    "Thin source snapshots exclude product/stock masters; details loaded lazily",
+    "Batched and legacy favorite restoration for sales, tender and pipeline",
+    "Real-API favorites restore calendar date/view and native module filters",
+    "No duplicate Activity board shortcut while Activities selected",
+    "Shared rolling defaults and Bangkok/month-end/leap-year boundaries",
+    "Actual Budgeting initialization and no-overlap fiscal-year ranges",
+    "IS initial/navigation/Clear date defaults",
+    "Stored ISO dates support localized table displays",
+    "Structured commercial details with six-column items and collapsed legacy data",
+    "Follow-up form and details toggle stack in one action group"
+  ],
+  "summary_rules": [
+    "Lost stages excluded from expected sales",
+    "Only THB expected sales contribute to THB incentive comparisons",
+    "Overlapping scheme totals deduplicated by representative/product/month",
+    "Original 100% actual attainment link gate preserved"
+  ],
+  "visual_browser_check": "Local browser preview URL was blocked. No real visual device check is claimed; DOM interactions and layout rules were checked.",
+  "supplied_database_unchanged": true,
+  "portal_extension_tests": 12,
+  "favorite_systems": [
+    "Staff Portal",
+    "Biomed IS",
+    "Budgeting"
+  ],
+  "new_leave_attachments": "Private server SQLite storage; authenticated record-bound access",
+  "legacy_training_attachments": "Existing browser IndexedDB; can only open files available in that browser",
+  "release": "portal-date-defaults-20261026",
+  "date_defaults": {
+    "timezone": "Asia/Bangkok",
+    "from": "same calendar day in previous month",
+    "to": "same calendar day in next month",
+    "month_end": "clamped to valid day",
+    "budget": "corresponding months intersect selected fiscal year"
+  }
+}
