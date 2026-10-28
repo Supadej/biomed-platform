@@ -1,2 +1,0 @@
-cryptography>=42
-PyMuPDF>=1.24
