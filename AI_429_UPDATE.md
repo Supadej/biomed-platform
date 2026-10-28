@@ -1,0 +1,1 @@
+HTTP 429 messages now distinguish exhausted credit balances, quota, organization/project spending limits, and temporary rate limits. Unknown 429 codes are identified as undiagnosed instead of assumed temporary. Error classification and history tests pass locally. Actual API account limits must be checked in OpenAI billing and limits; no live API request was performed.
