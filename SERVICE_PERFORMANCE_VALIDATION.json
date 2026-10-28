@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-28",
+  "deployment": "Local package only; not deployed",
+  "verification": {
+    "backend": [
+      "Daily numbering formats, rollover, shared CN/BMDS counters, concurrent allocation, history preservation, authorized backup restore",
+      "Controlled brand/model/location lists, stale reference edits, source-master parts, job-owned lines, employee eligibility",
+      "CRM names and deduplicated sales-area incentive comparisons; existing CRM form transactions and scopes",
+      "Historical service imports, service permissions, job uniqueness, borrowing invariants and table preferences"
+    ],
+    "browser": [
+      "Immediate totals and retained input focus in revenue, COGS, administrative expense, incentives and Other Cost of Sales",
+      "Saved a completed service job with an IS-backed part and automatic two-digit-year BMDS number, without creating a separate part-change record",
+      "Service performance dashboard at 390, 768 and 1440 pixels",
+      "External Helpdesk controlled form and analysis; Sales Plan product and area target charts; no browser JavaScript errors",
+      "All 16 relevant budget tabs retain twelve visible fiscal months"
+    ],
+    "regression": [
+      "Existing transaction workflows and permission UI",
+      "Table rename, reorder and hide preserves handlers",
+      "Staff Portal record details and named favorites"
+    ],
+    "projectActionLayout": {
+      "widths": [
+        320,
+        390,
+        640,
+        768,
+        1024,
+        1440,
+        2048
+      ],
+      "checkedGroups": 14,
+      "result": "No button overlap; gaps at least 10px; buttons remain within their action containers"
+    },
+    "helpdeskInstrumentPicker": {
+      "backendTests": 6,
+      "browser": "Search selection, canonical serial and linked fields, saved stable ID, history link, reverse instrument ticket history, picker containment at 390/768/1440px",
+      "historicalMigration": "Only unique serial/alias matches receive IDs; original snapshots retained"
+    },
+    "helpdeskServiceReferrals": {
+      "backendTests": 5,
+      "browser": [
+        "One ticket to two service jobs and one movement",
+        "Create new ticket from movement and save referral atomically",
+        "Link existing job from Helpdesk",
+        "Read-through parts, labor and service data from linked jobs",
+        "Revised Helpdesk controls and auto-selected brand/model",
+        "Referral action and source ticket forms at 390, 768 and 1440px",
+        "No browser errors; independent ticket attributes retained"
+      ],
+      "database": "Optional referral relation indexed by ticket ID; referral changes audited; no historical job-to-ticket links guessed"
+    },
+    "helpdeskCleanWorkspace": {
+      "tables": [
+        "Service Jobs",
+        "Spare Parts Used",
+        "Movements"
+      ],
+      "duplicateFooterRemoved": true,
+      "fees": "Saved and validated; before Currency; Customer Acceptance on following row",
+      "widths": [
+        320,
+        390,
+        640,
+        768,
+        1024,
+        1440
+      ],
+      "pickerInputButtonGapPx": 16
+    },
+    "minutesAcknowledgement": {
+      "backendTests": 7,
+      "access": "Only selected published recipients, owner or authorized coordinator; recipients cannot edit or export other acknowledgements",
+      "browser": [
+        "HR navigation",
+        "Create and publish to selected employee",
+        "Acknowledge current revision",
+        "Publish new revision resets current acknowledgement",
+        "Form containment at 390, 768 and 1440px"
+      ],
+      "database": "Records, revision snapshots, per-employee acknowledgements and audit tables",
+      "browserErrors": 0
+    }
+  },
+  "limitations": [
+    "No deployment performed",
+    "No response-time SLA or first-time-fix rate inferred from historical records without reliable timestamps",
+    "Multi-area sales employee targets remain explicitly unallocated, not duplicated",
+    "Unlinked historical spare parts require declaration of a matching Biomed IS product before use on new jobs"
+  ]
+}
