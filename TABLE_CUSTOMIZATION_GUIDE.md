@@ -1,0 +1,21 @@
+# Table column customization — Staff Portal, Biomed IS and Budgeting
+
+Open Columns immediately above a table. Select visible columns, edit heading names and use the arrows to reorder supported flat tables. Save columns persists the layout for your signed-in account and that table/view. Restore defaults removes the saved layout. Actions/Details remain visible. Settings do not change source records, approval permissions or calculations. Existing Instrument Service register customization stays in place; other service detail/history tables receive the shared control.
+
+The shared script is included in Staff Portal, Biomed IS, Budgeting and the associated service, integration, catalogue and administration pages. It discovers tables with header rows, including tables created after filtering/navigation and tables in dialogs. Public website tables are excluded from the Staff Portal page. Tables without header rows are not changed. Preferences are scoped by application, view and original table structure; a materially changed table schema receives a new layout. Multiple same-structure tables in a view are distinguished by their occurrence order. Preferences are private to the authenticated account and stored in table_layouts in the existing SQLite database.
+
+Merged/grouped tables support header renaming and column visibility, including adjustment of merged heading/detail spans. Reordering is intentionally disabled on merged/grouped structures or partial-span totals because arbitrary movement would misalign those relationships. Flat tables permit reordering. Cells are moved rather than cloned, retaining existing inputs and handlers. CSV exports and separate formal print/report templates keep their existing source definitions; screen layouts do not rewrite those outputs. On-screen printing uses the displayed table and hides the Columns editor.
+
+No new business-role permission is required to customize your own display. Authentication, origin checking, payload validation and per-account isolation are enforced on /api/table-layouts. The service never modifies business records. Data access remains governed by the original module permissions.
+
+Deployment: replace application files and restart; retain the existing database. Startup adds the preference table. Existing data and all prior service/borrowing/job-number fixes are included. This package has not been deployed to the live service.
+
+Validation: four preference API tests cover authentication, origin, account isolation, persistence, reset and invalid payloads. DOM tests cover rename/hide/reorder/reset, retained editable inputs and button handlers, new rows, action columns, merged Budgeting headings and expanded detail spans. Existing Portal detail, service, and workflow tests pass. Chromium rendered representative Staff Portal requests, Biomed IS borrowing and Budgeting report tables at 320, 390, 768, 1024 and 1440px; column-editor panels fit the available widths with no row overlap or page JavaScript errors in those checks. This is representative verification, not an exhaustive visual audit of every page or table.
+
+
+## Unified Instrument Service control and Budgeting alignment
+Instrument Service now uses the same compact Columns summary and panel/row styling as the shared table editor. Existing per-account/per-tab Instrument Service preferences remain intact; no duplicate Columns control is added.
+
+Budgeting now identifies numeric columns from numeric cells and number inputs, aligns their headers and values to the right using matching padding, and retains left alignment for textual labels. Numeric entry boxes use the same cell edge. The alignment pass reruns after navigation, row updates and column reordering; it does not modify values, formulas or export definitions.
+
+DOM tests cover numeric/text/header/input alignment and reordered columns. A rendered Chromium check visited all 29 Budgeting tabs and found 48 tables, with 178 numeric header/value pairs in their checked rows correctly aligned. The P&L tables and service Columns panel were checked at 320, 390, 768, 1024 and 1440px. Screenshots were inspected internally; no page JavaScript errors were reported. The check covers rendering and column alignment, not financial reconciliation of the underlying amounts.
