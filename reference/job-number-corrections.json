@@ -1,0 +1,590 @@
+[
+  {
+    "kind": "service",
+    "id": "025face2-1a45-5e0d-bea0-518b3aa8a464",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)"
+  },
+  {
+    "kind": "service",
+    "id": "03e8e645-a76d-5d89-8201-3259726f2173",
+    "old": "BNH Hospital",
+    "new": "BNH HOSPITAL"
+  },
+  {
+    "kind": "service",
+    "id": "22ccbe8b-3212-5025-94eb-2cfae1e92119",
+    "old": "ST",
+    "new": "ST-02"
+  },
+  {
+    "kind": "service",
+    "id": "23c3467a-cd0b-51ec-8baa-964133fe4446",
+    "old": "",
+    "new": "JOB-2026-000001"
+  },
+  {
+    "kind": "service",
+    "id": "24c2b8e0-6354-5a0e-8b6e-86a9c3c8f78d",
+    "old": "ST",
+    "new": "ST-03"
+  },
+  {
+    "kind": "service",
+    "id": "29519775-8838-55f9-808b-033dce31f04a",
+    "old": "",
+    "new": "JOB-2026-000002"
+  },
+  {
+    "kind": "service",
+    "id": "2990c11e-9d00-515c-922b-c52e3efaf415",
+    "old": "Phyathai3 Hospital",
+    "new": "PHYATHAI3 HOSPITAL"
+  },
+  {
+    "kind": "service",
+    "id": "29cea071-94b4-58bf-8352-7507cb2811d1",
+    "old": "SU",
+    "new": "SU-02"
+  },
+  {
+    "kind": "service",
+    "id": "2adb0644-3920-5ffd-b8d7-91c573d63d81",
+    "old": "",
+    "new": "JOB-2026-000003"
+  },
+  {
+    "kind": "service",
+    "id": "2b08c1c6-e88a-5f6d-93ad-f74e8d25a7ff",
+    "old": "SU",
+    "new": "SU-03"
+  },
+  {
+    "kind": "service",
+    "id": "310f2473-225e-5aa4-bd1a-0d0baff2ca7d",
+    "old": "SQ",
+    "new": "SQ-02"
+  },
+  {
+    "kind": "service",
+    "id": "342dbded-10ce-5c1b-bf48-cd963999820d",
+    "old": "Service team",
+    "new": "SERVICE TEAM"
+  },
+  {
+    "kind": "service",
+    "id": "3efb6fec-412f-5efa-96c3-e51a6014709a",
+    "old": "",
+    "new": "JOB-2026-000004"
+  },
+  {
+    "kind": "service",
+    "id": "4130a24f-5b47-54ee-9d6f-dd0c9ee128ca",
+    "old": "ST",
+    "new": "ST-04"
+  },
+  {
+    "kind": "service",
+    "id": "41e2de14-fbbd-5e91-beac-4358598e228c",
+    "old": "Panyananthaphikkhu Chonprathan Medical Center",
+    "new": "PANYANANTHAPHIKKHU CHONPRATHAN MEDICAL CENTER"
+  },
+  {
+    "kind": "service",
+    "id": "42f99c07-b834-5bfd-9e18-6ad8fa531050",
+    "old": "SQ453",
+    "new": "SQ453-02"
+  },
+  {
+    "kind": "service",
+    "id": "430b4b91-b6ab-51c2-90a1-1766c136fe4b",
+    "old": "SU",
+    "new": "SU-04"
+  },
+  {
+    "kind": "service",
+    "id": "43794bab-e4c0-58bb-8b0a-28f9fc7e412c",
+    "old": "",
+    "new": "JOB-2026-000005"
+  },
+  {
+    "kind": "service",
+    "id": "456b76f2-46e7-56db-a7e0-9e238aa5a421",
+    "old": "",
+    "new": "JOB-2026-000006"
+  },
+  {
+    "kind": "service",
+    "id": "4940ff55-ccc9-5cc0-837c-32928b10dc56",
+    "old": "",
+    "new": "JOB-2026-000007"
+  },
+  {
+    "kind": "service",
+    "id": "49efa5ff-5eeb-56db-88aa-287c3a636754",
+    "old": "Rajavithi Hospital",
+    "new": "RAJAVITHI HOSPITAL"
+  },
+  {
+    "kind": "service",
+    "id": "4d894498-d682-504e-8895-cc782513e0be",
+    "old": "SP",
+    "new": "SP-02"
+  },
+  {
+    "kind": "service",
+    "id": "5eeb7520-9427-598e-a951-066bf5b3f342",
+    "old": "",
+    "new": "JOB-2026-000008"
+  },
+  {
+    "kind": "service",
+    "id": "602d25ab-f9aa-50ba-83e0-8961f13153d5",
+    "old": "SQ",
+    "new": "SQ-03"
+  },
+  {
+    "kind": "service",
+    "id": "62f0bbe7-eebd-5872-b5e3-de051b5faec5",
+    "old": "HRH Princess Maha Chakri Sirindhorn Medical Centre",
+    "new": "HRH PRINCESS MAHA CHAKRI SIRINDHORN MEDICAL CENTRE"
+  },
+  {
+    "kind": "service",
+    "id": "66fa2b76-d8ce-51bc-9822-6a4fb0066a86",
+    "old": "Chaophraya Yommaraj Hospital",
+    "new": "CHAOPHRAYA YOMMARAJ HOSPITAL"
+  },
+  {
+    "kind": "service",
+    "id": "670c6b8c-4731-5fac-be7e-ac83886b28da",
+    "old": "SP",
+    "new": "SP-03"
+  },
+  {
+    "kind": "service",
+    "id": "6cd1803c-e08b-56a4-99cb-b3eda88231ec",
+    "old": "",
+    "new": "JOB-2026-000009"
+  },
+  {
+    "kind": "service",
+    "id": "6d2aed53-e612-5e6a-a7ce-1f9b57c1cdfa",
+    "old": "Service team",
+    "new": "SERVICE TEAM-02"
+  },
+  {
+    "kind": "service",
+    "id": "6fcc3c28-80d2-5959-85b0-f1cce383f8d2",
+    "old": "Chaophraya Yommaraj Hospital",
+    "new": "CHAOPHRAYA YOMMARAJ HOSPITAL-02"
+  },
+  {
+    "kind": "service",
+    "id": "72a043f0-cfd8-5f03-a305-4d32e4bbcd18",
+    "old": "",
+    "new": "JOB-2026-000010"
+  },
+  {
+    "kind": "service",
+    "id": "72aa696a-af18-5269-92a3-30e84c11230e",
+    "old": "SP",
+    "new": "SP-04"
+  },
+  {
+    "kind": "service",
+    "id": "7b3711dd-1361-5aa1-b58a-d301a81ef36a",
+    "old": "Job No.",
+    "new": "JOB NO."
+  },
+  {
+    "kind": "service",
+    "id": "842bb596-c587-5cb7-8a10-8443cfe417b0",
+    "old": "SQ394",
+    "new": "SQ394-02"
+  },
+  {
+    "kind": "service",
+    "id": "85e3b062-d689-5160-ab74-6c054ee71e93",
+    "old": "SQ",
+    "new": "SQ-04"
+  },
+  {
+    "kind": "service",
+    "id": "885f8913-a67f-5695-b0ef-5ae3eba15c6e",
+    "old": "Service team",
+    "new": "SERVICE TEAM-03"
+  },
+  {
+    "kind": "service",
+    "id": "8c244cd1-26de-53d3-aeb6-b5651a383e62",
+    "old": "",
+    "new": "JOB-2026-000011"
+  },
+  {
+    "kind": "service",
+    "id": "8ebb486e-536f-5a67-8aee-1593b7d390b6",
+    "old": "SU",
+    "new": "SU-05"
+  },
+  {
+    "kind": "service",
+    "id": "92f6d22f-8600-5a66-8962-b41e468c2343",
+    "old": "SQ",
+    "new": "SQ-05"
+  },
+  {
+    "kind": "service",
+    "id": "934b1459-d828-5ee2-afe3-a54816214ad0",
+    "old": "Service team",
+    "new": "SERVICE TEAM-04"
+  },
+  {
+    "kind": "service",
+    "id": "99d3ab12-4c9d-5508-af54-acaf7a9958ee",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-02"
+  },
+  {
+    "kind": "service",
+    "id": "9a4a4a75-79d0-507e-9a10-dd07e24f9f72",
+    "old": "",
+    "new": "JOB-2026-000012"
+  },
+  {
+    "kind": "service",
+    "id": "9d2918cf-0d45-5282-8579-b1331a9d9d96",
+    "old": "SP",
+    "new": "SP-05"
+  },
+  {
+    "kind": "service",
+    "id": "9ea74837-cc5d-5f15-afde-340a7c707b81",
+    "old": "Job No.",
+    "new": "JOB NO.-02"
+  },
+  {
+    "kind": "service",
+    "id": "a183a9ec-e62d-5176-b6c7-e1cd9dcf6d72",
+    "old": "",
+    "new": "JOB-2026-000013"
+  },
+  {
+    "kind": "service",
+    "id": "a9954156-ac86-5945-994c-ebd859ef1fb9",
+    "old": "SP",
+    "new": "SP-06"
+  },
+  {
+    "kind": "service",
+    "id": "ad6d8dce-6ab4-5125-9ae8-40c3c5f2b426",
+    "old": "Chiangmai University Hospital",
+    "new": "CHIANGMAI UNIVERSITY HOSPITAL"
+  },
+  {
+    "kind": "service",
+    "id": "af314a98-55f5-5611-a56d-5674d1a2f629",
+    "old": "SP",
+    "new": "SP-07"
+  },
+  {
+    "kind": "service",
+    "id": "b2495ab4-bd6e-5181-8d74-7224aa61b315",
+    "old": "Job No.",
+    "new": "JOB NO.-03"
+  },
+  {
+    "kind": "service",
+    "id": "b418fc47-3962-57a0-9fb2-11810fbef258",
+    "old": "SQ",
+    "new": "SQ-06"
+  },
+  {
+    "kind": "service",
+    "id": "bae1f690-baae-5b14-97ba-397f94bbd9d3",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-03"
+  },
+  {
+    "kind": "service",
+    "id": "bfb27d43-5a44-5a01-88d4-c4930ab339f0",
+    "old": "SQ",
+    "new": "SQ-07"
+  },
+  {
+    "kind": "service",
+    "id": "c0218345-0e0a-55c8-9899-b4814e1d3cef",
+    "old": "SU",
+    "new": "SU-06"
+  },
+  {
+    "kind": "service",
+    "id": "c2131f7b-3c61-5123-baf3-1ccebaf91d99",
+    "old": "SQ",
+    "new": "SQ-08"
+  },
+  {
+    "kind": "service",
+    "id": "c3267523-c120-5f09-941d-d393ed5e4882",
+    "old": "Service team",
+    "new": "SERVICE TEAM-05"
+  },
+  {
+    "kind": "service",
+    "id": "c7481934-1a31-5de4-a180-65fc8f223e6d",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-04"
+  },
+  {
+    "kind": "service",
+    "id": "c9c93c7a-aa9a-5bc4-a735-44c51bbdfe4d",
+    "old": "SQ",
+    "new": "SQ-09"
+  },
+  {
+    "kind": "service",
+    "id": "cadf82f5-fe06-5768-be78-f1077e636690",
+    "old": "SU",
+    "new": "SU-07"
+  },
+  {
+    "kind": "service",
+    "id": "d11e24cc-026b-5423-b4db-c6d854508e7c",
+    "old": "",
+    "new": "JOB-2026-000014"
+  },
+  {
+    "kind": "service",
+    "id": "d5cabca2-e4c7-5369-aff4-edf89046ccbf",
+    "old": "Service team",
+    "new": "SERVICE TEAM-06"
+  },
+  {
+    "kind": "service",
+    "id": "d9e9c5b4-ec68-5d13-8444-19c27f96ffd8",
+    "old": "",
+    "new": "JOB-2026-000015"
+  },
+  {
+    "kind": "service",
+    "id": "df589cc2-70b8-5852-b524-e10db8e6cbf8",
+    "old": "ST",
+    "new": "ST-05"
+  },
+  {
+    "kind": "service",
+    "id": "e1fc4287-9087-5f40-ad6b-dfc59cb24b62",
+    "old": "Service Team",
+    "new": "SERVICE TEAM-07"
+  },
+  {
+    "kind": "service",
+    "id": "e4f18d11-c457-53b3-80ac-28a0c0456d03",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-05"
+  },
+  {
+    "kind": "service",
+    "id": "e6106863-5c70-5a2d-a356-054870fd5745",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-06"
+  },
+  {
+    "kind": "service",
+    "id": "ea67e969-ae53-595d-91f5-fbbc1456d3eb",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-07"
+  },
+  {
+    "kind": "service",
+    "id": "eb59594d-4beb-5a16-9ff6-d45898ab1b75",
+    "old": "SU",
+    "new": "SU-08"
+  },
+  {
+    "kind": "service",
+    "id": "eced7c5f-f1de-5198-acd1-15aff2c6e98d",
+    "old": "",
+    "new": "JOB-2026-000016"
+  },
+  {
+    "kind": "service",
+    "id": "eec2eed4-df05-5ff1-997f-0a0a631b0d4c",
+    "old": "ST15",
+    "new": "ST15-02"
+  },
+  {
+    "kind": "service",
+    "id": "f1dca833-60f4-5b88-9991-7b4918ef4434",
+    "old": "Service team",
+    "new": "SERVICE TEAM-08"
+  },
+  {
+    "kind": "service",
+    "id": "f42a853a-67a9-5cbb-9ea1-5fc219923e09",
+    "old": "",
+    "new": "JOB-2026-000017"
+  },
+  {
+    "kind": "service",
+    "id": "f5be633e-db54-52b1-a24d-8e908f984b65",
+    "old": "SQ",
+    "new": "SQ-10"
+  },
+  {
+    "kind": "service",
+    "id": "f9585f0a-52cc-5ed6-b238-f5394c8d706f",
+    "old": "Biomed Diagnostics (HQ)",
+    "new": "BIOMED DIAGNOSTICS (HQ)-08"
+  },
+  {
+    "kind": "service",
+    "id": "faeab17a-e961-5033-bb86-303f86ccda79",
+    "old": "SP407",
+    "new": "SP407-02"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 1,
+    "old": null,
+    "new": "JOB-2026-000018"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 2,
+    "old": null,
+    "new": "JOB-2026-000019"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 3,
+    "old": null,
+    "new": "JOB-2026-000020"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 4,
+    "old": null,
+    "new": "JOB-2026-000021"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 5,
+    "old": null,
+    "new": "JOB-2026-000022"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 6,
+    "old": null,
+    "new": "JOB-2026-000023"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 7,
+    "old": null,
+    "new": "JOB-2026-000024"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 8,
+    "old": null,
+    "new": "JOB-2026-000025"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 9,
+    "old": null,
+    "new": "JOB-2026-000026"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 10,
+    "old": null,
+    "new": "JOB-2026-000027"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 11,
+    "old": null,
+    "new": "JOB-2026-000028"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 12,
+    "old": null,
+    "new": "JOB-2026-000029"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 13,
+    "old": null,
+    "new": "JOB-2026-000030"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 14,
+    "old": null,
+    "new": "JOB-2026-000031"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 15,
+    "old": null,
+    "new": "JOB-2026-000032"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 16,
+    "old": null,
+    "new": "JOB-2026-000033"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 17,
+    "old": null,
+    "new": "JOB-2026-000034"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 18,
+    "old": null,
+    "new": "JOB-2026-000035"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 19,
+    "old": null,
+    "new": "JOB-2026-000036"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 20,
+    "old": null,
+    "new": "JOB-2026-000037"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 21,
+    "old": null,
+    "new": "JOB-2026-000038"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 22,
+    "old": null,
+    "new": "JOB-2026-000039"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 23,
+    "old": null,
+    "new": "JOB-2026-000040"
+  },
+  {
+    "kind": "helpdesk",
+    "id": 24,
+    "old": null,
+    "new": "JOB-2026-000041"
+  }
+]
