@@ -1,0 +1,15 @@
+/* Shared spacing for dashboard metrics, filters and adjacent actions. */
+:is(#main,main,#p-view) .grid:has(>.stat){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin-block:20px}
+:is(#main,main) .stat{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;min-width:0;min-height:116px;padding:20px;box-sizing:border-box}
+:is(#main,main) .stat>small{display:block;line-height:1.4;margin:0}
+:is(#main,main) .stat>:is(strong,b){display:block;font-size:clamp(23px,2.1vw,30px);line-height:1.2;margin:0;max-width:100%;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#portal .p-grid:has(.p-stat){gap:16px;margin-block:20px;align-items:stretch}
+#portal .p-grid>.p-card:has(.p-stat){display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:116px;margin:0;padding:20px}
+#portal .p-grid .p-stat{line-height:1.2;margin:0;font-variant-numeric:tabular-nums}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters){gap:12px;align-items:end}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters)>label:has(input,select){display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters)>label>:is(input,select){margin-top:0;box-sizing:border-box;max-width:100%}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters)>:is(button,.btn,.p-btn){align-self:end;margin-bottom:0}
+:is(.row,.p-row,.pc-actions,.actions,.toolbar,.flex){gap:12px}
+:is(.row,.p-row,.pc-actions,.actions,.toolbar,.flex)>:is(button,.btn,.p-btn){max-width:100%;white-space:normal}
+@media(max-width:600px){:is(#main,main) .stat,#portal .p-grid>.p-card:has(.p-stat){padding:16px;min-height:104px}:is(#main,main,#p-view) .grid:has(>.stat){gap:12px}}
