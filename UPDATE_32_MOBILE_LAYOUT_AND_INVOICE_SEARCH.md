@@ -1,7 +1,0 @@
-# Update 32 — responsive Track Record and invoice search
-
-Track Record now uses compact, labelled cards on phone/tablet widths and a normal scrollable ledger on desktop. Job details opens in a fitted dialog with readable label/value fields, instead of expanding a nested table inside the action column. This prevents the widening, clipping and nested Columns controls shown in the screenshot. Action buttons wrap with spacing. On smaller Service Inventory screens, the workspace header scrolls away instead of covering the content.
-
-Add job parts to invoice now includes **Search draft / pending invoices**. Search by invoice reference, customer text or date. Results are restricted to the chosen customer and the service job's currency, with status and date shown. Up to 100 results are shown; refine the search for larger lists. Draft invoices are selectable. Pending-approval invoices are visible for reference but locked, preserving approval integrity. Clear the search to use Create new Draft invoice; a nonempty search requires selecting an editable matching invoice before submission.
-
-Layout checks passed at 320, 390, 768, 1024 and 1440 pixels, including page/dialog overflow and responsive card layout. Browser checks verified draft/pending invoice search, selectable drafts and locked pending results. No database quantities or billing records were changed in the packaged database. This update has not been deployed to a live server.
