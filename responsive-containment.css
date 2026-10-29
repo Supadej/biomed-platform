@@ -1,0 +1,38 @@
+/* Contain intrinsic table/control widths inside the shared workspaces. */
+:is(main,#main,#p-view,#portal .p-main,.layout>main,.shell>main){min-width:0;max-width:100%;box-sizing:border-box}
+:is(.card,.panel,.p-card,.pc-native,.pc-form,.p-form,.si-form,.form,.formgrid,.grid,.controls,.toolbar,.row,fieldset){min-width:0;box-sizing:border-box}
+:is(.card,.panel,.p-card,.pc-native,.pc-form,.p-form,.si-form,.form,.formgrid,.grid,.controls,.toolbar,.row,fieldset)>*{min-width:0;box-sizing:border-box}
+:is(.tablewrap,.table-wrap,.table-responsive,.pc-table,.p-table-wrap,.pc-line-table){min-width:0!important;max-width:100%!important;box-sizing:border-box;overflow-x:auto}
+:is(.si-form,.si-filters,.si-request-line,[data-count-lines],[data-lines],[data-content],#service-inventory-root){min-width:0;max-width:100%;box-sizing:border-box}
+.si-form{grid-template-columns:minmax(0,1fr)}
+.si-form>*{max-width:100%;min-width:0}
+.si-filters{grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr))}
+.si-form :is(select,textarea,input:not([type=checkbox]):not([type=radio])),.si-filters input{min-width:0!important;max-width:100%!important;width:100%;box-sizing:border-box;min-height:44px}
+.si-form textarea{min-width:0!important;resize:vertical}
+.si-form>button{justify-self:start;width:auto;max-width:100%;white-space:normal}
+:is(.p-form,.pc-form,.form,.formgrid) fieldset{min-inline-size:0}
+:is(dialog,.pc-dialog,.p-dialog){box-sizing:border-box;max-width:calc(100vw - 24px)}
+:is(dialog,.pc-dialog,.p-dialog) :is(form,fieldset,.form,.grid,.controls,.tablewrap,.table-wrap){min-width:0;max-width:100%}
+@media(max-width:800px){.si-filters{grid-template-columns:minmax(0,1fr)}.si-form>button[type=submit]{width:100%}
+ .si-count-table{overflow:visible!important;border:0!important}.si-count-table>table{display:block!important;min-width:0!important;width:100%!important;table-layout:auto!important}.si-count-table>table>thead{display:none!important}.si-count-table>table>tbody{display:grid;gap:14px}.si-count-table>table>tbody>tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:14px;border:1px solid #c8dce7;border-radius:10px}.si-count-table>table>tbody>tr>td{display:block;min-width:0!important;width:auto!important;max-width:100%!important;border:0!important;padding:0!important;white-space:normal!important;overflow-wrap:anywhere}.si-count-table>table>tbody>tr>td::before{content:attr(data-label);display:block;font-size:.85em;font-weight:700;color:#52768b;margin-bottom:6px}.si-count-table>table>tbody>tr>td:nth-child(2),.si-count-table>table>tbody>tr>td:last-child{grid-column:1/-1}.si-count-table>table>tbody>tr>td[colspan]:not([colspan="1"]){grid-column:1/-1}
+}
+/* The public website header must not size the document behind the portal. */
+body:has(#portal.active)>.header,body:has(#portal.active)>.topbar,body:has(#portal.active)>.footer{display:none!important}
+@media(max-width:600px){body>.header .nav{height:auto;min-height:76px;flex-wrap:wrap;gap:12px;padding-block:12px}body>.header .nav>.brand{min-width:0;flex:1 1 180px}body>.header .nav-actions{max-width:100%;margin-left:auto;flex-wrap:wrap;gap:8px}}
+/* Autocomplete lists stay in the form flow instead of covering Save/Cancel. */
+.service-search-field{min-width:0;max-width:100%}
+.service-search-results{position:static!important;inset:auto!important;width:100%;max-width:100%;max-height:min(260px,40dvh);overflow:auto;box-sizing:border-box}
+.service-search-results button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.si-count-table>table>tbody>tr>td[colspan]:not([colspan="1"])::before,.si-track-table>table>tbody>tr>td[colspan]:not([colspan="1"])::before{display:none}
+
+
+.bm-row-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;min-width:160px}
+.bm-row-actions>button{margin:0!important;min-height:40px;line-height:1.3}
+td:has(>button+button){vertical-align:middle}td>button+button{margin-left:8px;margin-top:8px}
+input[data-number-input]{text-align:right;font-variant-numeric:tabular-nums}
+.bm-admin-menu{margin-top:14px;padding-top:8px;border-top:1px solid #dce8ee;min-width:0}
+.bm-admin-menu>small{display:block;padding:10px 14px 6px;color:#698296;font:700 11px/1.4 system-ui;letter-spacing:.06em;text-transform:uppercase}
+a.bm-admin-link{display:flex!important;align-items:center;gap:10px;width:100%;box-sizing:border-box;min-height:44px;padding:12px 14px;border:0!important;border-radius:9px;text-align:left;white-space:normal;text-decoration:none;color:#466378!important;background:transparent!important;font:600 14px/1.4 system-ui;overflow-wrap:anywhere}
+a.bm-admin-link:hover,a.bm-admin-link[aria-current=page]{background:#e3f4fa!important;color:#075f91!important}
+.bm-admin-link svg{width:18px;height:18px;flex:none}.bm-admin-test{display:block;margin:4px 14px 10px;font:500 11px/1.4 system-ui;color:#865f14}
+#portal .bm-admin-menu{border-top-color:#c8dce5}#portal .bm-admin-link{font-size:13px}
