@@ -1,0 +1,36 @@
+/* Native date/time controls must size to their field, including on iPhone Safari.
+   Keep their native types/pickers and ISO values; do not replace them with text. */
+html body input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"]),
+html body :is(#portal,#main,#p-view,dialog,.pc-dialog):is(#portal,#main,#p-view,dialog,.pc-dialog) input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"]){
+ display:block!important;
+ box-sizing:border-box!important;
+ width:100%!important;inline-size:100%!important;
+ min-width:0!important;min-inline-size:0!important;
+ max-width:100%!important;max-inline-size:100%!important;
+ height:44px!important;block-size:44px!important;min-height:44px!important;
+ margin-left:0!important;margin-right:0!important;margin-inline:0!important;
+ padding:9px 10px!important;
+ flex-shrink:1!important;
+ contain:inline-size;
+ -webkit-appearance:none!important;appearance:none!important;
+ font-family:inherit;font-weight:400!important;line-height:normal!important;
+ text-align:start!important;overflow:hidden;
+}
+html body :is(label,fieldset,.field,.form-field,.control):has(>input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"])){
+ box-sizing:border-box;min-width:0!important;min-inline-size:0!important;max-width:100%;max-inline-size:100%;
+}
+/* Safari's value wrapper has its own intrinsic width and default centering. */
+input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"])::-webkit-date-and-time-value{
+ min-width:0;max-width:100%;min-height:1.3em;text-align:start;margin:0;
+}
+input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"])::-webkit-datetime-edit{
+ display:inline-flex;align-items:center;min-width:0;max-width:100%;padding:0;box-sizing:border-box;white-space:nowrap;overflow:hidden;
+}
+input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"])::-webkit-datetime-edit-fields-wrapper{padding:0;min-width:0;max-width:100%;box-sizing:border-box}
+input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"])::-webkit-calendar-picker-indicator{flex:0 0 auto;margin:0 0 0 4px;padding:2px;box-sizing:content-box;max-width:20px;cursor:pointer}
+@media(max-width:680px),(pointer:coarse){
+ /* 16 px prevents the automatic input-focus zoom on iPhone. */
+ html body input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"]),
+ html body :is(#portal,#main,#p-view,dialog,.pc-dialog):is(#portal,#main,#p-view,dialog,.pc-dialog) input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"]){font-size:16px!important}
+}
+@media print{html body input:is([type="date"],[type="datetime-local"],[type="month"],[type="week"],[type="time"]){contain:none;height:auto!important;block-size:auto!important;min-height:0!important}}
