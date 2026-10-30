@@ -10,6 +10,7 @@ import staff_directory
 import document_workflow
 import document_report
 import application_report
+import user_manual
 import borrowing
 """Mac-local SQLite persistence. No external packages or network listener."""
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
@@ -96,6 +97,8 @@ def initialize():
             if policy.migrate_portal(value):c.execute("UPDATE workspace SET value=?,revision=revision+1 WHERE key='biomed_portal_v33_clean'",(encode(value),))
         staff_directory.migrate(c)
         budget_demo_comparison.apply(c)
+        import sample_user_cleanup
+        sample_user_cleanup.apply(c)
     with connect() as c:portal_extensions.initialize(c)
 
 def encode(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'))
@@ -212,6 +215,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.private_static_path():return self.send_error(404)
         path=urlsplit(self.path).path
+        if path=='/api/user-manual':return user_manual.handle(self,connect,session_account,account_permissions)
         if path=='/api/database-admin':return database_admin.handle(self,'GET',connect,session_account,account_permissions,valid_origin,DB)
         if path=='/api/operational-brands':return operational_brands.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
         if path=='/api/express-import':return express_import.handle(self,'GET',connect,session_account,account_permissions,valid_origin)

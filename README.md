@@ -1,3 +1,13 @@
+# Biomed · Online manual and Railway edition
+
+**Start here:** [Interactive GitHub/Railway deployment guide](DEPLOY_GITHUB_RAILWAY.html) ([Markdown](DEPLOY_GITHUB_RAILWAY.md)).
+
+Sign in and choose **User manual** in the workspace header. Its content follows your saved role and action permissions. Open it through the running site, not directly as a disk file.
+
+This edition uses SQLite with a persistent Railway volume. No separate SQL Server 2022 project is included. Production entry: `python run_server.py`. Preserve the current live database and encryption keys; do not overwrite them with the bundled local/test database.
+
+[Manual update and validation](UPDATE_64_USER_MANUAL.md)
+
 [Latest update: mobile menu and report email](UPDATE_63_MOBILE_MENU_AND_REPORT_EMAIL.md)
 
 [Latest update: Application job Save](UPDATE_62_APPLICATION_JOB_SAVE.md)
