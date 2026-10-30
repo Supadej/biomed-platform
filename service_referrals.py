@@ -53,7 +53,7 @@ def create_ticket(c,actor,perms,record,values):
 def linked_records(c,actor,perms,ticket_id):
  ticket(c,actor,perms,ticket_id);initialize(c)
  if 'service.view' not in perms:return []
- return [dict(json.loads(p),version=v) for kind,p,v in c.execute('SELECT r.kind,r.payload,r.version FROM service_ticket_links l JOIN fse_records r ON r.id=l.record_id WHERE l.ticket_id=?',(int(ticket_id),)) if 'service.'+kind+'.view' in perms]
+ return [dict(json.loads(p),version=v) for kind,p,v in c.execute('SELECT r.kind,r.payload,r.version FROM service_ticket_links l JOIN fse_records r ON r.id=l.record_id WHERE l.ticket_id=?',(int(ticket_id),)) if 'service.'+kind+'.view' in perms and policy.visibility.visible(perms,'service.'+kind,json.loads(p))]
 def job_parts(c,job):
  result=[dict(p,jobId=job['id'],jobNo=job.get('jobNo'),currency=p.get('currency') or job.get('currency') or 'THB',source='Service job') for p in job.get('partsUsed',[])]
  for payload, in c.execute("SELECT payload FROM fse_records WHERE kind='replacements'"):

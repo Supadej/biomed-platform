@@ -22,7 +22,7 @@ def augment(c,actor,perms,module,functions):
  row=c.execute('SELECT value FROM workspace WHERE key=?',(key,)).fetchone()
  if not row:return {}
  # Export rights must not remove financial masks or function restrictions.
- perms=set(perms)-{'is.backup.export','budget.settings.backup'}
+ perms=perms.copy();perms.discard('is.backup.export');perms.discard('budget.settings.backup')
  for item in copilot_functions.catalog():
   if item['system']==module and functions is not None and not functions.get(item['id'],False):perms.discard(item['permission'])
  data=json.loads(policy.read_filter(perms,key,row[0]));out={}

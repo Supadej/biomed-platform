@@ -32,6 +32,16 @@ class Live(unittest.TestCase):
     with self.assertRaises(urllib.error.HTTPError) as expired:
      anonymous.open(urllib.request.Request(url+key,method='PUT',data=json.dumps({'value':returned['value'],'revision':returned['revision']}).encode(),headers={'Content-Type':'application/json','Origin':url}))
     self.assertEqual(expired.exception.code,401)
+    # Role lifecycle uses the same authenticated production transport.
+    with serve.connect() as c:
+     row=c.execute("SELECT value FROM workspace WHERE key='biomed_portal_v33_clean'").fetchone();portal=json.loads(row[0]);portal['roles']['Rename test']=[];c.execute("UPDATE workspace SET value=?,revision=revision+1 WHERE key='biomed_portal_v33_clean'",(json.dumps(portal),))
+    state=json.load(client.open(url+'/api/role-admin'))
+    change={'action':'rename','role':'Rename test','name':'Renamed test','revision':state['revision']}
+    request=urllib.request.Request(url+'/api/role-admin',data=json.dumps(change).encode(),headers={'Content-Type':'application/json','Origin':url})
+    self.assertEqual(json.load(client.open(request))['role'],'Renamed test')
+    state=json.load(client.open(url+'/api/role-admin'));change={'action':'delete','role':'Renamed test','revision':state['revision']}
+    request=urllib.request.Request(url+'/api/role-admin',data=json.dumps(change).encode(),headers={'Content-Type':'application/json','Origin':url})
+    self.assertTrue(json.load(client.open(request))['saved'])
     for method in ['GET','HEAD']:
      with self.assertRaises(urllib.error.HTTPError) as private:
       client.open(urllib.request.Request(url+'/company-staff-roster-69.json',method=method))

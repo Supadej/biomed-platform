@@ -77,7 +77,7 @@ def guard(old,new):
 def mutate(c,actor,perms,body):
  policy.need(perms,'is_view');row=c.execute('SELECT value,revision FROM workspace WHERE key=?',(KEY,)).fetchone();data=json.loads(row[0]);docs=data.get('documents',[]);d=next((x for x in docs if x['id']==body.get('id')),None)
  if not d:raise ValueError('Document unavailable')
- kind=d['kind'];policy.need(perms,'is.'+kind+'.view')
+ kind=d['kind'];policy.visibility.need(perms,'is.'+kind,d);policy.need(perms,'is.'+kind+'.view')
  if body.get('revision')!=len(d.get('history',[])):raise ValueError('Document changed; refresh before continuing')
  if d.get('status') not in POSTED:raise ValueError('Only approved documents can use this action')
  now=datetime.datetime.now(datetime.timezone.utc).isoformat();reason=str(body.get('reason','')).strip();action=body.get('action')
@@ -129,7 +129,7 @@ def handle(h,method,connect,session,permissions,origin):
     if not isinstance(body,dict):raise ValueError('Invalid workflow request')
     result=mutate(c,actor,perms,body)
    else:
-    row=c.execute('SELECT value FROM workspace WHERE key=?',(KEY,)).fetchone();data=json.loads(row[0]) if row else {};docs=data.get('documents',[]);result={d['id']:projection(d,docs) for d in docs if 'is.'+d['kind']+'.view' in perms}
+    row=c.execute('SELECT value FROM workspace WHERE key=?',(KEY,)).fetchone();data=json.loads(row[0]) if row else {};docs=data.get('documents',[]);result={d['id']:projection(d,docs) for d in docs if policy.visibility.is_visible(perms,d)}
   return h.reply(200,result)
  except policy.PermissionDenied as e:return h.reply(403,{'error':str(e)})
  except (ValueError,KeyError,TypeError) as e:return h.reply(400,{'error':str(e)})

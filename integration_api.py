@@ -43,6 +43,9 @@ def handle(handler,direction,action,year,body,connection,actor,perms,project):
  if direction not in ['is-portal','portal-budget']:raise ValueError('Unknown bridge')
  module='portal.integration_is' if direction=='is-portal' else 'budget.portal_bridge'
  policy.need(perms,module+'.view')
+ if policy.visibility.contextual(perms) and not policy.visibility.admin(perms):
+  relevant=[m for m in policy.visibility.modules() if m.startswith('is.') or m.startswith('portal.')]
+  if any(policy.visibility.scope(perms,m)!='all' for m in relevant):raise policy.PermissionDenied('Company-wide reconciliation requires System Admin; normal document access follows your record visibility')
  if direction=='portal-budget':policy.need(perms,'budget_view')
  key=direction if direction=='is-portal' else direction+':'+str(year)
  default=engine.IS_DEFAULT if direction=='is-portal' else engine.BUDGET_DEFAULT

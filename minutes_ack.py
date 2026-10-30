@@ -18,7 +18,7 @@ def people(c):
  return [dict(id=str(u['id']),name=accounts.get(str(u['id']),(u.get('name',''),0))[0],department=u.get('department',''),active=u.get('active',True) is not False and not accounts.get(str(u['id']),('',0))[1]) for u in portal.get('users',[]) if u.get('id')]
 def manager(perms):return 'portal.minutes.manage' in perms
 def can_edit(r,pid,perms):return manager(perms) or r['owner']==pid and 'portal.minutes.edit' in perms
-def visible(r,pid,perms):return manager(perms) or r['owner']==pid or r['status']=='Published' and pid in r['employees']
+def visible(r,pid,perms):return policy.visibility.visible(perms,'portal.minutes',r) and (manager(perms) or r['owner']==pid or r['status']=='Published' and pid in r['employees'])
 def get(c,ident,pid,perms):
  row=c.execute('SELECT payload,version FROM minutes_records WHERE id=?',(ident,)).fetchone()
  if not row:raise ValueError('Document not found')

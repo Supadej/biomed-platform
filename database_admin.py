@@ -97,6 +97,7 @@ def handle(h,method,connect,session,permissions,origin,db):
  if not actor:return h.reply(401,{'error':'Sign in required'})
  try:
   perms=permissions(actor);policy.need(perms,'system.database.view')
+  if policy.visibility.contextual(perms) and not policy.visibility.admin(perms):raise policy.PermissionDenied('Full database administration requires System Admin; use scoped module exports')
   with connect() as c:
    initialize(c)
    if method=='GET':

@@ -11,6 +11,7 @@ import document_workflow
 import document_report
 import application_report
 import user_manual
+import role_admin
 import borrowing
 """Mac-local SQLite persistence. No external packages or network listener."""
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
@@ -65,6 +66,7 @@ def initialize():
         CREATE TABLE IF NOT EXISTS schema_catalog(table_name TEXT NOT NULL,column_name TEXT NOT NULL,sql_type TEXT,nullable INTEGER,PRIMARY KEY(table_name,column_name));
         ''')
         staff_directory.initialize(c)
+        role_admin.initialize(c)
         database_admin.initialize(c)
         budget_governance.initialize(c)
         finance_workspace.initialize(c)
@@ -142,21 +144,27 @@ def session_account(handler):
         return account
 
 def portal_permissions(user_id,role):
-    with connect() as c:row=c.execute('SELECT value FROM workspace WHERE key=?',('biomed_portal_v33_clean',)).fetchone()
+    with connect() as c:
+        row=c.execute('SELECT value FROM workspace WHERE key=?',('biomed_portal_v33_clean',)).fetchone()
+        source=c.execute('SELECT value FROM workspace WHERE key=?',(IS_KEY,)).fetchone()
+        identities={str(cid):str(pid) for pid,cid in c.execute('SELECT portal_user_id,crm_user_id FROM crm_identity')}
     try:
         data=json.loads(row[0]) if row and row[0] else {}
-        return set(data.get('roles',{}).get(role,[]))
+        documents=json.loads(source[0]).get('documents',[]) if source and source[0] else []
+        return policy.visibility.Permissions(data.get('roles',{}).get(role,[]),(None,None,None,role,user_id),data,documents,identities)
     except Exception:return set()
 def account_permissions(user):
     perms=portal_permissions(user[4],user[3])
     if str(user[3]).strip().lower().replace('_',' ').replace('-',' ') in ('system admin','administrator'):
-        return {p['key'] for p in policy.CATALOG['permissions']} | perms
+        perms.update(p['key'] for p in policy.CATALOG['permissions']);return perms
     if not perms and user[3]=='System Admin':
         with connect() as c:exists=c.execute("SELECT 1 FROM workspace WHERE key='biomed_portal_v33_clean'").fetchone()
         if not exists:return {p['key'] for p in policy.CATALOG['permissions']}
     return perms
 def authorized_workspace(user,key,method):
     perms=account_permissions(user)
+    if policy.visibility.contextual(perms) and not policy.visibility.admin(perms) and key not in [IS_KEY,'biomed_portal_v33_clean','biomed_budget_v60_years','biomed_ui_lang','biomed_is_crm_order_request']:
+        return False
     if key.endswith('_before_restore'):return 'is.backup.restore' in perms or 'is.backup.export' in perms
     if key=='biomed_budget_v65_before_reset':return 'budget.settings.backup' in perms or 'budget.settings.restore' in perms
     if key.startswith('biomed_is_'):
@@ -164,6 +172,9 @@ def authorized_workspace(user,key,method):
         return 'is_view' in perms
     if key.startswith('biomed_budget'):return 'budget_view' in perms
     return True
+
+def storage_key(user,key):
+    return 'account:'+str(user[0])+':'+key if key in ['biomed_ui_lang','biomed_is_crm_order_request'] else key
 
 def allowed_origins():
     values={'http://127.0.0.1:8765','http://localhost:8765'}
@@ -222,6 +233,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         if self.private_static_path():return self.send_error(404)
         path=urlsplit(self.path).path
         if path=='/api/user-manual':return user_manual.handle(self,connect,session_account,account_permissions)
+        if path=='/api/role-admin':return role_admin.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
         if path=='/api/database-admin':return database_admin.handle(self,'GET',connect,session_account,account_permissions,valid_origin,DB)
         if path=='/api/operational-brands':return operational_brands.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
         if path=='/api/express-import':return express_import.handle(self,'GET',connect,session_account,account_permissions,valid_origin)
@@ -266,7 +278,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
             user=session_account(self)
             if not user:return self.reply(401,{'error':'Sign in required'})
             if not authorized_workspace(user,self.key(),'GET'):return self.reply(403,{'error':'Module view permission required'})
-            with connect() as c:row=c.execute('SELECT value,revision FROM workspace WHERE key=?',(self.key(),)).fetchone()
+            with connect() as c:row=c.execute('SELECT value,revision FROM workspace WHERE key=?',(storage_key(user,self.key()),)).fetchone()
             return self.reply(200,dict(value=policy.read_filter(account_permissions(user),self.key(),row[0]),revision=row[1]) if row else dict(value=None,revision=0))
         if path.startswith('/reference/') or path=='/reference':return self.send_error(404)
         if path.startswith('/crm/') and (path.endswith('.html') or path=='/crm/'):
@@ -316,6 +328,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         except (ValueError,TypeError):return self.reply(400,{'error':'Invalid preferences'})
     def do_POST(self):
         path=urlsplit(self.path).path
+        if path=='/api/role-admin':return role_admin.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
         if path=='/api/database-admin':return database_admin.handle(self,'POST',connect,session_account,account_permissions,valid_origin,DB)
         if path=='/api/operational-brands':return operational_brands.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
         if path=='/api/express-import':return express_import.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
@@ -402,7 +415,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         try:
             length=int(self.headers.get('Content-Length','0'))
             if not 0<length<=128*1024*1024:raise ValueError('Invalid request size')
-            body=json.loads(self.rfile.read(length));key=self.key()
+            body=json.loads(self.rfile.read(length));key=storage_key(actor,self.key())
             value=None if remove else body['value']
             if value is not None and not isinstance(value,str):raise ValueError('String value required')
             with connect() as c:

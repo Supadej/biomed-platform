@@ -1,5 +1,5 @@
 {
-  "version": 25,
+  "version": 26,
   "permissions": [
     {
       "key": "is_view",
@@ -7297,6 +7297,14 @@
       "action": "print",
       "introduced": 25,
       "legacy": "application_service.export"
+    },
+    {
+      "key": "portal.roles.visibility",
+      "module": "portal.roles",
+      "label": "Configure record visibility for roles",
+      "group": "Staff Portal · Function actions",
+      "action": "visibility",
+      "introduced": 26
     }
   ],
   "transactions": {

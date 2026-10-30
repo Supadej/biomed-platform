@@ -16,7 +16,7 @@ def handle(h,connect,session,permissions):
   with connect() as c:
    row=c.execute("SELECT payload,version FROM fse_records WHERE id=? AND kind='jobs'",(q.get('id'),)).fetchone()
    if not row:raise ValueError('Service job not found')
-   job=dict(json.loads(row[0]),version=row[1]);i=c.execute("SELECT payload FROM fse_records WHERE id=? AND kind='instruments'",(job.get('instrumentId'),)).fetchone();inst=json.loads(i[0]) if i else {};cu=c.execute("SELECT payload FROM masters WHERE category='customers' AND id=?",(job.get('customerId') or inst.get('customerId'),)).fetchone();customer=json.loads(cu[0]) if cu else {}
+   job=dict(json.loads(row[0]),version=row[1]);policy.visibility.need(perms,'service.jobs',job);i=c.execute("SELECT payload FROM fse_records WHERE id=? AND kind='instruments'",(job.get('instrumentId'),)).fetchone();inst=json.loads(i[0]) if i else {};cu=c.execute("SELECT payload FROM masters WHERE category='customers' AND id=?",(job.get('customerId') or inst.get('customerId'),)).fetchone();customer=json.loads(cu[0]) if cu else {}
    import service_catalog,service_referrals
    engineer=next((x['name'] for x in service_catalog.engineers(c) if x['id']==job.get('engineer')),job.get('engineerName') or job.get('engineer') or '');parts=service_referrals.job_parts(c,job)
    if job.get('customerSignature'):

@@ -19,6 +19,7 @@ def config(c):
  r=c.execute('SELECT payload,revision FROM portal_crm_binding WHERE id=1').fetchone()
  return {'config':json.loads(r[0]),'revision':r[1]} if r else {'config':{'enabled':False,'kinds':KINDS,'ownerMap':{}},'revision':0}
 def binding_need(perms,kinds):
+ if policy.visibility.contextual(perms) and (policy.visibility.scope(perms,'crm.leads')!='all' or any(policy.visibility.scope(perms,'is.'+k)!='all' for k in kinds)):raise policy.PermissionDenied('Company-wide source binding requires All record visibility in the source documents and Sales Plan')
  crm.need(perms,'leads','import');crm.need(perms,'leads','create');crm.need(perms,'leads','assign');crm.need(perms,'leads','view_all');policy.need(perms,'is_view')
  for k in kinds:policy.need(perms,'is.'+k+'.view')
 def amount(d):
@@ -104,7 +105,9 @@ def schemes(c,actor,perms):
  actuals=incentive_actuals(c,p)
  out=[]
  for s in p.get('incentiveSchemes',[]):
-  if str(s.get('rep')) not in scope:continue
+  if policy.visibility.contextual(perms):
+   if not policy.visibility.visible(perms,'portal.incentives',s):continue
+  elif str(s.get('rep')) not in scope:continue
   def matches(x):return str(x.get('rep'))==str(s['rep']) and x.get('line')==s.get('line') and s['from']<=str(x.get('period',''))<=s['to']
   target=sum(float(x.get('amount') or 0) for x in p.get('salesTargets',[]) if matches(x));actual=sum(float(x.get('amount') or 0) for x in actuals if matches(x));attainment=actual/target*100 if target>0 else 0
   link=c.execute('SELECT record_id FROM portal_crm_targets WHERE scheme_id=?',(str(s['id']),)).fetchone()
@@ -150,6 +153,7 @@ def record(c,perms,uid,entity,id):
  if not crm.visible(c,perms,entity,obj,uid) or not target_visible(c,perms,uid,entity,obj):raise policy.PermissionDenied('Record is outside your scope')
  return {k:v for k,v in analysis_names(c,display_record(entity,obj)).items() if k.lower() not in ['password','passwordhash','salt','token','username']},r[1]
 def target_visible(c,perms,uid,entity,obj):
+ if policy.visibility.contextual(perms) and entity=='Targets':return policy.visibility.visible(perms,'portal.sales',{'rep':obj.get('PortalRep') or perms.identities.get(str(obj.get('MainUserId')),'')})
  if entity!='Targets' or not obj.get('PortalRep') or 'approve_all' in perms:return True
  identity=c.execute('SELECT portal_user_id FROM crm_identity WHERE crm_user_id=?',(uid,)).fetchone()
  scope={str(identity[0])} if identity else set()
@@ -200,10 +204,11 @@ def workflow_stage_type(entity,stage):
  defaults={'HelpDeskPipelines':{'in progress':'in_progress','waiting':'waiting','resolved':'resolved','closed':'closed'},'ProjectPipeline':{'in progress':'in_progress','completed':'done','done':'done','cancelled':'cancelled'}}
  return defaults.get(entity,{}).get(name,'open')
 
-def stages_list(c,entity='CRMPipelines',project=None):
+def stages_list(c,entity='CRMPipelines',project=None,perms=None,uid=None):
  out=[]
  for payload,ver in c.execute('SELECT payload,version FROM crm_records WHERE entity=? AND deleted=0',(entity,)):
   r=json.loads(payload)
+  if perms is not None and entity=='ProjectPipeline' and not crm.visible(c,perms,entity,r,uid):continue
   if entity=='ProjectPipeline' and project and str(r.get('ProjectId'))!=str(project):continue
   out.append({**r,'StageType':workflow_stage_type(entity,r),'Color':r.get('Color') or '#087fa9','_version':ver})
  return sorted(out,key=lambda r:(float(r['Order'] if r.get('Order') is not None else r['Id']),r['Id']))
@@ -246,7 +251,9 @@ def sales_summary(c,actor,perms,leads,q):
  out={'leadCount':len(leads),'activeCount':len(active),'lostCount':len(leads)-len(active),'currencies':currency_totals(active),'targets':[],'targetsAvailable':False,'unmappedCount':sum(lead_line(c,r,resolved_cache) not in resolved_cache['lines'] for r in active),'missingClosingCount':sum(not r.get('Expected') for r in active)}
  if not {'incentives','sales','crm.targets.view'}<=set(perms):return out
  available=[s for s in schemes(c,actor,perms) if float(s.get('threshold') or 0)==100]
- p=workspace(c,PORTAL);actuals=incentive_actuals(c,p);identity={int(uid):str(pid) for pid,uid in c.execute('SELECT portal_user_id,crm_user_id FROM crm_identity')}
+ p=workspace(c,PORTAL)
+ if policy.visibility.contextual(perms):p=policy.visibility.filter_data(perms,PORTAL,p)
+ actuals=[r for r in incentive_actuals(c,p) if policy.visibility.visible(perms,'portal.sales',r)];identity={int(uid):str(pid) for pid,uid in c.execute('SELECT portal_user_id,crm_user_id FROM crm_identity')}
  people={str(u['id']):u.get('name',str(u['id'])) for u in p.get('users',[])}
  slices=set();plan_index={};line_cache=resolved_cache
  for r in active:
@@ -313,7 +320,7 @@ def handle(c,actor,perms,path,method,data):
   if action=='service-referrals' and method=='GET':return service_referrals.summary(c,actor,perms,tid)
   if action=='service-candidates' and method=='GET':
    records=instrument_service.rows(c);instruments={r['id']:r for r in records if r['kind']=='instruments'}
-   return [dict(r,serial=instruments.get(r.get('instrumentId'),{}).get('serial',''),name=str(r.get('jobNo') or r.get('date') or r['id'])+' · '+instruments.get(r.get('instrumentId'),{}).get('serial','')+' · '+r['kind']) for r in records if r['kind'] in ['jobs','movements'] and not r.get('ticketId') and {'service.view','service.edit','service.'+r['kind']+'.view','service.'+r['kind']+'.edit'}<=set(perms)]
+   return [dict(r,serial=instruments.get(r.get('instrumentId'),{}).get('serial',''),name=str(r.get('jobNo') or r.get('date') or r['id'])+' · '+instruments.get(r.get('instrumentId'),{}).get('serial','')+' · '+r['kind']) for r in records if r['kind'] in ['jobs','movements'] and policy.visibility.visible(perms,'service.'+r['kind'],r) and not r.get('ticketId') and {'service.view','service.edit','service.'+r['kind']+'.view','service.'+r['kind']+'.edit'}<=set(perms)]
   if action=='link-service' and method=='POST':
    service_record=next((r for r in instrument_service.rows(c) if r['id']==data.get('recordId')),None)
    if not service_record or service_record['kind'] not in ['jobs','movements']:raise ValueError('Service record not found')
@@ -325,7 +332,9 @@ def handle(c,actor,perms,path,method,data):
   crm.need(perms,'tickets')
   import service_catalog,instrument_service
   masters={category:[dict(json.loads(p),id=i) for i,p in c.execute('SELECT id,payload FROM masters WHERE category=?',(category,))] for category in ['customers','products']} if 'service.references.view' in perms else {'customers':[],'products':[]}
-  masters['invoices']=[{'id':i,'ref':ref} for i,ref in c.execute("SELECT id,reference FROM documents WHERE kind='invoice'")] if 'service.references.view' in perms else []
+  for category in ['customers','products']:masters[category]=[r for r in masters[category] if policy.visibility.visible(perms,'is.master-'+category,r)]
+  masters['invoices']=[{'id':i,'ref':ref} for i,ref in c.execute("SELECT id,reference FROM documents WHERE kind='invoice'")] if 'is.invoice.view' in perms else []
+  masters['invoices']=[r for r in masters['invoices'] if not policy.visibility.contextual(perms) or policy.visibility.is_visible(perms,policy.visibility.document(perms,r['id']) or {})]
   masters['parts']=[r for r in instrument_service.rows(c) if r['kind']=='parts' and r.get('productId')] if 'service.references.view' in perms else []
   instruments=[{k:r.get(k,'') for k in ['id','serial','serialAlias','brand','model','location','customerId','productId']} for r in instrument_service.rows(c) if r['kind']=='instruments'] if {'service.references.view','service.instruments.view'}&set(perms) else []
   return {'setup':service_catalog.setup(c),'engineers':service_catalog.helpdesk_responsibles(c),'masters':masters,'instruments':instruments}
@@ -357,7 +366,7 @@ def handle(c,actor,perms,path,method,data):
   if action=='sales-summary':
    if entity!='Leads':raise ValueError('Sales summary is for Sales Plan')
    return summary
-  stage_entity,fk=WORKFLOWS[entity];crm.need(perms,crm.MODULES[stage_entity]);stages=stages_list(c,stage_entity,q.get('project') if stage_entity=='ProjectPipeline' else None);groups=[];ids={x['Id'] for x in stages}
+  stage_entity,fk=WORKFLOWS[entity];crm.need(perms,crm.MODULES[stage_entity]);stages=stages_list(c,stage_entity,q.get('project') if stage_entity=='ProjectPipeline' else None,perms,uid);groups=[];ids={x['Id'] for x in stages}
   if stage_entity=='ProjectPipeline' and 'crm.projects.view' in perms:
    for stage in stages:stage['ProjectName']=(crm.raw(c,'Projects',stage.get('ProjectId')) or {}).get('Name') or '#'+str(stage.get('ProjectId'))
   for stage in [None]+stages:
@@ -365,7 +374,7 @@ def handle(c,actor,perms,path,method,data):
    groups.append({'stage':stage,'count':len(matched),'totals':currency_totals(matched) if entity=='Leads' else {},'budget':sum(float(r.get('Budget') or 0) for r in matched) if entity=='ProjectActivity' else 0,'items':matched[:30],'page':1})
   return {'columns':groups,'summary':summary,'total':len(leads)}
  if action=='stage-list' and method=='GET':
-  entity=q.get('entity','CRMPipelines');child,fk=stage_config(entity);crm.need(perms,crm.MODULES[entity]);stages=stages_list(c,entity,q.get('project'))
+  entity=q.get('entity','CRMPipelines');child,fk=stage_config(entity);crm.need(perms,crm.MODULES[entity]);stages=stages_list(c,entity,q.get('project'),perms,uid)
   if {'crm.'+crm.MODULES[child]+'.view','crm.'+crm.MODULES[child]+'.view_all'}<=set(perms):
    leads=crm.rows(c,child)
    for stage in stages:stage['usage']=sum(r.get(fk)==stage['Id'] for r in leads)
@@ -378,7 +387,7 @@ def handle(c,actor,perms,path,method,data):
    for row in changes:
     if not isinstance(row,dict):raise ValueError('Invalid stage changes')
     handle(c,actor,perms,'/api/crm/native/save','POST',{'entity':entity,'record':row.get('record',{}),'version':row.get('version')})
-   c.execute('RELEASE SAVEPOINT stage_changes');return stages_list(c,entity,data.get('project'))
+   c.execute('RELEASE SAVEPOINT stage_changes');return stages_list(c,entity,data.get('project'),perms,uid)
   except Exception:
    c.execute('ROLLBACK TO SAVEPOINT stage_changes');c.execute('RELEASE SAVEPOINT stage_changes');raise
  if action=='stage-reorder' and method=='POST':

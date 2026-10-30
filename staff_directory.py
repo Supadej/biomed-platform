@@ -172,6 +172,7 @@ def handle(h,method,connect,session,permissions,origin):
 
 def guard_workspace(c,old,new):
  """Identity/profile writes use audited staff endpoints; hierarchy edits stay compatible."""
+ if set(old.get('roles',{}))-set(new.get('roles',{})):raise policy.PermissionDenied('Use Rename role or Delete role in Roles & responsibilities to remove a role')
  if old.get('departments')!=new.get('departments'):
   names=new.get('departments',[])
   if not isinstance(names,list) or any(not isinstance(n,str) or not n.strip() or len(n)>200 for n in names) or len({n.casefold() for n in names})!=len(names):raise ValueError('Enter unique department names')

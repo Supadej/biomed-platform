@@ -43,7 +43,7 @@ def handle(h,method,connect,session,permissions,valid_origin):
       if day:
        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day):raise ValueError('Invalid quotation date range')
        sql+=" AND (json_extract(d.value,'$.kind')='sales-order' OR substr(json_extract(d.value,'$.date'),1,10) "+op+" ?)";params.append(day)
-    docs=[json.loads(row[0]) for row in c.execute(sql,params)]
+    docs=[d for row in c.execute(sql,params) for d in [json.loads(row[0])] if policy.visibility.is_visible(perms,d)]
     parties={str(d.get('party','')) for d in docs if d.get('kind')=='quotation'}
     customers=[]
     if parties:
@@ -100,6 +100,7 @@ def handle(h,method,connect,session,permissions,valid_origin):
    r=next((r for r in p.get('requests',[]) if f and r.get('id')==f[1] and any(a.get('id')==id for a in r.get('attachments',[]))),None)
    manager=next((u.get('managerId') for u in p.get('users',[]) if f and u.get('id')==f[0]),None)
    allowed=f and r and (user_id==f[0] or 'approve_all' in perms or manager==user_id and 'portal.requests.approve' in perms or 'approve_leave' in perms and 'portal.requests.approve' in perms)
+   allowed=allowed and policy.visibility.visible(perms,'portal.requests',r)
    if not allowed:return h.reply(404,{'error':'Attachment unavailable'})
    policy.need(perms,'requests','leavebalance')
    h.send_response(200);h.send_header('Content-Type',f[3]);h.send_header('Content-Length',str(len(f[4])));h.send_header('Content-Disposition',"inline; filename*=UTF-8''"+quote(f[2],safe=''));h.send_header('X-Content-Type-Options','nosniff');h.send_header('Content-Security-Policy',"sandbox; default-src 'none'");h.end_headers();h.wfile.write(f[4]);return

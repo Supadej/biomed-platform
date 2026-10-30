@@ -51,7 +51,7 @@ def dispatch(c,actor,perms,body=None):
    key=(m.get('productId',''),m.get('warehouse',''),m.get('lot',''));central[key]+=float(m.get('change') or 0);exp[key]=m.get('expiry') or exp.get(key,'')
   catalogue={json.loads(p).get('productId') for p, in c.execute("SELECT payload FROM fse_records WHERE kind='parts'")}
   requests=[dict(json.loads(p),version=v) for p,v in c.execute('SELECT payload,version FROM service_inventory_requests ORDER BY rowid DESC')]
-  names={str(i):n for i,n in c.execute('SELECT user_id,name FROM accounts')};return {**workflow,'people':[{'id':i,'name':n} for i,n in names.items()],'warehouses':[str(x.get('id') or x.get('name')) if isinstance(x,dict) else str(x) for x in data.get('warehouses',[])],'userId':pid,'adminSelfApprovalTesting':policy.admin_self_approval(actor,c),'permissions':sorted(perms),'engineers':active_engineers(c),'products':[{field:x.get(field,'') for field in ['id','name','sku','catalogueNo','unit']} for k,x in products.items() if k in catalogue],'central':[dict(productId=p,warehouse=w,lot=l,expiry=exp[(p,w,l)],qty=q) for (p,w,l),q in central.items() if p in catalogue and q>0],'balances':[r for r in balances(c) if read_all or r['engineer']==pid],'requests':[r for r in requests if manager or r['engineer']==pid],'jobs':[{'id':i,'jobNo':json.loads(p).get('jobNo')} for i,p in c.execute("SELECT id,payload FROM fse_records WHERE kind='jobs'")] if 'service.jobs.view' in perms else [],'ledger':[r for r in entries(c) if read_all or r['engineer']==pid]}
+  names={str(i):n for i,n in c.execute('SELECT user_id,name FROM accounts')};return {**workflow,'people':[{'id':i,'name':n} for i,n in names.items()],'warehouses':[str(x.get('id') or x.get('name')) if isinstance(x,dict) else str(x) for x in data.get('warehouses',[])],'userId':pid,'adminSelfApprovalTesting':policy.admin_self_approval(actor,c),'permissions':sorted(perms),'engineers':active_engineers(c),'products':[{field:x.get(field,'') for field in ['id','name','sku','catalogueNo','unit']} for k,x in products.items() if k in catalogue],'central':[dict(productId=p,warehouse=w,lot=l,expiry=exp[(p,w,l)],qty=q) for (p,w,l),q in central.items() if p in catalogue and q>0],'balances':[r for r in balances(c) if (read_all or r['engineer']==pid) and policy.visibility.visible(perms,'is.service-inventory',r)],'requests':[r for r in requests if (manager or r['engineer']==pid) and policy.visibility.visible(perms,'is.service-inventory',r)],'jobs':[{'id':i,'jobNo':json.loads(p).get('jobNo')} for i,p in c.execute("SELECT id,payload FROM fse_records WHERE kind='jobs'") if policy.visibility.visible(perms,'service.jobs',json.loads(p))] if 'service.jobs.view' in perms else [],'ledger':[r for r in entries(c) if (read_all or r['engineer']==pid) and policy.visibility.visible(perms,'is.service-inventory',r)]}
  action=body.get('action')
  if action=='request':
   kind=body.get('kind');need(perms,'return' if kind=='Return' else 'request')
@@ -78,7 +78,7 @@ def dispatch(c,actor,perms,body=None):
  if action not in ['approve','reject','cancel']:raise ValueError('Unknown inventory operation')
  row=c.execute('SELECT payload,version FROM service_inventory_requests WHERE id=?',(body.get('id'),)).fetchone()
  if not row:raise ValueError('Request not found')
- r=json.loads(row[0])
+ r=json.loads(row[0]);policy.visibility.need(perms,'is.service-inventory',r)
  if row[1]!=body.get('version'):raise ValueError('Request changed; refresh before deciding')
  if r['status']!='Pending':raise ValueError('Request has already been decided')
  if action=='cancel':

@@ -22,7 +22,9 @@ def migrate(c):
   c.execute('UPDATE application_service_records SET payload=?,version=version+1 WHERE id=?',(json.dumps(r,ensure_ascii=False),ident))
  c.execute("INSERT INTO application_reference_migrations VALUES('application-jobs-v2')")
 def uid(actor):return str(actor[4])
-def visible(r,actor,perms):return 'application_service.view_all' in perms or str(r.get('specialist'))==uid(actor) or r.get('createdBy')==uid(actor)
+def visible(r,actor,perms):
+ if policy.visibility.contextual(perms):return policy.visibility.visible(perms,'application_service',r)
+ return 'application_service.view_all' in perms or str(r.get('specialist'))==uid(actor) or r.get('createdBy')==uid(actor)
 def records(c,actor,perms,from_date="",to_date="",record_id=""):
  policy.need(perms,'application_service.view')
  if from_date and to_date and from_date>to_date:raise ValueError('From date cannot be after To date')

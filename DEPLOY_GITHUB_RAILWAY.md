@@ -134,3 +134,7 @@ No deployment has been performed by preparing this package. Device/browser visua
 - Railway deployments: https://docs.railway.com/deployments
 - Railway volumes: https://docs.railway.com/volumes
 - Waitress: https://docs.pylonsproject.org/projects/waitress/en/stable/
+
+
+## Record visibility update
+See UPDATE_73_RECORD_VISIBILITY.md for the new role/function limits. Keep your current persistent database volume. Initial scopes migrate once; subsequent role scope edits persist.

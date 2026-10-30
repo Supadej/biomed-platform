@@ -1,0 +1,16 @@
+.p-role-management{margin:0 0 20px;padding:0 0 18px;border-bottom:1px solid #d7e5ed;min-width:0}
+.p-role-management>.p-muted{margin:0 0 12px}
+.p-role-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:end}
+.p-role-action-grid form,.p-role-action-grid label{display:grid;gap:8px;min-width:0;margin:0}
+.p-role-action-grid label{font-size:12px;font-weight:650;color:#557185}
+.p-role-action-grid :is(input,select){width:100%;min-width:0;max-width:100%;box-sizing:border-box;min-height:44px;font:400 14px/1.4 system-ui}
+.p-role-action-grid button{justify-self:start;min-height:44px;margin:0!important;max-width:100%;white-space:normal}
+.p-role-action-grid button:disabled{opacity:.6;cursor:wait}
+[data-role-status]{font-size:13px;line-height:1.5;overflow-wrap:anywhere;margin:12px 0 0}
+[data-role-status]:empty{display:none}
+@media(max-width:720px){.p-role-action-grid{grid-template-columns:minmax(0,1fr)}.p-role-action-grid :is(input,select){font-size:16px}}
+
+/* Record visibility controls share the standard card and adapt to narrow devices. */
+.p-record-visibility{min-width:0;margin-block:16px}.p-record-visibility summary{cursor:pointer;font-weight:700}.p-record-visibility p{line-height:1.6;overflow-wrap:anywhere}.p-scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}.p-scope-grid label{display:flex;flex-direction:column;gap:6px;min-width:0}.p-scope-grid small{display:block;color:var(--muted,#62798a);font-size:11px;overflow-wrap:anywhere}.p-scope-grid select{width:100%;min-width:0;max-width:100%;min-height:44px;box-sizing:border-box}.p-scope-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}.p-scope-actions span{overflow-wrap:anywhere}.p-admin-roles>div{min-width:0}@media(max-width:700px){.p-scope-grid{grid-template-columns:minmax(0,1fr)}.p-scope-actions{align-items:stretch;flex-direction:column}.p-scope-actions button{width:100%}}
+
+.p-record-visibility form>.p-stack{margin:12px 0 16px;gap:8px}.p-record-visibility{scroll-margin-top:160px}

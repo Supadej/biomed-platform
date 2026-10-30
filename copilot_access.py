@@ -49,7 +49,7 @@ def _snapshot(c,actor,perms,module,functions=None):
  """Only aggregates; never serialize arbitrary records or personal profiles."""
  import permissions_policy as policy
  if functions is not None:
-  perms=set(perms)
+  perms=perms.copy()
   for item in copilot_functions.catalog():
    if item['system']==module and not functions.get(item['id'],False):perms.discard(item['permission'])
   # Backup/export rights cannot bypass a user's Copilot function restrictions.

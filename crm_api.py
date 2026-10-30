@@ -68,6 +68,8 @@ def scoped(perms,entity,record,uid):
  module=MODULES.get(entity)
  if entity=='Shortcuts':return record.get('UserId')==uid and 'crm.shortcuts.view' in perms
  if not module or 'crm.'+module+'.view' not in perms:return False
+ if policy.visibility.contextual(perms) and entity in policy.visibility.CRM:
+  return policy.visibility.visible(perms,'crm.'+module,record) and policy.visibility.linked(perms,record)
  if module not in ['leads','events','activities','tickets','shortcuts']:return True
  if 'crm.'+module+'.view_all' in perms:return True
  owners=[record.get(k) for k in ['MainUserId','MainUserID','CreatedByUserId','AssignedToUserId','UserId','OwnerId']];owners.extend(record.get('UserIds',[]));return uid in owners
@@ -80,6 +82,11 @@ def visible(c,perms,entity,record,uid):
   if not row or not identity:return False
   minute=json.loads(row[0]);pid=identity[0]
   if minute['status']!='Published' or not minute.get('calendarLink') or not (pid==minute['owner'] or pid in minute.get('internalAttendees',[]) or uid in (record.get('UserIds') or []) or 'portal.minutes.manage' in perms):return False
+ if policy.visibility.contextual(perms) and entity=='ProjectPipeline' and record.get('ProjectId'):
+  if not visible(c,perms,'Projects',raw(c,'Projects',record['ProjectId']),uid):return False
+ if policy.visibility.contextual(perms) and entity=='ExternalSnapshots' and record.get('_bridgeSource')=='is-crm':
+  d=policy.visibility.document(perms,record.get('_bridgeSourceId'))
+  if not d or not policy.visibility.is_visible(perms,d):return False
  if entity=='HelpDeskItems':return visible(c,perms,'HelpDeskTickets',raw(c,'HelpDeskTickets',record.get('TicketId')),uid)
  if entity=='Logs':
   for field,target in [('LeadId','Leads'),('EventId','Events'),('ActivityId','ProjectActivity'),('HelpdeskTicketId','HelpDeskTickets')]:
@@ -277,7 +284,7 @@ def mutate(c,actor,perms,uid,entity,action,data):
   for k in ['Email','FirstName','LastName','Role']:clean.pop(k,None)
  if entity=='Leads':clean.setdefault('Currency',(prior or {}).get('Currency','THB'))
  if not prior:
-  if entity in ['Leads','ProjectActivity']:clean.setdefault('MainUserId',uid)
+  if entity in ['Leads','ProjectActivity','Projects','Targets']:clean.setdefault('MainUserId',uid)
   if entity=='Events':clean.setdefault('MainUserID',uid)
   if entity=='HelpDeskTickets':clean.setdefault('CreatedByUserId',uid);clean.setdefault('AssignedToUserId',uid);clean.setdefault('CreatedDate',now())
   if entity=='Shortcuts':clean['UserId']=uid
@@ -307,6 +314,7 @@ def mutate(c,actor,perms,uid,entity,action,data):
     policy.need(perms,'service.references.view')
     exists=c.execute("SELECT 1 FROM documents WHERE id=? AND kind='invoice'",(val,)).fetchone() if field=='invoiceId' else c.execute('SELECT 1 FROM masters WHERE category=? AND id=?',('customers' if field=='customerId' else 'products',val)).fetchone()
     if not exists:raise ValueError('Choose an existing Biomed IS reference: '+key)
+    if field=='invoiceId' and policy.visibility.contextual(perms) and not policy.visibility.is_visible(perms,policy.visibility.document(perms,val) or {}):raise policy.PermissionDenied('Invoice is outside your visibility')
   controlled={'kind':'jobs','brand':merged_ticket.get('Brand'),'model':merged_ticket.get('Model'),'location':merged_ticket.get('ServiceLocation')}
   original={'brand':(prior or {}).get('Brand'),'model':(prior or {}).get('Model'),'location':(prior or {}).get('ServiceLocation')}
   if selected_instrument:
@@ -334,6 +342,10 @@ def mutate(c,actor,perms,uid,entity,action,data):
   parent=raw(c,'HelpDeskTickets',clean.get('TicketId',(prior or {}).get('TicketId')))
   if not parent or not visible(c,perms,'HelpDeskTickets',parent,uid):raise policy.PermissionDenied('Ticket is outside your CRM scope')
  if entity=='Stocks' and action=='edit':raise ValueError('Use stock add/remove actions to adjust balances')
+ if policy.visibility.contextual(perms) and entity in policy.visibility.CRM:
+  policy.visibility.need(perms,'crm.'+module,{**(prior or {}),**clean})
+ if policy.visibility.contextual(perms) and entity=='ProjectPipeline' and clean.get('ProjectId'):
+  if not visible(c,perms,'Projects',raw(c,'Projects',clean['ProjectId']),uid):raise policy.PermissionDenied('Project is outside your visibility')
  result=update(c,entity,id,clean) if prior else insert(c,entity,clean)
  if entity=='Events':
   import calendar_features

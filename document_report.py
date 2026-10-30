@@ -165,7 +165,7 @@ def handle(h,connect,session,permissions):
  try:
   q=parse_qs(urlsplit(h.path).query);ident=q.get('id',[''])[0];kind=q.get('kind',[''])[0];perms=permissions(actor);policy.need(perms,'is_view')
   with connect() as c:
-   row=c.execute('SELECT value FROM workspace WHERE key=?',(document_workflow.KEY,)).fetchone();state=json.loads(row[0]) if row else {};portal=c.execute("SELECT value FROM workspace WHERE key='biomed_portal_v33_clean'").fetchone();people=json.loads(portal[0]).get('users',[]) if portal else [];state['users']=list({str(u['id']):u for u in state.get('users',[])+people}.values());d=resolve(state,ident,kind);policy.need(perms,'is.'+d['kind']+'.view');policy.need(perms,'is.'+d['kind']+'.print');format=q.get('format',['pdf'])[0]
+   row=c.execute('SELECT value FROM workspace WHERE key=?',(document_workflow.KEY,)).fetchone();state=json.loads(row[0]) if row else {};portal=c.execute("SELECT value FROM workspace WHERE key='biomed_portal_v33_clean'").fetchone();people=json.loads(portal[0]).get('users',[]) if portal else [];state['users']=list({str(u['id']):u for u in state.get('users',[])+people}.values());d=resolve(state,ident,kind);policy.visibility.need(perms,'is.'+d['kind'],d);state=json.loads(policy.read_filter(perms,document_workflow.KEY,json.dumps(state)));policy.need(perms,'is.'+d['kind']+'.view');policy.need(perms,'is.'+d['kind']+'.print');format=q.get('format',['pdf'])[0]
    if format not in ['pdf','html']:raise ValueError('Choose PDF or HTML')
    if format=='html':
     from report_html import document as html_report

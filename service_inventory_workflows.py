@@ -9,7 +9,7 @@ def load_job(c,ident,perms,actor):
  policy.need(perms,'service.view');policy.need(perms,'service.jobs.view')
  row=c.execute("select payload,version from fse_records where id=? and kind='jobs'",(ident,)).fetchone()
  if not row:raise ValueError('Service job not found')
- job=dict(json.loads(row[0]),version=row[1]);alloc=c.execute('select payload from service_inventory_allocations where job_id=?',(ident,)).fetchone();alloc=json.loads(alloc[0]) if alloc else []
+ job=dict(json.loads(row[0]),version=row[1]);policy.visibility.need(perms,'service.jobs',job);alloc=c.execute('select payload from service_inventory_allocations where job_id=?',(ident,)).fetchone();alloc=json.loads(alloc[0]) if alloc else []
  if 'is.service-inventory.approve' not in perms and not billing_reader(perms) and (not alloc or any(str(x['engineer'])!=str(actor[4]) for x in alloc)):raise policy.PermissionDenied('This job uses another engineer’s custody')
  return job,alloc
 
@@ -22,10 +22,14 @@ def read(c,actor,perms):
   visible_refs={r['reference'] for r in si.entries(c) if manager or billing_reader(perms) or r['engineer']==pid}
   for ident,payload in c.execute("select id,payload from fse_records where kind='jobs'"):
    if ident not in visible_refs:continue
-   j=json.loads(payload);i=instruments.get(j.get('instrumentId'),{});customer_id=j.get('customerId') or i.get('customerId');invoice=invoice_for(c,ident,data);customer_id=customer_id or (invoice.get('party') if invoice else None);customer=customers.get(str(customer_id),{})
+   j=json.loads(payload)
+   if not policy.visibility.visible(perms,'service.jobs',j):continue
+   i=instruments.get(j.get('instrumentId'),{});customer_id=j.get('customerId') or i.get('customerId');invoice=invoice_for(c,ident,data)
+   if invoice and policy.visibility.contextual(perms) and not policy.visibility.is_visible(perms,invoice):invoice=None
+   customer_id=customer_id or (invoice.get('party') if invoice else None);customer=customers.get(str(customer_id),{})
    jobs.append({'id':ident,'jobNo':j.get('jobNo') or ident,'customerId':customer_id,'customer':customer.get('name') or j.get('customer') or i.get('customer') or 'Customer not linked','serial':i.get('serial',''),'brand':i.get('brand',''),'model':i.get('model',''),'location':j.get('location') or i.get('location',''),'jobType':j.get('jobType',''),'date':j.get('date',''),'status':j.get('status',''),'engineer':j.get('engineer',''),'engineerName':j.get('engineerName',''),'description':j.get('description',''),'diagnosis':j.get('diagnosis',''),'actionTaken':j.get('actionTaken',''),'result':j.get('result',''),'currency':j.get('currency') or 'THB','billingStatus':'Invoiced' if invoice else 'Open','invoiceId':invoice['id'] if invoice else None,'invoiceNo':invoice.get('ref') if invoice else None,'invoiceStatus':invoice.get('status') if invoice else None})
  checks=[dict(json.loads(p),version=v) for p,v in c.execute('select payload,version from service_inventory_checks order by rowid desc')]
- return {'checks':[r for r in checks if manager or (r['engineer']==pid or any(x.get('engineer')==pid for l in r.get('lines',[]) for x in l.get('custody',[])))],'jobDetails':jobs,'invoiceCustomers':[{'id':x['id'],'name':x.get('name') or x['id']} for x in data.get('customers',[])] if 'is.master-customers.view' in perms else [],'invoiceCandidates':[{'id':d['id'],'ref':d.get('ref'),'party':d.get('party'),'customer':customers.get(str(d.get('party')),{}).get('name') or str(d.get('party') or ''),'currency':d.get('currency') or 'THB','date':d.get('date',''),'status':d.get('status')} for d in data.get('documents',[]) if d.get('kind')=='invoice' and d.get('status') in ['Draft','Pending']] if 'is.invoice.view' in perms else [],'draftInvoices':[{'id':d['id'],'ref':d.get('ref'),'party':d.get('party'),'currency':d.get('currency') or 'THB'} for d in data.get('documents',[]) if d.get('kind')=='invoice' and d.get('status')=='Draft'] if 'is.invoice.view' in perms else []}
+ return {'checks':[r for r in checks if (manager or (r['engineer']==pid or any(x.get('engineer')==pid for l in r.get('lines',[]) for x in l.get('custody',[])))) and policy.visibility.visible(perms,'is.service-inventory',r)],'jobDetails':jobs,'invoiceCustomers':[{'id':x['id'],'name':x.get('name') or x['id']} for x in data.get('customers',[])] if 'is.master-customers.view' in perms else [],'invoiceCandidates':[{'id':d['id'],'ref':d.get('ref'),'party':d.get('party'),'customer':customers.get(str(d.get('party')),{}).get('name') or str(d.get('party') or ''),'currency':d.get('currency') or 'THB','date':d.get('date',''),'status':d.get('status')} for d in data.get('documents',[]) if d.get('kind')=='invoice' and (not policy.visibility.contextual(perms) or policy.visibility.is_visible(perms,d)) and d.get('status') in ['Draft','Pending']] if 'is.invoice.view' in perms else [],'draftInvoices':[{'id':d['id'],'ref':d.get('ref'),'party':d.get('party'),'currency':d.get('currency') or 'THB'} for d in data.get('documents',[]) if d.get('kind')=='invoice' and (not policy.visibility.contextual(perms) or policy.visibility.is_visible(perms,d)) and d.get('status')=='Draft'] if 'is.invoice.view' in perms else []}
 
 def dispatch(c,actor,perms,body):
  pid=str(actor[4]);manager='is.service-inventory.approve' in perms;action=body['action']
@@ -53,7 +57,7 @@ def dispatch(c,actor,perms,body):
  if action.startswith('stock-check-'):
   decision=action[len('stock-check-'):];row=c.execute('select payload,version from service_inventory_checks where id=?',(body.get('id'),)).fetchone()
   if not row or row[1]!=body.get('version'):raise ValueError('Count changed; refresh before deciding')
-  r=json.loads(row[0])
+  r=json.loads(row[0]);policy.visibility.need(perms,'is.service-inventory',r)
   if r['status']!='Pending':raise ValueError('Count has already been decided')
   if decision=='cancel':
    if pid!=r['requester'] and not manager:raise policy.PermissionDenied('Only requester or approver may cancel')
@@ -92,6 +96,7 @@ def dispatch(c,actor,perms,body):
   else:
    policy.need(perms,'is.invoice.create');invoice_id=str(uuid.uuid4());import document_numbers
    invoice={'id':invoice_id,'kind':'invoice','ref':document_numbers.allocate(c,'is',invoice_id,'IV',year_digits=2),'date':document_numbers.bangkok_day().isoformat(),'party':customer_id,'currency':currency,'status':'Draft','owner':pid,'created':si.now(),'lines':[],'history':[],'notes':'Service Inventory parts · draft pending normal invoice approval'};data.setdefault('documents',[]).append(invoice)
+  policy.visibility.need(perms,'is.invoice',invoice)
   totals=defaultdict(float)
   for l in alloc:totals[l['productId']]+=l['qty']
   products={p['id']:p for p in data.get('products',[])}
@@ -106,6 +111,7 @@ def dispatch(c,actor,perms,body):
  if action=='unlink-invoice':
   policy.need(perms,'is.invoice.edit');job,alloc=load_job(c,body.get('jobId'),perms,actor);data=si.warehouse_state(c);invoice=invoice_for(c,job['id'],data)
   if not invoice or invoice.get('status')!='Draft':raise ValueError('Only Draft invoice referrals can be removed')
+  policy.visibility.need(perms,'is.invoice',invoice)
   invoice['lines']=[l for l in invoice['lines'] if l.get('serviceJobId')!=job['id']];invoice.setdefault('history',[]).append({'at':si.now(),'by':pid,'status':'Draft','reason':'Removed service job '+str(job.get('jobNo'))});c.execute('delete from service_inventory_billing where job_id=?',(job['id'],));job.pop('version',None);job.pop('invoiceId',None);c.execute('update fse_records set payload=?,version=version+1 where id=?',(json.dumps(job,ensure_ascii=False),job['id']));c.execute('update workspace set value=?,revision=revision+1 where key=?',(json.dumps(data),si.KEY));import serve
   serve.project(c,json.dumps(data));audit(c,pid,'unlink-invoice',{'jobId':job['id'],'invoiceId':invoice['id']});return {'jobId':job['id']}
  raise ValueError('Unknown Service Inventory workflow')

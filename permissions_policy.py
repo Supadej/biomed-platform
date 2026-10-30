@@ -1,10 +1,12 @@
 """Shared catalog migration and server-side authorization of workspace changes."""
 import json
+import record_visibility as visibility
 from pathlib import Path
 CATALOG=json.loads((Path(__file__).parent/'permissions-catalog.json').read_text())
 OBSOLETE={'is_edit','is_approve','is_manage','budget_edit','budget_approve','budget_manage'}
 def migrate_portal(data):
-    if data.get('permissionCatalogVersion')==CATALOG['version'] and data.get('serviceInventoryBillingV1') and data.get('financeControlsV1') and data.get('expressImportV2') and data.get('financialRolesV3') and data.get('visitCalendarV1') and data.get('applicationServiceV1') and data.get('applicationServiceV2') and data.get('staffDirectoryV1') and data.get('documentWorkflowV1'):return False
+    scope_changed=visibility.migrate(data)
+    if data.get('permissionCatalogVersion')==CATALOG['version'] and data.get('serviceInventoryBillingV1') and data.get('financeControlsV1') and data.get('expressImportV2') and data.get('financialRolesV3') and data.get('visitCalendarV1') and data.get('applicationServiceV1') and data.get('applicationServiceV2') and data.get('staffDirectoryV1') and data.get('documentWorkflowV1'):return scope_changed
     roles=data.setdefault('roles',{})
     if not data.get('documentWorkflowV1'):
         for grants in roles.values():
@@ -324,9 +326,12 @@ def validate_scheme(b,new,old_id):
     if any(s.get('id')!=old_id and all(s.get(k)==b.get(k) for k in ['rep','line','from','to']) for s in new.get('incentiveSchemes',[])):raise PermissionDenied('Duplicate incentive scheme')
 
 def authorize_portal(perms,old,new,actor_id=None):
-    mapping={'tickets':'helpdesk','salesTargets':'sales','salesActuals':'sales','departments':'hierarchy','productLines':'sales','incentiveSchemes':'incentives','incentiveClaims':'incentives','trainerRequests':'training','siteSections':'content','assets':'settings','roleDescriptions':'roles'}
+    mapping={'roleRecordScopes':'roles','recordVisibilityV1':'roles','tickets':'helpdesk','salesTargets':'sales','salesActuals':'sales','departments':'hierarchy','productLines':'sales','incentiveSchemes':'incentives','incentiveClaims':'incentives','trainerRequests':'training','siteSections':'content','assets':'settings','roleDescriptions':'roles'}
     for field in set(old)|set(new):
         if old.get(field)==new.get(field):continue
+        if field=='roleRecordScopes':
+            need(perms,'roles');need(perms,'portal.roles.visibility');visibility.validate_config(new.get(field),new.get('roles',{}));continue
+        if field=='recordVisibilityV1':raise PermissionDenied('Visibility migration metadata cannot be edited')
         if field=='integrationIS':raise PermissionDenied('Use integration reconciliation to change bridge projections')
         if field=='isCRM':
             before=old.get(field,{}) or {};after=new.get(field,{}) or {}
@@ -405,6 +410,9 @@ def authorize_portal(perms,old,new,actor_id=None):
 def authorize_change(perms,key,before,after,operation=None,actor_id=None,admin_test=False):
     old=json.loads(before or '{}');new=json.loads(after or '{}')
     if not isinstance(old,dict) or not isinstance(new,dict):raise PermissionDenied('Workspace must be an object')
+    if visibility.contextual(perms):
+        visibility.guard_and_merge(perms,key,old,json.loads(json.dumps(new)))
+        if operation in ['restore','reset_current','reset_all'] and not visibility.admin(perms):raise PermissionDenied('Full workspace restore requires System Admin')
     if key=='biomed_is_v50_transactions' and operation=='restore':need(perms,'is.backup.restore');return
     if key=='biomed_budget_v60_years' and operation in ['restore','reset_current','reset_all']:
         need(perms,'budget.settings.'+operation)
@@ -429,7 +437,7 @@ def read_filter(perms,key,value):
     if key not in ['biomed_is_v50_transactions','biomed_budget_v60_years','biomed_portal_v33_clean']:return value
     data=json.loads(value)
     if key=='biomed_is_v50_transactions':
-        if 'is.backup.export' in perms:return value
+        if 'is.backup.export' in perms and not visibility.contextual(perms):return value
         data['documents']=[d for d in data.get('documents',[]) if 'is.'+d.get('kind','')+'.view' in perms or 'is.outstanding.view' in perms and d.get('kind') in ['invoice','credit-note','debit-note','payment-receipt']]
         for field,module in [('stockChecks','cycle-count'),('warehouseMoves','warehouse-move'),('quarantines','lot-control'),('kits','kits'),('audit','history')]:
             if 'is.'+module+'.view' not in perms:data[field]=[]
@@ -458,11 +466,13 @@ def read_filter(perms,key,value):
             module=PORTAL_FIELDS.get(field,field)
             if field=='operationalBrands':continue
             if (isinstance(data[field],list) or field=='siteSections') and field not in ['users','departments'] and module not in perms:data[field]={} if field=='siteSections' else []
+    data=visibility.filter_data(perms,key,data)
     return json.dumps(data,ensure_ascii=False,separators=(',',':'))
 def merge_scope(perms,key,old_value,new_value):
     """Preserve omitted records and masked amounts when a restricted user saves."""
     if not old_value or not new_value:return new_value
     old,new=json.loads(old_value),json.loads(new_value)
+    new=visibility.guard_and_merge(perms,key,old,new)
     if key=='biomed_is_v50_transactions':
         visible=json.loads(read_filter(perms,key,old_value))
         for field in ['documents','stockChecks','warehouseMoves','quarantines','kits','audit','movements','lots']:

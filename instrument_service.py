@@ -25,6 +25,10 @@ def save(c,actor,perms,r,importing=False):
  old=c.execute('SELECT payload,version FROM fse_records WHERE id=?',(r.get('id',''),)).fetchone()
  if not importing:
   policy.need(perms,'service.'+kind+'.view');policy.need(perms,'service.'+kind+('.edit' if old else '.create'))
+ if old:policy.visibility.need(perms,'service.'+kind,json.loads(old[0]))
+ if not importing:
+  r['createdBy']=(json.loads(old[0]).get('createdBy') if old else None) or str(actor[4])
+  policy.visibility.need(perms,'service.'+kind,r)
  if old and json.loads(old[0]).get('kind')!=kind:raise ValueError('Record type cannot be changed')
  if old and r.get('version')!=old[1]:raise ValueError('Record changed; refresh before saving')
  if not importing:
@@ -52,6 +56,7 @@ def save(c,actor,perms,r,importing=False):
    category='customers' if key=='customerId' else 'products'
    found=c.execute('SELECT 1 FROM documents WHERE id=? AND kind=?',(r[key],'invoice')).fetchone() if key=='invoiceId' else c.execute('SELECT 1 FROM masters WHERE category=? AND id=?',(category,r[key])).fetchone()
    if not found:raise ValueError('Linked Biomed IS record does not exist: '+key)
+   if key=='invoiceId' and policy.visibility.contextual(perms) and not policy.visibility.is_visible(perms,policy.visibility.document(perms,r[key]) or {}):raise policy.PermissionDenied('Linked invoice is outside your visibility')
  r['id']=r.get('id') or str(uuid.uuid4());r.pop('version',None)
  if not importing:
   previous=json.loads(old[0]) if old else {}
@@ -89,12 +94,14 @@ def handle(h,method,connect,session,permissions,origin):
   perms=permissions(actor);policy.need(perms,'service.view')
   with connect() as c:
    if method=='GET':
-    data=[r for r in rows(c) if 'service.'+r['kind']+'.view' in perms];masters={}
+    data=[r for r in rows(c) if 'service.'+r['kind']+'.view' in perms and policy.visibility.visible(perms,'service.'+r['kind'],r)];masters={}
     for category,key in [('customers','is.master-customers.view'),('products','is.master-products.view')]:
      masters[category]=[dict(json.loads(p),id=i) for i,p in c.execute('SELECT id,payload FROM masters WHERE category=?',(category,))] if key in perms or 'service.references.view' in perms else []
-    masters['invoices']=[dict(id=i,ref=ref) for i,ref in c.execute("SELECT id,reference FROM documents WHERE kind='invoice'")] if 'is.invoice.view' in perms or 'service.references.view' in perms else []
+    for category in ['customers','products']:masters[category]=[r for r in masters[category] if policy.visibility.visible(perms,'is.master-'+category,r)]
+    masters['invoices']=[dict(id=i,ref=ref) for i,ref in c.execute("SELECT id,reference FROM documents WHERE kind='invoice'")] if 'is.invoice.view' in perms else []
+    masters['invoices']=[r for r in masters['invoices'] if not policy.visibility.contextual(perms) or policy.visibility.is_visible(perms,policy.visibility.document(perms,r['id']) or {})]
     import service_catalog,service_referrals
-    return h.reply(200,{'tickets':service_referrals.visible_tickets(c,actor,perms),'ticketResponsibles':service_catalog.helpdesk_responsibles(c) if {'crm_view','crm.tickets.view'}<=set(perms) else [],'setup':service_catalog.setup(c),'engineers':service_catalog.engineers(c),'columnPreferences':{k:json.loads(p) for k,p in c.execute('SELECT kind,payload FROM service_column_preferences WHERE account_id=?',(str(actor[0]),))},'records':data,'masters':masters,'helpdesk':linked_tickets(c,actor,perms) if 'service.instruments.view' in perms else [],'permissions':sorted(perms),'audit':[dict(id=i,at=at,actor=a,action=act,recordId=r) for i,at,a,act,r in c.execute('SELECT id,at,actor,action,record_id FROM fse_audit ORDER BY id DESC LIMIT 100')] if 'service.audit' in perms else []})
+    return h.reply(200,{'tickets':service_referrals.visible_tickets(c,actor,perms),'ticketResponsibles':service_catalog.helpdesk_responsibles(c) if {'crm_view','crm.tickets.view'}<=set(perms) else [],'setup':service_catalog.setup(c),'engineers':service_catalog.engineers(c),'columnPreferences':{k:json.loads(p) for k,p in c.execute('SELECT kind,payload FROM service_column_preferences WHERE account_id=?',(str(actor[0]),))},'records':data,'masters':masters,'helpdesk':linked_tickets(c,actor,perms) if 'service.instruments.view' in perms else [],'permissions':sorted(perms),'audit':[dict(id=i,at=at,actor=a,action=act,recordId=r) for i,at,a,act,r in c.execute('SELECT id,at,actor,action,record_id FROM fse_audit ORDER BY id DESC LIMIT 100') if not policy.visibility.contextual(perms) or policy.visibility.admin(perms) or r in {x['id'] for x in data}] if 'service.audit' in perms else []})
    if not origin(h):return h.reply(403,{'error':'Invalid origin'})
    n=int(h.headers.get('Content-Length','0'))
    if not 0<n<10_000_000:raise ValueError('Invalid request size')
@@ -128,7 +135,7 @@ def handle(h,method,connect,session,permissions,origin):
     kind=body.get('kind')
     if kind not in KINDS:raise ValueError('Unknown record type')
     policy.need(perms,'service.export');policy.need(perms,'service.'+kind+'.view');policy.need(perms,'service.'+kind+'.export')
-    result={'records':[r for r in rows(c) if r['kind']==kind]};audit(c,actor,'export',{'kind':kind})
+    result={'records':[r for r in rows(c) if r['kind']==kind and policy.visibility.visible(perms,'service.'+kind,r)]};audit(c,actor,'export',{'kind':kind})
    elif action=='save':
     record=dict(body['record'])
     if body.get('newTicket'):
