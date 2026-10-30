@@ -1,0 +1,146 @@
+{
+  "positions": 23,
+  "products": 19,
+  "openingQty": 57000,
+  "credentials": [
+    {
+      "position": "Diagnostics Business Director",
+      "email": "bmd-test-user-4@example.invalid",
+      "password": "2rMoNY_XwoK9kVZ9b1r-",
+      "role": "Business Director"
+    },
+    {
+      "position": "Finance Manager",
+      "email": "bmd-test-user-6@example.invalid",
+      "password": "D22z21kK1NuaRhZ65dXR",
+      "role": "Department Manager"
+    },
+    {
+      "position": "Human Resource Manager",
+      "email": "bmd-test-user-7@example.invalid",
+      "password": "nhOzXzAgnu_IOI8mBrzF",
+      "role": "Department Manager"
+    },
+    {
+      "position": "Procurement & Regulatory Manager",
+      "email": "bmd-test-user-9@example.invalid",
+      "password": "omdGq1QkQJgySbFDKA9b",
+      "role": "Department Manager"
+    },
+    {
+      "position": "Document Control",
+      "email": "bmd-test-user-12@example.invalid",
+      "password": "AGibAZIcV3m6rQKfFGSs",
+      "role": "TEST Quality Assurance Staff"
+    },
+    {
+      "position": "Internal Control 1",
+      "email": "bmd-test-user-13@example.invalid",
+      "password": "NgbrLG0COItcu4T0_kI2",
+      "role": "TEST Quality Assurance Staff"
+    },
+    {
+      "position": "Internal Control 2",
+      "email": "bmd-test-user-14@example.invalid",
+      "password": "kAR6_8lq6asr_Usi4sDv",
+      "role": "TEST Quality Assurance Staff"
+    },
+    {
+      "position": "General Support Officer",
+      "email": "bmd-test-user-20@example.invalid",
+      "password": "YO8nAEbJBTzSBln89XmT",
+      "role": "Employee"
+    },
+    {
+      "position": "Housekeeping 1",
+      "email": "bmd-test-user-21@example.invalid",
+      "password": "-Sv66mDyJEjBXUUJARIk",
+      "role": "Employee"
+    },
+    {
+      "position": "Housekeeping 2",
+      "email": "bmd-test-user-22@example.invalid",
+      "password": "kwB0FGQO8BfbjIdAtbFL",
+      "role": "Employee"
+    },
+    {
+      "position": "LSR Sales Manager",
+      "email": "bmd-test-user-32@example.invalid",
+      "password": "Ixw-4btm339uIDnibkRX",
+      "role": "Department Manager"
+    },
+    {
+      "position": "LSR Product Manager",
+      "email": "bmd-test-user-33@example.invalid",
+      "password": "yPdxcsxfioZHfJKC_k_J",
+      "role": "Department Manager"
+    },
+    {
+      "position": "DIAG Team 1 Sales Supervisor",
+      "email": "bmd-test-user-41@example.invalid",
+      "password": "D9AdSWjXEkSJgawckuIa",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "DIAG Team 2 Sales Manager",
+      "email": "bmd-test-user-43@example.invalid",
+      "password": "d_rjp08A_cAsQ6hGZAdE",
+      "role": "Department Manager"
+    },
+    {
+      "position": "DIAG Team 2 Sales Rep. 4",
+      "email": "bmd-test-user-48@example.invalid",
+      "password": "auOjZMQDg_EX_63AsA9p",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "DIAG Senior Sales Rep. Team 2",
+      "email": "bmd-test-user-49@example.invalid",
+      "password": "sQZeMWlCEohUDY2-S6U8",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "DIAG Product Specialist 2",
+      "email": "bmd-test-user-53@example.invalid",
+      "password": "ApmAJwuFNHuMYxbXdtqy",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "DIAG Product Manager 3",
+      "email": "bmd-test-user-54@example.invalid",
+      "password": "eRegj86-U2EYP4k-JvYz",
+      "role": "Department Manager"
+    },
+    {
+      "position": "DIAG Product Specialist 3",
+      "email": "bmd-test-user-55@example.invalid",
+      "password": "88xs_XxnHIbgVssUCF4y",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "DIAG Application Specialist 2",
+      "email": "bmd-test-user-59@example.invalid",
+      "password": "F77Hk3JdLgHrufdpawZP",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "DIAG Application Specialist 3",
+      "email": "bmd-test-user-60@example.invalid",
+      "password": "3QVv7Pe-jTBGysnanFiw",
+      "role": "TEST Diagnostics Staff"
+    },
+    {
+      "position": "Service Engineer Manager",
+      "email": "bmd-test-user-61@example.invalid",
+      "password": "BZ13bb781ffcEuA5LZeD",
+      "role": "Service Manager"
+    },
+    {
+      "position": "Service Engineer 3",
+      "email": "bmd-test-user-66@example.invalid",
+      "password": "7JfXC5tE7WFERoQBEvKi",
+      "role": "Service Engineer"
+    }
+  ],
+  "note": "Unlisted test accounts only. Imported staff use the supplied username for Staff portal.xlsx credentials."
+}
