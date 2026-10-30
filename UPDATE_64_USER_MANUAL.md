@@ -1,6 +1,6 @@
 # Role-based online manual
 
-Open User manual in the signed-in workspace header. The interactive HTML manual includes searchable contents, system filtering, ID-only personal bookmarks, chapter printing, objectives/benefits, current user type and role responsibility, workflows, fields, permitted action instructions, troubleshooting, glossary and support guidance.
+Open User manual in the signed-in workspace sidebar. The interactive HTML manual includes searchable contents, system filtering, ID-only personal bookmarks, chapter printing, objectives/benefits, current user type and role responsibility, workflows, fields, permitted action instructions, troubleshooting, glossary and support guidance.
 
 The server checks current permissions and returns only available module/action content. Responsibility descriptions come from Roles & responsibilities. Refresh access, returning to the page and periodic refresh update the projection. A requested role in the URL is ignored. Session expiry clears prior content. No new business permissions are granted.
 

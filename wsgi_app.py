@@ -22,6 +22,8 @@ def application(e,start_response):
   if r.command=='GET':r.do_GET()
   elif r.command=='HEAD':r.do_HEAD()
   elif r.command=='POST':r.do_POST()
+  elif r.command=='PUT':r.do_PUT()
+  elif r.command=='DELETE':r.do_DELETE()
   else:r.send_error(405,'Method not allowed')
  except Exception:
   import traceback

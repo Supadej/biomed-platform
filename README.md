@@ -2,7 +2,7 @@
 
 **Start here:** [Interactive GitHub/Railway deployment guide](DEPLOY_GITHUB_RAILWAY.html) ([Markdown](DEPLOY_GITHUB_RAILWAY.md)).
 
-Sign in and choose **User manual** in the workspace header. Its content follows your saved role and action permissions. Open it through the running site, not directly as a disk file.
+Sign in and choose **User manual** in the sidebar beside Database administration (or under Help & support). Its content follows your saved role and action permissions. Open it through the running site, not directly as a disk file.
 
 This edition uses SQLite with a persistent Railway volume. No separate SQL Server 2022 project is included. Production entry: `python run_server.py`. Preserve the current live database and encryption keys; do not overwrite them with the bundled local/test database.
 

@@ -90,7 +90,7 @@ Use your team's authenticated Railway container/SSH execution facility with an i
 
 ## 6. Open the manual
 
-Sign in and select **User manual** in the workspace header, or visit `/user-manual.html` on your deployment.
+Sign in and select **User manual** in the sidebar beside Database administration (or under Help & support), or visit `/user-manual.html` on your deployment.
 
 The server returns only the modules and action instructions available to that account. The role responsibility description comes from current Roles & responsibilities settings. Search, system filtering, bookmarks and chapter printing are available. Refresh access updates permissions; returning to the page and periodic refresh also recheck them. A bookmarked chapter URL cannot bypass authorization.
 
