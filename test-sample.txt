@@ -1,6 +1,0 @@
-BIOMED — FICTIONAL TEST ATTACHMENT
-
-This file is a sample for testing forms, shared resources, SOPs, job descriptions and KPIs.
-It is not an approved company document and contains no real employee or customer information.
-
-Example workflow: review this document, assign a task, complete training and record acknowledgement.
