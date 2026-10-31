@@ -1,0 +1,1799 @@
+﻿Role,Function,Visibility
+System Admin,portal.requests,all
+System Admin,portal.expenses,all
+System Admin,portal.payments,all
+System Admin,portal.incentives,all
+System Admin,portal.objectives,all
+System Admin,portal.tasks,all
+System Admin,portal.helpdesk,all
+System Admin,portal.hrprofiles,all
+System Admin,portal.leavebalance,all
+System Admin,portal.visits,all
+System Admin,portal.demos,all
+System Admin,portal.appraisals,all
+System Admin,portal.onboarding,all
+System Admin,portal.training,all
+System Admin,portal.sales,all
+System Admin,portal.pipeline,all
+System Admin,portal.tenders,all
+System Admin,is.quotation,all
+System Admin,is.customer-order,all
+System Admin,is.sales-order,all
+System Admin,is.withdrawal,all
+System Admin,is.borrowing,all
+System Admin,is.return-product,all
+System Admin,is.purchase-request,all
+System Admin,is.purchase-order,all
+System Admin,is.supplier-confirm,all
+System Admin,is.delivery-in,all
+System Admin,is.check-in,all
+System Admin,is.delivery-out,all
+System Admin,is.check-out,all
+System Admin,is.stock-adjust,all
+System Admin,is.stock-transfer,all
+System Admin,is.stock-count,all
+System Admin,is.invoice,all
+System Admin,is.credit-note,all
+System Admin,is.debit-note,all
+System Admin,is.payment-receipt,all
+System Admin,is.master-customers,all
+System Admin,is.master-suppliers,all
+System Admin,is.master-products,all
+System Admin,is.master-warehouses,all
+System Admin,is.shipment,all
+System Admin,is.cycle-count,all
+System Admin,is.warehouse-move,all
+System Admin,is.kits,all
+System Admin,is.waiting-purchase,all
+System Admin,crm.leads,all
+System Admin,crm.events,all
+System Admin,crm.projects,all
+System Admin,crm.activities,all
+System Admin,crm.tickets,all
+System Admin,crm.targets,all
+System Admin,crm.finance,all
+System Admin,service.instruments,all
+System Admin,service.jobs,all
+System Admin,service.movements,all
+System Admin,service.parts,all
+System Admin,service.replacements,all
+System Admin,service.contracts,all
+System Admin,portal.minutes,all
+System Admin,is.service-inventory,all
+System Admin,application_service,all
+Managing Director,portal.requests,all
+Managing Director,portal.expenses,all
+Managing Director,portal.payments,all
+Managing Director,portal.incentives,all
+Managing Director,portal.objectives,all
+Managing Director,portal.tasks,all
+Managing Director,portal.helpdesk,all
+Managing Director,portal.hrprofiles,all
+Managing Director,portal.leavebalance,all
+Managing Director,portal.visits,all
+Managing Director,portal.demos,all
+Managing Director,portal.appraisals,all
+Managing Director,portal.onboarding,all
+Managing Director,portal.training,all
+Managing Director,portal.sales,all
+Managing Director,portal.pipeline,all
+Managing Director,portal.tenders,all
+Managing Director,is.quotation,all
+Managing Director,is.customer-order,all
+Managing Director,is.sales-order,all
+Managing Director,is.withdrawal,all
+Managing Director,is.borrowing,all
+Managing Director,is.return-product,all
+Managing Director,is.purchase-request,all
+Managing Director,is.purchase-order,all
+Managing Director,is.supplier-confirm,all
+Managing Director,is.delivery-in,all
+Managing Director,is.check-in,all
+Managing Director,is.delivery-out,all
+Managing Director,is.check-out,all
+Managing Director,is.stock-adjust,all
+Managing Director,is.stock-transfer,all
+Managing Director,is.stock-count,all
+Managing Director,is.invoice,all
+Managing Director,is.credit-note,all
+Managing Director,is.debit-note,all
+Managing Director,is.payment-receipt,all
+Managing Director,is.master-customers,all
+Managing Director,is.master-suppliers,all
+Managing Director,is.master-products,all
+Managing Director,is.master-warehouses,all
+Managing Director,is.shipment,all
+Managing Director,is.cycle-count,all
+Managing Director,is.warehouse-move,all
+Managing Director,is.kits,all
+Managing Director,is.waiting-purchase,all
+Managing Director,crm.leads,all
+Managing Director,crm.events,all
+Managing Director,crm.projects,all
+Managing Director,crm.activities,all
+Managing Director,crm.tickets,all
+Managing Director,crm.targets,all
+Managing Director,crm.finance,all
+Managing Director,service.instruments,all
+Managing Director,service.jobs,all
+Managing Director,service.movements,all
+Managing Director,service.parts,all
+Managing Director,service.replacements,all
+Managing Director,service.contracts,all
+Managing Director,portal.minutes,all
+Managing Director,is.service-inventory,all
+Managing Director,application_service,all
+Operations Director,portal.requests,all
+Operations Director,portal.expenses,all
+Operations Director,portal.payments,all
+Operations Director,portal.incentives,all
+Operations Director,portal.objectives,all
+Operations Director,portal.tasks,all
+Operations Director,portal.helpdesk,all
+Operations Director,portal.hrprofiles,all
+Operations Director,portal.leavebalance,all
+Operations Director,portal.visits,all
+Operations Director,portal.demos,all
+Operations Director,portal.appraisals,all
+Operations Director,portal.onboarding,all
+Operations Director,portal.training,all
+Operations Director,portal.sales,all
+Operations Director,portal.pipeline,all
+Operations Director,portal.tenders,all
+Operations Director,is.quotation,all
+Operations Director,is.customer-order,all
+Operations Director,is.sales-order,all
+Operations Director,is.withdrawal,all
+Operations Director,is.borrowing,all
+Operations Director,is.return-product,all
+Operations Director,is.purchase-request,all
+Operations Director,is.purchase-order,all
+Operations Director,is.supplier-confirm,all
+Operations Director,is.delivery-in,all
+Operations Director,is.check-in,all
+Operations Director,is.delivery-out,all
+Operations Director,is.check-out,all
+Operations Director,is.stock-adjust,all
+Operations Director,is.stock-transfer,all
+Operations Director,is.stock-count,all
+Operations Director,is.invoice,all
+Operations Director,is.credit-note,all
+Operations Director,is.debit-note,all
+Operations Director,is.payment-receipt,all
+Operations Director,is.master-customers,all
+Operations Director,is.master-suppliers,all
+Operations Director,is.master-products,all
+Operations Director,is.master-warehouses,all
+Operations Director,is.shipment,all
+Operations Director,is.cycle-count,all
+Operations Director,is.warehouse-move,all
+Operations Director,is.kits,all
+Operations Director,is.waiting-purchase,all
+Operations Director,crm.leads,all
+Operations Director,crm.events,all
+Operations Director,crm.projects,all
+Operations Director,crm.activities,all
+Operations Director,crm.tickets,all
+Operations Director,crm.targets,all
+Operations Director,crm.finance,all
+Operations Director,service.instruments,all
+Operations Director,service.jobs,all
+Operations Director,service.movements,all
+Operations Director,service.parts,all
+Operations Director,service.replacements,all
+Operations Director,service.contracts,all
+Operations Director,portal.minutes,all
+Operations Director,is.service-inventory,all
+Operations Director,application_service,all
+Business Director,portal.requests,all
+Business Director,portal.expenses,all
+Business Director,portal.payments,all
+Business Director,portal.incentives,all
+Business Director,portal.objectives,all
+Business Director,portal.tasks,all
+Business Director,portal.helpdesk,all
+Business Director,portal.hrprofiles,all
+Business Director,portal.leavebalance,all
+Business Director,portal.visits,all
+Business Director,portal.demos,all
+Business Director,portal.appraisals,all
+Business Director,portal.onboarding,all
+Business Director,portal.training,all
+Business Director,portal.sales,all
+Business Director,portal.pipeline,all
+Business Director,portal.tenders,all
+Business Director,is.quotation,all
+Business Director,is.customer-order,all
+Business Director,is.sales-order,all
+Business Director,is.withdrawal,all
+Business Director,is.borrowing,all
+Business Director,is.return-product,all
+Business Director,is.purchase-request,all
+Business Director,is.purchase-order,all
+Business Director,is.supplier-confirm,all
+Business Director,is.delivery-in,all
+Business Director,is.check-in,all
+Business Director,is.delivery-out,all
+Business Director,is.check-out,all
+Business Director,is.stock-adjust,all
+Business Director,is.stock-transfer,all
+Business Director,is.stock-count,all
+Business Director,is.invoice,all
+Business Director,is.credit-note,all
+Business Director,is.debit-note,all
+Business Director,is.payment-receipt,all
+Business Director,is.master-customers,all
+Business Director,is.master-suppliers,all
+Business Director,is.master-products,all
+Business Director,is.master-warehouses,all
+Business Director,is.shipment,all
+Business Director,is.cycle-count,all
+Business Director,is.warehouse-move,all
+Business Director,is.kits,all
+Business Director,is.waiting-purchase,all
+Business Director,crm.leads,all
+Business Director,crm.events,all
+Business Director,crm.projects,all
+Business Director,crm.activities,all
+Business Director,crm.tickets,all
+Business Director,crm.targets,all
+Business Director,crm.finance,all
+Business Director,service.instruments,all
+Business Director,service.jobs,all
+Business Director,service.movements,all
+Business Director,service.parts,all
+Business Director,service.replacements,all
+Business Director,service.contracts,all
+Business Director,portal.minutes,all
+Business Director,is.service-inventory,all
+Business Director,application_service,all
+Director Secretary,portal.requests,all
+Director Secretary,portal.expenses,all
+Director Secretary,portal.payments,all
+Director Secretary,portal.incentives,assigned
+Director Secretary,portal.objectives,assigned
+Director Secretary,portal.tasks,assigned
+Director Secretary,portal.helpdesk,all
+Director Secretary,portal.hrprofiles,assigned
+Director Secretary,portal.leavebalance,assigned
+Director Secretary,portal.visits,all
+Director Secretary,portal.demos,all
+Director Secretary,portal.appraisals,assigned
+Director Secretary,portal.onboarding,assigned
+Director Secretary,portal.training,all
+Director Secretary,portal.sales,assigned
+Director Secretary,portal.pipeline,assigned
+Director Secretary,portal.tenders,assigned
+Director Secretary,is.quotation,assigned
+Director Secretary,is.customer-order,assigned
+Director Secretary,is.sales-order,assigned
+Director Secretary,is.withdrawal,assigned
+Director Secretary,is.borrowing,assigned
+Director Secretary,is.return-product,assigned
+Director Secretary,is.purchase-request,assigned
+Director Secretary,is.purchase-order,assigned
+Director Secretary,is.supplier-confirm,assigned
+Director Secretary,is.delivery-in,assigned
+Director Secretary,is.check-in,assigned
+Director Secretary,is.delivery-out,assigned
+Director Secretary,is.check-out,assigned
+Director Secretary,is.stock-adjust,assigned
+Director Secretary,is.stock-transfer,assigned
+Director Secretary,is.stock-count,assigned
+Director Secretary,is.invoice,assigned
+Director Secretary,is.credit-note,assigned
+Director Secretary,is.debit-note,assigned
+Director Secretary,is.payment-receipt,assigned
+Director Secretary,is.master-customers,assigned
+Director Secretary,is.master-suppliers,assigned
+Director Secretary,is.master-products,assigned
+Director Secretary,is.master-warehouses,assigned
+Director Secretary,is.shipment,assigned
+Director Secretary,is.cycle-count,assigned
+Director Secretary,is.warehouse-move,assigned
+Director Secretary,is.kits,assigned
+Director Secretary,is.waiting-purchase,assigned
+Director Secretary,crm.leads,all
+Director Secretary,crm.events,all
+Director Secretary,crm.projects,all
+Director Secretary,crm.activities,all
+Director Secretary,crm.tickets,all
+Director Secretary,crm.targets,all
+Director Secretary,crm.finance,assigned
+Director Secretary,service.instruments,all
+Director Secretary,service.jobs,all
+Director Secretary,service.movements,all
+Director Secretary,service.parts,all
+Director Secretary,service.replacements,all
+Director Secretary,service.contracts,all
+Director Secretary,portal.minutes,all
+Director Secretary,is.service-inventory,assigned
+Director Secretary,application_service,all
+QMR,portal.requests,assigned
+QMR,portal.expenses,assigned
+QMR,portal.payments,assigned
+QMR,portal.incentives,assigned
+QMR,portal.objectives,assigned
+QMR,portal.tasks,assigned
+QMR,portal.helpdesk,assigned
+QMR,portal.hrprofiles,assigned
+QMR,portal.leavebalance,assigned
+QMR,portal.visits,assigned
+QMR,portal.demos,assigned
+QMR,portal.appraisals,assigned
+QMR,portal.onboarding,assigned
+QMR,portal.training,assigned
+QMR,portal.sales,assigned
+QMR,portal.pipeline,assigned
+QMR,portal.tenders,assigned
+QMR,is.quotation,assigned
+QMR,is.customer-order,assigned
+QMR,is.sales-order,assigned
+QMR,is.withdrawal,assigned
+QMR,is.borrowing,assigned
+QMR,is.return-product,assigned
+QMR,is.purchase-request,assigned
+QMR,is.purchase-order,assigned
+QMR,is.supplier-confirm,assigned
+QMR,is.delivery-in,assigned
+QMR,is.check-in,assigned
+QMR,is.delivery-out,assigned
+QMR,is.check-out,assigned
+QMR,is.stock-adjust,assigned
+QMR,is.stock-transfer,assigned
+QMR,is.stock-count,assigned
+QMR,is.invoice,assigned
+QMR,is.credit-note,assigned
+QMR,is.debit-note,assigned
+QMR,is.payment-receipt,assigned
+QMR,is.master-customers,assigned
+QMR,is.master-suppliers,assigned
+QMR,is.master-products,assigned
+QMR,is.master-warehouses,assigned
+QMR,is.shipment,assigned
+QMR,is.cycle-count,assigned
+QMR,is.warehouse-move,assigned
+QMR,is.kits,assigned
+QMR,is.waiting-purchase,assigned
+QMR,crm.leads,assigned
+QMR,crm.events,assigned
+QMR,crm.projects,assigned
+QMR,crm.activities,assigned
+QMR,crm.tickets,assigned
+QMR,crm.targets,assigned
+QMR,crm.finance,assigned
+QMR,service.instruments,assigned
+QMR,service.jobs,assigned
+QMR,service.movements,assigned
+QMR,service.parts,assigned
+QMR,service.replacements,assigned
+QMR,service.contracts,assigned
+QMR,portal.minutes,assigned
+QMR,is.service-inventory,assigned
+QMR,application_service,assigned
+HR Manager,portal.requests,all
+HR Manager,portal.expenses,team
+HR Manager,portal.payments,team
+HR Manager,portal.incentives,team
+HR Manager,portal.objectives,team
+HR Manager,portal.tasks,team
+HR Manager,portal.helpdesk,team
+HR Manager,portal.hrprofiles,all
+HR Manager,portal.leavebalance,all
+HR Manager,portal.visits,team
+HR Manager,portal.demos,team
+HR Manager,portal.appraisals,all
+HR Manager,portal.onboarding,all
+HR Manager,portal.training,all
+HR Manager,portal.sales,team
+HR Manager,portal.pipeline,team
+HR Manager,portal.tenders,team
+HR Manager,is.quotation,team
+HR Manager,is.customer-order,team
+HR Manager,is.sales-order,team
+HR Manager,is.withdrawal,team
+HR Manager,is.borrowing,team
+HR Manager,is.return-product,team
+HR Manager,is.purchase-request,team
+HR Manager,is.purchase-order,team
+HR Manager,is.supplier-confirm,team
+HR Manager,is.delivery-in,team
+HR Manager,is.check-in,team
+HR Manager,is.delivery-out,team
+HR Manager,is.check-out,team
+HR Manager,is.stock-adjust,team
+HR Manager,is.stock-transfer,team
+HR Manager,is.stock-count,team
+HR Manager,is.invoice,team
+HR Manager,is.credit-note,team
+HR Manager,is.debit-note,team
+HR Manager,is.payment-receipt,team
+HR Manager,is.master-customers,team
+HR Manager,is.master-suppliers,team
+HR Manager,is.master-products,team
+HR Manager,is.master-warehouses,team
+HR Manager,is.shipment,team
+HR Manager,is.cycle-count,team
+HR Manager,is.warehouse-move,team
+HR Manager,is.kits,team
+HR Manager,is.waiting-purchase,team
+HR Manager,crm.leads,team
+HR Manager,crm.events,team
+HR Manager,crm.projects,team
+HR Manager,crm.activities,team
+HR Manager,crm.tickets,team
+HR Manager,crm.targets,team
+HR Manager,crm.finance,team
+HR Manager,service.instruments,team
+HR Manager,service.jobs,team
+HR Manager,service.movements,team
+HR Manager,service.parts,team
+HR Manager,service.replacements,team
+HR Manager,service.contracts,team
+HR Manager,portal.minutes,team
+HR Manager,is.service-inventory,team
+HR Manager,application_service,team
+Accounting Manager,portal.requests,team
+Accounting Manager,portal.expenses,all
+Accounting Manager,portal.payments,all
+Accounting Manager,portal.incentives,all
+Accounting Manager,portal.objectives,team
+Accounting Manager,portal.tasks,team
+Accounting Manager,portal.helpdesk,team
+Accounting Manager,portal.hrprofiles,team
+Accounting Manager,portal.leavebalance,team
+Accounting Manager,portal.visits,team
+Accounting Manager,portal.demos,team
+Accounting Manager,portal.appraisals,team
+Accounting Manager,portal.onboarding,team
+Accounting Manager,portal.training,team
+Accounting Manager,portal.sales,team
+Accounting Manager,portal.pipeline,team
+Accounting Manager,portal.tenders,team
+Accounting Manager,is.quotation,team
+Accounting Manager,is.customer-order,team
+Accounting Manager,is.sales-order,team
+Accounting Manager,is.withdrawal,team
+Accounting Manager,is.borrowing,team
+Accounting Manager,is.return-product,team
+Accounting Manager,is.purchase-request,team
+Accounting Manager,is.purchase-order,team
+Accounting Manager,is.supplier-confirm,team
+Accounting Manager,is.delivery-in,team
+Accounting Manager,is.check-in,team
+Accounting Manager,is.delivery-out,team
+Accounting Manager,is.check-out,team
+Accounting Manager,is.stock-adjust,team
+Accounting Manager,is.stock-transfer,team
+Accounting Manager,is.stock-count,team
+Accounting Manager,is.invoice,team
+Accounting Manager,is.credit-note,team
+Accounting Manager,is.debit-note,team
+Accounting Manager,is.payment-receipt,team
+Accounting Manager,is.master-customers,team
+Accounting Manager,is.master-suppliers,team
+Accounting Manager,is.master-products,team
+Accounting Manager,is.master-warehouses,team
+Accounting Manager,is.shipment,team
+Accounting Manager,is.cycle-count,team
+Accounting Manager,is.warehouse-move,team
+Accounting Manager,is.kits,team
+Accounting Manager,is.waiting-purchase,team
+Accounting Manager,crm.leads,team
+Accounting Manager,crm.events,team
+Accounting Manager,crm.projects,team
+Accounting Manager,crm.activities,team
+Accounting Manager,crm.tickets,team
+Accounting Manager,crm.targets,team
+Accounting Manager,crm.finance,team
+Accounting Manager,service.instruments,team
+Accounting Manager,service.jobs,team
+Accounting Manager,service.movements,team
+Accounting Manager,service.parts,team
+Accounting Manager,service.replacements,team
+Accounting Manager,service.contracts,team
+Accounting Manager,portal.minutes,team
+Accounting Manager,is.service-inventory,team
+Accounting Manager,application_service,team
+Accounting,portal.requests,assigned
+Accounting,portal.expenses,all
+Accounting,portal.payments,all
+Accounting,portal.incentives,all
+Accounting,portal.objectives,assigned
+Accounting,portal.tasks,assigned
+Accounting,portal.helpdesk,assigned
+Accounting,portal.hrprofiles,assigned
+Accounting,portal.leavebalance,assigned
+Accounting,portal.visits,assigned
+Accounting,portal.demos,assigned
+Accounting,portal.appraisals,assigned
+Accounting,portal.onboarding,assigned
+Accounting,portal.training,assigned
+Accounting,portal.sales,assigned
+Accounting,portal.pipeline,assigned
+Accounting,portal.tenders,assigned
+Accounting,is.quotation,assigned
+Accounting,is.customer-order,assigned
+Accounting,is.sales-order,assigned
+Accounting,is.withdrawal,assigned
+Accounting,is.borrowing,assigned
+Accounting,is.return-product,assigned
+Accounting,is.purchase-request,assigned
+Accounting,is.purchase-order,assigned
+Accounting,is.supplier-confirm,assigned
+Accounting,is.delivery-in,assigned
+Accounting,is.check-in,assigned
+Accounting,is.delivery-out,assigned
+Accounting,is.check-out,assigned
+Accounting,is.stock-adjust,assigned
+Accounting,is.stock-transfer,assigned
+Accounting,is.stock-count,assigned
+Accounting,is.invoice,assigned
+Accounting,is.credit-note,assigned
+Accounting,is.debit-note,assigned
+Accounting,is.payment-receipt,assigned
+Accounting,is.master-customers,assigned
+Accounting,is.master-suppliers,assigned
+Accounting,is.master-products,assigned
+Accounting,is.master-warehouses,assigned
+Accounting,is.shipment,assigned
+Accounting,is.cycle-count,assigned
+Accounting,is.warehouse-move,assigned
+Accounting,is.kits,assigned
+Accounting,is.waiting-purchase,assigned
+Accounting,crm.leads,assigned
+Accounting,crm.events,assigned
+Accounting,crm.projects,assigned
+Accounting,crm.activities,assigned
+Accounting,crm.tickets,assigned
+Accounting,crm.targets,assigned
+Accounting,crm.finance,assigned
+Accounting,service.instruments,assigned
+Accounting,service.jobs,assigned
+Accounting,service.movements,assigned
+Accounting,service.parts,assigned
+Accounting,service.replacements,assigned
+Accounting,service.contracts,assigned
+Accounting,portal.minutes,assigned
+Accounting,is.service-inventory,assigned
+Accounting,application_service,assigned
+Operation Manager,portal.requests,team
+Operation Manager,portal.expenses,team
+Operation Manager,portal.payments,team
+Operation Manager,portal.incentives,team
+Operation Manager,portal.objectives,team
+Operation Manager,portal.tasks,team
+Operation Manager,portal.helpdesk,team
+Operation Manager,portal.hrprofiles,team
+Operation Manager,portal.leavebalance,team
+Operation Manager,portal.visits,team
+Operation Manager,portal.demos,team
+Operation Manager,portal.appraisals,team
+Operation Manager,portal.onboarding,team
+Operation Manager,portal.training,team
+Operation Manager,portal.sales,team
+Operation Manager,portal.pipeline,team
+Operation Manager,portal.tenders,team
+Operation Manager,is.quotation,team
+Operation Manager,is.customer-order,team
+Operation Manager,is.sales-order,team
+Operation Manager,is.withdrawal,team
+Operation Manager,is.borrowing,team
+Operation Manager,is.return-product,team
+Operation Manager,is.purchase-request,team
+Operation Manager,is.purchase-order,team
+Operation Manager,is.supplier-confirm,team
+Operation Manager,is.delivery-in,team
+Operation Manager,is.check-in,team
+Operation Manager,is.delivery-out,team
+Operation Manager,is.check-out,team
+Operation Manager,is.stock-adjust,team
+Operation Manager,is.stock-transfer,team
+Operation Manager,is.stock-count,team
+Operation Manager,is.invoice,team
+Operation Manager,is.credit-note,team
+Operation Manager,is.debit-note,team
+Operation Manager,is.payment-receipt,team
+Operation Manager,is.master-customers,team
+Operation Manager,is.master-suppliers,team
+Operation Manager,is.master-products,team
+Operation Manager,is.master-warehouses,team
+Operation Manager,is.shipment,team
+Operation Manager,is.cycle-count,team
+Operation Manager,is.warehouse-move,team
+Operation Manager,is.kits,team
+Operation Manager,is.waiting-purchase,team
+Operation Manager,crm.leads,team
+Operation Manager,crm.events,team
+Operation Manager,crm.projects,team
+Operation Manager,crm.activities,team
+Operation Manager,crm.tickets,team
+Operation Manager,crm.targets,team
+Operation Manager,crm.finance,team
+Operation Manager,service.instruments,team
+Operation Manager,service.jobs,team
+Operation Manager,service.movements,team
+Operation Manager,service.parts,team
+Operation Manager,service.replacements,team
+Operation Manager,service.contracts,team
+Operation Manager,portal.minutes,team
+Operation Manager,is.service-inventory,team
+Operation Manager,application_service,team
+Administration Officer,portal.requests,assigned
+Administration Officer,portal.expenses,assigned
+Administration Officer,portal.payments,assigned
+Administration Officer,portal.incentives,assigned
+Administration Officer,portal.objectives,assigned
+Administration Officer,portal.tasks,assigned
+Administration Officer,portal.helpdesk,assigned
+Administration Officer,portal.hrprofiles,assigned
+Administration Officer,portal.leavebalance,assigned
+Administration Officer,portal.visits,assigned
+Administration Officer,portal.demos,assigned
+Administration Officer,portal.appraisals,assigned
+Administration Officer,portal.onboarding,assigned
+Administration Officer,portal.training,assigned
+Administration Officer,portal.sales,assigned
+Administration Officer,portal.pipeline,assigned
+Administration Officer,portal.tenders,assigned
+Administration Officer,is.quotation,assigned
+Administration Officer,is.customer-order,assigned
+Administration Officer,is.sales-order,assigned
+Administration Officer,is.withdrawal,assigned
+Administration Officer,is.borrowing,assigned
+Administration Officer,is.return-product,assigned
+Administration Officer,is.purchase-request,assigned
+Administration Officer,is.purchase-order,assigned
+Administration Officer,is.supplier-confirm,assigned
+Administration Officer,is.delivery-in,assigned
+Administration Officer,is.check-in,assigned
+Administration Officer,is.delivery-out,assigned
+Administration Officer,is.check-out,assigned
+Administration Officer,is.stock-adjust,assigned
+Administration Officer,is.stock-transfer,assigned
+Administration Officer,is.stock-count,assigned
+Administration Officer,is.invoice,assigned
+Administration Officer,is.credit-note,assigned
+Administration Officer,is.debit-note,assigned
+Administration Officer,is.payment-receipt,assigned
+Administration Officer,is.master-customers,assigned
+Administration Officer,is.master-suppliers,assigned
+Administration Officer,is.master-products,assigned
+Administration Officer,is.master-warehouses,assigned
+Administration Officer,is.shipment,assigned
+Administration Officer,is.cycle-count,assigned
+Administration Officer,is.warehouse-move,assigned
+Administration Officer,is.kits,assigned
+Administration Officer,is.waiting-purchase,assigned
+Administration Officer,crm.leads,assigned
+Administration Officer,crm.events,assigned
+Administration Officer,crm.projects,assigned
+Administration Officer,crm.activities,assigned
+Administration Officer,crm.tickets,assigned
+Administration Officer,crm.targets,assigned
+Administration Officer,crm.finance,assigned
+Administration Officer,service.instruments,assigned
+Administration Officer,service.jobs,assigned
+Administration Officer,service.movements,assigned
+Administration Officer,service.parts,assigned
+Administration Officer,service.replacements,assigned
+Administration Officer,service.contracts,assigned
+Administration Officer,portal.minutes,assigned
+Administration Officer,is.service-inventory,assigned
+Administration Officer,application_service,assigned
+Inventory Officer,portal.requests,assigned
+Inventory Officer,portal.expenses,assigned
+Inventory Officer,portal.payments,assigned
+Inventory Officer,portal.incentives,assigned
+Inventory Officer,portal.objectives,assigned
+Inventory Officer,portal.tasks,assigned
+Inventory Officer,portal.helpdesk,assigned
+Inventory Officer,portal.hrprofiles,assigned
+Inventory Officer,portal.leavebalance,assigned
+Inventory Officer,portal.visits,assigned
+Inventory Officer,portal.demos,assigned
+Inventory Officer,portal.appraisals,assigned
+Inventory Officer,portal.onboarding,assigned
+Inventory Officer,portal.training,assigned
+Inventory Officer,portal.sales,assigned
+Inventory Officer,portal.pipeline,assigned
+Inventory Officer,portal.tenders,assigned
+Inventory Officer,is.quotation,assigned
+Inventory Officer,is.customer-order,assigned
+Inventory Officer,is.sales-order,assigned
+Inventory Officer,is.withdrawal,assigned
+Inventory Officer,is.borrowing,assigned
+Inventory Officer,is.return-product,assigned
+Inventory Officer,is.purchase-request,assigned
+Inventory Officer,is.purchase-order,assigned
+Inventory Officer,is.supplier-confirm,assigned
+Inventory Officer,is.delivery-in,assigned
+Inventory Officer,is.check-in,assigned
+Inventory Officer,is.delivery-out,assigned
+Inventory Officer,is.check-out,assigned
+Inventory Officer,is.stock-adjust,assigned
+Inventory Officer,is.stock-transfer,assigned
+Inventory Officer,is.stock-count,assigned
+Inventory Officer,is.invoice,assigned
+Inventory Officer,is.credit-note,assigned
+Inventory Officer,is.debit-note,assigned
+Inventory Officer,is.payment-receipt,assigned
+Inventory Officer,is.master-customers,assigned
+Inventory Officer,is.master-suppliers,assigned
+Inventory Officer,is.master-products,assigned
+Inventory Officer,is.master-warehouses,assigned
+Inventory Officer,is.shipment,assigned
+Inventory Officer,is.cycle-count,assigned
+Inventory Officer,is.warehouse-move,assigned
+Inventory Officer,is.kits,assigned
+Inventory Officer,is.waiting-purchase,assigned
+Inventory Officer,crm.leads,assigned
+Inventory Officer,crm.events,assigned
+Inventory Officer,crm.projects,assigned
+Inventory Officer,crm.activities,assigned
+Inventory Officer,crm.tickets,assigned
+Inventory Officer,crm.targets,assigned
+Inventory Officer,crm.finance,assigned
+Inventory Officer,service.instruments,assigned
+Inventory Officer,service.jobs,assigned
+Inventory Officer,service.movements,assigned
+Inventory Officer,service.parts,assigned
+Inventory Officer,service.replacements,assigned
+Inventory Officer,service.contracts,assigned
+Inventory Officer,portal.minutes,assigned
+Inventory Officer,is.service-inventory,assigned
+Inventory Officer,application_service,assigned
+Bill Collector,portal.requests,assigned
+Bill Collector,portal.expenses,assigned
+Bill Collector,portal.payments,assigned
+Bill Collector,portal.incentives,assigned
+Bill Collector,portal.objectives,assigned
+Bill Collector,portal.tasks,assigned
+Bill Collector,portal.helpdesk,assigned
+Bill Collector,portal.hrprofiles,assigned
+Bill Collector,portal.leavebalance,assigned
+Bill Collector,portal.visits,assigned
+Bill Collector,portal.demos,assigned
+Bill Collector,portal.appraisals,assigned
+Bill Collector,portal.onboarding,assigned
+Bill Collector,portal.training,assigned
+Bill Collector,portal.sales,assigned
+Bill Collector,portal.pipeline,assigned
+Bill Collector,portal.tenders,assigned
+Bill Collector,is.quotation,assigned
+Bill Collector,is.customer-order,assigned
+Bill Collector,is.sales-order,assigned
+Bill Collector,is.withdrawal,assigned
+Bill Collector,is.borrowing,assigned
+Bill Collector,is.return-product,assigned
+Bill Collector,is.purchase-request,assigned
+Bill Collector,is.purchase-order,assigned
+Bill Collector,is.supplier-confirm,assigned
+Bill Collector,is.delivery-in,assigned
+Bill Collector,is.check-in,assigned
+Bill Collector,is.delivery-out,assigned
+Bill Collector,is.check-out,assigned
+Bill Collector,is.stock-adjust,assigned
+Bill Collector,is.stock-transfer,assigned
+Bill Collector,is.stock-count,assigned
+Bill Collector,is.invoice,assigned
+Bill Collector,is.credit-note,assigned
+Bill Collector,is.debit-note,assigned
+Bill Collector,is.payment-receipt,assigned
+Bill Collector,is.master-customers,assigned
+Bill Collector,is.master-suppliers,assigned
+Bill Collector,is.master-products,assigned
+Bill Collector,is.master-warehouses,assigned
+Bill Collector,is.shipment,assigned
+Bill Collector,is.cycle-count,assigned
+Bill Collector,is.warehouse-move,assigned
+Bill Collector,is.kits,assigned
+Bill Collector,is.waiting-purchase,assigned
+Bill Collector,crm.leads,assigned
+Bill Collector,crm.events,assigned
+Bill Collector,crm.projects,assigned
+Bill Collector,crm.activities,assigned
+Bill Collector,crm.tickets,assigned
+Bill Collector,crm.targets,assigned
+Bill Collector,crm.finance,assigned
+Bill Collector,service.instruments,assigned
+Bill Collector,service.jobs,assigned
+Bill Collector,service.movements,assigned
+Bill Collector,service.parts,assigned
+Bill Collector,service.replacements,assigned
+Bill Collector,service.contracts,assigned
+Bill Collector,portal.minutes,assigned
+Bill Collector,is.service-inventory,assigned
+Bill Collector,application_service,assigned
+Messenger & Delivery Supervisor,portal.requests,team
+Messenger & Delivery Supervisor,portal.expenses,team
+Messenger & Delivery Supervisor,portal.payments,team
+Messenger & Delivery Supervisor,portal.incentives,team
+Messenger & Delivery Supervisor,portal.objectives,team
+Messenger & Delivery Supervisor,portal.tasks,team
+Messenger & Delivery Supervisor,portal.helpdesk,team
+Messenger & Delivery Supervisor,portal.hrprofiles,team
+Messenger & Delivery Supervisor,portal.leavebalance,team
+Messenger & Delivery Supervisor,portal.visits,team
+Messenger & Delivery Supervisor,portal.demos,team
+Messenger & Delivery Supervisor,portal.appraisals,team
+Messenger & Delivery Supervisor,portal.onboarding,team
+Messenger & Delivery Supervisor,portal.training,team
+Messenger & Delivery Supervisor,portal.sales,team
+Messenger & Delivery Supervisor,portal.pipeline,team
+Messenger & Delivery Supervisor,portal.tenders,team
+Messenger & Delivery Supervisor,is.quotation,team
+Messenger & Delivery Supervisor,is.customer-order,team
+Messenger & Delivery Supervisor,is.sales-order,team
+Messenger & Delivery Supervisor,is.withdrawal,team
+Messenger & Delivery Supervisor,is.borrowing,team
+Messenger & Delivery Supervisor,is.return-product,team
+Messenger & Delivery Supervisor,is.purchase-request,team
+Messenger & Delivery Supervisor,is.purchase-order,team
+Messenger & Delivery Supervisor,is.supplier-confirm,team
+Messenger & Delivery Supervisor,is.delivery-in,team
+Messenger & Delivery Supervisor,is.check-in,team
+Messenger & Delivery Supervisor,is.delivery-out,team
+Messenger & Delivery Supervisor,is.check-out,team
+Messenger & Delivery Supervisor,is.stock-adjust,team
+Messenger & Delivery Supervisor,is.stock-transfer,team
+Messenger & Delivery Supervisor,is.stock-count,team
+Messenger & Delivery Supervisor,is.invoice,team
+Messenger & Delivery Supervisor,is.credit-note,team
+Messenger & Delivery Supervisor,is.debit-note,team
+Messenger & Delivery Supervisor,is.payment-receipt,team
+Messenger & Delivery Supervisor,is.master-customers,team
+Messenger & Delivery Supervisor,is.master-suppliers,team
+Messenger & Delivery Supervisor,is.master-products,team
+Messenger & Delivery Supervisor,is.master-warehouses,team
+Messenger & Delivery Supervisor,is.shipment,team
+Messenger & Delivery Supervisor,is.cycle-count,team
+Messenger & Delivery Supervisor,is.warehouse-move,team
+Messenger & Delivery Supervisor,is.kits,team
+Messenger & Delivery Supervisor,is.waiting-purchase,team
+Messenger & Delivery Supervisor,crm.leads,team
+Messenger & Delivery Supervisor,crm.events,team
+Messenger & Delivery Supervisor,crm.projects,team
+Messenger & Delivery Supervisor,crm.activities,team
+Messenger & Delivery Supervisor,crm.tickets,team
+Messenger & Delivery Supervisor,crm.targets,team
+Messenger & Delivery Supervisor,crm.finance,team
+Messenger & Delivery Supervisor,service.instruments,team
+Messenger & Delivery Supervisor,service.jobs,team
+Messenger & Delivery Supervisor,service.movements,team
+Messenger & Delivery Supervisor,service.parts,team
+Messenger & Delivery Supervisor,service.replacements,team
+Messenger & Delivery Supervisor,service.contracts,team
+Messenger & Delivery Supervisor,portal.minutes,team
+Messenger & Delivery Supervisor,is.service-inventory,team
+Messenger & Delivery Supervisor,application_service,team
+Messenger & Delivery,portal.requests,assigned
+Messenger & Delivery,portal.expenses,assigned
+Messenger & Delivery,portal.payments,assigned
+Messenger & Delivery,portal.incentives,assigned
+Messenger & Delivery,portal.objectives,assigned
+Messenger & Delivery,portal.tasks,assigned
+Messenger & Delivery,portal.helpdesk,assigned
+Messenger & Delivery,portal.hrprofiles,assigned
+Messenger & Delivery,portal.leavebalance,assigned
+Messenger & Delivery,portal.visits,assigned
+Messenger & Delivery,portal.demos,assigned
+Messenger & Delivery,portal.appraisals,assigned
+Messenger & Delivery,portal.onboarding,assigned
+Messenger & Delivery,portal.training,assigned
+Messenger & Delivery,portal.sales,assigned
+Messenger & Delivery,portal.pipeline,assigned
+Messenger & Delivery,portal.tenders,assigned
+Messenger & Delivery,is.quotation,assigned
+Messenger & Delivery,is.customer-order,assigned
+Messenger & Delivery,is.sales-order,assigned
+Messenger & Delivery,is.withdrawal,assigned
+Messenger & Delivery,is.borrowing,assigned
+Messenger & Delivery,is.return-product,assigned
+Messenger & Delivery,is.purchase-request,assigned
+Messenger & Delivery,is.purchase-order,assigned
+Messenger & Delivery,is.supplier-confirm,assigned
+Messenger & Delivery,is.delivery-in,assigned
+Messenger & Delivery,is.check-in,assigned
+Messenger & Delivery,is.delivery-out,assigned
+Messenger & Delivery,is.check-out,assigned
+Messenger & Delivery,is.stock-adjust,assigned
+Messenger & Delivery,is.stock-transfer,assigned
+Messenger & Delivery,is.stock-count,assigned
+Messenger & Delivery,is.invoice,assigned
+Messenger & Delivery,is.credit-note,assigned
+Messenger & Delivery,is.debit-note,assigned
+Messenger & Delivery,is.payment-receipt,assigned
+Messenger & Delivery,is.master-customers,assigned
+Messenger & Delivery,is.master-suppliers,assigned
+Messenger & Delivery,is.master-products,assigned
+Messenger & Delivery,is.master-warehouses,assigned
+Messenger & Delivery,is.shipment,assigned
+Messenger & Delivery,is.cycle-count,assigned
+Messenger & Delivery,is.warehouse-move,assigned
+Messenger & Delivery,is.kits,assigned
+Messenger & Delivery,is.waiting-purchase,assigned
+Messenger & Delivery,crm.leads,assigned
+Messenger & Delivery,crm.events,assigned
+Messenger & Delivery,crm.projects,assigned
+Messenger & Delivery,crm.activities,assigned
+Messenger & Delivery,crm.tickets,assigned
+Messenger & Delivery,crm.targets,assigned
+Messenger & Delivery,crm.finance,assigned
+Messenger & Delivery,service.instruments,assigned
+Messenger & Delivery,service.jobs,assigned
+Messenger & Delivery,service.movements,assigned
+Messenger & Delivery,service.parts,assigned
+Messenger & Delivery,service.replacements,assigned
+Messenger & Delivery,service.contracts,assigned
+Messenger & Delivery,portal.minutes,assigned
+Messenger & Delivery,is.service-inventory,assigned
+Messenger & Delivery,application_service,assigned
+Procurement & Regulatory Supervisor,portal.requests,team
+Procurement & Regulatory Supervisor,portal.expenses,team
+Procurement & Regulatory Supervisor,portal.payments,team
+Procurement & Regulatory Supervisor,portal.incentives,team
+Procurement & Regulatory Supervisor,portal.objectives,team
+Procurement & Regulatory Supervisor,portal.tasks,team
+Procurement & Regulatory Supervisor,portal.helpdesk,team
+Procurement & Regulatory Supervisor,portal.hrprofiles,team
+Procurement & Regulatory Supervisor,portal.leavebalance,team
+Procurement & Regulatory Supervisor,portal.visits,team
+Procurement & Regulatory Supervisor,portal.demos,team
+Procurement & Regulatory Supervisor,portal.appraisals,team
+Procurement & Regulatory Supervisor,portal.onboarding,team
+Procurement & Regulatory Supervisor,portal.training,team
+Procurement & Regulatory Supervisor,portal.sales,team
+Procurement & Regulatory Supervisor,portal.pipeline,team
+Procurement & Regulatory Supervisor,portal.tenders,team
+Procurement & Regulatory Supervisor,is.quotation,team
+Procurement & Regulatory Supervisor,is.customer-order,team
+Procurement & Regulatory Supervisor,is.sales-order,team
+Procurement & Regulatory Supervisor,is.withdrawal,team
+Procurement & Regulatory Supervisor,is.borrowing,team
+Procurement & Regulatory Supervisor,is.return-product,team
+Procurement & Regulatory Supervisor,is.purchase-request,team
+Procurement & Regulatory Supervisor,is.purchase-order,team
+Procurement & Regulatory Supervisor,is.supplier-confirm,team
+Procurement & Regulatory Supervisor,is.delivery-in,team
+Procurement & Regulatory Supervisor,is.check-in,team
+Procurement & Regulatory Supervisor,is.delivery-out,team
+Procurement & Regulatory Supervisor,is.check-out,team
+Procurement & Regulatory Supervisor,is.stock-adjust,team
+Procurement & Regulatory Supervisor,is.stock-transfer,team
+Procurement & Regulatory Supervisor,is.stock-count,team
+Procurement & Regulatory Supervisor,is.invoice,team
+Procurement & Regulatory Supervisor,is.credit-note,team
+Procurement & Regulatory Supervisor,is.debit-note,team
+Procurement & Regulatory Supervisor,is.payment-receipt,team
+Procurement & Regulatory Supervisor,is.master-customers,team
+Procurement & Regulatory Supervisor,is.master-suppliers,team
+Procurement & Regulatory Supervisor,is.master-products,team
+Procurement & Regulatory Supervisor,is.master-warehouses,team
+Procurement & Regulatory Supervisor,is.shipment,team
+Procurement & Regulatory Supervisor,is.cycle-count,team
+Procurement & Regulatory Supervisor,is.warehouse-move,team
+Procurement & Regulatory Supervisor,is.kits,team
+Procurement & Regulatory Supervisor,is.waiting-purchase,team
+Procurement & Regulatory Supervisor,crm.leads,team
+Procurement & Regulatory Supervisor,crm.events,team
+Procurement & Regulatory Supervisor,crm.projects,team
+Procurement & Regulatory Supervisor,crm.activities,team
+Procurement & Regulatory Supervisor,crm.tickets,team
+Procurement & Regulatory Supervisor,crm.targets,team
+Procurement & Regulatory Supervisor,crm.finance,team
+Procurement & Regulatory Supervisor,service.instruments,team
+Procurement & Regulatory Supervisor,service.jobs,team
+Procurement & Regulatory Supervisor,service.movements,team
+Procurement & Regulatory Supervisor,service.parts,team
+Procurement & Regulatory Supervisor,service.replacements,team
+Procurement & Regulatory Supervisor,service.contracts,team
+Procurement & Regulatory Supervisor,portal.minutes,team
+Procurement & Regulatory Supervisor,is.service-inventory,team
+Procurement & Regulatory Supervisor,application_service,team
+Purchasing Officer,portal.requests,assigned
+Purchasing Officer,portal.expenses,assigned
+Purchasing Officer,portal.payments,assigned
+Purchasing Officer,portal.incentives,assigned
+Purchasing Officer,portal.objectives,assigned
+Purchasing Officer,portal.tasks,assigned
+Purchasing Officer,portal.helpdesk,assigned
+Purchasing Officer,portal.hrprofiles,assigned
+Purchasing Officer,portal.leavebalance,assigned
+Purchasing Officer,portal.visits,assigned
+Purchasing Officer,portal.demos,assigned
+Purchasing Officer,portal.appraisals,assigned
+Purchasing Officer,portal.onboarding,assigned
+Purchasing Officer,portal.training,assigned
+Purchasing Officer,portal.sales,assigned
+Purchasing Officer,portal.pipeline,assigned
+Purchasing Officer,portal.tenders,assigned
+Purchasing Officer,is.quotation,assigned
+Purchasing Officer,is.customer-order,assigned
+Purchasing Officer,is.sales-order,assigned
+Purchasing Officer,is.withdrawal,assigned
+Purchasing Officer,is.borrowing,assigned
+Purchasing Officer,is.return-product,assigned
+Purchasing Officer,is.purchase-request,assigned
+Purchasing Officer,is.purchase-order,assigned
+Purchasing Officer,is.supplier-confirm,assigned
+Purchasing Officer,is.delivery-in,assigned
+Purchasing Officer,is.check-in,assigned
+Purchasing Officer,is.delivery-out,assigned
+Purchasing Officer,is.check-out,assigned
+Purchasing Officer,is.stock-adjust,assigned
+Purchasing Officer,is.stock-transfer,assigned
+Purchasing Officer,is.stock-count,assigned
+Purchasing Officer,is.invoice,assigned
+Purchasing Officer,is.credit-note,assigned
+Purchasing Officer,is.debit-note,assigned
+Purchasing Officer,is.payment-receipt,assigned
+Purchasing Officer,is.master-customers,assigned
+Purchasing Officer,is.master-suppliers,assigned
+Purchasing Officer,is.master-products,assigned
+Purchasing Officer,is.master-warehouses,assigned
+Purchasing Officer,is.shipment,assigned
+Purchasing Officer,is.cycle-count,assigned
+Purchasing Officer,is.warehouse-move,assigned
+Purchasing Officer,is.kits,assigned
+Purchasing Officer,is.waiting-purchase,assigned
+Purchasing Officer,crm.leads,assigned
+Purchasing Officer,crm.events,assigned
+Purchasing Officer,crm.projects,assigned
+Purchasing Officer,crm.activities,assigned
+Purchasing Officer,crm.tickets,assigned
+Purchasing Officer,crm.targets,assigned
+Purchasing Officer,crm.finance,assigned
+Purchasing Officer,service.instruments,assigned
+Purchasing Officer,service.jobs,assigned
+Purchasing Officer,service.movements,assigned
+Purchasing Officer,service.parts,assigned
+Purchasing Officer,service.replacements,assigned
+Purchasing Officer,service.contracts,assigned
+Purchasing Officer,portal.minutes,assigned
+Purchasing Officer,is.service-inventory,assigned
+Purchasing Officer,application_service,assigned
+IT & Infrastructure Manager,portal.requests,all
+IT & Infrastructure Manager,portal.expenses,all
+IT & Infrastructure Manager,portal.payments,all
+IT & Infrastructure Manager,portal.incentives,all
+IT & Infrastructure Manager,portal.objectives,all
+IT & Infrastructure Manager,portal.tasks,all
+IT & Infrastructure Manager,portal.helpdesk,all
+IT & Infrastructure Manager,portal.hrprofiles,all
+IT & Infrastructure Manager,portal.leavebalance,all
+IT & Infrastructure Manager,portal.visits,all
+IT & Infrastructure Manager,portal.demos,all
+IT & Infrastructure Manager,portal.appraisals,all
+IT & Infrastructure Manager,portal.onboarding,all
+IT & Infrastructure Manager,portal.training,all
+IT & Infrastructure Manager,portal.sales,all
+IT & Infrastructure Manager,portal.pipeline,all
+IT & Infrastructure Manager,portal.tenders,all
+IT & Infrastructure Manager,is.quotation,all
+IT & Infrastructure Manager,is.customer-order,all
+IT & Infrastructure Manager,is.sales-order,all
+IT & Infrastructure Manager,is.withdrawal,all
+IT & Infrastructure Manager,is.borrowing,all
+IT & Infrastructure Manager,is.return-product,all
+IT & Infrastructure Manager,is.purchase-request,all
+IT & Infrastructure Manager,is.purchase-order,all
+IT & Infrastructure Manager,is.supplier-confirm,all
+IT & Infrastructure Manager,is.delivery-in,all
+IT & Infrastructure Manager,is.check-in,all
+IT & Infrastructure Manager,is.delivery-out,all
+IT & Infrastructure Manager,is.check-out,all
+IT & Infrastructure Manager,is.stock-adjust,all
+IT & Infrastructure Manager,is.stock-transfer,all
+IT & Infrastructure Manager,is.stock-count,all
+IT & Infrastructure Manager,is.invoice,all
+IT & Infrastructure Manager,is.credit-note,all
+IT & Infrastructure Manager,is.debit-note,all
+IT & Infrastructure Manager,is.payment-receipt,all
+IT & Infrastructure Manager,is.master-customers,all
+IT & Infrastructure Manager,is.master-suppliers,all
+IT & Infrastructure Manager,is.master-products,all
+IT & Infrastructure Manager,is.master-warehouses,all
+IT & Infrastructure Manager,is.shipment,all
+IT & Infrastructure Manager,is.cycle-count,all
+IT & Infrastructure Manager,is.warehouse-move,all
+IT & Infrastructure Manager,is.kits,all
+IT & Infrastructure Manager,is.waiting-purchase,all
+IT & Infrastructure Manager,crm.leads,all
+IT & Infrastructure Manager,crm.events,all
+IT & Infrastructure Manager,crm.projects,all
+IT & Infrastructure Manager,crm.activities,all
+IT & Infrastructure Manager,crm.tickets,all
+IT & Infrastructure Manager,crm.targets,all
+IT & Infrastructure Manager,crm.finance,all
+IT & Infrastructure Manager,service.instruments,all
+IT & Infrastructure Manager,service.jobs,all
+IT & Infrastructure Manager,service.movements,all
+IT & Infrastructure Manager,service.parts,all
+IT & Infrastructure Manager,service.replacements,all
+IT & Infrastructure Manager,service.contracts,all
+IT & Infrastructure Manager,portal.minutes,all
+IT & Infrastructure Manager,is.service-inventory,all
+IT & Infrastructure Manager,application_service,all
+IT & Infrastructure Officer,portal.requests,all
+IT & Infrastructure Officer,portal.expenses,all
+IT & Infrastructure Officer,portal.payments,all
+IT & Infrastructure Officer,portal.incentives,all
+IT & Infrastructure Officer,portal.objectives,all
+IT & Infrastructure Officer,portal.tasks,all
+IT & Infrastructure Officer,portal.helpdesk,all
+IT & Infrastructure Officer,portal.hrprofiles,all
+IT & Infrastructure Officer,portal.leavebalance,all
+IT & Infrastructure Officer,portal.visits,all
+IT & Infrastructure Officer,portal.demos,all
+IT & Infrastructure Officer,portal.appraisals,all
+IT & Infrastructure Officer,portal.onboarding,all
+IT & Infrastructure Officer,portal.training,all
+IT & Infrastructure Officer,portal.sales,all
+IT & Infrastructure Officer,portal.pipeline,all
+IT & Infrastructure Officer,portal.tenders,all
+IT & Infrastructure Officer,is.quotation,all
+IT & Infrastructure Officer,is.customer-order,all
+IT & Infrastructure Officer,is.sales-order,all
+IT & Infrastructure Officer,is.withdrawal,all
+IT & Infrastructure Officer,is.borrowing,all
+IT & Infrastructure Officer,is.return-product,all
+IT & Infrastructure Officer,is.purchase-request,all
+IT & Infrastructure Officer,is.purchase-order,all
+IT & Infrastructure Officer,is.supplier-confirm,all
+IT & Infrastructure Officer,is.delivery-in,all
+IT & Infrastructure Officer,is.check-in,all
+IT & Infrastructure Officer,is.delivery-out,all
+IT & Infrastructure Officer,is.check-out,all
+IT & Infrastructure Officer,is.stock-adjust,all
+IT & Infrastructure Officer,is.stock-transfer,all
+IT & Infrastructure Officer,is.stock-count,all
+IT & Infrastructure Officer,is.invoice,all
+IT & Infrastructure Officer,is.credit-note,all
+IT & Infrastructure Officer,is.debit-note,all
+IT & Infrastructure Officer,is.payment-receipt,all
+IT & Infrastructure Officer,is.master-customers,all
+IT & Infrastructure Officer,is.master-suppliers,all
+IT & Infrastructure Officer,is.master-products,all
+IT & Infrastructure Officer,is.master-warehouses,all
+IT & Infrastructure Officer,is.shipment,all
+IT & Infrastructure Officer,is.cycle-count,all
+IT & Infrastructure Officer,is.warehouse-move,all
+IT & Infrastructure Officer,is.kits,all
+IT & Infrastructure Officer,is.waiting-purchase,all
+IT & Infrastructure Officer,crm.leads,all
+IT & Infrastructure Officer,crm.events,all
+IT & Infrastructure Officer,crm.projects,all
+IT & Infrastructure Officer,crm.activities,all
+IT & Infrastructure Officer,crm.tickets,all
+IT & Infrastructure Officer,crm.targets,all
+IT & Infrastructure Officer,crm.finance,all
+IT & Infrastructure Officer,service.instruments,all
+IT & Infrastructure Officer,service.jobs,all
+IT & Infrastructure Officer,service.movements,all
+IT & Infrastructure Officer,service.parts,all
+IT & Infrastructure Officer,service.replacements,all
+IT & Infrastructure Officer,service.contracts,all
+IT & Infrastructure Officer,portal.minutes,all
+IT & Infrastructure Officer,is.service-inventory,all
+IT & Infrastructure Officer,application_service,all
+Product Manager,portal.requests,team
+Product Manager,portal.expenses,team
+Product Manager,portal.payments,team
+Product Manager,portal.incentives,team
+Product Manager,portal.objectives,team
+Product Manager,portal.tasks,team
+Product Manager,portal.helpdesk,team
+Product Manager,portal.hrprofiles,team
+Product Manager,portal.leavebalance,team
+Product Manager,portal.visits,team
+Product Manager,portal.demos,team
+Product Manager,portal.appraisals,team
+Product Manager,portal.onboarding,team
+Product Manager,portal.training,team
+Product Manager,portal.sales,team
+Product Manager,portal.pipeline,team
+Product Manager,portal.tenders,team
+Product Manager,is.quotation,team
+Product Manager,is.customer-order,team
+Product Manager,is.sales-order,team
+Product Manager,is.withdrawal,team
+Product Manager,is.borrowing,team
+Product Manager,is.return-product,team
+Product Manager,is.purchase-request,team
+Product Manager,is.purchase-order,team
+Product Manager,is.supplier-confirm,team
+Product Manager,is.delivery-in,team
+Product Manager,is.check-in,team
+Product Manager,is.delivery-out,team
+Product Manager,is.check-out,team
+Product Manager,is.stock-adjust,team
+Product Manager,is.stock-transfer,team
+Product Manager,is.stock-count,team
+Product Manager,is.invoice,team
+Product Manager,is.credit-note,team
+Product Manager,is.debit-note,team
+Product Manager,is.payment-receipt,team
+Product Manager,is.master-customers,team
+Product Manager,is.master-suppliers,team
+Product Manager,is.master-products,team
+Product Manager,is.master-warehouses,team
+Product Manager,is.shipment,team
+Product Manager,is.cycle-count,team
+Product Manager,is.warehouse-move,team
+Product Manager,is.kits,team
+Product Manager,is.waiting-purchase,team
+Product Manager,crm.leads,team
+Product Manager,crm.events,team
+Product Manager,crm.projects,department
+Product Manager,crm.activities,department
+Product Manager,crm.tickets,all
+Product Manager,crm.targets,team
+Product Manager,crm.finance,team
+Product Manager,service.instruments,all
+Product Manager,service.jobs,team
+Product Manager,service.movements,team
+Product Manager,service.parts,team
+Product Manager,service.replacements,team
+Product Manager,service.contracts,all
+Product Manager,portal.minutes,team
+Product Manager,is.service-inventory,team
+Product Manager,application_service,team
+Product Specialist,portal.requests,assigned
+Product Specialist,portal.expenses,assigned
+Product Specialist,portal.payments,assigned
+Product Specialist,portal.incentives,assigned
+Product Specialist,portal.objectives,assigned
+Product Specialist,portal.tasks,assigned
+Product Specialist,portal.helpdesk,assigned
+Product Specialist,portal.hrprofiles,assigned
+Product Specialist,portal.leavebalance,assigned
+Product Specialist,portal.visits,assigned
+Product Specialist,portal.demos,assigned
+Product Specialist,portal.appraisals,assigned
+Product Specialist,portal.onboarding,assigned
+Product Specialist,portal.training,assigned
+Product Specialist,portal.sales,assigned
+Product Specialist,portal.pipeline,assigned
+Product Specialist,portal.tenders,assigned
+Product Specialist,is.quotation,assigned
+Product Specialist,is.customer-order,assigned
+Product Specialist,is.sales-order,assigned
+Product Specialist,is.withdrawal,assigned
+Product Specialist,is.borrowing,assigned
+Product Specialist,is.return-product,assigned
+Product Specialist,is.purchase-request,assigned
+Product Specialist,is.purchase-order,assigned
+Product Specialist,is.supplier-confirm,assigned
+Product Specialist,is.delivery-in,assigned
+Product Specialist,is.check-in,assigned
+Product Specialist,is.delivery-out,assigned
+Product Specialist,is.check-out,assigned
+Product Specialist,is.stock-adjust,assigned
+Product Specialist,is.stock-transfer,assigned
+Product Specialist,is.stock-count,assigned
+Product Specialist,is.invoice,assigned
+Product Specialist,is.credit-note,assigned
+Product Specialist,is.debit-note,assigned
+Product Specialist,is.payment-receipt,assigned
+Product Specialist,is.master-customers,assigned
+Product Specialist,is.master-suppliers,assigned
+Product Specialist,is.master-products,assigned
+Product Specialist,is.master-warehouses,assigned
+Product Specialist,is.shipment,assigned
+Product Specialist,is.cycle-count,assigned
+Product Specialist,is.warehouse-move,assigned
+Product Specialist,is.kits,assigned
+Product Specialist,is.waiting-purchase,assigned
+Product Specialist,crm.leads,assigned
+Product Specialist,crm.events,assigned
+Product Specialist,crm.projects,department
+Product Specialist,crm.activities,department
+Product Specialist,crm.tickets,all
+Product Specialist,crm.targets,assigned
+Product Specialist,crm.finance,assigned
+Product Specialist,service.instruments,all
+Product Specialist,service.jobs,assigned
+Product Specialist,service.movements,assigned
+Product Specialist,service.parts,assigned
+Product Specialist,service.replacements,assigned
+Product Specialist,service.contracts,all
+Product Specialist,portal.minutes,assigned
+Product Specialist,is.service-inventory,assigned
+Product Specialist,application_service,assigned
+Application Specialist Manager,portal.requests,team
+Application Specialist Manager,portal.expenses,team
+Application Specialist Manager,portal.payments,team
+Application Specialist Manager,portal.incentives,team
+Application Specialist Manager,portal.objectives,team
+Application Specialist Manager,portal.tasks,team
+Application Specialist Manager,portal.helpdesk,team
+Application Specialist Manager,portal.hrprofiles,team
+Application Specialist Manager,portal.leavebalance,team
+Application Specialist Manager,portal.visits,team
+Application Specialist Manager,portal.demos,team
+Application Specialist Manager,portal.appraisals,team
+Application Specialist Manager,portal.onboarding,team
+Application Specialist Manager,portal.training,team
+Application Specialist Manager,portal.sales,team
+Application Specialist Manager,portal.pipeline,team
+Application Specialist Manager,portal.tenders,team
+Application Specialist Manager,is.quotation,team
+Application Specialist Manager,is.customer-order,team
+Application Specialist Manager,is.sales-order,team
+Application Specialist Manager,is.withdrawal,team
+Application Specialist Manager,is.borrowing,team
+Application Specialist Manager,is.return-product,team
+Application Specialist Manager,is.purchase-request,team
+Application Specialist Manager,is.purchase-order,team
+Application Specialist Manager,is.supplier-confirm,team
+Application Specialist Manager,is.delivery-in,team
+Application Specialist Manager,is.check-in,team
+Application Specialist Manager,is.delivery-out,team
+Application Specialist Manager,is.check-out,team
+Application Specialist Manager,is.stock-adjust,team
+Application Specialist Manager,is.stock-transfer,team
+Application Specialist Manager,is.stock-count,team
+Application Specialist Manager,is.invoice,team
+Application Specialist Manager,is.credit-note,team
+Application Specialist Manager,is.debit-note,team
+Application Specialist Manager,is.payment-receipt,team
+Application Specialist Manager,is.master-customers,team
+Application Specialist Manager,is.master-suppliers,team
+Application Specialist Manager,is.master-products,team
+Application Specialist Manager,is.master-warehouses,team
+Application Specialist Manager,is.shipment,team
+Application Specialist Manager,is.cycle-count,team
+Application Specialist Manager,is.warehouse-move,team
+Application Specialist Manager,is.kits,team
+Application Specialist Manager,is.waiting-purchase,team
+Application Specialist Manager,crm.leads,team
+Application Specialist Manager,crm.events,team
+Application Specialist Manager,crm.projects,department
+Application Specialist Manager,crm.activities,department
+Application Specialist Manager,crm.tickets,all
+Application Specialist Manager,crm.targets,team
+Application Specialist Manager,crm.finance,team
+Application Specialist Manager,service.instruments,team
+Application Specialist Manager,service.jobs,team
+Application Specialist Manager,service.movements,team
+Application Specialist Manager,service.parts,team
+Application Specialist Manager,service.replacements,team
+Application Specialist Manager,service.contracts,team
+Application Specialist Manager,portal.minutes,team
+Application Specialist Manager,is.service-inventory,team
+Application Specialist Manager,application_service,department
+Application Specialist,portal.requests,assigned
+Application Specialist,portal.expenses,assigned
+Application Specialist,portal.payments,assigned
+Application Specialist,portal.incentives,assigned
+Application Specialist,portal.objectives,assigned
+Application Specialist,portal.tasks,assigned
+Application Specialist,portal.helpdesk,assigned
+Application Specialist,portal.hrprofiles,assigned
+Application Specialist,portal.leavebalance,assigned
+Application Specialist,portal.visits,assigned
+Application Specialist,portal.demos,assigned
+Application Specialist,portal.appraisals,assigned
+Application Specialist,portal.onboarding,assigned
+Application Specialist,portal.training,assigned
+Application Specialist,portal.sales,assigned
+Application Specialist,portal.pipeline,assigned
+Application Specialist,portal.tenders,assigned
+Application Specialist,is.quotation,assigned
+Application Specialist,is.customer-order,assigned
+Application Specialist,is.sales-order,assigned
+Application Specialist,is.withdrawal,assigned
+Application Specialist,is.borrowing,assigned
+Application Specialist,is.return-product,assigned
+Application Specialist,is.purchase-request,assigned
+Application Specialist,is.purchase-order,assigned
+Application Specialist,is.supplier-confirm,assigned
+Application Specialist,is.delivery-in,assigned
+Application Specialist,is.check-in,assigned
+Application Specialist,is.delivery-out,assigned
+Application Specialist,is.check-out,assigned
+Application Specialist,is.stock-adjust,assigned
+Application Specialist,is.stock-transfer,assigned
+Application Specialist,is.stock-count,assigned
+Application Specialist,is.invoice,assigned
+Application Specialist,is.credit-note,assigned
+Application Specialist,is.debit-note,assigned
+Application Specialist,is.payment-receipt,assigned
+Application Specialist,is.master-customers,assigned
+Application Specialist,is.master-suppliers,assigned
+Application Specialist,is.master-products,assigned
+Application Specialist,is.master-warehouses,assigned
+Application Specialist,is.shipment,assigned
+Application Specialist,is.cycle-count,assigned
+Application Specialist,is.warehouse-move,assigned
+Application Specialist,is.kits,assigned
+Application Specialist,is.waiting-purchase,assigned
+Application Specialist,crm.leads,assigned
+Application Specialist,crm.events,assigned
+Application Specialist,crm.projects,department
+Application Specialist,crm.activities,department
+Application Specialist,crm.tickets,all
+Application Specialist,crm.targets,assigned
+Application Specialist,crm.finance,assigned
+Application Specialist,service.instruments,all
+Application Specialist,service.jobs,assigned
+Application Specialist,service.movements,assigned
+Application Specialist,service.parts,assigned
+Application Specialist,service.replacements,assigned
+Application Specialist,service.contracts,all
+Application Specialist,portal.minutes,assigned
+Application Specialist,is.service-inventory,assigned
+Application Specialist,application_service,department
+Marketing Communication Specialist,portal.requests,assigned
+Marketing Communication Specialist,portal.expenses,assigned
+Marketing Communication Specialist,portal.payments,assigned
+Marketing Communication Specialist,portal.incentives,assigned
+Marketing Communication Specialist,portal.objectives,assigned
+Marketing Communication Specialist,portal.tasks,assigned
+Marketing Communication Specialist,portal.helpdesk,assigned
+Marketing Communication Specialist,portal.hrprofiles,assigned
+Marketing Communication Specialist,portal.leavebalance,assigned
+Marketing Communication Specialist,portal.visits,assigned
+Marketing Communication Specialist,portal.demos,assigned
+Marketing Communication Specialist,portal.appraisals,assigned
+Marketing Communication Specialist,portal.onboarding,assigned
+Marketing Communication Specialist,portal.training,assigned
+Marketing Communication Specialist,portal.sales,assigned
+Marketing Communication Specialist,portal.pipeline,assigned
+Marketing Communication Specialist,portal.tenders,assigned
+Marketing Communication Specialist,is.quotation,assigned
+Marketing Communication Specialist,is.customer-order,assigned
+Marketing Communication Specialist,is.sales-order,assigned
+Marketing Communication Specialist,is.withdrawal,assigned
+Marketing Communication Specialist,is.borrowing,assigned
+Marketing Communication Specialist,is.return-product,assigned
+Marketing Communication Specialist,is.purchase-request,assigned
+Marketing Communication Specialist,is.purchase-order,assigned
+Marketing Communication Specialist,is.supplier-confirm,assigned
+Marketing Communication Specialist,is.delivery-in,assigned
+Marketing Communication Specialist,is.check-in,assigned
+Marketing Communication Specialist,is.delivery-out,assigned
+Marketing Communication Specialist,is.check-out,assigned
+Marketing Communication Specialist,is.stock-adjust,assigned
+Marketing Communication Specialist,is.stock-transfer,assigned
+Marketing Communication Specialist,is.stock-count,assigned
+Marketing Communication Specialist,is.invoice,assigned
+Marketing Communication Specialist,is.credit-note,assigned
+Marketing Communication Specialist,is.debit-note,assigned
+Marketing Communication Specialist,is.payment-receipt,assigned
+Marketing Communication Specialist,is.master-customers,assigned
+Marketing Communication Specialist,is.master-suppliers,assigned
+Marketing Communication Specialist,is.master-products,assigned
+Marketing Communication Specialist,is.master-warehouses,assigned
+Marketing Communication Specialist,is.shipment,assigned
+Marketing Communication Specialist,is.cycle-count,assigned
+Marketing Communication Specialist,is.warehouse-move,assigned
+Marketing Communication Specialist,is.kits,assigned
+Marketing Communication Specialist,is.waiting-purchase,assigned
+Marketing Communication Specialist,crm.leads,assigned
+Marketing Communication Specialist,crm.events,assigned
+Marketing Communication Specialist,crm.projects,department
+Marketing Communication Specialist,crm.activities,department
+Marketing Communication Specialist,crm.tickets,all
+Marketing Communication Specialist,crm.targets,assigned
+Marketing Communication Specialist,crm.finance,assigned
+Marketing Communication Specialist,service.instruments,all
+Marketing Communication Specialist,service.jobs,assigned
+Marketing Communication Specialist,service.movements,assigned
+Marketing Communication Specialist,service.parts,assigned
+Marketing Communication Specialist,service.replacements,assigned
+Marketing Communication Specialist,service.contracts,all
+Marketing Communication Specialist,portal.minutes,assigned
+Marketing Communication Specialist,is.service-inventory,assigned
+Marketing Communication Specialist,application_service,assigned
+Sales Manager,portal.requests,team
+Sales Manager,portal.expenses,team
+Sales Manager,portal.payments,team
+Sales Manager,portal.incentives,team
+Sales Manager,portal.objectives,team
+Sales Manager,portal.tasks,team
+Sales Manager,portal.helpdesk,team
+Sales Manager,portal.hrprofiles,team
+Sales Manager,portal.leavebalance,team
+Sales Manager,portal.visits,team
+Sales Manager,portal.demos,team
+Sales Manager,portal.appraisals,team
+Sales Manager,portal.onboarding,team
+Sales Manager,portal.training,team
+Sales Manager,portal.sales,team
+Sales Manager,portal.pipeline,team
+Sales Manager,portal.tenders,team
+Sales Manager,is.quotation,team
+Sales Manager,is.customer-order,team
+Sales Manager,is.sales-order,team
+Sales Manager,is.withdrawal,team
+Sales Manager,is.borrowing,team
+Sales Manager,is.return-product,team
+Sales Manager,is.purchase-request,team
+Sales Manager,is.purchase-order,team
+Sales Manager,is.supplier-confirm,team
+Sales Manager,is.delivery-in,team
+Sales Manager,is.check-in,team
+Sales Manager,is.delivery-out,team
+Sales Manager,is.check-out,team
+Sales Manager,is.stock-adjust,team
+Sales Manager,is.stock-transfer,team
+Sales Manager,is.stock-count,team
+Sales Manager,is.invoice,team
+Sales Manager,is.credit-note,team
+Sales Manager,is.debit-note,team
+Sales Manager,is.payment-receipt,team
+Sales Manager,is.master-customers,team
+Sales Manager,is.master-suppliers,team
+Sales Manager,is.master-products,team
+Sales Manager,is.master-warehouses,team
+Sales Manager,is.shipment,team
+Sales Manager,is.cycle-count,team
+Sales Manager,is.warehouse-move,team
+Sales Manager,is.kits,team
+Sales Manager,is.waiting-purchase,team
+Sales Manager,crm.leads,team
+Sales Manager,crm.events,team
+Sales Manager,crm.projects,department
+Sales Manager,crm.activities,department
+Sales Manager,crm.tickets,all
+Sales Manager,crm.targets,team
+Sales Manager,crm.finance,team
+Sales Manager,service.instruments,all
+Sales Manager,service.jobs,team
+Sales Manager,service.movements,team
+Sales Manager,service.parts,team
+Sales Manager,service.replacements,team
+Sales Manager,service.contracts,all
+Sales Manager,portal.minutes,team
+Sales Manager,is.service-inventory,team
+Sales Manager,application_service,team
+Sales Supervisor,portal.requests,team
+Sales Supervisor,portal.expenses,team
+Sales Supervisor,portal.payments,team
+Sales Supervisor,portal.incentives,team
+Sales Supervisor,portal.objectives,team
+Sales Supervisor,portal.tasks,team
+Sales Supervisor,portal.helpdesk,team
+Sales Supervisor,portal.hrprofiles,team
+Sales Supervisor,portal.leavebalance,team
+Sales Supervisor,portal.visits,team
+Sales Supervisor,portal.demos,team
+Sales Supervisor,portal.appraisals,team
+Sales Supervisor,portal.onboarding,team
+Sales Supervisor,portal.training,team
+Sales Supervisor,portal.sales,team
+Sales Supervisor,portal.pipeline,team
+Sales Supervisor,portal.tenders,team
+Sales Supervisor,is.quotation,team
+Sales Supervisor,is.customer-order,team
+Sales Supervisor,is.sales-order,team
+Sales Supervisor,is.withdrawal,team
+Sales Supervisor,is.borrowing,team
+Sales Supervisor,is.return-product,team
+Sales Supervisor,is.purchase-request,team
+Sales Supervisor,is.purchase-order,team
+Sales Supervisor,is.supplier-confirm,team
+Sales Supervisor,is.delivery-in,team
+Sales Supervisor,is.check-in,team
+Sales Supervisor,is.delivery-out,team
+Sales Supervisor,is.check-out,team
+Sales Supervisor,is.stock-adjust,team
+Sales Supervisor,is.stock-transfer,team
+Sales Supervisor,is.stock-count,team
+Sales Supervisor,is.invoice,team
+Sales Supervisor,is.credit-note,team
+Sales Supervisor,is.debit-note,team
+Sales Supervisor,is.payment-receipt,team
+Sales Supervisor,is.master-customers,team
+Sales Supervisor,is.master-suppliers,team
+Sales Supervisor,is.master-products,team
+Sales Supervisor,is.master-warehouses,team
+Sales Supervisor,is.shipment,team
+Sales Supervisor,is.cycle-count,team
+Sales Supervisor,is.warehouse-move,team
+Sales Supervisor,is.kits,team
+Sales Supervisor,is.waiting-purchase,team
+Sales Supervisor,crm.leads,team
+Sales Supervisor,crm.events,team
+Sales Supervisor,crm.projects,department
+Sales Supervisor,crm.activities,department
+Sales Supervisor,crm.tickets,all
+Sales Supervisor,crm.targets,team
+Sales Supervisor,crm.finance,team
+Sales Supervisor,service.instruments,all
+Sales Supervisor,service.jobs,team
+Sales Supervisor,service.movements,team
+Sales Supervisor,service.parts,team
+Sales Supervisor,service.replacements,team
+Sales Supervisor,service.contracts,all
+Sales Supervisor,portal.minutes,team
+Sales Supervisor,is.service-inventory,team
+Sales Supervisor,application_service,team
+Sales Representative,portal.requests,assigned
+Sales Representative,portal.expenses,assigned
+Sales Representative,portal.payments,assigned
+Sales Representative,portal.incentives,assigned
+Sales Representative,portal.objectives,assigned
+Sales Representative,portal.tasks,assigned
+Sales Representative,portal.helpdesk,assigned
+Sales Representative,portal.hrprofiles,assigned
+Sales Representative,portal.leavebalance,assigned
+Sales Representative,portal.visits,assigned
+Sales Representative,portal.demos,assigned
+Sales Representative,portal.appraisals,assigned
+Sales Representative,portal.onboarding,assigned
+Sales Representative,portal.training,assigned
+Sales Representative,portal.sales,assigned
+Sales Representative,portal.pipeline,assigned
+Sales Representative,portal.tenders,assigned
+Sales Representative,is.quotation,assigned
+Sales Representative,is.customer-order,assigned
+Sales Representative,is.sales-order,assigned
+Sales Representative,is.withdrawal,assigned
+Sales Representative,is.borrowing,assigned
+Sales Representative,is.return-product,assigned
+Sales Representative,is.purchase-request,assigned
+Sales Representative,is.purchase-order,assigned
+Sales Representative,is.supplier-confirm,assigned
+Sales Representative,is.delivery-in,assigned
+Sales Representative,is.check-in,assigned
+Sales Representative,is.delivery-out,assigned
+Sales Representative,is.check-out,assigned
+Sales Representative,is.stock-adjust,assigned
+Sales Representative,is.stock-transfer,assigned
+Sales Representative,is.stock-count,assigned
+Sales Representative,is.invoice,assigned
+Sales Representative,is.credit-note,assigned
+Sales Representative,is.debit-note,assigned
+Sales Representative,is.payment-receipt,assigned
+Sales Representative,is.master-customers,assigned
+Sales Representative,is.master-suppliers,assigned
+Sales Representative,is.master-products,assigned
+Sales Representative,is.master-warehouses,assigned
+Sales Representative,is.shipment,assigned
+Sales Representative,is.cycle-count,assigned
+Sales Representative,is.warehouse-move,assigned
+Sales Representative,is.kits,assigned
+Sales Representative,is.waiting-purchase,assigned
+Sales Representative,crm.leads,assigned
+Sales Representative,crm.events,assigned
+Sales Representative,crm.projects,department
+Sales Representative,crm.activities,department
+Sales Representative,crm.tickets,all
+Sales Representative,crm.targets,assigned
+Sales Representative,crm.finance,assigned
+Sales Representative,service.instruments,assigned
+Sales Representative,service.jobs,assigned
+Sales Representative,service.movements,assigned
+Sales Representative,service.parts,assigned
+Sales Representative,service.replacements,assigned
+Sales Representative,service.contracts,assigned
+Sales Representative,portal.minutes,assigned
+Sales Representative,is.service-inventory,assigned
+Sales Representative,application_service,assigned
+Service Engineer Supervisor,portal.requests,team
+Service Engineer Supervisor,portal.expenses,team
+Service Engineer Supervisor,portal.payments,team
+Service Engineer Supervisor,portal.incentives,team
+Service Engineer Supervisor,portal.objectives,team
+Service Engineer Supervisor,portal.tasks,team
+Service Engineer Supervisor,portal.helpdesk,team
+Service Engineer Supervisor,portal.hrprofiles,team
+Service Engineer Supervisor,portal.leavebalance,team
+Service Engineer Supervisor,portal.visits,team
+Service Engineer Supervisor,portal.demos,team
+Service Engineer Supervisor,portal.appraisals,team
+Service Engineer Supervisor,portal.onboarding,team
+Service Engineer Supervisor,portal.training,team
+Service Engineer Supervisor,portal.sales,team
+Service Engineer Supervisor,portal.pipeline,team
+Service Engineer Supervisor,portal.tenders,team
+Service Engineer Supervisor,is.quotation,team
+Service Engineer Supervisor,is.customer-order,team
+Service Engineer Supervisor,is.sales-order,team
+Service Engineer Supervisor,is.withdrawal,team
+Service Engineer Supervisor,is.borrowing,team
+Service Engineer Supervisor,is.return-product,team
+Service Engineer Supervisor,is.purchase-request,team
+Service Engineer Supervisor,is.purchase-order,team
+Service Engineer Supervisor,is.supplier-confirm,team
+Service Engineer Supervisor,is.delivery-in,team
+Service Engineer Supervisor,is.check-in,team
+Service Engineer Supervisor,is.delivery-out,team
+Service Engineer Supervisor,is.check-out,team
+Service Engineer Supervisor,is.stock-adjust,team
+Service Engineer Supervisor,is.stock-transfer,team
+Service Engineer Supervisor,is.stock-count,team
+Service Engineer Supervisor,is.invoice,team
+Service Engineer Supervisor,is.credit-note,team
+Service Engineer Supervisor,is.debit-note,team
+Service Engineer Supervisor,is.payment-receipt,team
+Service Engineer Supervisor,is.master-customers,team
+Service Engineer Supervisor,is.master-suppliers,team
+Service Engineer Supervisor,is.master-products,team
+Service Engineer Supervisor,is.master-warehouses,team
+Service Engineer Supervisor,is.shipment,team
+Service Engineer Supervisor,is.cycle-count,team
+Service Engineer Supervisor,is.warehouse-move,team
+Service Engineer Supervisor,is.kits,team
+Service Engineer Supervisor,is.waiting-purchase,team
+Service Engineer Supervisor,crm.leads,team
+Service Engineer Supervisor,crm.events,team
+Service Engineer Supervisor,crm.projects,department
+Service Engineer Supervisor,crm.activities,department
+Service Engineer Supervisor,crm.tickets,all
+Service Engineer Supervisor,crm.targets,team
+Service Engineer Supervisor,crm.finance,team
+Service Engineer Supervisor,service.instruments,department
+Service Engineer Supervisor,service.jobs,department
+Service Engineer Supervisor,service.movements,department
+Service Engineer Supervisor,service.parts,department
+Service Engineer Supervisor,service.replacements,department
+Service Engineer Supervisor,service.contracts,department
+Service Engineer Supervisor,portal.minutes,team
+Service Engineer Supervisor,is.service-inventory,department
+Service Engineer Supervisor,application_service,team
+Service Engineer,portal.requests,assigned
+Service Engineer,portal.expenses,assigned
+Service Engineer,portal.payments,assigned
+Service Engineer,portal.incentives,assigned
+Service Engineer,portal.objectives,assigned
+Service Engineer,portal.tasks,assigned
+Service Engineer,portal.helpdesk,assigned
+Service Engineer,portal.hrprofiles,assigned
+Service Engineer,portal.leavebalance,assigned
+Service Engineer,portal.visits,assigned
+Service Engineer,portal.demos,assigned
+Service Engineer,portal.appraisals,assigned
+Service Engineer,portal.onboarding,assigned
+Service Engineer,portal.training,assigned
+Service Engineer,portal.sales,assigned
+Service Engineer,portal.pipeline,assigned
+Service Engineer,portal.tenders,assigned
+Service Engineer,is.quotation,assigned
+Service Engineer,is.customer-order,assigned
+Service Engineer,is.sales-order,assigned
+Service Engineer,is.withdrawal,assigned
+Service Engineer,is.borrowing,assigned
+Service Engineer,is.return-product,assigned
+Service Engineer,is.purchase-request,assigned
+Service Engineer,is.purchase-order,assigned
+Service Engineer,is.supplier-confirm,assigned
+Service Engineer,is.delivery-in,assigned
+Service Engineer,is.check-in,assigned
+Service Engineer,is.delivery-out,assigned
+Service Engineer,is.check-out,assigned
+Service Engineer,is.stock-adjust,assigned
+Service Engineer,is.stock-transfer,assigned
+Service Engineer,is.stock-count,assigned
+Service Engineer,is.invoice,assigned
+Service Engineer,is.credit-note,assigned
+Service Engineer,is.debit-note,assigned
+Service Engineer,is.payment-receipt,assigned
+Service Engineer,is.master-customers,assigned
+Service Engineer,is.master-suppliers,assigned
+Service Engineer,is.master-products,assigned
+Service Engineer,is.master-warehouses,assigned
+Service Engineer,is.shipment,assigned
+Service Engineer,is.cycle-count,assigned
+Service Engineer,is.warehouse-move,assigned
+Service Engineer,is.kits,assigned
+Service Engineer,is.waiting-purchase,assigned
+Service Engineer,crm.leads,assigned
+Service Engineer,crm.events,assigned
+Service Engineer,crm.projects,department
+Service Engineer,crm.activities,department
+Service Engineer,crm.tickets,all
+Service Engineer,crm.targets,assigned
+Service Engineer,crm.finance,assigned
+Service Engineer,service.instruments,department
+Service Engineer,service.jobs,department
+Service Engineer,service.movements,department
+Service Engineer,service.parts,department
+Service Engineer,service.replacements,department
+Service Engineer,service.contracts,department
+Service Engineer,portal.minutes,assigned
+Service Engineer,is.service-inventory,department
+Service Engineer,application_service,assigned

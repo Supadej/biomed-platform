@@ -1,0 +1,2543 @@
+﻿Role,Module,Function,Record visibility
+System Admin,portal.requests,"Travel, leave and general requests",All records
+System Admin,portal.expenses,Expense claims,All records
+System Admin,portal.payments,Payment processing,All records
+System Admin,portal.incentives,Incentive schemes and claims,All records
+System Admin,portal.objectives,Objectives and reviews,All records
+System Admin,portal.tasks,Tasks and action board,All records
+System Admin,portal.helpdesk,Helpdesk tickets,All records
+System Admin,portal.hrprofiles,HR profiles,All records
+System Admin,portal.leavebalance,Leave entitlements,All records
+System Admin,portal.visits,Customer visits,All records
+System Admin,portal.demos,Product demonstrations,All records
+System Admin,portal.appraisals,Performance appraisals,All records
+System Admin,portal.onboarding,Onboarding / promotion / offboarding,All records
+System Admin,portal.training,Training and competency,All records
+System Admin,portal.sales,Sales targets and performance,All records
+System Admin,portal.pipeline,Quotation follow-up and won/lost status,All records
+System Admin,portal.tenders,Tenders,All records
+System Admin,is.quotation,Quotation,All records
+System Admin,is.customer-order,Customer orders,All records
+System Admin,is.sales-order,Sales orders,All records
+System Admin,is.withdrawal,Withdrawal,All records
+System Admin,is.borrowing,Borrowing,All records
+System Admin,is.return-product,Product return,All records
+System Admin,is.purchase-request,Purchase requisition,All records
+System Admin,is.purchase-order,Purchase order,All records
+System Admin,is.supplier-confirm,Supplier confirmation,All records
+System Admin,is.delivery-in,Delivery in,All records
+System Admin,is.check-in,Check in,All records
+System Admin,is.delivery-out,Delivery out,All records
+System Admin,is.check-out,Check out,All records
+System Admin,is.stock-adjust,Stock adjustment,All records
+System Admin,is.stock-transfer,Warehouse transfer,All records
+System Admin,is.stock-count,Stock count,All records
+System Admin,is.invoice,Invoice,All records
+System Admin,is.credit-note,Credit note,All records
+System Admin,is.debit-note,Debit note,All records
+System Admin,is.payment-receipt,Payment receipt,All records
+System Admin,is.master-customers,Customers,All records
+System Admin,is.master-suppliers,Suppliers,All records
+System Admin,is.master-products,Products,All records
+System Admin,is.master-warehouses,Warehouses,All records
+System Admin,is.shipment,Automatic shipment records,All records
+System Admin,is.cycle-count,Physical stock counts,All records
+System Admin,is.warehouse-move,Warehouse location transfers,All records
+System Admin,is.kits,Product kits and panels,All records
+System Admin,is.waiting-purchase,Waiting to be Purchased,All records
+System Admin,crm.leads,Sales Plan,All records
+System Admin,crm.events,Staff Portal Calendar,All records
+System Admin,crm.projects,Project & Activity — projects,All records
+System Admin,crm.activities,Project & Activity,All records
+System Admin,crm.tickets,External Helpdesk,All records
+System Admin,crm.targets,CRM sales targets,All records
+System Admin,crm.finance,Linked IS / Budget snapshots,All records
+System Admin,service.instruments,Instrument Service — Instruments,All records
+System Admin,service.jobs,Instrument Service — Jobs,All records
+System Admin,service.movements,Instrument Service — Movements,All records
+System Admin,service.parts,Instrument Service — Parts,All records
+System Admin,service.replacements,Instrument Service — Replacements,All records
+System Admin,service.contracts,Instrument Service — Contracts,All records
+System Admin,portal.minutes,Minutes & Acknowledgement,All records
+System Admin,is.service-inventory,Service Inventory,All records
+System Admin,application_service,Application Service — view,All records
+Managing Director,portal.requests,"Travel, leave and general requests",All records
+Managing Director,portal.expenses,Expense claims,All records
+Managing Director,portal.payments,Payment processing,All records
+Managing Director,portal.incentives,Incentive schemes and claims,All records
+Managing Director,portal.objectives,Objectives and reviews,All records
+Managing Director,portal.tasks,Tasks and action board,All records
+Managing Director,portal.helpdesk,Helpdesk tickets,All records
+Managing Director,portal.hrprofiles,HR profiles,All records
+Managing Director,portal.leavebalance,Leave entitlements,All records
+Managing Director,portal.visits,Customer visits,All records
+Managing Director,portal.demos,Product demonstrations,All records
+Managing Director,portal.appraisals,Performance appraisals,All records
+Managing Director,portal.onboarding,Onboarding / promotion / offboarding,All records
+Managing Director,portal.training,Training and competency,All records
+Managing Director,portal.sales,Sales targets and performance,All records
+Managing Director,portal.pipeline,Quotation follow-up and won/lost status,All records
+Managing Director,portal.tenders,Tenders,All records
+Managing Director,is.quotation,Quotation,All records
+Managing Director,is.customer-order,Customer orders,All records
+Managing Director,is.sales-order,Sales orders,All records
+Managing Director,is.withdrawal,Withdrawal,All records
+Managing Director,is.borrowing,Borrowing,All records
+Managing Director,is.return-product,Product return,All records
+Managing Director,is.purchase-request,Purchase requisition,All records
+Managing Director,is.purchase-order,Purchase order,All records
+Managing Director,is.supplier-confirm,Supplier confirmation,All records
+Managing Director,is.delivery-in,Delivery in,All records
+Managing Director,is.check-in,Check in,All records
+Managing Director,is.delivery-out,Delivery out,All records
+Managing Director,is.check-out,Check out,All records
+Managing Director,is.stock-adjust,Stock adjustment,All records
+Managing Director,is.stock-transfer,Warehouse transfer,All records
+Managing Director,is.stock-count,Stock count,All records
+Managing Director,is.invoice,Invoice,All records
+Managing Director,is.credit-note,Credit note,All records
+Managing Director,is.debit-note,Debit note,All records
+Managing Director,is.payment-receipt,Payment receipt,All records
+Managing Director,is.master-customers,Customers,All records
+Managing Director,is.master-suppliers,Suppliers,All records
+Managing Director,is.master-products,Products,All records
+Managing Director,is.master-warehouses,Warehouses,All records
+Managing Director,is.shipment,Automatic shipment records,All records
+Managing Director,is.cycle-count,Physical stock counts,All records
+Managing Director,is.warehouse-move,Warehouse location transfers,All records
+Managing Director,is.kits,Product kits and panels,All records
+Managing Director,is.waiting-purchase,Waiting to be Purchased,All records
+Managing Director,crm.leads,Sales Plan,All records
+Managing Director,crm.events,Staff Portal Calendar,All records
+Managing Director,crm.projects,Project & Activity — projects,All records
+Managing Director,crm.activities,Project & Activity,All records
+Managing Director,crm.tickets,External Helpdesk,All records
+Managing Director,crm.targets,CRM sales targets,All records
+Managing Director,crm.finance,Linked IS / Budget snapshots,All records
+Managing Director,service.instruments,Instrument Service — Instruments,All records
+Managing Director,service.jobs,Instrument Service — Jobs,All records
+Managing Director,service.movements,Instrument Service — Movements,All records
+Managing Director,service.parts,Instrument Service — Parts,All records
+Managing Director,service.replacements,Instrument Service — Replacements,All records
+Managing Director,service.contracts,Instrument Service — Contracts,All records
+Managing Director,portal.minutes,Minutes & Acknowledgement,All records
+Managing Director,is.service-inventory,Service Inventory,All records
+Managing Director,application_service,Application Service — view,All records
+Operations Director,portal.requests,"Travel, leave and general requests",All records
+Operations Director,portal.expenses,Expense claims,All records
+Operations Director,portal.payments,Payment processing,All records
+Operations Director,portal.incentives,Incentive schemes and claims,All records
+Operations Director,portal.objectives,Objectives and reviews,All records
+Operations Director,portal.tasks,Tasks and action board,All records
+Operations Director,portal.helpdesk,Helpdesk tickets,All records
+Operations Director,portal.hrprofiles,HR profiles,All records
+Operations Director,portal.leavebalance,Leave entitlements,All records
+Operations Director,portal.visits,Customer visits,All records
+Operations Director,portal.demos,Product demonstrations,All records
+Operations Director,portal.appraisals,Performance appraisals,All records
+Operations Director,portal.onboarding,Onboarding / promotion / offboarding,All records
+Operations Director,portal.training,Training and competency,All records
+Operations Director,portal.sales,Sales targets and performance,All records
+Operations Director,portal.pipeline,Quotation follow-up and won/lost status,All records
+Operations Director,portal.tenders,Tenders,All records
+Operations Director,is.quotation,Quotation,All records
+Operations Director,is.customer-order,Customer orders,All records
+Operations Director,is.sales-order,Sales orders,All records
+Operations Director,is.withdrawal,Withdrawal,All records
+Operations Director,is.borrowing,Borrowing,All records
+Operations Director,is.return-product,Product return,All records
+Operations Director,is.purchase-request,Purchase requisition,All records
+Operations Director,is.purchase-order,Purchase order,All records
+Operations Director,is.supplier-confirm,Supplier confirmation,All records
+Operations Director,is.delivery-in,Delivery in,All records
+Operations Director,is.check-in,Check in,All records
+Operations Director,is.delivery-out,Delivery out,All records
+Operations Director,is.check-out,Check out,All records
+Operations Director,is.stock-adjust,Stock adjustment,All records
+Operations Director,is.stock-transfer,Warehouse transfer,All records
+Operations Director,is.stock-count,Stock count,All records
+Operations Director,is.invoice,Invoice,All records
+Operations Director,is.credit-note,Credit note,All records
+Operations Director,is.debit-note,Debit note,All records
+Operations Director,is.payment-receipt,Payment receipt,All records
+Operations Director,is.master-customers,Customers,All records
+Operations Director,is.master-suppliers,Suppliers,All records
+Operations Director,is.master-products,Products,All records
+Operations Director,is.master-warehouses,Warehouses,All records
+Operations Director,is.shipment,Automatic shipment records,All records
+Operations Director,is.cycle-count,Physical stock counts,All records
+Operations Director,is.warehouse-move,Warehouse location transfers,All records
+Operations Director,is.kits,Product kits and panels,All records
+Operations Director,is.waiting-purchase,Waiting to be Purchased,All records
+Operations Director,crm.leads,Sales Plan,All records
+Operations Director,crm.events,Staff Portal Calendar,All records
+Operations Director,crm.projects,Project & Activity — projects,All records
+Operations Director,crm.activities,Project & Activity,All records
+Operations Director,crm.tickets,External Helpdesk,All records
+Operations Director,crm.targets,CRM sales targets,All records
+Operations Director,crm.finance,Linked IS / Budget snapshots,All records
+Operations Director,service.instruments,Instrument Service — Instruments,All records
+Operations Director,service.jobs,Instrument Service — Jobs,All records
+Operations Director,service.movements,Instrument Service — Movements,All records
+Operations Director,service.parts,Instrument Service — Parts,All records
+Operations Director,service.replacements,Instrument Service — Replacements,All records
+Operations Director,service.contracts,Instrument Service — Contracts,All records
+Operations Director,portal.minutes,Minutes & Acknowledgement,All records
+Operations Director,is.service-inventory,Service Inventory,All records
+Operations Director,application_service,Application Service — view,All records
+Business Director,portal.requests,"Travel, leave and general requests",All records
+Business Director,portal.expenses,Expense claims,All records
+Business Director,portal.payments,Payment processing,All records
+Business Director,portal.incentives,Incentive schemes and claims,All records
+Business Director,portal.objectives,Objectives and reviews,All records
+Business Director,portal.tasks,Tasks and action board,All records
+Business Director,portal.helpdesk,Helpdesk tickets,All records
+Business Director,portal.hrprofiles,HR profiles,All records
+Business Director,portal.leavebalance,Leave entitlements,All records
+Business Director,portal.visits,Customer visits,All records
+Business Director,portal.demos,Product demonstrations,All records
+Business Director,portal.appraisals,Performance appraisals,All records
+Business Director,portal.onboarding,Onboarding / promotion / offboarding,All records
+Business Director,portal.training,Training and competency,All records
+Business Director,portal.sales,Sales targets and performance,All records
+Business Director,portal.pipeline,Quotation follow-up and won/lost status,All records
+Business Director,portal.tenders,Tenders,All records
+Business Director,is.quotation,Quotation,All records
+Business Director,is.customer-order,Customer orders,All records
+Business Director,is.sales-order,Sales orders,All records
+Business Director,is.withdrawal,Withdrawal,All records
+Business Director,is.borrowing,Borrowing,All records
+Business Director,is.return-product,Product return,All records
+Business Director,is.purchase-request,Purchase requisition,All records
+Business Director,is.purchase-order,Purchase order,All records
+Business Director,is.supplier-confirm,Supplier confirmation,All records
+Business Director,is.delivery-in,Delivery in,All records
+Business Director,is.check-in,Check in,All records
+Business Director,is.delivery-out,Delivery out,All records
+Business Director,is.check-out,Check out,All records
+Business Director,is.stock-adjust,Stock adjustment,All records
+Business Director,is.stock-transfer,Warehouse transfer,All records
+Business Director,is.stock-count,Stock count,All records
+Business Director,is.invoice,Invoice,All records
+Business Director,is.credit-note,Credit note,All records
+Business Director,is.debit-note,Debit note,All records
+Business Director,is.payment-receipt,Payment receipt,All records
+Business Director,is.master-customers,Customers,All records
+Business Director,is.master-suppliers,Suppliers,All records
+Business Director,is.master-products,Products,All records
+Business Director,is.master-warehouses,Warehouses,All records
+Business Director,is.shipment,Automatic shipment records,All records
+Business Director,is.cycle-count,Physical stock counts,All records
+Business Director,is.warehouse-move,Warehouse location transfers,All records
+Business Director,is.kits,Product kits and panels,All records
+Business Director,is.waiting-purchase,Waiting to be Purchased,All records
+Business Director,crm.leads,Sales Plan,All records
+Business Director,crm.events,Staff Portal Calendar,All records
+Business Director,crm.projects,Project & Activity — projects,All records
+Business Director,crm.activities,Project & Activity,All records
+Business Director,crm.tickets,External Helpdesk,All records
+Business Director,crm.targets,CRM sales targets,All records
+Business Director,crm.finance,Linked IS / Budget snapshots,All records
+Business Director,service.instruments,Instrument Service — Instruments,All records
+Business Director,service.jobs,Instrument Service — Jobs,All records
+Business Director,service.movements,Instrument Service — Movements,All records
+Business Director,service.parts,Instrument Service — Parts,All records
+Business Director,service.replacements,Instrument Service — Replacements,All records
+Business Director,service.contracts,Instrument Service — Contracts,All records
+Business Director,portal.minutes,Minutes & Acknowledgement,All records
+Business Director,is.service-inventory,Service Inventory,All records
+Business Director,application_service,Application Service — view,All records
+Department Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Department Manager,portal.expenses,Expense claims,Reporting team
+Department Manager,portal.payments,Payment processing,Reporting team
+Department Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Department Manager,portal.objectives,Objectives and reviews,Reporting team
+Department Manager,portal.tasks,Tasks and action board,Reporting team
+Department Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Department Manager,portal.hrprofiles,HR profiles,Reporting team
+Department Manager,portal.leavebalance,Leave entitlements,Reporting team
+Department Manager,portal.visits,Customer visits,Reporting team
+Department Manager,portal.demos,Product demonstrations,Reporting team
+Department Manager,portal.appraisals,Performance appraisals,Reporting team
+Department Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Department Manager,portal.training,Training and competency,Reporting team
+Department Manager,portal.sales,Sales targets and performance,Reporting team
+Department Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Department Manager,portal.tenders,Tenders,Reporting team
+Department Manager,is.quotation,Quotation,Reporting team
+Department Manager,is.customer-order,Customer orders,Reporting team
+Department Manager,is.sales-order,Sales orders,Reporting team
+Department Manager,is.withdrawal,Withdrawal,Reporting team
+Department Manager,is.borrowing,Borrowing,Reporting team
+Department Manager,is.return-product,Product return,Reporting team
+Department Manager,is.purchase-request,Purchase requisition,Reporting team
+Department Manager,is.purchase-order,Purchase order,Reporting team
+Department Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Department Manager,is.delivery-in,Delivery in,Reporting team
+Department Manager,is.check-in,Check in,Reporting team
+Department Manager,is.delivery-out,Delivery out,Reporting team
+Department Manager,is.check-out,Check out,Reporting team
+Department Manager,is.stock-adjust,Stock adjustment,Reporting team
+Department Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Department Manager,is.stock-count,Stock count,Reporting team
+Department Manager,is.invoice,Invoice,Reporting team
+Department Manager,is.credit-note,Credit note,Reporting team
+Department Manager,is.debit-note,Debit note,Reporting team
+Department Manager,is.payment-receipt,Payment receipt,Reporting team
+Department Manager,is.master-customers,Customers,All records
+Department Manager,is.master-suppliers,Suppliers,All records
+Department Manager,is.master-products,Products,All records
+Department Manager,is.master-warehouses,Warehouses,All records
+Department Manager,is.shipment,Automatic shipment records,Reporting team
+Department Manager,is.cycle-count,Physical stock counts,Reporting team
+Department Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Department Manager,is.kits,Product kits and panels,All records
+Department Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Department Manager,crm.leads,Sales Plan,Reporting team
+Department Manager,crm.events,Staff Portal Calendar,Reporting team
+Department Manager,crm.projects,Project & Activity — projects,Reporting team
+Department Manager,crm.activities,Project & Activity,Reporting team
+Department Manager,crm.tickets,External Helpdesk,Reporting team
+Department Manager,crm.targets,CRM sales targets,Reporting team
+Department Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Department Manager,service.instruments,Instrument Service — Instruments,All records
+Department Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Department Manager,service.movements,Instrument Service — Movements,Reporting team
+Department Manager,service.parts,Instrument Service — Parts,All records
+Department Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Department Manager,service.contracts,Instrument Service — Contracts,All records
+Department Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Department Manager,is.service-inventory,Service Inventory,Reporting team
+Department Manager,application_service,Application Service — view,Reporting team
+Accounting,portal.requests,"Travel, leave and general requests",Own + assigned
+Accounting,portal.expenses,Expense claims,All records
+Accounting,portal.payments,Payment processing,All records
+Accounting,portal.incentives,Incentive schemes and claims,All records
+Accounting,portal.objectives,Objectives and reviews,Own + assigned
+Accounting,portal.tasks,Tasks and action board,Own + assigned
+Accounting,portal.helpdesk,Helpdesk tickets,Own + assigned
+Accounting,portal.hrprofiles,HR profiles,Own + assigned
+Accounting,portal.leavebalance,Leave entitlements,Own + assigned
+Accounting,portal.visits,Customer visits,Own + assigned
+Accounting,portal.demos,Product demonstrations,Own + assigned
+Accounting,portal.appraisals,Performance appraisals,Own + assigned
+Accounting,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Accounting,portal.training,Training and competency,Own + assigned
+Accounting,portal.sales,Sales targets and performance,Own + assigned
+Accounting,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Accounting,portal.tenders,Tenders,Own + assigned
+Accounting,is.quotation,Quotation,Own + assigned
+Accounting,is.customer-order,Customer orders,Own + assigned
+Accounting,is.sales-order,Sales orders,Own + assigned
+Accounting,is.withdrawal,Withdrawal,Own + assigned
+Accounting,is.borrowing,Borrowing,Own + assigned
+Accounting,is.return-product,Product return,Own + assigned
+Accounting,is.purchase-request,Purchase requisition,Own + assigned
+Accounting,is.purchase-order,Purchase order,Own + assigned
+Accounting,is.supplier-confirm,Supplier confirmation,Own + assigned
+Accounting,is.delivery-in,Delivery in,Own + assigned
+Accounting,is.check-in,Check in,Own + assigned
+Accounting,is.delivery-out,Delivery out,Own + assigned
+Accounting,is.check-out,Check out,Own + assigned
+Accounting,is.stock-adjust,Stock adjustment,Own + assigned
+Accounting,is.stock-transfer,Warehouse transfer,Own + assigned
+Accounting,is.stock-count,Stock count,Own + assigned
+Accounting,is.invoice,Invoice,Own + assigned
+Accounting,is.credit-note,Credit note,Own + assigned
+Accounting,is.debit-note,Debit note,Own + assigned
+Accounting,is.payment-receipt,Payment receipt,Own + assigned
+Accounting,is.master-customers,Customers,Own + assigned
+Accounting,is.master-suppliers,Suppliers,Own + assigned
+Accounting,is.master-products,Products,Own + assigned
+Accounting,is.master-warehouses,Warehouses,Own + assigned
+Accounting,is.shipment,Automatic shipment records,Own + assigned
+Accounting,is.cycle-count,Physical stock counts,Own + assigned
+Accounting,is.warehouse-move,Warehouse location transfers,Own + assigned
+Accounting,is.kits,Product kits and panels,Own + assigned
+Accounting,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Accounting,crm.leads,Sales Plan,Own + assigned
+Accounting,crm.events,Staff Portal Calendar,Own + assigned
+Accounting,crm.projects,Project & Activity — projects,Own + assigned
+Accounting,crm.activities,Project & Activity,Own + assigned
+Accounting,crm.tickets,External Helpdesk,Own + assigned
+Accounting,crm.targets,CRM sales targets,Own + assigned
+Accounting,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Accounting,service.instruments,Instrument Service — Instruments,Own + assigned
+Accounting,service.jobs,Instrument Service — Jobs,Own + assigned
+Accounting,service.movements,Instrument Service — Movements,Own + assigned
+Accounting,service.parts,Instrument Service — Parts,Own + assigned
+Accounting,service.replacements,Instrument Service — Replacements,Own + assigned
+Accounting,service.contracts,Instrument Service — Contracts,Own + assigned
+Accounting,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Accounting,is.service-inventory,Service Inventory,Own + assigned
+Accounting,application_service,Application Service — view,Own + assigned
+Employee,portal.requests,"Travel, leave and general requests",Own records
+Employee,portal.expenses,Expense claims,Own records
+Employee,portal.payments,Payment processing,Own records
+Employee,portal.incentives,Incentive schemes and claims,Own records
+Employee,portal.objectives,Objectives and reviews,Own records
+Employee,portal.tasks,Tasks and action board,Own records
+Employee,portal.helpdesk,Helpdesk tickets,Own records
+Employee,portal.hrprofiles,HR profiles,Own records
+Employee,portal.leavebalance,Leave entitlements,Own records
+Employee,portal.visits,Customer visits,Own records
+Employee,portal.demos,Product demonstrations,Own records
+Employee,portal.appraisals,Performance appraisals,Own records
+Employee,portal.onboarding,Onboarding / promotion / offboarding,Own records
+Employee,portal.training,Training and competency,Own records
+Employee,portal.sales,Sales targets and performance,Own records
+Employee,portal.pipeline,Quotation follow-up and won/lost status,Own records
+Employee,portal.tenders,Tenders,Own records
+Employee,is.quotation,Quotation,Own records
+Employee,is.customer-order,Customer orders,Own records
+Employee,is.sales-order,Sales orders,Own records
+Employee,is.withdrawal,Withdrawal,Own records
+Employee,is.borrowing,Borrowing,Own records
+Employee,is.return-product,Product return,Own records
+Employee,is.purchase-request,Purchase requisition,Own records
+Employee,is.purchase-order,Purchase order,Own records
+Employee,is.supplier-confirm,Supplier confirmation,Own records
+Employee,is.delivery-in,Delivery in,Own records
+Employee,is.check-in,Check in,Own records
+Employee,is.delivery-out,Delivery out,Own records
+Employee,is.check-out,Check out,Own records
+Employee,is.stock-adjust,Stock adjustment,Own records
+Employee,is.stock-transfer,Warehouse transfer,Own records
+Employee,is.stock-count,Stock count,Own records
+Employee,is.invoice,Invoice,Own records
+Employee,is.credit-note,Credit note,Own records
+Employee,is.debit-note,Debit note,Own records
+Employee,is.payment-receipt,Payment receipt,Own records
+Employee,is.master-customers,Customers,All records
+Employee,is.master-suppliers,Suppliers,All records
+Employee,is.master-products,Products,All records
+Employee,is.master-warehouses,Warehouses,All records
+Employee,is.shipment,Automatic shipment records,Own records
+Employee,is.cycle-count,Physical stock counts,Own records
+Employee,is.warehouse-move,Warehouse location transfers,Own records
+Employee,is.kits,Product kits and panels,All records
+Employee,is.waiting-purchase,Waiting to be Purchased,Own records
+Employee,crm.leads,Sales Plan,Own records
+Employee,crm.events,Staff Portal Calendar,Own records
+Employee,crm.projects,Project & Activity — projects,Own records
+Employee,crm.activities,Project & Activity,Own records
+Employee,crm.tickets,External Helpdesk,Own records
+Employee,crm.targets,CRM sales targets,Own records
+Employee,crm.finance,Linked IS / Budget snapshots,Own records
+Employee,service.instruments,Instrument Service — Instruments,All records
+Employee,service.jobs,Instrument Service — Jobs,Own + assigned
+Employee,service.movements,Instrument Service — Movements,Own + assigned
+Employee,service.parts,Instrument Service — Parts,All records
+Employee,service.replacements,Instrument Service — Replacements,Own + assigned
+Employee,service.contracts,Instrument Service — Contracts,All records
+Employee,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Employee,is.service-inventory,Service Inventory,Own records
+Employee,application_service,Application Service — view,Own + assigned
+Service Viewer,portal.requests,"Travel, leave and general requests",Own records
+Service Viewer,portal.expenses,Expense claims,Own records
+Service Viewer,portal.payments,Payment processing,Own records
+Service Viewer,portal.incentives,Incentive schemes and claims,Own records
+Service Viewer,portal.objectives,Objectives and reviews,Own records
+Service Viewer,portal.tasks,Tasks and action board,Own records
+Service Viewer,portal.helpdesk,Helpdesk tickets,Own records
+Service Viewer,portal.hrprofiles,HR profiles,Own records
+Service Viewer,portal.leavebalance,Leave entitlements,Own records
+Service Viewer,portal.visits,Customer visits,Own records
+Service Viewer,portal.demos,Product demonstrations,Own records
+Service Viewer,portal.appraisals,Performance appraisals,Own records
+Service Viewer,portal.onboarding,Onboarding / promotion / offboarding,Own records
+Service Viewer,portal.training,Training and competency,Own records
+Service Viewer,portal.sales,Sales targets and performance,Own records
+Service Viewer,portal.pipeline,Quotation follow-up and won/lost status,Own records
+Service Viewer,portal.tenders,Tenders,Own records
+Service Viewer,is.quotation,Quotation,Own records
+Service Viewer,is.customer-order,Customer orders,Own records
+Service Viewer,is.sales-order,Sales orders,Own records
+Service Viewer,is.withdrawal,Withdrawal,Own records
+Service Viewer,is.borrowing,Borrowing,Own records
+Service Viewer,is.return-product,Product return,Own records
+Service Viewer,is.purchase-request,Purchase requisition,Own records
+Service Viewer,is.purchase-order,Purchase order,Own records
+Service Viewer,is.supplier-confirm,Supplier confirmation,Own records
+Service Viewer,is.delivery-in,Delivery in,Own records
+Service Viewer,is.check-in,Check in,Own records
+Service Viewer,is.delivery-out,Delivery out,Own records
+Service Viewer,is.check-out,Check out,Own records
+Service Viewer,is.stock-adjust,Stock adjustment,Own records
+Service Viewer,is.stock-transfer,Warehouse transfer,Own records
+Service Viewer,is.stock-count,Stock count,Own records
+Service Viewer,is.invoice,Invoice,Own records
+Service Viewer,is.credit-note,Credit note,Own records
+Service Viewer,is.debit-note,Debit note,Own records
+Service Viewer,is.payment-receipt,Payment receipt,Own records
+Service Viewer,is.master-customers,Customers,All records
+Service Viewer,is.master-suppliers,Suppliers,All records
+Service Viewer,is.master-products,Products,All records
+Service Viewer,is.master-warehouses,Warehouses,All records
+Service Viewer,is.shipment,Automatic shipment records,Own records
+Service Viewer,is.cycle-count,Physical stock counts,Own records
+Service Viewer,is.warehouse-move,Warehouse location transfers,Own records
+Service Viewer,is.kits,Product kits and panels,All records
+Service Viewer,is.waiting-purchase,Waiting to be Purchased,Own records
+Service Viewer,crm.leads,Sales Plan,Own records
+Service Viewer,crm.events,Staff Portal Calendar,Own records
+Service Viewer,crm.projects,Project & Activity — projects,Own records
+Service Viewer,crm.activities,Project & Activity,Own records
+Service Viewer,crm.tickets,External Helpdesk,Own records
+Service Viewer,crm.targets,CRM sales targets,Own records
+Service Viewer,crm.finance,Linked IS / Budget snapshots,Own records
+Service Viewer,service.instruments,Instrument Service — Instruments,All records
+Service Viewer,service.jobs,Instrument Service — Jobs,Own + assigned
+Service Viewer,service.movements,Instrument Service — Movements,Own + assigned
+Service Viewer,service.parts,Instrument Service — Parts,All records
+Service Viewer,service.replacements,Instrument Service — Replacements,Own + assigned
+Service Viewer,service.contracts,Instrument Service — Contracts,All records
+Service Viewer,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Service Viewer,is.service-inventory,Service Inventory,Own records
+Service Viewer,application_service,Application Service — view,Own + assigned
+Service Engineer,portal.requests,"Travel, leave and general requests",Own + assigned
+Service Engineer,portal.expenses,Expense claims,Own + assigned
+Service Engineer,portal.payments,Payment processing,Own + assigned
+Service Engineer,portal.incentives,Incentive schemes and claims,Own + assigned
+Service Engineer,portal.objectives,Objectives and reviews,Own + assigned
+Service Engineer,portal.tasks,Tasks and action board,Own + assigned
+Service Engineer,portal.helpdesk,Helpdesk tickets,Own + assigned
+Service Engineer,portal.hrprofiles,HR profiles,Own + assigned
+Service Engineer,portal.leavebalance,Leave entitlements,Own + assigned
+Service Engineer,portal.visits,Customer visits,Own + assigned
+Service Engineer,portal.demos,Product demonstrations,Own + assigned
+Service Engineer,portal.appraisals,Performance appraisals,Own + assigned
+Service Engineer,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Service Engineer,portal.training,Training and competency,Own + assigned
+Service Engineer,portal.sales,Sales targets and performance,Own + assigned
+Service Engineer,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Service Engineer,portal.tenders,Tenders,Own + assigned
+Service Engineer,is.quotation,Quotation,Own + assigned
+Service Engineer,is.customer-order,Customer orders,Own + assigned
+Service Engineer,is.sales-order,Sales orders,Own + assigned
+Service Engineer,is.withdrawal,Withdrawal,Own + assigned
+Service Engineer,is.borrowing,Borrowing,Own + assigned
+Service Engineer,is.return-product,Product return,Own + assigned
+Service Engineer,is.purchase-request,Purchase requisition,Own + assigned
+Service Engineer,is.purchase-order,Purchase order,Own + assigned
+Service Engineer,is.supplier-confirm,Supplier confirmation,Own + assigned
+Service Engineer,is.delivery-in,Delivery in,Own + assigned
+Service Engineer,is.check-in,Check in,Own + assigned
+Service Engineer,is.delivery-out,Delivery out,Own + assigned
+Service Engineer,is.check-out,Check out,Own + assigned
+Service Engineer,is.stock-adjust,Stock adjustment,Own + assigned
+Service Engineer,is.stock-transfer,Warehouse transfer,Own + assigned
+Service Engineer,is.stock-count,Stock count,Own + assigned
+Service Engineer,is.invoice,Invoice,Own + assigned
+Service Engineer,is.credit-note,Credit note,Own + assigned
+Service Engineer,is.debit-note,Debit note,Own + assigned
+Service Engineer,is.payment-receipt,Payment receipt,Own + assigned
+Service Engineer,is.master-customers,Customers,Own + assigned
+Service Engineer,is.master-suppliers,Suppliers,Own + assigned
+Service Engineer,is.master-products,Products,Own + assigned
+Service Engineer,is.master-warehouses,Warehouses,Own + assigned
+Service Engineer,is.shipment,Automatic shipment records,Own + assigned
+Service Engineer,is.cycle-count,Physical stock counts,Own + assigned
+Service Engineer,is.warehouse-move,Warehouse location transfers,Own + assigned
+Service Engineer,is.kits,Product kits and panels,Own + assigned
+Service Engineer,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Service Engineer,crm.leads,Sales Plan,Own + assigned
+Service Engineer,crm.events,Staff Portal Calendar,Own + assigned
+Service Engineer,crm.projects,Project & Activity — projects,Department
+Service Engineer,crm.activities,Project & Activity,Department
+Service Engineer,crm.tickets,External Helpdesk,All records
+Service Engineer,crm.targets,CRM sales targets,Own + assigned
+Service Engineer,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Service Engineer,service.instruments,Instrument Service — Instruments,Department
+Service Engineer,service.jobs,Instrument Service — Jobs,Department
+Service Engineer,service.movements,Instrument Service — Movements,Department
+Service Engineer,service.parts,Instrument Service — Parts,Department
+Service Engineer,service.replacements,Instrument Service — Replacements,Department
+Service Engineer,service.contracts,Instrument Service — Contracts,Department
+Service Engineer,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Service Engineer,is.service-inventory,Service Inventory,Department
+Service Engineer,application_service,Application Service — view,Own + assigned
+Service Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Service Manager,portal.expenses,Expense claims,Reporting team
+Service Manager,portal.payments,Payment processing,Reporting team
+Service Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Service Manager,portal.objectives,Objectives and reviews,Reporting team
+Service Manager,portal.tasks,Tasks and action board,Reporting team
+Service Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Service Manager,portal.hrprofiles,HR profiles,Reporting team
+Service Manager,portal.leavebalance,Leave entitlements,Reporting team
+Service Manager,portal.visits,Customer visits,Reporting team
+Service Manager,portal.demos,Product demonstrations,Reporting team
+Service Manager,portal.appraisals,Performance appraisals,Reporting team
+Service Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Service Manager,portal.training,Training and competency,Reporting team
+Service Manager,portal.sales,Sales targets and performance,Reporting team
+Service Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Service Manager,portal.tenders,Tenders,Reporting team
+Service Manager,is.quotation,Quotation,Reporting team
+Service Manager,is.customer-order,Customer orders,Reporting team
+Service Manager,is.sales-order,Sales orders,Reporting team
+Service Manager,is.withdrawal,Withdrawal,Reporting team
+Service Manager,is.borrowing,Borrowing,Reporting team
+Service Manager,is.return-product,Product return,Reporting team
+Service Manager,is.purchase-request,Purchase requisition,Reporting team
+Service Manager,is.purchase-order,Purchase order,Reporting team
+Service Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Service Manager,is.delivery-in,Delivery in,Reporting team
+Service Manager,is.check-in,Check in,Reporting team
+Service Manager,is.delivery-out,Delivery out,Reporting team
+Service Manager,is.check-out,Check out,Reporting team
+Service Manager,is.stock-adjust,Stock adjustment,Reporting team
+Service Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Service Manager,is.stock-count,Stock count,Reporting team
+Service Manager,is.invoice,Invoice,Reporting team
+Service Manager,is.credit-note,Credit note,Reporting team
+Service Manager,is.debit-note,Debit note,Reporting team
+Service Manager,is.payment-receipt,Payment receipt,Reporting team
+Service Manager,is.master-customers,Customers,All records
+Service Manager,is.master-suppliers,Suppliers,All records
+Service Manager,is.master-products,Products,All records
+Service Manager,is.master-warehouses,Warehouses,All records
+Service Manager,is.shipment,Automatic shipment records,Reporting team
+Service Manager,is.cycle-count,Physical stock counts,Reporting team
+Service Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Service Manager,is.kits,Product kits and panels,All records
+Service Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Service Manager,crm.leads,Sales Plan,Reporting team
+Service Manager,crm.events,Staff Portal Calendar,Reporting team
+Service Manager,crm.projects,Project & Activity — projects,Reporting team
+Service Manager,crm.activities,Project & Activity,Reporting team
+Service Manager,crm.tickets,External Helpdesk,Reporting team
+Service Manager,crm.targets,CRM sales targets,Reporting team
+Service Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Service Manager,service.instruments,Instrument Service — Instruments,All records
+Service Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Service Manager,service.movements,Instrument Service — Movements,Reporting team
+Service Manager,service.parts,Instrument Service — Parts,All records
+Service Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Service Manager,service.contracts,Instrument Service — Contracts,All records
+Service Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Service Manager,is.service-inventory,Service Inventory,Reporting team
+Service Manager,application_service,Application Service — view,Reporting team
+Minutes Coordinator,portal.requests,"Travel, leave and general requests",Own records
+Minutes Coordinator,portal.expenses,Expense claims,Own records
+Minutes Coordinator,portal.payments,Payment processing,Own records
+Minutes Coordinator,portal.incentives,Incentive schemes and claims,Own records
+Minutes Coordinator,portal.objectives,Objectives and reviews,Own records
+Minutes Coordinator,portal.tasks,Tasks and action board,Own records
+Minutes Coordinator,portal.helpdesk,Helpdesk tickets,Own records
+Minutes Coordinator,portal.hrprofiles,HR profiles,Own records
+Minutes Coordinator,portal.leavebalance,Leave entitlements,Own records
+Minutes Coordinator,portal.visits,Customer visits,Own records
+Minutes Coordinator,portal.demos,Product demonstrations,Own records
+Minutes Coordinator,portal.appraisals,Performance appraisals,Own records
+Minutes Coordinator,portal.onboarding,Onboarding / promotion / offboarding,Own records
+Minutes Coordinator,portal.training,Training and competency,Own records
+Minutes Coordinator,portal.sales,Sales targets and performance,Own records
+Minutes Coordinator,portal.pipeline,Quotation follow-up and won/lost status,Own records
+Minutes Coordinator,portal.tenders,Tenders,Own records
+Minutes Coordinator,is.quotation,Quotation,Own records
+Minutes Coordinator,is.customer-order,Customer orders,Own records
+Minutes Coordinator,is.sales-order,Sales orders,Own records
+Minutes Coordinator,is.withdrawal,Withdrawal,Own records
+Minutes Coordinator,is.borrowing,Borrowing,Own records
+Minutes Coordinator,is.return-product,Product return,Own records
+Minutes Coordinator,is.purchase-request,Purchase requisition,Own records
+Minutes Coordinator,is.purchase-order,Purchase order,Own records
+Minutes Coordinator,is.supplier-confirm,Supplier confirmation,Own records
+Minutes Coordinator,is.delivery-in,Delivery in,Own records
+Minutes Coordinator,is.check-in,Check in,Own records
+Minutes Coordinator,is.delivery-out,Delivery out,Own records
+Minutes Coordinator,is.check-out,Check out,Own records
+Minutes Coordinator,is.stock-adjust,Stock adjustment,Own records
+Minutes Coordinator,is.stock-transfer,Warehouse transfer,Own records
+Minutes Coordinator,is.stock-count,Stock count,Own records
+Minutes Coordinator,is.invoice,Invoice,Own records
+Minutes Coordinator,is.credit-note,Credit note,Own records
+Minutes Coordinator,is.debit-note,Debit note,Own records
+Minutes Coordinator,is.payment-receipt,Payment receipt,Own records
+Minutes Coordinator,is.master-customers,Customers,All records
+Minutes Coordinator,is.master-suppliers,Suppliers,All records
+Minutes Coordinator,is.master-products,Products,All records
+Minutes Coordinator,is.master-warehouses,Warehouses,All records
+Minutes Coordinator,is.shipment,Automatic shipment records,Own records
+Minutes Coordinator,is.cycle-count,Physical stock counts,Own records
+Minutes Coordinator,is.warehouse-move,Warehouse location transfers,Own records
+Minutes Coordinator,is.kits,Product kits and panels,All records
+Minutes Coordinator,is.waiting-purchase,Waiting to be Purchased,Own records
+Minutes Coordinator,crm.leads,Sales Plan,Own records
+Minutes Coordinator,crm.events,Staff Portal Calendar,Own records
+Minutes Coordinator,crm.projects,Project & Activity — projects,Own records
+Minutes Coordinator,crm.activities,Project & Activity,Own records
+Minutes Coordinator,crm.tickets,External Helpdesk,Own records
+Minutes Coordinator,crm.targets,CRM sales targets,Own records
+Minutes Coordinator,crm.finance,Linked IS / Budget snapshots,Own records
+Minutes Coordinator,service.instruments,Instrument Service — Instruments,All records
+Minutes Coordinator,service.jobs,Instrument Service — Jobs,Own + assigned
+Minutes Coordinator,service.movements,Instrument Service — Movements,Own + assigned
+Minutes Coordinator,service.parts,Instrument Service — Parts,All records
+Minutes Coordinator,service.replacements,Instrument Service — Replacements,Own + assigned
+Minutes Coordinator,service.contracts,Instrument Service — Contracts,All records
+Minutes Coordinator,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Minutes Coordinator,is.service-inventory,Service Inventory,Own records
+Minutes Coordinator,application_service,Application Service — view,Own + assigned
+TEST Quality Assurance Staff,portal.requests,"Travel, leave and general requests",Own records
+TEST Quality Assurance Staff,portal.expenses,Expense claims,Own records
+TEST Quality Assurance Staff,portal.payments,Payment processing,Own records
+TEST Quality Assurance Staff,portal.incentives,Incentive schemes and claims,Own records
+TEST Quality Assurance Staff,portal.objectives,Objectives and reviews,Own records
+TEST Quality Assurance Staff,portal.tasks,Tasks and action board,Own records
+TEST Quality Assurance Staff,portal.helpdesk,Helpdesk tickets,Own records
+TEST Quality Assurance Staff,portal.hrprofiles,HR profiles,Own records
+TEST Quality Assurance Staff,portal.leavebalance,Leave entitlements,Own records
+TEST Quality Assurance Staff,portal.visits,Customer visits,Own records
+TEST Quality Assurance Staff,portal.demos,Product demonstrations,Own records
+TEST Quality Assurance Staff,portal.appraisals,Performance appraisals,Own records
+TEST Quality Assurance Staff,portal.onboarding,Onboarding / promotion / offboarding,Own records
+TEST Quality Assurance Staff,portal.training,Training and competency,Own records
+TEST Quality Assurance Staff,portal.sales,Sales targets and performance,Own records
+TEST Quality Assurance Staff,portal.pipeline,Quotation follow-up and won/lost status,Own records
+TEST Quality Assurance Staff,portal.tenders,Tenders,Own records
+TEST Quality Assurance Staff,is.quotation,Quotation,Own records
+TEST Quality Assurance Staff,is.customer-order,Customer orders,Own records
+TEST Quality Assurance Staff,is.sales-order,Sales orders,Own records
+TEST Quality Assurance Staff,is.withdrawal,Withdrawal,Own records
+TEST Quality Assurance Staff,is.borrowing,Borrowing,Own records
+TEST Quality Assurance Staff,is.return-product,Product return,Own records
+TEST Quality Assurance Staff,is.purchase-request,Purchase requisition,Own records
+TEST Quality Assurance Staff,is.purchase-order,Purchase order,Own records
+TEST Quality Assurance Staff,is.supplier-confirm,Supplier confirmation,Own records
+TEST Quality Assurance Staff,is.delivery-in,Delivery in,Own records
+TEST Quality Assurance Staff,is.check-in,Check in,Own records
+TEST Quality Assurance Staff,is.delivery-out,Delivery out,Own records
+TEST Quality Assurance Staff,is.check-out,Check out,Own records
+TEST Quality Assurance Staff,is.stock-adjust,Stock adjustment,Own records
+TEST Quality Assurance Staff,is.stock-transfer,Warehouse transfer,Own records
+TEST Quality Assurance Staff,is.stock-count,Stock count,Own records
+TEST Quality Assurance Staff,is.invoice,Invoice,Own records
+TEST Quality Assurance Staff,is.credit-note,Credit note,Own records
+TEST Quality Assurance Staff,is.debit-note,Debit note,Own records
+TEST Quality Assurance Staff,is.payment-receipt,Payment receipt,Own records
+TEST Quality Assurance Staff,is.master-customers,Customers,All records
+TEST Quality Assurance Staff,is.master-suppliers,Suppliers,All records
+TEST Quality Assurance Staff,is.master-products,Products,All records
+TEST Quality Assurance Staff,is.master-warehouses,Warehouses,All records
+TEST Quality Assurance Staff,is.shipment,Automatic shipment records,Own records
+TEST Quality Assurance Staff,is.cycle-count,Physical stock counts,Own records
+TEST Quality Assurance Staff,is.warehouse-move,Warehouse location transfers,Own records
+TEST Quality Assurance Staff,is.kits,Product kits and panels,All records
+TEST Quality Assurance Staff,is.waiting-purchase,Waiting to be Purchased,Own records
+TEST Quality Assurance Staff,crm.leads,Sales Plan,Own records
+TEST Quality Assurance Staff,crm.events,Staff Portal Calendar,Own records
+TEST Quality Assurance Staff,crm.projects,Project & Activity — projects,Own records
+TEST Quality Assurance Staff,crm.activities,Project & Activity,Own records
+TEST Quality Assurance Staff,crm.tickets,External Helpdesk,Own records
+TEST Quality Assurance Staff,crm.targets,CRM sales targets,Own records
+TEST Quality Assurance Staff,crm.finance,Linked IS / Budget snapshots,Own records
+TEST Quality Assurance Staff,service.instruments,Instrument Service — Instruments,All records
+TEST Quality Assurance Staff,service.jobs,Instrument Service — Jobs,Own + assigned
+TEST Quality Assurance Staff,service.movements,Instrument Service — Movements,Own + assigned
+TEST Quality Assurance Staff,service.parts,Instrument Service — Parts,All records
+TEST Quality Assurance Staff,service.replacements,Instrument Service — Replacements,Own + assigned
+TEST Quality Assurance Staff,service.contracts,Instrument Service — Contracts,All records
+TEST Quality Assurance Staff,portal.minutes,Minutes & Acknowledgement,Own + assigned
+TEST Quality Assurance Staff,is.service-inventory,Service Inventory,Own records
+TEST Quality Assurance Staff,application_service,Application Service — view,Own + assigned
+TEST Warehouse & Logistics Staff,portal.requests,"Travel, leave and general requests",Own records
+TEST Warehouse & Logistics Staff,portal.expenses,Expense claims,Own records
+TEST Warehouse & Logistics Staff,portal.payments,Payment processing,Own records
+TEST Warehouse & Logistics Staff,portal.incentives,Incentive schemes and claims,Own records
+TEST Warehouse & Logistics Staff,portal.objectives,Objectives and reviews,Own records
+TEST Warehouse & Logistics Staff,portal.tasks,Tasks and action board,Own records
+TEST Warehouse & Logistics Staff,portal.helpdesk,Helpdesk tickets,Own records
+TEST Warehouse & Logistics Staff,portal.hrprofiles,HR profiles,Own records
+TEST Warehouse & Logistics Staff,portal.leavebalance,Leave entitlements,Own records
+TEST Warehouse & Logistics Staff,portal.visits,Customer visits,Own records
+TEST Warehouse & Logistics Staff,portal.demos,Product demonstrations,Own records
+TEST Warehouse & Logistics Staff,portal.appraisals,Performance appraisals,Own records
+TEST Warehouse & Logistics Staff,portal.onboarding,Onboarding / promotion / offboarding,Own records
+TEST Warehouse & Logistics Staff,portal.training,Training and competency,Own records
+TEST Warehouse & Logistics Staff,portal.sales,Sales targets and performance,Own records
+TEST Warehouse & Logistics Staff,portal.pipeline,Quotation follow-up and won/lost status,Own records
+TEST Warehouse & Logistics Staff,portal.tenders,Tenders,Own records
+TEST Warehouse & Logistics Staff,is.quotation,Quotation,All records
+TEST Warehouse & Logistics Staff,is.customer-order,Customer orders,All records
+TEST Warehouse & Logistics Staff,is.sales-order,Sales orders,All records
+TEST Warehouse & Logistics Staff,is.withdrawal,Withdrawal,All records
+TEST Warehouse & Logistics Staff,is.borrowing,Borrowing,All records
+TEST Warehouse & Logistics Staff,is.return-product,Product return,All records
+TEST Warehouse & Logistics Staff,is.purchase-request,Purchase requisition,All records
+TEST Warehouse & Logistics Staff,is.purchase-order,Purchase order,All records
+TEST Warehouse & Logistics Staff,is.supplier-confirm,Supplier confirmation,All records
+TEST Warehouse & Logistics Staff,is.delivery-in,Delivery in,All records
+TEST Warehouse & Logistics Staff,is.check-in,Check in,All records
+TEST Warehouse & Logistics Staff,is.delivery-out,Delivery out,All records
+TEST Warehouse & Logistics Staff,is.check-out,Check out,All records
+TEST Warehouse & Logistics Staff,is.stock-adjust,Stock adjustment,All records
+TEST Warehouse & Logistics Staff,is.stock-transfer,Warehouse transfer,All records
+TEST Warehouse & Logistics Staff,is.stock-count,Stock count,All records
+TEST Warehouse & Logistics Staff,is.invoice,Invoice,All records
+TEST Warehouse & Logistics Staff,is.credit-note,Credit note,All records
+TEST Warehouse & Logistics Staff,is.debit-note,Debit note,All records
+TEST Warehouse & Logistics Staff,is.payment-receipt,Payment receipt,All records
+TEST Warehouse & Logistics Staff,is.master-customers,Customers,All records
+TEST Warehouse & Logistics Staff,is.master-suppliers,Suppliers,All records
+TEST Warehouse & Logistics Staff,is.master-products,Products,All records
+TEST Warehouse & Logistics Staff,is.master-warehouses,Warehouses,All records
+TEST Warehouse & Logistics Staff,is.shipment,Automatic shipment records,All records
+TEST Warehouse & Logistics Staff,is.cycle-count,Physical stock counts,All records
+TEST Warehouse & Logistics Staff,is.warehouse-move,Warehouse location transfers,All records
+TEST Warehouse & Logistics Staff,is.kits,Product kits and panels,All records
+TEST Warehouse & Logistics Staff,is.waiting-purchase,Waiting to be Purchased,All records
+TEST Warehouse & Logistics Staff,crm.leads,Sales Plan,Own records
+TEST Warehouse & Logistics Staff,crm.events,Staff Portal Calendar,Own records
+TEST Warehouse & Logistics Staff,crm.projects,Project & Activity — projects,Own records
+TEST Warehouse & Logistics Staff,crm.activities,Project & Activity,Own records
+TEST Warehouse & Logistics Staff,crm.tickets,External Helpdesk,Own records
+TEST Warehouse & Logistics Staff,crm.targets,CRM sales targets,Own records
+TEST Warehouse & Logistics Staff,crm.finance,Linked IS / Budget snapshots,Own records
+TEST Warehouse & Logistics Staff,service.instruments,Instrument Service — Instruments,All records
+TEST Warehouse & Logistics Staff,service.jobs,Instrument Service — Jobs,Own + assigned
+TEST Warehouse & Logistics Staff,service.movements,Instrument Service — Movements,Own + assigned
+TEST Warehouse & Logistics Staff,service.parts,Instrument Service — Parts,All records
+TEST Warehouse & Logistics Staff,service.replacements,Instrument Service — Replacements,Own + assigned
+TEST Warehouse & Logistics Staff,service.contracts,Instrument Service — Contracts,All records
+TEST Warehouse & Logistics Staff,portal.minutes,Minutes & Acknowledgement,Own + assigned
+TEST Warehouse & Logistics Staff,is.service-inventory,Service Inventory,All records
+TEST Warehouse & Logistics Staff,application_service,Application Service — view,Own + assigned
+TEST Procurement & Regulatory Staff,portal.requests,"Travel, leave and general requests",Own records
+TEST Procurement & Regulatory Staff,portal.expenses,Expense claims,Own records
+TEST Procurement & Regulatory Staff,portal.payments,Payment processing,Own records
+TEST Procurement & Regulatory Staff,portal.incentives,Incentive schemes and claims,Own records
+TEST Procurement & Regulatory Staff,portal.objectives,Objectives and reviews,Own records
+TEST Procurement & Regulatory Staff,portal.tasks,Tasks and action board,Own records
+TEST Procurement & Regulatory Staff,portal.helpdesk,Helpdesk tickets,Own records
+TEST Procurement & Regulatory Staff,portal.hrprofiles,HR profiles,Own records
+TEST Procurement & Regulatory Staff,portal.leavebalance,Leave entitlements,Own records
+TEST Procurement & Regulatory Staff,portal.visits,Customer visits,Own records
+TEST Procurement & Regulatory Staff,portal.demos,Product demonstrations,Own records
+TEST Procurement & Regulatory Staff,portal.appraisals,Performance appraisals,Own records
+TEST Procurement & Regulatory Staff,portal.onboarding,Onboarding / promotion / offboarding,Own records
+TEST Procurement & Regulatory Staff,portal.training,Training and competency,Own records
+TEST Procurement & Regulatory Staff,portal.sales,Sales targets and performance,Own records
+TEST Procurement & Regulatory Staff,portal.pipeline,Quotation follow-up and won/lost status,Own records
+TEST Procurement & Regulatory Staff,portal.tenders,Tenders,Own records
+TEST Procurement & Regulatory Staff,is.quotation,Quotation,All records
+TEST Procurement & Regulatory Staff,is.customer-order,Customer orders,All records
+TEST Procurement & Regulatory Staff,is.sales-order,Sales orders,All records
+TEST Procurement & Regulatory Staff,is.withdrawal,Withdrawal,All records
+TEST Procurement & Regulatory Staff,is.borrowing,Borrowing,All records
+TEST Procurement & Regulatory Staff,is.return-product,Product return,All records
+TEST Procurement & Regulatory Staff,is.purchase-request,Purchase requisition,All records
+TEST Procurement & Regulatory Staff,is.purchase-order,Purchase order,All records
+TEST Procurement & Regulatory Staff,is.supplier-confirm,Supplier confirmation,All records
+TEST Procurement & Regulatory Staff,is.delivery-in,Delivery in,All records
+TEST Procurement & Regulatory Staff,is.check-in,Check in,All records
+TEST Procurement & Regulatory Staff,is.delivery-out,Delivery out,All records
+TEST Procurement & Regulatory Staff,is.check-out,Check out,All records
+TEST Procurement & Regulatory Staff,is.stock-adjust,Stock adjustment,All records
+TEST Procurement & Regulatory Staff,is.stock-transfer,Warehouse transfer,All records
+TEST Procurement & Regulatory Staff,is.stock-count,Stock count,All records
+TEST Procurement & Regulatory Staff,is.invoice,Invoice,All records
+TEST Procurement & Regulatory Staff,is.credit-note,Credit note,All records
+TEST Procurement & Regulatory Staff,is.debit-note,Debit note,All records
+TEST Procurement & Regulatory Staff,is.payment-receipt,Payment receipt,All records
+TEST Procurement & Regulatory Staff,is.master-customers,Customers,All records
+TEST Procurement & Regulatory Staff,is.master-suppliers,Suppliers,All records
+TEST Procurement & Regulatory Staff,is.master-products,Products,All records
+TEST Procurement & Regulatory Staff,is.master-warehouses,Warehouses,All records
+TEST Procurement & Regulatory Staff,is.shipment,Automatic shipment records,All records
+TEST Procurement & Regulatory Staff,is.cycle-count,Physical stock counts,All records
+TEST Procurement & Regulatory Staff,is.warehouse-move,Warehouse location transfers,All records
+TEST Procurement & Regulatory Staff,is.kits,Product kits and panels,All records
+TEST Procurement & Regulatory Staff,is.waiting-purchase,Waiting to be Purchased,All records
+TEST Procurement & Regulatory Staff,crm.leads,Sales Plan,Own records
+TEST Procurement & Regulatory Staff,crm.events,Staff Portal Calendar,Own records
+TEST Procurement & Regulatory Staff,crm.projects,Project & Activity — projects,Own records
+TEST Procurement & Regulatory Staff,crm.activities,Project & Activity,Own records
+TEST Procurement & Regulatory Staff,crm.tickets,External Helpdesk,Own records
+TEST Procurement & Regulatory Staff,crm.targets,CRM sales targets,Own records
+TEST Procurement & Regulatory Staff,crm.finance,Linked IS / Budget snapshots,Own records
+TEST Procurement & Regulatory Staff,service.instruments,Instrument Service — Instruments,All records
+TEST Procurement & Regulatory Staff,service.jobs,Instrument Service — Jobs,Own + assigned
+TEST Procurement & Regulatory Staff,service.movements,Instrument Service — Movements,Own + assigned
+TEST Procurement & Regulatory Staff,service.parts,Instrument Service — Parts,All records
+TEST Procurement & Regulatory Staff,service.replacements,Instrument Service — Replacements,Own + assigned
+TEST Procurement & Regulatory Staff,service.contracts,Instrument Service — Contracts,All records
+TEST Procurement & Regulatory Staff,portal.minutes,Minutes & Acknowledgement,Own + assigned
+TEST Procurement & Regulatory Staff,is.service-inventory,Service Inventory,All records
+TEST Procurement & Regulatory Staff,application_service,Application Service — view,Own + assigned
+TEST Life Science Research Staff,portal.requests,"Travel, leave and general requests",Own records
+TEST Life Science Research Staff,portal.expenses,Expense claims,Own records
+TEST Life Science Research Staff,portal.payments,Payment processing,Own records
+TEST Life Science Research Staff,portal.incentives,Incentive schemes and claims,Own records
+TEST Life Science Research Staff,portal.objectives,Objectives and reviews,Own records
+TEST Life Science Research Staff,portal.tasks,Tasks and action board,Own records
+TEST Life Science Research Staff,portal.helpdesk,Helpdesk tickets,Own records
+TEST Life Science Research Staff,portal.hrprofiles,HR profiles,Own records
+TEST Life Science Research Staff,portal.leavebalance,Leave entitlements,Own records
+TEST Life Science Research Staff,portal.visits,Customer visits,Own records
+TEST Life Science Research Staff,portal.demos,Product demonstrations,Own records
+TEST Life Science Research Staff,portal.appraisals,Performance appraisals,Own records
+TEST Life Science Research Staff,portal.onboarding,Onboarding / promotion / offboarding,Own records
+TEST Life Science Research Staff,portal.training,Training and competency,Own records
+TEST Life Science Research Staff,portal.sales,Sales targets and performance,Own records
+TEST Life Science Research Staff,portal.pipeline,Quotation follow-up and won/lost status,Own records
+TEST Life Science Research Staff,portal.tenders,Tenders,Own records
+TEST Life Science Research Staff,is.quotation,Quotation,Own records
+TEST Life Science Research Staff,is.customer-order,Customer orders,Own records
+TEST Life Science Research Staff,is.sales-order,Sales orders,Own records
+TEST Life Science Research Staff,is.withdrawal,Withdrawal,Own records
+TEST Life Science Research Staff,is.borrowing,Borrowing,Own records
+TEST Life Science Research Staff,is.return-product,Product return,Own records
+TEST Life Science Research Staff,is.purchase-request,Purchase requisition,Own records
+TEST Life Science Research Staff,is.purchase-order,Purchase order,Own records
+TEST Life Science Research Staff,is.supplier-confirm,Supplier confirmation,Own records
+TEST Life Science Research Staff,is.delivery-in,Delivery in,Own records
+TEST Life Science Research Staff,is.check-in,Check in,Own records
+TEST Life Science Research Staff,is.delivery-out,Delivery out,Own records
+TEST Life Science Research Staff,is.check-out,Check out,Own records
+TEST Life Science Research Staff,is.stock-adjust,Stock adjustment,Own records
+TEST Life Science Research Staff,is.stock-transfer,Warehouse transfer,Own records
+TEST Life Science Research Staff,is.stock-count,Stock count,Own records
+TEST Life Science Research Staff,is.invoice,Invoice,Own records
+TEST Life Science Research Staff,is.credit-note,Credit note,Own records
+TEST Life Science Research Staff,is.debit-note,Debit note,Own records
+TEST Life Science Research Staff,is.payment-receipt,Payment receipt,Own records
+TEST Life Science Research Staff,is.master-customers,Customers,All records
+TEST Life Science Research Staff,is.master-suppliers,Suppliers,All records
+TEST Life Science Research Staff,is.master-products,Products,All records
+TEST Life Science Research Staff,is.master-warehouses,Warehouses,All records
+TEST Life Science Research Staff,is.shipment,Automatic shipment records,Own records
+TEST Life Science Research Staff,is.cycle-count,Physical stock counts,Own records
+TEST Life Science Research Staff,is.warehouse-move,Warehouse location transfers,Own records
+TEST Life Science Research Staff,is.kits,Product kits and panels,All records
+TEST Life Science Research Staff,is.waiting-purchase,Waiting to be Purchased,Own records
+TEST Life Science Research Staff,crm.leads,Sales Plan,Own records
+TEST Life Science Research Staff,crm.events,Staff Portal Calendar,Own records
+TEST Life Science Research Staff,crm.projects,Project & Activity — projects,Own records
+TEST Life Science Research Staff,crm.activities,Project & Activity,Own records
+TEST Life Science Research Staff,crm.tickets,External Helpdesk,Own records
+TEST Life Science Research Staff,crm.targets,CRM sales targets,Own records
+TEST Life Science Research Staff,crm.finance,Linked IS / Budget snapshots,Own records
+TEST Life Science Research Staff,service.instruments,Instrument Service — Instruments,All records
+TEST Life Science Research Staff,service.jobs,Instrument Service — Jobs,Own + assigned
+TEST Life Science Research Staff,service.movements,Instrument Service — Movements,Own + assigned
+TEST Life Science Research Staff,service.parts,Instrument Service — Parts,All records
+TEST Life Science Research Staff,service.replacements,Instrument Service — Replacements,Own + assigned
+TEST Life Science Research Staff,service.contracts,Instrument Service — Contracts,All records
+TEST Life Science Research Staff,portal.minutes,Minutes & Acknowledgement,Own + assigned
+TEST Life Science Research Staff,is.service-inventory,Service Inventory,Own records
+TEST Life Science Research Staff,application_service,Application Service — view,Own + assigned
+TEST Diagnostics Staff,portal.requests,"Travel, leave and general requests",Own records
+TEST Diagnostics Staff,portal.expenses,Expense claims,Own records
+TEST Diagnostics Staff,portal.payments,Payment processing,Own records
+TEST Diagnostics Staff,portal.incentives,Incentive schemes and claims,Own records
+TEST Diagnostics Staff,portal.objectives,Objectives and reviews,Own records
+TEST Diagnostics Staff,portal.tasks,Tasks and action board,Own records
+TEST Diagnostics Staff,portal.helpdesk,Helpdesk tickets,Own records
+TEST Diagnostics Staff,portal.hrprofiles,HR profiles,Own records
+TEST Diagnostics Staff,portal.leavebalance,Leave entitlements,Own records
+TEST Diagnostics Staff,portal.visits,Customer visits,Own records
+TEST Diagnostics Staff,portal.demos,Product demonstrations,Own records
+TEST Diagnostics Staff,portal.appraisals,Performance appraisals,Own records
+TEST Diagnostics Staff,portal.onboarding,Onboarding / promotion / offboarding,Own records
+TEST Diagnostics Staff,portal.training,Training and competency,Own records
+TEST Diagnostics Staff,portal.sales,Sales targets and performance,Own records
+TEST Diagnostics Staff,portal.pipeline,Quotation follow-up and won/lost status,Own records
+TEST Diagnostics Staff,portal.tenders,Tenders,Own records
+TEST Diagnostics Staff,is.quotation,Quotation,Own records
+TEST Diagnostics Staff,is.customer-order,Customer orders,Own records
+TEST Diagnostics Staff,is.sales-order,Sales orders,Own records
+TEST Diagnostics Staff,is.withdrawal,Withdrawal,Own records
+TEST Diagnostics Staff,is.borrowing,Borrowing,Own records
+TEST Diagnostics Staff,is.return-product,Product return,Own records
+TEST Diagnostics Staff,is.purchase-request,Purchase requisition,Own records
+TEST Diagnostics Staff,is.purchase-order,Purchase order,Own records
+TEST Diagnostics Staff,is.supplier-confirm,Supplier confirmation,Own records
+TEST Diagnostics Staff,is.delivery-in,Delivery in,Own records
+TEST Diagnostics Staff,is.check-in,Check in,Own records
+TEST Diagnostics Staff,is.delivery-out,Delivery out,Own records
+TEST Diagnostics Staff,is.check-out,Check out,Own records
+TEST Diagnostics Staff,is.stock-adjust,Stock adjustment,Own records
+TEST Diagnostics Staff,is.stock-transfer,Warehouse transfer,Own records
+TEST Diagnostics Staff,is.stock-count,Stock count,Own records
+TEST Diagnostics Staff,is.invoice,Invoice,Own records
+TEST Diagnostics Staff,is.credit-note,Credit note,Own records
+TEST Diagnostics Staff,is.debit-note,Debit note,Own records
+TEST Diagnostics Staff,is.payment-receipt,Payment receipt,Own records
+TEST Diagnostics Staff,is.master-customers,Customers,All records
+TEST Diagnostics Staff,is.master-suppliers,Suppliers,All records
+TEST Diagnostics Staff,is.master-products,Products,All records
+TEST Diagnostics Staff,is.master-warehouses,Warehouses,All records
+TEST Diagnostics Staff,is.shipment,Automatic shipment records,Own records
+TEST Diagnostics Staff,is.cycle-count,Physical stock counts,Own records
+TEST Diagnostics Staff,is.warehouse-move,Warehouse location transfers,Own records
+TEST Diagnostics Staff,is.kits,Product kits and panels,All records
+TEST Diagnostics Staff,is.waiting-purchase,Waiting to be Purchased,Own records
+TEST Diagnostics Staff,crm.leads,Sales Plan,Own records
+TEST Diagnostics Staff,crm.events,Staff Portal Calendar,Own records
+TEST Diagnostics Staff,crm.projects,Project & Activity — projects,Own records
+TEST Diagnostics Staff,crm.activities,Project & Activity,Own records
+TEST Diagnostics Staff,crm.tickets,External Helpdesk,Own records
+TEST Diagnostics Staff,crm.targets,CRM sales targets,Own records
+TEST Diagnostics Staff,crm.finance,Linked IS / Budget snapshots,Own records
+TEST Diagnostics Staff,service.instruments,Instrument Service — Instruments,All records
+TEST Diagnostics Staff,service.jobs,Instrument Service — Jobs,Own + assigned
+TEST Diagnostics Staff,service.movements,Instrument Service — Movements,Own + assigned
+TEST Diagnostics Staff,service.parts,Instrument Service — Parts,All records
+TEST Diagnostics Staff,service.replacements,Instrument Service — Replacements,Own + assigned
+TEST Diagnostics Staff,service.contracts,Instrument Service — Contracts,All records
+TEST Diagnostics Staff,portal.minutes,Minutes & Acknowledgement,Own + assigned
+TEST Diagnostics Staff,is.service-inventory,Service Inventory,Own records
+TEST Diagnostics Staff,application_service,Application Service — view,Own + assigned
+TEST Marketing Staff,portal.requests,"Travel, leave and general requests",Own records
+TEST Marketing Staff,portal.expenses,Expense claims,Own records
+TEST Marketing Staff,portal.payments,Payment processing,Own records
+TEST Marketing Staff,portal.incentives,Incentive schemes and claims,Own records
+TEST Marketing Staff,portal.objectives,Objectives and reviews,Own records
+TEST Marketing Staff,portal.tasks,Tasks and action board,Own records
+TEST Marketing Staff,portal.helpdesk,Helpdesk tickets,Own records
+TEST Marketing Staff,portal.hrprofiles,HR profiles,Own records
+TEST Marketing Staff,portal.leavebalance,Leave entitlements,Own records
+TEST Marketing Staff,portal.visits,Customer visits,Own records
+TEST Marketing Staff,portal.demos,Product demonstrations,Own records
+TEST Marketing Staff,portal.appraisals,Performance appraisals,Own records
+TEST Marketing Staff,portal.onboarding,Onboarding / promotion / offboarding,Own records
+TEST Marketing Staff,portal.training,Training and competency,Own records
+TEST Marketing Staff,portal.sales,Sales targets and performance,Own records
+TEST Marketing Staff,portal.pipeline,Quotation follow-up and won/lost status,Own records
+TEST Marketing Staff,portal.tenders,Tenders,Own records
+TEST Marketing Staff,is.quotation,Quotation,Own records
+TEST Marketing Staff,is.customer-order,Customer orders,Own records
+TEST Marketing Staff,is.sales-order,Sales orders,Own records
+TEST Marketing Staff,is.withdrawal,Withdrawal,Own records
+TEST Marketing Staff,is.borrowing,Borrowing,Own records
+TEST Marketing Staff,is.return-product,Product return,Own records
+TEST Marketing Staff,is.purchase-request,Purchase requisition,Own records
+TEST Marketing Staff,is.purchase-order,Purchase order,Own records
+TEST Marketing Staff,is.supplier-confirm,Supplier confirmation,Own records
+TEST Marketing Staff,is.delivery-in,Delivery in,Own records
+TEST Marketing Staff,is.check-in,Check in,Own records
+TEST Marketing Staff,is.delivery-out,Delivery out,Own records
+TEST Marketing Staff,is.check-out,Check out,Own records
+TEST Marketing Staff,is.stock-adjust,Stock adjustment,Own records
+TEST Marketing Staff,is.stock-transfer,Warehouse transfer,Own records
+TEST Marketing Staff,is.stock-count,Stock count,Own records
+TEST Marketing Staff,is.invoice,Invoice,Own records
+TEST Marketing Staff,is.credit-note,Credit note,Own records
+TEST Marketing Staff,is.debit-note,Debit note,Own records
+TEST Marketing Staff,is.payment-receipt,Payment receipt,Own records
+TEST Marketing Staff,is.master-customers,Customers,All records
+TEST Marketing Staff,is.master-suppliers,Suppliers,All records
+TEST Marketing Staff,is.master-products,Products,All records
+TEST Marketing Staff,is.master-warehouses,Warehouses,All records
+TEST Marketing Staff,is.shipment,Automatic shipment records,Own records
+TEST Marketing Staff,is.cycle-count,Physical stock counts,Own records
+TEST Marketing Staff,is.warehouse-move,Warehouse location transfers,Own records
+TEST Marketing Staff,is.kits,Product kits and panels,All records
+TEST Marketing Staff,is.waiting-purchase,Waiting to be Purchased,Own records
+TEST Marketing Staff,crm.leads,Sales Plan,Own records
+TEST Marketing Staff,crm.events,Staff Portal Calendar,Own records
+TEST Marketing Staff,crm.projects,Project & Activity — projects,Own records
+TEST Marketing Staff,crm.activities,Project & Activity,Own records
+TEST Marketing Staff,crm.tickets,External Helpdesk,Own records
+TEST Marketing Staff,crm.targets,CRM sales targets,Own records
+TEST Marketing Staff,crm.finance,Linked IS / Budget snapshots,Own records
+TEST Marketing Staff,service.instruments,Instrument Service — Instruments,All records
+TEST Marketing Staff,service.jobs,Instrument Service — Jobs,Own + assigned
+TEST Marketing Staff,service.movements,Instrument Service — Movements,Own + assigned
+TEST Marketing Staff,service.parts,Instrument Service — Parts,All records
+TEST Marketing Staff,service.replacements,Instrument Service — Replacements,Own + assigned
+TEST Marketing Staff,service.contracts,Instrument Service — Contracts,All records
+TEST Marketing Staff,portal.minutes,Minutes & Acknowledgement,Own + assigned
+TEST Marketing Staff,is.service-inventory,Service Inventory,Own records
+TEST Marketing Staff,application_service,Application Service — view,Own + assigned
+Application Specialist,portal.requests,"Travel, leave and general requests",Own + assigned
+Application Specialist,portal.expenses,Expense claims,Own + assigned
+Application Specialist,portal.payments,Payment processing,Own + assigned
+Application Specialist,portal.incentives,Incentive schemes and claims,Own + assigned
+Application Specialist,portal.objectives,Objectives and reviews,Own + assigned
+Application Specialist,portal.tasks,Tasks and action board,Own + assigned
+Application Specialist,portal.helpdesk,Helpdesk tickets,Own + assigned
+Application Specialist,portal.hrprofiles,HR profiles,Own + assigned
+Application Specialist,portal.leavebalance,Leave entitlements,Own + assigned
+Application Specialist,portal.visits,Customer visits,Own + assigned
+Application Specialist,portal.demos,Product demonstrations,Own + assigned
+Application Specialist,portal.appraisals,Performance appraisals,Own + assigned
+Application Specialist,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Application Specialist,portal.training,Training and competency,Own + assigned
+Application Specialist,portal.sales,Sales targets and performance,Own + assigned
+Application Specialist,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Application Specialist,portal.tenders,Tenders,Own + assigned
+Application Specialist,is.quotation,Quotation,Own + assigned
+Application Specialist,is.customer-order,Customer orders,Own + assigned
+Application Specialist,is.sales-order,Sales orders,Own + assigned
+Application Specialist,is.withdrawal,Withdrawal,Own + assigned
+Application Specialist,is.borrowing,Borrowing,Own + assigned
+Application Specialist,is.return-product,Product return,Own + assigned
+Application Specialist,is.purchase-request,Purchase requisition,Own + assigned
+Application Specialist,is.purchase-order,Purchase order,Own + assigned
+Application Specialist,is.supplier-confirm,Supplier confirmation,Own + assigned
+Application Specialist,is.delivery-in,Delivery in,Own + assigned
+Application Specialist,is.check-in,Check in,Own + assigned
+Application Specialist,is.delivery-out,Delivery out,Own + assigned
+Application Specialist,is.check-out,Check out,Own + assigned
+Application Specialist,is.stock-adjust,Stock adjustment,Own + assigned
+Application Specialist,is.stock-transfer,Warehouse transfer,Own + assigned
+Application Specialist,is.stock-count,Stock count,Own + assigned
+Application Specialist,is.invoice,Invoice,Own + assigned
+Application Specialist,is.credit-note,Credit note,Own + assigned
+Application Specialist,is.debit-note,Debit note,Own + assigned
+Application Specialist,is.payment-receipt,Payment receipt,Own + assigned
+Application Specialist,is.master-customers,Customers,Own + assigned
+Application Specialist,is.master-suppliers,Suppliers,Own + assigned
+Application Specialist,is.master-products,Products,Own + assigned
+Application Specialist,is.master-warehouses,Warehouses,Own + assigned
+Application Specialist,is.shipment,Automatic shipment records,Own + assigned
+Application Specialist,is.cycle-count,Physical stock counts,Own + assigned
+Application Specialist,is.warehouse-move,Warehouse location transfers,Own + assigned
+Application Specialist,is.kits,Product kits and panels,Own + assigned
+Application Specialist,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Application Specialist,crm.leads,Sales Plan,Own + assigned
+Application Specialist,crm.events,Staff Portal Calendar,Own + assigned
+Application Specialist,crm.projects,Project & Activity — projects,Department
+Application Specialist,crm.activities,Project & Activity,Department
+Application Specialist,crm.tickets,External Helpdesk,All records
+Application Specialist,crm.targets,CRM sales targets,Own + assigned
+Application Specialist,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Application Specialist,service.instruments,Instrument Service — Instruments,All records
+Application Specialist,service.jobs,Instrument Service — Jobs,Own + assigned
+Application Specialist,service.movements,Instrument Service — Movements,Own + assigned
+Application Specialist,service.parts,Instrument Service — Parts,Own + assigned
+Application Specialist,service.replacements,Instrument Service — Replacements,Own + assigned
+Application Specialist,service.contracts,Instrument Service — Contracts,All records
+Application Specialist,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Application Specialist,is.service-inventory,Service Inventory,Own + assigned
+Application Specialist,application_service,Application Service — view,Department
+Application Service Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Application Service Manager,portal.expenses,Expense claims,Reporting team
+Application Service Manager,portal.payments,Payment processing,Reporting team
+Application Service Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Application Service Manager,portal.objectives,Objectives and reviews,Reporting team
+Application Service Manager,portal.tasks,Tasks and action board,Reporting team
+Application Service Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Application Service Manager,portal.hrprofiles,HR profiles,Reporting team
+Application Service Manager,portal.leavebalance,Leave entitlements,Reporting team
+Application Service Manager,portal.visits,Customer visits,Reporting team
+Application Service Manager,portal.demos,Product demonstrations,Reporting team
+Application Service Manager,portal.appraisals,Performance appraisals,Reporting team
+Application Service Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Application Service Manager,portal.training,Training and competency,Reporting team
+Application Service Manager,portal.sales,Sales targets and performance,Reporting team
+Application Service Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Application Service Manager,portal.tenders,Tenders,Reporting team
+Application Service Manager,is.quotation,Quotation,Reporting team
+Application Service Manager,is.customer-order,Customer orders,Reporting team
+Application Service Manager,is.sales-order,Sales orders,Reporting team
+Application Service Manager,is.withdrawal,Withdrawal,Reporting team
+Application Service Manager,is.borrowing,Borrowing,Reporting team
+Application Service Manager,is.return-product,Product return,Reporting team
+Application Service Manager,is.purchase-request,Purchase requisition,Reporting team
+Application Service Manager,is.purchase-order,Purchase order,Reporting team
+Application Service Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Application Service Manager,is.delivery-in,Delivery in,Reporting team
+Application Service Manager,is.check-in,Check in,Reporting team
+Application Service Manager,is.delivery-out,Delivery out,Reporting team
+Application Service Manager,is.check-out,Check out,Reporting team
+Application Service Manager,is.stock-adjust,Stock adjustment,Reporting team
+Application Service Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Application Service Manager,is.stock-count,Stock count,Reporting team
+Application Service Manager,is.invoice,Invoice,Reporting team
+Application Service Manager,is.credit-note,Credit note,Reporting team
+Application Service Manager,is.debit-note,Debit note,Reporting team
+Application Service Manager,is.payment-receipt,Payment receipt,Reporting team
+Application Service Manager,is.master-customers,Customers,All records
+Application Service Manager,is.master-suppliers,Suppliers,All records
+Application Service Manager,is.master-products,Products,All records
+Application Service Manager,is.master-warehouses,Warehouses,All records
+Application Service Manager,is.shipment,Automatic shipment records,Reporting team
+Application Service Manager,is.cycle-count,Physical stock counts,Reporting team
+Application Service Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Application Service Manager,is.kits,Product kits and panels,All records
+Application Service Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Application Service Manager,crm.leads,Sales Plan,Reporting team
+Application Service Manager,crm.events,Staff Portal Calendar,Reporting team
+Application Service Manager,crm.projects,Project & Activity — projects,Reporting team
+Application Service Manager,crm.activities,Project & Activity,Reporting team
+Application Service Manager,crm.tickets,External Helpdesk,Reporting team
+Application Service Manager,crm.targets,CRM sales targets,Reporting team
+Application Service Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Application Service Manager,service.instruments,Instrument Service — Instruments,All records
+Application Service Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Application Service Manager,service.movements,Instrument Service — Movements,Reporting team
+Application Service Manager,service.parts,Instrument Service — Parts,All records
+Application Service Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Application Service Manager,service.contracts,Instrument Service — Contracts,All records
+Application Service Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Application Service Manager,is.service-inventory,Service Inventory,Reporting team
+Application Service Manager,application_service,Application Service — view,Reporting team
+Accounting Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Accounting Manager,portal.expenses,Expense claims,All records
+Accounting Manager,portal.payments,Payment processing,All records
+Accounting Manager,portal.incentives,Incentive schemes and claims,All records
+Accounting Manager,portal.objectives,Objectives and reviews,Reporting team
+Accounting Manager,portal.tasks,Tasks and action board,Reporting team
+Accounting Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Accounting Manager,portal.hrprofiles,HR profiles,Reporting team
+Accounting Manager,portal.leavebalance,Leave entitlements,Reporting team
+Accounting Manager,portal.visits,Customer visits,Reporting team
+Accounting Manager,portal.demos,Product demonstrations,Reporting team
+Accounting Manager,portal.appraisals,Performance appraisals,Reporting team
+Accounting Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Accounting Manager,portal.training,Training and competency,Reporting team
+Accounting Manager,portal.sales,Sales targets and performance,Reporting team
+Accounting Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Accounting Manager,portal.tenders,Tenders,Reporting team
+Accounting Manager,is.quotation,Quotation,Reporting team
+Accounting Manager,is.customer-order,Customer orders,Reporting team
+Accounting Manager,is.sales-order,Sales orders,Reporting team
+Accounting Manager,is.withdrawal,Withdrawal,Reporting team
+Accounting Manager,is.borrowing,Borrowing,Reporting team
+Accounting Manager,is.return-product,Product return,Reporting team
+Accounting Manager,is.purchase-request,Purchase requisition,Reporting team
+Accounting Manager,is.purchase-order,Purchase order,Reporting team
+Accounting Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Accounting Manager,is.delivery-in,Delivery in,Reporting team
+Accounting Manager,is.check-in,Check in,Reporting team
+Accounting Manager,is.delivery-out,Delivery out,Reporting team
+Accounting Manager,is.check-out,Check out,Reporting team
+Accounting Manager,is.stock-adjust,Stock adjustment,Reporting team
+Accounting Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Accounting Manager,is.stock-count,Stock count,Reporting team
+Accounting Manager,is.invoice,Invoice,Reporting team
+Accounting Manager,is.credit-note,Credit note,Reporting team
+Accounting Manager,is.debit-note,Debit note,Reporting team
+Accounting Manager,is.payment-receipt,Payment receipt,Reporting team
+Accounting Manager,is.master-customers,Customers,Reporting team
+Accounting Manager,is.master-suppliers,Suppliers,Reporting team
+Accounting Manager,is.master-products,Products,Reporting team
+Accounting Manager,is.master-warehouses,Warehouses,Reporting team
+Accounting Manager,is.shipment,Automatic shipment records,Reporting team
+Accounting Manager,is.cycle-count,Physical stock counts,Reporting team
+Accounting Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Accounting Manager,is.kits,Product kits and panels,Reporting team
+Accounting Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Accounting Manager,crm.leads,Sales Plan,Reporting team
+Accounting Manager,crm.events,Staff Portal Calendar,Reporting team
+Accounting Manager,crm.projects,Project & Activity — projects,Reporting team
+Accounting Manager,crm.activities,Project & Activity,Reporting team
+Accounting Manager,crm.tickets,External Helpdesk,Reporting team
+Accounting Manager,crm.targets,CRM sales targets,Reporting team
+Accounting Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Accounting Manager,service.instruments,Instrument Service — Instruments,Reporting team
+Accounting Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Accounting Manager,service.movements,Instrument Service — Movements,Reporting team
+Accounting Manager,service.parts,Instrument Service — Parts,Reporting team
+Accounting Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Accounting Manager,service.contracts,Instrument Service — Contracts,Reporting team
+Accounting Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Accounting Manager,is.service-inventory,Service Inventory,Reporting team
+Accounting Manager,application_service,Application Service — view,Reporting team
+Administration Officer,portal.requests,"Travel, leave and general requests",Own + assigned
+Administration Officer,portal.expenses,Expense claims,Own + assigned
+Administration Officer,portal.payments,Payment processing,Own + assigned
+Administration Officer,portal.incentives,Incentive schemes and claims,Own + assigned
+Administration Officer,portal.objectives,Objectives and reviews,Own + assigned
+Administration Officer,portal.tasks,Tasks and action board,Own + assigned
+Administration Officer,portal.helpdesk,Helpdesk tickets,Own + assigned
+Administration Officer,portal.hrprofiles,HR profiles,Own + assigned
+Administration Officer,portal.leavebalance,Leave entitlements,Own + assigned
+Administration Officer,portal.visits,Customer visits,Own + assigned
+Administration Officer,portal.demos,Product demonstrations,Own + assigned
+Administration Officer,portal.appraisals,Performance appraisals,Own + assigned
+Administration Officer,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Administration Officer,portal.training,Training and competency,Own + assigned
+Administration Officer,portal.sales,Sales targets and performance,Own + assigned
+Administration Officer,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Administration Officer,portal.tenders,Tenders,Own + assigned
+Administration Officer,is.quotation,Quotation,Own + assigned
+Administration Officer,is.customer-order,Customer orders,Own + assigned
+Administration Officer,is.sales-order,Sales orders,Own + assigned
+Administration Officer,is.withdrawal,Withdrawal,Own + assigned
+Administration Officer,is.borrowing,Borrowing,Own + assigned
+Administration Officer,is.return-product,Product return,Own + assigned
+Administration Officer,is.purchase-request,Purchase requisition,Own + assigned
+Administration Officer,is.purchase-order,Purchase order,Own + assigned
+Administration Officer,is.supplier-confirm,Supplier confirmation,Own + assigned
+Administration Officer,is.delivery-in,Delivery in,Own + assigned
+Administration Officer,is.check-in,Check in,Own + assigned
+Administration Officer,is.delivery-out,Delivery out,Own + assigned
+Administration Officer,is.check-out,Check out,Own + assigned
+Administration Officer,is.stock-adjust,Stock adjustment,Own + assigned
+Administration Officer,is.stock-transfer,Warehouse transfer,Own + assigned
+Administration Officer,is.stock-count,Stock count,Own + assigned
+Administration Officer,is.invoice,Invoice,Own + assigned
+Administration Officer,is.credit-note,Credit note,Own + assigned
+Administration Officer,is.debit-note,Debit note,Own + assigned
+Administration Officer,is.payment-receipt,Payment receipt,Own + assigned
+Administration Officer,is.master-customers,Customers,Own + assigned
+Administration Officer,is.master-suppliers,Suppliers,Own + assigned
+Administration Officer,is.master-products,Products,Own + assigned
+Administration Officer,is.master-warehouses,Warehouses,Own + assigned
+Administration Officer,is.shipment,Automatic shipment records,Own + assigned
+Administration Officer,is.cycle-count,Physical stock counts,Own + assigned
+Administration Officer,is.warehouse-move,Warehouse location transfers,Own + assigned
+Administration Officer,is.kits,Product kits and panels,Own + assigned
+Administration Officer,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Administration Officer,crm.leads,Sales Plan,Own + assigned
+Administration Officer,crm.events,Staff Portal Calendar,Own + assigned
+Administration Officer,crm.projects,Project & Activity — projects,Own + assigned
+Administration Officer,crm.activities,Project & Activity,Own + assigned
+Administration Officer,crm.tickets,External Helpdesk,Own + assigned
+Administration Officer,crm.targets,CRM sales targets,Own + assigned
+Administration Officer,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Administration Officer,service.instruments,Instrument Service — Instruments,Own + assigned
+Administration Officer,service.jobs,Instrument Service — Jobs,Own + assigned
+Administration Officer,service.movements,Instrument Service — Movements,Own + assigned
+Administration Officer,service.parts,Instrument Service — Parts,Own + assigned
+Administration Officer,service.replacements,Instrument Service — Replacements,Own + assigned
+Administration Officer,service.contracts,Instrument Service — Contracts,Own + assigned
+Administration Officer,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Administration Officer,is.service-inventory,Service Inventory,Own + assigned
+Administration Officer,application_service,Application Service — view,Own + assigned
+Application Specialist Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Application Specialist Manager,portal.expenses,Expense claims,Reporting team
+Application Specialist Manager,portal.payments,Payment processing,Reporting team
+Application Specialist Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Application Specialist Manager,portal.objectives,Objectives and reviews,Reporting team
+Application Specialist Manager,portal.tasks,Tasks and action board,Reporting team
+Application Specialist Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Application Specialist Manager,portal.hrprofiles,HR profiles,Reporting team
+Application Specialist Manager,portal.leavebalance,Leave entitlements,Reporting team
+Application Specialist Manager,portal.visits,Customer visits,Reporting team
+Application Specialist Manager,portal.demos,Product demonstrations,Reporting team
+Application Specialist Manager,portal.appraisals,Performance appraisals,Reporting team
+Application Specialist Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Application Specialist Manager,portal.training,Training and competency,Reporting team
+Application Specialist Manager,portal.sales,Sales targets and performance,Reporting team
+Application Specialist Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Application Specialist Manager,portal.tenders,Tenders,Reporting team
+Application Specialist Manager,is.quotation,Quotation,Reporting team
+Application Specialist Manager,is.customer-order,Customer orders,Reporting team
+Application Specialist Manager,is.sales-order,Sales orders,Reporting team
+Application Specialist Manager,is.withdrawal,Withdrawal,Reporting team
+Application Specialist Manager,is.borrowing,Borrowing,Reporting team
+Application Specialist Manager,is.return-product,Product return,Reporting team
+Application Specialist Manager,is.purchase-request,Purchase requisition,Reporting team
+Application Specialist Manager,is.purchase-order,Purchase order,Reporting team
+Application Specialist Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Application Specialist Manager,is.delivery-in,Delivery in,Reporting team
+Application Specialist Manager,is.check-in,Check in,Reporting team
+Application Specialist Manager,is.delivery-out,Delivery out,Reporting team
+Application Specialist Manager,is.check-out,Check out,Reporting team
+Application Specialist Manager,is.stock-adjust,Stock adjustment,Reporting team
+Application Specialist Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Application Specialist Manager,is.stock-count,Stock count,Reporting team
+Application Specialist Manager,is.invoice,Invoice,Reporting team
+Application Specialist Manager,is.credit-note,Credit note,Reporting team
+Application Specialist Manager,is.debit-note,Debit note,Reporting team
+Application Specialist Manager,is.payment-receipt,Payment receipt,Reporting team
+Application Specialist Manager,is.master-customers,Customers,Reporting team
+Application Specialist Manager,is.master-suppliers,Suppliers,Reporting team
+Application Specialist Manager,is.master-products,Products,Reporting team
+Application Specialist Manager,is.master-warehouses,Warehouses,Reporting team
+Application Specialist Manager,is.shipment,Automatic shipment records,Reporting team
+Application Specialist Manager,is.cycle-count,Physical stock counts,Reporting team
+Application Specialist Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Application Specialist Manager,is.kits,Product kits and panels,Reporting team
+Application Specialist Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Application Specialist Manager,crm.leads,Sales Plan,Reporting team
+Application Specialist Manager,crm.events,Staff Portal Calendar,Reporting team
+Application Specialist Manager,crm.projects,Project & Activity — projects,Department
+Application Specialist Manager,crm.activities,Project & Activity,Department
+Application Specialist Manager,crm.tickets,External Helpdesk,All records
+Application Specialist Manager,crm.targets,CRM sales targets,Reporting team
+Application Specialist Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Application Specialist Manager,service.instruments,Instrument Service — Instruments,Reporting team
+Application Specialist Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Application Specialist Manager,service.movements,Instrument Service — Movements,Reporting team
+Application Specialist Manager,service.parts,Instrument Service — Parts,Reporting team
+Application Specialist Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Application Specialist Manager,service.contracts,Instrument Service — Contracts,Reporting team
+Application Specialist Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Application Specialist Manager,is.service-inventory,Service Inventory,Reporting team
+Application Specialist Manager,application_service,Application Service — view,Department
+Bill Collector,portal.requests,"Travel, leave and general requests",Own + assigned
+Bill Collector,portal.expenses,Expense claims,Own + assigned
+Bill Collector,portal.payments,Payment processing,Own + assigned
+Bill Collector,portal.incentives,Incentive schemes and claims,Own + assigned
+Bill Collector,portal.objectives,Objectives and reviews,Own + assigned
+Bill Collector,portal.tasks,Tasks and action board,Own + assigned
+Bill Collector,portal.helpdesk,Helpdesk tickets,Own + assigned
+Bill Collector,portal.hrprofiles,HR profiles,Own + assigned
+Bill Collector,portal.leavebalance,Leave entitlements,Own + assigned
+Bill Collector,portal.visits,Customer visits,Own + assigned
+Bill Collector,portal.demos,Product demonstrations,Own + assigned
+Bill Collector,portal.appraisals,Performance appraisals,Own + assigned
+Bill Collector,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Bill Collector,portal.training,Training and competency,Own + assigned
+Bill Collector,portal.sales,Sales targets and performance,Own + assigned
+Bill Collector,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Bill Collector,portal.tenders,Tenders,Own + assigned
+Bill Collector,is.quotation,Quotation,Own + assigned
+Bill Collector,is.customer-order,Customer orders,Own + assigned
+Bill Collector,is.sales-order,Sales orders,Own + assigned
+Bill Collector,is.withdrawal,Withdrawal,Own + assigned
+Bill Collector,is.borrowing,Borrowing,Own + assigned
+Bill Collector,is.return-product,Product return,Own + assigned
+Bill Collector,is.purchase-request,Purchase requisition,Own + assigned
+Bill Collector,is.purchase-order,Purchase order,Own + assigned
+Bill Collector,is.supplier-confirm,Supplier confirmation,Own + assigned
+Bill Collector,is.delivery-in,Delivery in,Own + assigned
+Bill Collector,is.check-in,Check in,Own + assigned
+Bill Collector,is.delivery-out,Delivery out,Own + assigned
+Bill Collector,is.check-out,Check out,Own + assigned
+Bill Collector,is.stock-adjust,Stock adjustment,Own + assigned
+Bill Collector,is.stock-transfer,Warehouse transfer,Own + assigned
+Bill Collector,is.stock-count,Stock count,Own + assigned
+Bill Collector,is.invoice,Invoice,Own + assigned
+Bill Collector,is.credit-note,Credit note,Own + assigned
+Bill Collector,is.debit-note,Debit note,Own + assigned
+Bill Collector,is.payment-receipt,Payment receipt,Own + assigned
+Bill Collector,is.master-customers,Customers,Own + assigned
+Bill Collector,is.master-suppliers,Suppliers,Own + assigned
+Bill Collector,is.master-products,Products,Own + assigned
+Bill Collector,is.master-warehouses,Warehouses,Own + assigned
+Bill Collector,is.shipment,Automatic shipment records,Own + assigned
+Bill Collector,is.cycle-count,Physical stock counts,Own + assigned
+Bill Collector,is.warehouse-move,Warehouse location transfers,Own + assigned
+Bill Collector,is.kits,Product kits and panels,Own + assigned
+Bill Collector,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Bill Collector,crm.leads,Sales Plan,Own + assigned
+Bill Collector,crm.events,Staff Portal Calendar,Own + assigned
+Bill Collector,crm.projects,Project & Activity — projects,Own + assigned
+Bill Collector,crm.activities,Project & Activity,Own + assigned
+Bill Collector,crm.tickets,External Helpdesk,Own + assigned
+Bill Collector,crm.targets,CRM sales targets,Own + assigned
+Bill Collector,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Bill Collector,service.instruments,Instrument Service — Instruments,Own + assigned
+Bill Collector,service.jobs,Instrument Service — Jobs,Own + assigned
+Bill Collector,service.movements,Instrument Service — Movements,Own + assigned
+Bill Collector,service.parts,Instrument Service — Parts,Own + assigned
+Bill Collector,service.replacements,Instrument Service — Replacements,Own + assigned
+Bill Collector,service.contracts,Instrument Service — Contracts,Own + assigned
+Bill Collector,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Bill Collector,is.service-inventory,Service Inventory,Own + assigned
+Bill Collector,application_service,Application Service — view,Own + assigned
+Director Secretary,portal.requests,"Travel, leave and general requests",All records
+Director Secretary,portal.expenses,Expense claims,All records
+Director Secretary,portal.payments,Payment processing,All records
+Director Secretary,portal.incentives,Incentive schemes and claims,Own + assigned
+Director Secretary,portal.objectives,Objectives and reviews,Own + assigned
+Director Secretary,portal.tasks,Tasks and action board,Own + assigned
+Director Secretary,portal.helpdesk,Helpdesk tickets,All records
+Director Secretary,portal.hrprofiles,HR profiles,Own + assigned
+Director Secretary,portal.leavebalance,Leave entitlements,Own + assigned
+Director Secretary,portal.visits,Customer visits,All records
+Director Secretary,portal.demos,Product demonstrations,All records
+Director Secretary,portal.appraisals,Performance appraisals,Own + assigned
+Director Secretary,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Director Secretary,portal.training,Training and competency,All records
+Director Secretary,portal.sales,Sales targets and performance,Own + assigned
+Director Secretary,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Director Secretary,portal.tenders,Tenders,Own + assigned
+Director Secretary,is.quotation,Quotation,Own + assigned
+Director Secretary,is.customer-order,Customer orders,Own + assigned
+Director Secretary,is.sales-order,Sales orders,Own + assigned
+Director Secretary,is.withdrawal,Withdrawal,Own + assigned
+Director Secretary,is.borrowing,Borrowing,Own + assigned
+Director Secretary,is.return-product,Product return,Own + assigned
+Director Secretary,is.purchase-request,Purchase requisition,Own + assigned
+Director Secretary,is.purchase-order,Purchase order,Own + assigned
+Director Secretary,is.supplier-confirm,Supplier confirmation,Own + assigned
+Director Secretary,is.delivery-in,Delivery in,Own + assigned
+Director Secretary,is.check-in,Check in,Own + assigned
+Director Secretary,is.delivery-out,Delivery out,Own + assigned
+Director Secretary,is.check-out,Check out,Own + assigned
+Director Secretary,is.stock-adjust,Stock adjustment,Own + assigned
+Director Secretary,is.stock-transfer,Warehouse transfer,Own + assigned
+Director Secretary,is.stock-count,Stock count,Own + assigned
+Director Secretary,is.invoice,Invoice,Own + assigned
+Director Secretary,is.credit-note,Credit note,Own + assigned
+Director Secretary,is.debit-note,Debit note,Own + assigned
+Director Secretary,is.payment-receipt,Payment receipt,Own + assigned
+Director Secretary,is.master-customers,Customers,Own + assigned
+Director Secretary,is.master-suppliers,Suppliers,Own + assigned
+Director Secretary,is.master-products,Products,Own + assigned
+Director Secretary,is.master-warehouses,Warehouses,Own + assigned
+Director Secretary,is.shipment,Automatic shipment records,Own + assigned
+Director Secretary,is.cycle-count,Physical stock counts,Own + assigned
+Director Secretary,is.warehouse-move,Warehouse location transfers,Own + assigned
+Director Secretary,is.kits,Product kits and panels,Own + assigned
+Director Secretary,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Director Secretary,crm.leads,Sales Plan,All records
+Director Secretary,crm.events,Staff Portal Calendar,All records
+Director Secretary,crm.projects,Project & Activity — projects,All records
+Director Secretary,crm.activities,Project & Activity,All records
+Director Secretary,crm.tickets,External Helpdesk,All records
+Director Secretary,crm.targets,CRM sales targets,All records
+Director Secretary,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Director Secretary,service.instruments,Instrument Service — Instruments,All records
+Director Secretary,service.jobs,Instrument Service — Jobs,All records
+Director Secretary,service.movements,Instrument Service — Movements,All records
+Director Secretary,service.parts,Instrument Service — Parts,All records
+Director Secretary,service.replacements,Instrument Service — Replacements,All records
+Director Secretary,service.contracts,Instrument Service — Contracts,All records
+Director Secretary,portal.minutes,Minutes & Acknowledgement,All records
+Director Secretary,is.service-inventory,Service Inventory,Own + assigned
+Director Secretary,application_service,Application Service — view,All records
+IT & Infrastructure Manager,portal.requests,"Travel, leave and general requests",All records
+IT & Infrastructure Manager,portal.expenses,Expense claims,All records
+IT & Infrastructure Manager,portal.payments,Payment processing,All records
+IT & Infrastructure Manager,portal.incentives,Incentive schemes and claims,All records
+IT & Infrastructure Manager,portal.objectives,Objectives and reviews,All records
+IT & Infrastructure Manager,portal.tasks,Tasks and action board,All records
+IT & Infrastructure Manager,portal.helpdesk,Helpdesk tickets,All records
+IT & Infrastructure Manager,portal.hrprofiles,HR profiles,All records
+IT & Infrastructure Manager,portal.leavebalance,Leave entitlements,All records
+IT & Infrastructure Manager,portal.visits,Customer visits,All records
+IT & Infrastructure Manager,portal.demos,Product demonstrations,All records
+IT & Infrastructure Manager,portal.appraisals,Performance appraisals,All records
+IT & Infrastructure Manager,portal.onboarding,Onboarding / promotion / offboarding,All records
+IT & Infrastructure Manager,portal.training,Training and competency,All records
+IT & Infrastructure Manager,portal.sales,Sales targets and performance,All records
+IT & Infrastructure Manager,portal.pipeline,Quotation follow-up and won/lost status,All records
+IT & Infrastructure Manager,portal.tenders,Tenders,All records
+IT & Infrastructure Manager,is.quotation,Quotation,All records
+IT & Infrastructure Manager,is.customer-order,Customer orders,All records
+IT & Infrastructure Manager,is.sales-order,Sales orders,All records
+IT & Infrastructure Manager,is.withdrawal,Withdrawal,All records
+IT & Infrastructure Manager,is.borrowing,Borrowing,All records
+IT & Infrastructure Manager,is.return-product,Product return,All records
+IT & Infrastructure Manager,is.purchase-request,Purchase requisition,All records
+IT & Infrastructure Manager,is.purchase-order,Purchase order,All records
+IT & Infrastructure Manager,is.supplier-confirm,Supplier confirmation,All records
+IT & Infrastructure Manager,is.delivery-in,Delivery in,All records
+IT & Infrastructure Manager,is.check-in,Check in,All records
+IT & Infrastructure Manager,is.delivery-out,Delivery out,All records
+IT & Infrastructure Manager,is.check-out,Check out,All records
+IT & Infrastructure Manager,is.stock-adjust,Stock adjustment,All records
+IT & Infrastructure Manager,is.stock-transfer,Warehouse transfer,All records
+IT & Infrastructure Manager,is.stock-count,Stock count,All records
+IT & Infrastructure Manager,is.invoice,Invoice,All records
+IT & Infrastructure Manager,is.credit-note,Credit note,All records
+IT & Infrastructure Manager,is.debit-note,Debit note,All records
+IT & Infrastructure Manager,is.payment-receipt,Payment receipt,All records
+IT & Infrastructure Manager,is.master-customers,Customers,All records
+IT & Infrastructure Manager,is.master-suppliers,Suppliers,All records
+IT & Infrastructure Manager,is.master-products,Products,All records
+IT & Infrastructure Manager,is.master-warehouses,Warehouses,All records
+IT & Infrastructure Manager,is.shipment,Automatic shipment records,All records
+IT & Infrastructure Manager,is.cycle-count,Physical stock counts,All records
+IT & Infrastructure Manager,is.warehouse-move,Warehouse location transfers,All records
+IT & Infrastructure Manager,is.kits,Product kits and panels,All records
+IT & Infrastructure Manager,is.waiting-purchase,Waiting to be Purchased,All records
+IT & Infrastructure Manager,crm.leads,Sales Plan,All records
+IT & Infrastructure Manager,crm.events,Staff Portal Calendar,All records
+IT & Infrastructure Manager,crm.projects,Project & Activity — projects,All records
+IT & Infrastructure Manager,crm.activities,Project & Activity,All records
+IT & Infrastructure Manager,crm.tickets,External Helpdesk,All records
+IT & Infrastructure Manager,crm.targets,CRM sales targets,All records
+IT & Infrastructure Manager,crm.finance,Linked IS / Budget snapshots,All records
+IT & Infrastructure Manager,service.instruments,Instrument Service — Instruments,All records
+IT & Infrastructure Manager,service.jobs,Instrument Service — Jobs,All records
+IT & Infrastructure Manager,service.movements,Instrument Service — Movements,All records
+IT & Infrastructure Manager,service.parts,Instrument Service — Parts,All records
+IT & Infrastructure Manager,service.replacements,Instrument Service — Replacements,All records
+IT & Infrastructure Manager,service.contracts,Instrument Service — Contracts,All records
+IT & Infrastructure Manager,portal.minutes,Minutes & Acknowledgement,All records
+IT & Infrastructure Manager,is.service-inventory,Service Inventory,All records
+IT & Infrastructure Manager,application_service,Application Service — view,All records
+IT & Infrastructure Officer,portal.requests,"Travel, leave and general requests",All records
+IT & Infrastructure Officer,portal.expenses,Expense claims,All records
+IT & Infrastructure Officer,portal.payments,Payment processing,All records
+IT & Infrastructure Officer,portal.incentives,Incentive schemes and claims,All records
+IT & Infrastructure Officer,portal.objectives,Objectives and reviews,All records
+IT & Infrastructure Officer,portal.tasks,Tasks and action board,All records
+IT & Infrastructure Officer,portal.helpdesk,Helpdesk tickets,All records
+IT & Infrastructure Officer,portal.hrprofiles,HR profiles,All records
+IT & Infrastructure Officer,portal.leavebalance,Leave entitlements,All records
+IT & Infrastructure Officer,portal.visits,Customer visits,All records
+IT & Infrastructure Officer,portal.demos,Product demonstrations,All records
+IT & Infrastructure Officer,portal.appraisals,Performance appraisals,All records
+IT & Infrastructure Officer,portal.onboarding,Onboarding / promotion / offboarding,All records
+IT & Infrastructure Officer,portal.training,Training and competency,All records
+IT & Infrastructure Officer,portal.sales,Sales targets and performance,All records
+IT & Infrastructure Officer,portal.pipeline,Quotation follow-up and won/lost status,All records
+IT & Infrastructure Officer,portal.tenders,Tenders,All records
+IT & Infrastructure Officer,is.quotation,Quotation,All records
+IT & Infrastructure Officer,is.customer-order,Customer orders,All records
+IT & Infrastructure Officer,is.sales-order,Sales orders,All records
+IT & Infrastructure Officer,is.withdrawal,Withdrawal,All records
+IT & Infrastructure Officer,is.borrowing,Borrowing,All records
+IT & Infrastructure Officer,is.return-product,Product return,All records
+IT & Infrastructure Officer,is.purchase-request,Purchase requisition,All records
+IT & Infrastructure Officer,is.purchase-order,Purchase order,All records
+IT & Infrastructure Officer,is.supplier-confirm,Supplier confirmation,All records
+IT & Infrastructure Officer,is.delivery-in,Delivery in,All records
+IT & Infrastructure Officer,is.check-in,Check in,All records
+IT & Infrastructure Officer,is.delivery-out,Delivery out,All records
+IT & Infrastructure Officer,is.check-out,Check out,All records
+IT & Infrastructure Officer,is.stock-adjust,Stock adjustment,All records
+IT & Infrastructure Officer,is.stock-transfer,Warehouse transfer,All records
+IT & Infrastructure Officer,is.stock-count,Stock count,All records
+IT & Infrastructure Officer,is.invoice,Invoice,All records
+IT & Infrastructure Officer,is.credit-note,Credit note,All records
+IT & Infrastructure Officer,is.debit-note,Debit note,All records
+IT & Infrastructure Officer,is.payment-receipt,Payment receipt,All records
+IT & Infrastructure Officer,is.master-customers,Customers,All records
+IT & Infrastructure Officer,is.master-suppliers,Suppliers,All records
+IT & Infrastructure Officer,is.master-products,Products,All records
+IT & Infrastructure Officer,is.master-warehouses,Warehouses,All records
+IT & Infrastructure Officer,is.shipment,Automatic shipment records,All records
+IT & Infrastructure Officer,is.cycle-count,Physical stock counts,All records
+IT & Infrastructure Officer,is.warehouse-move,Warehouse location transfers,All records
+IT & Infrastructure Officer,is.kits,Product kits and panels,All records
+IT & Infrastructure Officer,is.waiting-purchase,Waiting to be Purchased,All records
+IT & Infrastructure Officer,crm.leads,Sales Plan,All records
+IT & Infrastructure Officer,crm.events,Staff Portal Calendar,All records
+IT & Infrastructure Officer,crm.projects,Project & Activity — projects,All records
+IT & Infrastructure Officer,crm.activities,Project & Activity,All records
+IT & Infrastructure Officer,crm.tickets,External Helpdesk,All records
+IT & Infrastructure Officer,crm.targets,CRM sales targets,All records
+IT & Infrastructure Officer,crm.finance,Linked IS / Budget snapshots,All records
+IT & Infrastructure Officer,service.instruments,Instrument Service — Instruments,All records
+IT & Infrastructure Officer,service.jobs,Instrument Service — Jobs,All records
+IT & Infrastructure Officer,service.movements,Instrument Service — Movements,All records
+IT & Infrastructure Officer,service.parts,Instrument Service — Parts,All records
+IT & Infrastructure Officer,service.replacements,Instrument Service — Replacements,All records
+IT & Infrastructure Officer,service.contracts,Instrument Service — Contracts,All records
+IT & Infrastructure Officer,portal.minutes,Minutes & Acknowledgement,All records
+IT & Infrastructure Officer,is.service-inventory,Service Inventory,All records
+IT & Infrastructure Officer,application_service,Application Service — view,All records
+Inventory Officer,portal.requests,"Travel, leave and general requests",Own + assigned
+Inventory Officer,portal.expenses,Expense claims,Own + assigned
+Inventory Officer,portal.payments,Payment processing,Own + assigned
+Inventory Officer,portal.incentives,Incentive schemes and claims,Own + assigned
+Inventory Officer,portal.objectives,Objectives and reviews,Own + assigned
+Inventory Officer,portal.tasks,Tasks and action board,Own + assigned
+Inventory Officer,portal.helpdesk,Helpdesk tickets,Own + assigned
+Inventory Officer,portal.hrprofiles,HR profiles,Own + assigned
+Inventory Officer,portal.leavebalance,Leave entitlements,Own + assigned
+Inventory Officer,portal.visits,Customer visits,Own + assigned
+Inventory Officer,portal.demos,Product demonstrations,Own + assigned
+Inventory Officer,portal.appraisals,Performance appraisals,Own + assigned
+Inventory Officer,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Inventory Officer,portal.training,Training and competency,Own + assigned
+Inventory Officer,portal.sales,Sales targets and performance,Own + assigned
+Inventory Officer,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Inventory Officer,portal.tenders,Tenders,Own + assigned
+Inventory Officer,is.quotation,Quotation,Own + assigned
+Inventory Officer,is.customer-order,Customer orders,Own + assigned
+Inventory Officer,is.sales-order,Sales orders,Own + assigned
+Inventory Officer,is.withdrawal,Withdrawal,Own + assigned
+Inventory Officer,is.borrowing,Borrowing,Own + assigned
+Inventory Officer,is.return-product,Product return,Own + assigned
+Inventory Officer,is.purchase-request,Purchase requisition,Own + assigned
+Inventory Officer,is.purchase-order,Purchase order,Own + assigned
+Inventory Officer,is.supplier-confirm,Supplier confirmation,Own + assigned
+Inventory Officer,is.delivery-in,Delivery in,Own + assigned
+Inventory Officer,is.check-in,Check in,Own + assigned
+Inventory Officer,is.delivery-out,Delivery out,Own + assigned
+Inventory Officer,is.check-out,Check out,Own + assigned
+Inventory Officer,is.stock-adjust,Stock adjustment,Own + assigned
+Inventory Officer,is.stock-transfer,Warehouse transfer,Own + assigned
+Inventory Officer,is.stock-count,Stock count,Own + assigned
+Inventory Officer,is.invoice,Invoice,Own + assigned
+Inventory Officer,is.credit-note,Credit note,Own + assigned
+Inventory Officer,is.debit-note,Debit note,Own + assigned
+Inventory Officer,is.payment-receipt,Payment receipt,Own + assigned
+Inventory Officer,is.master-customers,Customers,Own + assigned
+Inventory Officer,is.master-suppliers,Suppliers,Own + assigned
+Inventory Officer,is.master-products,Products,Own + assigned
+Inventory Officer,is.master-warehouses,Warehouses,Own + assigned
+Inventory Officer,is.shipment,Automatic shipment records,Own + assigned
+Inventory Officer,is.cycle-count,Physical stock counts,Own + assigned
+Inventory Officer,is.warehouse-move,Warehouse location transfers,Own + assigned
+Inventory Officer,is.kits,Product kits and panels,Own + assigned
+Inventory Officer,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Inventory Officer,crm.leads,Sales Plan,Own + assigned
+Inventory Officer,crm.events,Staff Portal Calendar,Own + assigned
+Inventory Officer,crm.projects,Project & Activity — projects,Own + assigned
+Inventory Officer,crm.activities,Project & Activity,Own + assigned
+Inventory Officer,crm.tickets,External Helpdesk,Own + assigned
+Inventory Officer,crm.targets,CRM sales targets,Own + assigned
+Inventory Officer,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Inventory Officer,service.instruments,Instrument Service — Instruments,Own + assigned
+Inventory Officer,service.jobs,Instrument Service — Jobs,Own + assigned
+Inventory Officer,service.movements,Instrument Service — Movements,Own + assigned
+Inventory Officer,service.parts,Instrument Service — Parts,Own + assigned
+Inventory Officer,service.replacements,Instrument Service — Replacements,Own + assigned
+Inventory Officer,service.contracts,Instrument Service — Contracts,Own + assigned
+Inventory Officer,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Inventory Officer,is.service-inventory,Service Inventory,Own + assigned
+Inventory Officer,application_service,Application Service — view,Own + assigned
+Marketing Communication Specialist,portal.requests,"Travel, leave and general requests",Own + assigned
+Marketing Communication Specialist,portal.expenses,Expense claims,Own + assigned
+Marketing Communication Specialist,portal.payments,Payment processing,Own + assigned
+Marketing Communication Specialist,portal.incentives,Incentive schemes and claims,Own + assigned
+Marketing Communication Specialist,portal.objectives,Objectives and reviews,Own + assigned
+Marketing Communication Specialist,portal.tasks,Tasks and action board,Own + assigned
+Marketing Communication Specialist,portal.helpdesk,Helpdesk tickets,Own + assigned
+Marketing Communication Specialist,portal.hrprofiles,HR profiles,Own + assigned
+Marketing Communication Specialist,portal.leavebalance,Leave entitlements,Own + assigned
+Marketing Communication Specialist,portal.visits,Customer visits,Own + assigned
+Marketing Communication Specialist,portal.demos,Product demonstrations,Own + assigned
+Marketing Communication Specialist,portal.appraisals,Performance appraisals,Own + assigned
+Marketing Communication Specialist,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Marketing Communication Specialist,portal.training,Training and competency,Own + assigned
+Marketing Communication Specialist,portal.sales,Sales targets and performance,Own + assigned
+Marketing Communication Specialist,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Marketing Communication Specialist,portal.tenders,Tenders,Own + assigned
+Marketing Communication Specialist,is.quotation,Quotation,Own + assigned
+Marketing Communication Specialist,is.customer-order,Customer orders,Own + assigned
+Marketing Communication Specialist,is.sales-order,Sales orders,Own + assigned
+Marketing Communication Specialist,is.withdrawal,Withdrawal,Own + assigned
+Marketing Communication Specialist,is.borrowing,Borrowing,Own + assigned
+Marketing Communication Specialist,is.return-product,Product return,Own + assigned
+Marketing Communication Specialist,is.purchase-request,Purchase requisition,Own + assigned
+Marketing Communication Specialist,is.purchase-order,Purchase order,Own + assigned
+Marketing Communication Specialist,is.supplier-confirm,Supplier confirmation,Own + assigned
+Marketing Communication Specialist,is.delivery-in,Delivery in,Own + assigned
+Marketing Communication Specialist,is.check-in,Check in,Own + assigned
+Marketing Communication Specialist,is.delivery-out,Delivery out,Own + assigned
+Marketing Communication Specialist,is.check-out,Check out,Own + assigned
+Marketing Communication Specialist,is.stock-adjust,Stock adjustment,Own + assigned
+Marketing Communication Specialist,is.stock-transfer,Warehouse transfer,Own + assigned
+Marketing Communication Specialist,is.stock-count,Stock count,Own + assigned
+Marketing Communication Specialist,is.invoice,Invoice,Own + assigned
+Marketing Communication Specialist,is.credit-note,Credit note,Own + assigned
+Marketing Communication Specialist,is.debit-note,Debit note,Own + assigned
+Marketing Communication Specialist,is.payment-receipt,Payment receipt,Own + assigned
+Marketing Communication Specialist,is.master-customers,Customers,Own + assigned
+Marketing Communication Specialist,is.master-suppliers,Suppliers,Own + assigned
+Marketing Communication Specialist,is.master-products,Products,Own + assigned
+Marketing Communication Specialist,is.master-warehouses,Warehouses,Own + assigned
+Marketing Communication Specialist,is.shipment,Automatic shipment records,Own + assigned
+Marketing Communication Specialist,is.cycle-count,Physical stock counts,Own + assigned
+Marketing Communication Specialist,is.warehouse-move,Warehouse location transfers,Own + assigned
+Marketing Communication Specialist,is.kits,Product kits and panels,Own + assigned
+Marketing Communication Specialist,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Marketing Communication Specialist,crm.leads,Sales Plan,Own + assigned
+Marketing Communication Specialist,crm.events,Staff Portal Calendar,Own + assigned
+Marketing Communication Specialist,crm.projects,Project & Activity — projects,Department
+Marketing Communication Specialist,crm.activities,Project & Activity,Department
+Marketing Communication Specialist,crm.tickets,External Helpdesk,All records
+Marketing Communication Specialist,crm.targets,CRM sales targets,Own + assigned
+Marketing Communication Specialist,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Marketing Communication Specialist,service.instruments,Instrument Service — Instruments,All records
+Marketing Communication Specialist,service.jobs,Instrument Service — Jobs,Own + assigned
+Marketing Communication Specialist,service.movements,Instrument Service — Movements,Own + assigned
+Marketing Communication Specialist,service.parts,Instrument Service — Parts,Own + assigned
+Marketing Communication Specialist,service.replacements,Instrument Service — Replacements,Own + assigned
+Marketing Communication Specialist,service.contracts,Instrument Service — Contracts,All records
+Marketing Communication Specialist,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Marketing Communication Specialist,is.service-inventory,Service Inventory,Own + assigned
+Marketing Communication Specialist,application_service,Application Service — view,Own + assigned
+Messenger & Delivery,portal.requests,"Travel, leave and general requests",Own + assigned
+Messenger & Delivery,portal.expenses,Expense claims,Own + assigned
+Messenger & Delivery,portal.payments,Payment processing,Own + assigned
+Messenger & Delivery,portal.incentives,Incentive schemes and claims,Own + assigned
+Messenger & Delivery,portal.objectives,Objectives and reviews,Own + assigned
+Messenger & Delivery,portal.tasks,Tasks and action board,Own + assigned
+Messenger & Delivery,portal.helpdesk,Helpdesk tickets,Own + assigned
+Messenger & Delivery,portal.hrprofiles,HR profiles,Own + assigned
+Messenger & Delivery,portal.leavebalance,Leave entitlements,Own + assigned
+Messenger & Delivery,portal.visits,Customer visits,Own + assigned
+Messenger & Delivery,portal.demos,Product demonstrations,Own + assigned
+Messenger & Delivery,portal.appraisals,Performance appraisals,Own + assigned
+Messenger & Delivery,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Messenger & Delivery,portal.training,Training and competency,Own + assigned
+Messenger & Delivery,portal.sales,Sales targets and performance,Own + assigned
+Messenger & Delivery,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Messenger & Delivery,portal.tenders,Tenders,Own + assigned
+Messenger & Delivery,is.quotation,Quotation,Own + assigned
+Messenger & Delivery,is.customer-order,Customer orders,Own + assigned
+Messenger & Delivery,is.sales-order,Sales orders,Own + assigned
+Messenger & Delivery,is.withdrawal,Withdrawal,Own + assigned
+Messenger & Delivery,is.borrowing,Borrowing,Own + assigned
+Messenger & Delivery,is.return-product,Product return,Own + assigned
+Messenger & Delivery,is.purchase-request,Purchase requisition,Own + assigned
+Messenger & Delivery,is.purchase-order,Purchase order,Own + assigned
+Messenger & Delivery,is.supplier-confirm,Supplier confirmation,Own + assigned
+Messenger & Delivery,is.delivery-in,Delivery in,Own + assigned
+Messenger & Delivery,is.check-in,Check in,Own + assigned
+Messenger & Delivery,is.delivery-out,Delivery out,Own + assigned
+Messenger & Delivery,is.check-out,Check out,Own + assigned
+Messenger & Delivery,is.stock-adjust,Stock adjustment,Own + assigned
+Messenger & Delivery,is.stock-transfer,Warehouse transfer,Own + assigned
+Messenger & Delivery,is.stock-count,Stock count,Own + assigned
+Messenger & Delivery,is.invoice,Invoice,Own + assigned
+Messenger & Delivery,is.credit-note,Credit note,Own + assigned
+Messenger & Delivery,is.debit-note,Debit note,Own + assigned
+Messenger & Delivery,is.payment-receipt,Payment receipt,Own + assigned
+Messenger & Delivery,is.master-customers,Customers,Own + assigned
+Messenger & Delivery,is.master-suppliers,Suppliers,Own + assigned
+Messenger & Delivery,is.master-products,Products,Own + assigned
+Messenger & Delivery,is.master-warehouses,Warehouses,Own + assigned
+Messenger & Delivery,is.shipment,Automatic shipment records,Own + assigned
+Messenger & Delivery,is.cycle-count,Physical stock counts,Own + assigned
+Messenger & Delivery,is.warehouse-move,Warehouse location transfers,Own + assigned
+Messenger & Delivery,is.kits,Product kits and panels,Own + assigned
+Messenger & Delivery,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Messenger & Delivery,crm.leads,Sales Plan,Own + assigned
+Messenger & Delivery,crm.events,Staff Portal Calendar,Own + assigned
+Messenger & Delivery,crm.projects,Project & Activity — projects,Own + assigned
+Messenger & Delivery,crm.activities,Project & Activity,Own + assigned
+Messenger & Delivery,crm.tickets,External Helpdesk,Own + assigned
+Messenger & Delivery,crm.targets,CRM sales targets,Own + assigned
+Messenger & Delivery,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Messenger & Delivery,service.instruments,Instrument Service — Instruments,Own + assigned
+Messenger & Delivery,service.jobs,Instrument Service — Jobs,Own + assigned
+Messenger & Delivery,service.movements,Instrument Service — Movements,Own + assigned
+Messenger & Delivery,service.parts,Instrument Service — Parts,Own + assigned
+Messenger & Delivery,service.replacements,Instrument Service — Replacements,Own + assigned
+Messenger & Delivery,service.contracts,Instrument Service — Contracts,Own + assigned
+Messenger & Delivery,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Messenger & Delivery,is.service-inventory,Service Inventory,Own + assigned
+Messenger & Delivery,application_service,Application Service — view,Own + assigned
+Messenger & Delivery Supervisor,portal.requests,"Travel, leave and general requests",Reporting team
+Messenger & Delivery Supervisor,portal.expenses,Expense claims,Reporting team
+Messenger & Delivery Supervisor,portal.payments,Payment processing,Reporting team
+Messenger & Delivery Supervisor,portal.incentives,Incentive schemes and claims,Reporting team
+Messenger & Delivery Supervisor,portal.objectives,Objectives and reviews,Reporting team
+Messenger & Delivery Supervisor,portal.tasks,Tasks and action board,Reporting team
+Messenger & Delivery Supervisor,portal.helpdesk,Helpdesk tickets,Reporting team
+Messenger & Delivery Supervisor,portal.hrprofiles,HR profiles,Reporting team
+Messenger & Delivery Supervisor,portal.leavebalance,Leave entitlements,Reporting team
+Messenger & Delivery Supervisor,portal.visits,Customer visits,Reporting team
+Messenger & Delivery Supervisor,portal.demos,Product demonstrations,Reporting team
+Messenger & Delivery Supervisor,portal.appraisals,Performance appraisals,Reporting team
+Messenger & Delivery Supervisor,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Messenger & Delivery Supervisor,portal.training,Training and competency,Reporting team
+Messenger & Delivery Supervisor,portal.sales,Sales targets and performance,Reporting team
+Messenger & Delivery Supervisor,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Messenger & Delivery Supervisor,portal.tenders,Tenders,Reporting team
+Messenger & Delivery Supervisor,is.quotation,Quotation,Reporting team
+Messenger & Delivery Supervisor,is.customer-order,Customer orders,Reporting team
+Messenger & Delivery Supervisor,is.sales-order,Sales orders,Reporting team
+Messenger & Delivery Supervisor,is.withdrawal,Withdrawal,Reporting team
+Messenger & Delivery Supervisor,is.borrowing,Borrowing,Reporting team
+Messenger & Delivery Supervisor,is.return-product,Product return,Reporting team
+Messenger & Delivery Supervisor,is.purchase-request,Purchase requisition,Reporting team
+Messenger & Delivery Supervisor,is.purchase-order,Purchase order,Reporting team
+Messenger & Delivery Supervisor,is.supplier-confirm,Supplier confirmation,Reporting team
+Messenger & Delivery Supervisor,is.delivery-in,Delivery in,Reporting team
+Messenger & Delivery Supervisor,is.check-in,Check in,Reporting team
+Messenger & Delivery Supervisor,is.delivery-out,Delivery out,Reporting team
+Messenger & Delivery Supervisor,is.check-out,Check out,Reporting team
+Messenger & Delivery Supervisor,is.stock-adjust,Stock adjustment,Reporting team
+Messenger & Delivery Supervisor,is.stock-transfer,Warehouse transfer,Reporting team
+Messenger & Delivery Supervisor,is.stock-count,Stock count,Reporting team
+Messenger & Delivery Supervisor,is.invoice,Invoice,Reporting team
+Messenger & Delivery Supervisor,is.credit-note,Credit note,Reporting team
+Messenger & Delivery Supervisor,is.debit-note,Debit note,Reporting team
+Messenger & Delivery Supervisor,is.payment-receipt,Payment receipt,Reporting team
+Messenger & Delivery Supervisor,is.master-customers,Customers,Reporting team
+Messenger & Delivery Supervisor,is.master-suppliers,Suppliers,Reporting team
+Messenger & Delivery Supervisor,is.master-products,Products,Reporting team
+Messenger & Delivery Supervisor,is.master-warehouses,Warehouses,Reporting team
+Messenger & Delivery Supervisor,is.shipment,Automatic shipment records,Reporting team
+Messenger & Delivery Supervisor,is.cycle-count,Physical stock counts,Reporting team
+Messenger & Delivery Supervisor,is.warehouse-move,Warehouse location transfers,Reporting team
+Messenger & Delivery Supervisor,is.kits,Product kits and panels,Reporting team
+Messenger & Delivery Supervisor,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Messenger & Delivery Supervisor,crm.leads,Sales Plan,Reporting team
+Messenger & Delivery Supervisor,crm.events,Staff Portal Calendar,Reporting team
+Messenger & Delivery Supervisor,crm.projects,Project & Activity — projects,Reporting team
+Messenger & Delivery Supervisor,crm.activities,Project & Activity,Reporting team
+Messenger & Delivery Supervisor,crm.tickets,External Helpdesk,Reporting team
+Messenger & Delivery Supervisor,crm.targets,CRM sales targets,Reporting team
+Messenger & Delivery Supervisor,crm.finance,Linked IS / Budget snapshots,Reporting team
+Messenger & Delivery Supervisor,service.instruments,Instrument Service — Instruments,Reporting team
+Messenger & Delivery Supervisor,service.jobs,Instrument Service — Jobs,Reporting team
+Messenger & Delivery Supervisor,service.movements,Instrument Service — Movements,Reporting team
+Messenger & Delivery Supervisor,service.parts,Instrument Service — Parts,Reporting team
+Messenger & Delivery Supervisor,service.replacements,Instrument Service — Replacements,Reporting team
+Messenger & Delivery Supervisor,service.contracts,Instrument Service — Contracts,Reporting team
+Messenger & Delivery Supervisor,portal.minutes,Minutes & Acknowledgement,Reporting team
+Messenger & Delivery Supervisor,is.service-inventory,Service Inventory,Reporting team
+Messenger & Delivery Supervisor,application_service,Application Service — view,Reporting team
+Operation Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Operation Manager,portal.expenses,Expense claims,Reporting team
+Operation Manager,portal.payments,Payment processing,Reporting team
+Operation Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Operation Manager,portal.objectives,Objectives and reviews,Reporting team
+Operation Manager,portal.tasks,Tasks and action board,Reporting team
+Operation Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Operation Manager,portal.hrprofiles,HR profiles,Reporting team
+Operation Manager,portal.leavebalance,Leave entitlements,Reporting team
+Operation Manager,portal.visits,Customer visits,Reporting team
+Operation Manager,portal.demos,Product demonstrations,Reporting team
+Operation Manager,portal.appraisals,Performance appraisals,Reporting team
+Operation Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Operation Manager,portal.training,Training and competency,Reporting team
+Operation Manager,portal.sales,Sales targets and performance,Reporting team
+Operation Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Operation Manager,portal.tenders,Tenders,Reporting team
+Operation Manager,is.quotation,Quotation,Reporting team
+Operation Manager,is.customer-order,Customer orders,Reporting team
+Operation Manager,is.sales-order,Sales orders,Reporting team
+Operation Manager,is.withdrawal,Withdrawal,Reporting team
+Operation Manager,is.borrowing,Borrowing,Reporting team
+Operation Manager,is.return-product,Product return,Reporting team
+Operation Manager,is.purchase-request,Purchase requisition,Reporting team
+Operation Manager,is.purchase-order,Purchase order,Reporting team
+Operation Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Operation Manager,is.delivery-in,Delivery in,Reporting team
+Operation Manager,is.check-in,Check in,Reporting team
+Operation Manager,is.delivery-out,Delivery out,Reporting team
+Operation Manager,is.check-out,Check out,Reporting team
+Operation Manager,is.stock-adjust,Stock adjustment,Reporting team
+Operation Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Operation Manager,is.stock-count,Stock count,Reporting team
+Operation Manager,is.invoice,Invoice,Reporting team
+Operation Manager,is.credit-note,Credit note,Reporting team
+Operation Manager,is.debit-note,Debit note,Reporting team
+Operation Manager,is.payment-receipt,Payment receipt,Reporting team
+Operation Manager,is.master-customers,Customers,Reporting team
+Operation Manager,is.master-suppliers,Suppliers,Reporting team
+Operation Manager,is.master-products,Products,Reporting team
+Operation Manager,is.master-warehouses,Warehouses,Reporting team
+Operation Manager,is.shipment,Automatic shipment records,Reporting team
+Operation Manager,is.cycle-count,Physical stock counts,Reporting team
+Operation Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Operation Manager,is.kits,Product kits and panels,Reporting team
+Operation Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Operation Manager,crm.leads,Sales Plan,Reporting team
+Operation Manager,crm.events,Staff Portal Calendar,Reporting team
+Operation Manager,crm.projects,Project & Activity — projects,Reporting team
+Operation Manager,crm.activities,Project & Activity,Reporting team
+Operation Manager,crm.tickets,External Helpdesk,Reporting team
+Operation Manager,crm.targets,CRM sales targets,Reporting team
+Operation Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Operation Manager,service.instruments,Instrument Service — Instruments,Reporting team
+Operation Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Operation Manager,service.movements,Instrument Service — Movements,Reporting team
+Operation Manager,service.parts,Instrument Service — Parts,Reporting team
+Operation Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Operation Manager,service.contracts,Instrument Service — Contracts,Reporting team
+Operation Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Operation Manager,is.service-inventory,Service Inventory,Reporting team
+Operation Manager,application_service,Application Service — view,Reporting team
+Procurement & Regulatory Supervisor,portal.requests,"Travel, leave and general requests",Reporting team
+Procurement & Regulatory Supervisor,portal.expenses,Expense claims,Reporting team
+Procurement & Regulatory Supervisor,portal.payments,Payment processing,Reporting team
+Procurement & Regulatory Supervisor,portal.incentives,Incentive schemes and claims,Reporting team
+Procurement & Regulatory Supervisor,portal.objectives,Objectives and reviews,Reporting team
+Procurement & Regulatory Supervisor,portal.tasks,Tasks and action board,Reporting team
+Procurement & Regulatory Supervisor,portal.helpdesk,Helpdesk tickets,Reporting team
+Procurement & Regulatory Supervisor,portal.hrprofiles,HR profiles,Reporting team
+Procurement & Regulatory Supervisor,portal.leavebalance,Leave entitlements,Reporting team
+Procurement & Regulatory Supervisor,portal.visits,Customer visits,Reporting team
+Procurement & Regulatory Supervisor,portal.demos,Product demonstrations,Reporting team
+Procurement & Regulatory Supervisor,portal.appraisals,Performance appraisals,Reporting team
+Procurement & Regulatory Supervisor,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Procurement & Regulatory Supervisor,portal.training,Training and competency,Reporting team
+Procurement & Regulatory Supervisor,portal.sales,Sales targets and performance,Reporting team
+Procurement & Regulatory Supervisor,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Procurement & Regulatory Supervisor,portal.tenders,Tenders,Reporting team
+Procurement & Regulatory Supervisor,is.quotation,Quotation,Reporting team
+Procurement & Regulatory Supervisor,is.customer-order,Customer orders,Reporting team
+Procurement & Regulatory Supervisor,is.sales-order,Sales orders,Reporting team
+Procurement & Regulatory Supervisor,is.withdrawal,Withdrawal,Reporting team
+Procurement & Regulatory Supervisor,is.borrowing,Borrowing,Reporting team
+Procurement & Regulatory Supervisor,is.return-product,Product return,Reporting team
+Procurement & Regulatory Supervisor,is.purchase-request,Purchase requisition,Reporting team
+Procurement & Regulatory Supervisor,is.purchase-order,Purchase order,Reporting team
+Procurement & Regulatory Supervisor,is.supplier-confirm,Supplier confirmation,Reporting team
+Procurement & Regulatory Supervisor,is.delivery-in,Delivery in,Reporting team
+Procurement & Regulatory Supervisor,is.check-in,Check in,Reporting team
+Procurement & Regulatory Supervisor,is.delivery-out,Delivery out,Reporting team
+Procurement & Regulatory Supervisor,is.check-out,Check out,Reporting team
+Procurement & Regulatory Supervisor,is.stock-adjust,Stock adjustment,Reporting team
+Procurement & Regulatory Supervisor,is.stock-transfer,Warehouse transfer,Reporting team
+Procurement & Regulatory Supervisor,is.stock-count,Stock count,Reporting team
+Procurement & Regulatory Supervisor,is.invoice,Invoice,Reporting team
+Procurement & Regulatory Supervisor,is.credit-note,Credit note,Reporting team
+Procurement & Regulatory Supervisor,is.debit-note,Debit note,Reporting team
+Procurement & Regulatory Supervisor,is.payment-receipt,Payment receipt,Reporting team
+Procurement & Regulatory Supervisor,is.master-customers,Customers,Reporting team
+Procurement & Regulatory Supervisor,is.master-suppliers,Suppliers,Reporting team
+Procurement & Regulatory Supervisor,is.master-products,Products,Reporting team
+Procurement & Regulatory Supervisor,is.master-warehouses,Warehouses,Reporting team
+Procurement & Regulatory Supervisor,is.shipment,Automatic shipment records,Reporting team
+Procurement & Regulatory Supervisor,is.cycle-count,Physical stock counts,Reporting team
+Procurement & Regulatory Supervisor,is.warehouse-move,Warehouse location transfers,Reporting team
+Procurement & Regulatory Supervisor,is.kits,Product kits and panels,Reporting team
+Procurement & Regulatory Supervisor,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Procurement & Regulatory Supervisor,crm.leads,Sales Plan,Reporting team
+Procurement & Regulatory Supervisor,crm.events,Staff Portal Calendar,Reporting team
+Procurement & Regulatory Supervisor,crm.projects,Project & Activity — projects,Reporting team
+Procurement & Regulatory Supervisor,crm.activities,Project & Activity,Reporting team
+Procurement & Regulatory Supervisor,crm.tickets,External Helpdesk,Reporting team
+Procurement & Regulatory Supervisor,crm.targets,CRM sales targets,Reporting team
+Procurement & Regulatory Supervisor,crm.finance,Linked IS / Budget snapshots,Reporting team
+Procurement & Regulatory Supervisor,service.instruments,Instrument Service — Instruments,Reporting team
+Procurement & Regulatory Supervisor,service.jobs,Instrument Service — Jobs,Reporting team
+Procurement & Regulatory Supervisor,service.movements,Instrument Service — Movements,Reporting team
+Procurement & Regulatory Supervisor,service.parts,Instrument Service — Parts,Reporting team
+Procurement & Regulatory Supervisor,service.replacements,Instrument Service — Replacements,Reporting team
+Procurement & Regulatory Supervisor,service.contracts,Instrument Service — Contracts,Reporting team
+Procurement & Regulatory Supervisor,portal.minutes,Minutes & Acknowledgement,Reporting team
+Procurement & Regulatory Supervisor,is.service-inventory,Service Inventory,Reporting team
+Procurement & Regulatory Supervisor,application_service,Application Service — view,Reporting team
+Product Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Product Manager,portal.expenses,Expense claims,Reporting team
+Product Manager,portal.payments,Payment processing,Reporting team
+Product Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Product Manager,portal.objectives,Objectives and reviews,Reporting team
+Product Manager,portal.tasks,Tasks and action board,Reporting team
+Product Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Product Manager,portal.hrprofiles,HR profiles,Reporting team
+Product Manager,portal.leavebalance,Leave entitlements,Reporting team
+Product Manager,portal.visits,Customer visits,Reporting team
+Product Manager,portal.demos,Product demonstrations,Reporting team
+Product Manager,portal.appraisals,Performance appraisals,Reporting team
+Product Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Product Manager,portal.training,Training and competency,Reporting team
+Product Manager,portal.sales,Sales targets and performance,Reporting team
+Product Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Product Manager,portal.tenders,Tenders,Reporting team
+Product Manager,is.quotation,Quotation,Reporting team
+Product Manager,is.customer-order,Customer orders,Reporting team
+Product Manager,is.sales-order,Sales orders,Reporting team
+Product Manager,is.withdrawal,Withdrawal,Reporting team
+Product Manager,is.borrowing,Borrowing,Reporting team
+Product Manager,is.return-product,Product return,Reporting team
+Product Manager,is.purchase-request,Purchase requisition,Reporting team
+Product Manager,is.purchase-order,Purchase order,Reporting team
+Product Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Product Manager,is.delivery-in,Delivery in,Reporting team
+Product Manager,is.check-in,Check in,Reporting team
+Product Manager,is.delivery-out,Delivery out,Reporting team
+Product Manager,is.check-out,Check out,Reporting team
+Product Manager,is.stock-adjust,Stock adjustment,Reporting team
+Product Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Product Manager,is.stock-count,Stock count,Reporting team
+Product Manager,is.invoice,Invoice,Reporting team
+Product Manager,is.credit-note,Credit note,Reporting team
+Product Manager,is.debit-note,Debit note,Reporting team
+Product Manager,is.payment-receipt,Payment receipt,Reporting team
+Product Manager,is.master-customers,Customers,Reporting team
+Product Manager,is.master-suppliers,Suppliers,Reporting team
+Product Manager,is.master-products,Products,Reporting team
+Product Manager,is.master-warehouses,Warehouses,Reporting team
+Product Manager,is.shipment,Automatic shipment records,Reporting team
+Product Manager,is.cycle-count,Physical stock counts,Reporting team
+Product Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Product Manager,is.kits,Product kits and panels,Reporting team
+Product Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Product Manager,crm.leads,Sales Plan,Reporting team
+Product Manager,crm.events,Staff Portal Calendar,Reporting team
+Product Manager,crm.projects,Project & Activity — projects,Department
+Product Manager,crm.activities,Project & Activity,Department
+Product Manager,crm.tickets,External Helpdesk,All records
+Product Manager,crm.targets,CRM sales targets,Reporting team
+Product Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Product Manager,service.instruments,Instrument Service — Instruments,All records
+Product Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Product Manager,service.movements,Instrument Service — Movements,Reporting team
+Product Manager,service.parts,Instrument Service — Parts,Reporting team
+Product Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Product Manager,service.contracts,Instrument Service — Contracts,All records
+Product Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Product Manager,is.service-inventory,Service Inventory,Reporting team
+Product Manager,application_service,Application Service — view,Reporting team
+Product Specialist,portal.requests,"Travel, leave and general requests",Own + assigned
+Product Specialist,portal.expenses,Expense claims,Own + assigned
+Product Specialist,portal.payments,Payment processing,Own + assigned
+Product Specialist,portal.incentives,Incentive schemes and claims,Own + assigned
+Product Specialist,portal.objectives,Objectives and reviews,Own + assigned
+Product Specialist,portal.tasks,Tasks and action board,Own + assigned
+Product Specialist,portal.helpdesk,Helpdesk tickets,Own + assigned
+Product Specialist,portal.hrprofiles,HR profiles,Own + assigned
+Product Specialist,portal.leavebalance,Leave entitlements,Own + assigned
+Product Specialist,portal.visits,Customer visits,Own + assigned
+Product Specialist,portal.demos,Product demonstrations,Own + assigned
+Product Specialist,portal.appraisals,Performance appraisals,Own + assigned
+Product Specialist,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Product Specialist,portal.training,Training and competency,Own + assigned
+Product Specialist,portal.sales,Sales targets and performance,Own + assigned
+Product Specialist,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Product Specialist,portal.tenders,Tenders,Own + assigned
+Product Specialist,is.quotation,Quotation,Own + assigned
+Product Specialist,is.customer-order,Customer orders,Own + assigned
+Product Specialist,is.sales-order,Sales orders,Own + assigned
+Product Specialist,is.withdrawal,Withdrawal,Own + assigned
+Product Specialist,is.borrowing,Borrowing,Own + assigned
+Product Specialist,is.return-product,Product return,Own + assigned
+Product Specialist,is.purchase-request,Purchase requisition,Own + assigned
+Product Specialist,is.purchase-order,Purchase order,Own + assigned
+Product Specialist,is.supplier-confirm,Supplier confirmation,Own + assigned
+Product Specialist,is.delivery-in,Delivery in,Own + assigned
+Product Specialist,is.check-in,Check in,Own + assigned
+Product Specialist,is.delivery-out,Delivery out,Own + assigned
+Product Specialist,is.check-out,Check out,Own + assigned
+Product Specialist,is.stock-adjust,Stock adjustment,Own + assigned
+Product Specialist,is.stock-transfer,Warehouse transfer,Own + assigned
+Product Specialist,is.stock-count,Stock count,Own + assigned
+Product Specialist,is.invoice,Invoice,Own + assigned
+Product Specialist,is.credit-note,Credit note,Own + assigned
+Product Specialist,is.debit-note,Debit note,Own + assigned
+Product Specialist,is.payment-receipt,Payment receipt,Own + assigned
+Product Specialist,is.master-customers,Customers,Own + assigned
+Product Specialist,is.master-suppliers,Suppliers,Own + assigned
+Product Specialist,is.master-products,Products,Own + assigned
+Product Specialist,is.master-warehouses,Warehouses,Own + assigned
+Product Specialist,is.shipment,Automatic shipment records,Own + assigned
+Product Specialist,is.cycle-count,Physical stock counts,Own + assigned
+Product Specialist,is.warehouse-move,Warehouse location transfers,Own + assigned
+Product Specialist,is.kits,Product kits and panels,Own + assigned
+Product Specialist,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Product Specialist,crm.leads,Sales Plan,Own + assigned
+Product Specialist,crm.events,Staff Portal Calendar,Own + assigned
+Product Specialist,crm.projects,Project & Activity — projects,Department
+Product Specialist,crm.activities,Project & Activity,Department
+Product Specialist,crm.tickets,External Helpdesk,All records
+Product Specialist,crm.targets,CRM sales targets,Own + assigned
+Product Specialist,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Product Specialist,service.instruments,Instrument Service — Instruments,All records
+Product Specialist,service.jobs,Instrument Service — Jobs,Own + assigned
+Product Specialist,service.movements,Instrument Service — Movements,Own + assigned
+Product Specialist,service.parts,Instrument Service — Parts,Own + assigned
+Product Specialist,service.replacements,Instrument Service — Replacements,Own + assigned
+Product Specialist,service.contracts,Instrument Service — Contracts,All records
+Product Specialist,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Product Specialist,is.service-inventory,Service Inventory,Own + assigned
+Product Specialist,application_service,Application Service — view,Own + assigned
+Purchasing Officer,portal.requests,"Travel, leave and general requests",Own + assigned
+Purchasing Officer,portal.expenses,Expense claims,Own + assigned
+Purchasing Officer,portal.payments,Payment processing,Own + assigned
+Purchasing Officer,portal.incentives,Incentive schemes and claims,Own + assigned
+Purchasing Officer,portal.objectives,Objectives and reviews,Own + assigned
+Purchasing Officer,portal.tasks,Tasks and action board,Own + assigned
+Purchasing Officer,portal.helpdesk,Helpdesk tickets,Own + assigned
+Purchasing Officer,portal.hrprofiles,HR profiles,Own + assigned
+Purchasing Officer,portal.leavebalance,Leave entitlements,Own + assigned
+Purchasing Officer,portal.visits,Customer visits,Own + assigned
+Purchasing Officer,portal.demos,Product demonstrations,Own + assigned
+Purchasing Officer,portal.appraisals,Performance appraisals,Own + assigned
+Purchasing Officer,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Purchasing Officer,portal.training,Training and competency,Own + assigned
+Purchasing Officer,portal.sales,Sales targets and performance,Own + assigned
+Purchasing Officer,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Purchasing Officer,portal.tenders,Tenders,Own + assigned
+Purchasing Officer,is.quotation,Quotation,Own + assigned
+Purchasing Officer,is.customer-order,Customer orders,Own + assigned
+Purchasing Officer,is.sales-order,Sales orders,Own + assigned
+Purchasing Officer,is.withdrawal,Withdrawal,Own + assigned
+Purchasing Officer,is.borrowing,Borrowing,Own + assigned
+Purchasing Officer,is.return-product,Product return,Own + assigned
+Purchasing Officer,is.purchase-request,Purchase requisition,Own + assigned
+Purchasing Officer,is.purchase-order,Purchase order,Own + assigned
+Purchasing Officer,is.supplier-confirm,Supplier confirmation,Own + assigned
+Purchasing Officer,is.delivery-in,Delivery in,Own + assigned
+Purchasing Officer,is.check-in,Check in,Own + assigned
+Purchasing Officer,is.delivery-out,Delivery out,Own + assigned
+Purchasing Officer,is.check-out,Check out,Own + assigned
+Purchasing Officer,is.stock-adjust,Stock adjustment,Own + assigned
+Purchasing Officer,is.stock-transfer,Warehouse transfer,Own + assigned
+Purchasing Officer,is.stock-count,Stock count,Own + assigned
+Purchasing Officer,is.invoice,Invoice,Own + assigned
+Purchasing Officer,is.credit-note,Credit note,Own + assigned
+Purchasing Officer,is.debit-note,Debit note,Own + assigned
+Purchasing Officer,is.payment-receipt,Payment receipt,Own + assigned
+Purchasing Officer,is.master-customers,Customers,Own + assigned
+Purchasing Officer,is.master-suppliers,Suppliers,Own + assigned
+Purchasing Officer,is.master-products,Products,Own + assigned
+Purchasing Officer,is.master-warehouses,Warehouses,Own + assigned
+Purchasing Officer,is.shipment,Automatic shipment records,Own + assigned
+Purchasing Officer,is.cycle-count,Physical stock counts,Own + assigned
+Purchasing Officer,is.warehouse-move,Warehouse location transfers,Own + assigned
+Purchasing Officer,is.kits,Product kits and panels,Own + assigned
+Purchasing Officer,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Purchasing Officer,crm.leads,Sales Plan,Own + assigned
+Purchasing Officer,crm.events,Staff Portal Calendar,Own + assigned
+Purchasing Officer,crm.projects,Project & Activity — projects,Own + assigned
+Purchasing Officer,crm.activities,Project & Activity,Own + assigned
+Purchasing Officer,crm.tickets,External Helpdesk,Own + assigned
+Purchasing Officer,crm.targets,CRM sales targets,Own + assigned
+Purchasing Officer,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Purchasing Officer,service.instruments,Instrument Service — Instruments,Own + assigned
+Purchasing Officer,service.jobs,Instrument Service — Jobs,Own + assigned
+Purchasing Officer,service.movements,Instrument Service — Movements,Own + assigned
+Purchasing Officer,service.parts,Instrument Service — Parts,Own + assigned
+Purchasing Officer,service.replacements,Instrument Service — Replacements,Own + assigned
+Purchasing Officer,service.contracts,Instrument Service — Contracts,Own + assigned
+Purchasing Officer,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Purchasing Officer,is.service-inventory,Service Inventory,Own + assigned
+Purchasing Officer,application_service,Application Service — view,Own + assigned
+QMR,portal.requests,"Travel, leave and general requests",Own + assigned
+QMR,portal.expenses,Expense claims,Own + assigned
+QMR,portal.payments,Payment processing,Own + assigned
+QMR,portal.incentives,Incentive schemes and claims,Own + assigned
+QMR,portal.objectives,Objectives and reviews,Own + assigned
+QMR,portal.tasks,Tasks and action board,Own + assigned
+QMR,portal.helpdesk,Helpdesk tickets,Own + assigned
+QMR,portal.hrprofiles,HR profiles,Own + assigned
+QMR,portal.leavebalance,Leave entitlements,Own + assigned
+QMR,portal.visits,Customer visits,Own + assigned
+QMR,portal.demos,Product demonstrations,Own + assigned
+QMR,portal.appraisals,Performance appraisals,Own + assigned
+QMR,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+QMR,portal.training,Training and competency,Own + assigned
+QMR,portal.sales,Sales targets and performance,Own + assigned
+QMR,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+QMR,portal.tenders,Tenders,Own + assigned
+QMR,is.quotation,Quotation,Own + assigned
+QMR,is.customer-order,Customer orders,Own + assigned
+QMR,is.sales-order,Sales orders,Own + assigned
+QMR,is.withdrawal,Withdrawal,Own + assigned
+QMR,is.borrowing,Borrowing,Own + assigned
+QMR,is.return-product,Product return,Own + assigned
+QMR,is.purchase-request,Purchase requisition,Own + assigned
+QMR,is.purchase-order,Purchase order,Own + assigned
+QMR,is.supplier-confirm,Supplier confirmation,Own + assigned
+QMR,is.delivery-in,Delivery in,Own + assigned
+QMR,is.check-in,Check in,Own + assigned
+QMR,is.delivery-out,Delivery out,Own + assigned
+QMR,is.check-out,Check out,Own + assigned
+QMR,is.stock-adjust,Stock adjustment,Own + assigned
+QMR,is.stock-transfer,Warehouse transfer,Own + assigned
+QMR,is.stock-count,Stock count,Own + assigned
+QMR,is.invoice,Invoice,Own + assigned
+QMR,is.credit-note,Credit note,Own + assigned
+QMR,is.debit-note,Debit note,Own + assigned
+QMR,is.payment-receipt,Payment receipt,Own + assigned
+QMR,is.master-customers,Customers,Own + assigned
+QMR,is.master-suppliers,Suppliers,Own + assigned
+QMR,is.master-products,Products,Own + assigned
+QMR,is.master-warehouses,Warehouses,Own + assigned
+QMR,is.shipment,Automatic shipment records,Own + assigned
+QMR,is.cycle-count,Physical stock counts,Own + assigned
+QMR,is.warehouse-move,Warehouse location transfers,Own + assigned
+QMR,is.kits,Product kits and panels,Own + assigned
+QMR,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+QMR,crm.leads,Sales Plan,Own + assigned
+QMR,crm.events,Staff Portal Calendar,Own + assigned
+QMR,crm.projects,Project & Activity — projects,Own + assigned
+QMR,crm.activities,Project & Activity,Own + assigned
+QMR,crm.tickets,External Helpdesk,Own + assigned
+QMR,crm.targets,CRM sales targets,Own + assigned
+QMR,crm.finance,Linked IS / Budget snapshots,Own + assigned
+QMR,service.instruments,Instrument Service — Instruments,Own + assigned
+QMR,service.jobs,Instrument Service — Jobs,Own + assigned
+QMR,service.movements,Instrument Service — Movements,Own + assigned
+QMR,service.parts,Instrument Service — Parts,Own + assigned
+QMR,service.replacements,Instrument Service — Replacements,Own + assigned
+QMR,service.contracts,Instrument Service — Contracts,Own + assigned
+QMR,portal.minutes,Minutes & Acknowledgement,Own + assigned
+QMR,is.service-inventory,Service Inventory,Own + assigned
+QMR,application_service,Application Service — view,Own + assigned
+Sales Manager,portal.requests,"Travel, leave and general requests",Reporting team
+Sales Manager,portal.expenses,Expense claims,Reporting team
+Sales Manager,portal.payments,Payment processing,Reporting team
+Sales Manager,portal.incentives,Incentive schemes and claims,Reporting team
+Sales Manager,portal.objectives,Objectives and reviews,Reporting team
+Sales Manager,portal.tasks,Tasks and action board,Reporting team
+Sales Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+Sales Manager,portal.hrprofiles,HR profiles,Reporting team
+Sales Manager,portal.leavebalance,Leave entitlements,Reporting team
+Sales Manager,portal.visits,Customer visits,Reporting team
+Sales Manager,portal.demos,Product demonstrations,Reporting team
+Sales Manager,portal.appraisals,Performance appraisals,Reporting team
+Sales Manager,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Sales Manager,portal.training,Training and competency,Reporting team
+Sales Manager,portal.sales,Sales targets and performance,Reporting team
+Sales Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Sales Manager,portal.tenders,Tenders,Reporting team
+Sales Manager,is.quotation,Quotation,Reporting team
+Sales Manager,is.customer-order,Customer orders,Reporting team
+Sales Manager,is.sales-order,Sales orders,Reporting team
+Sales Manager,is.withdrawal,Withdrawal,Reporting team
+Sales Manager,is.borrowing,Borrowing,Reporting team
+Sales Manager,is.return-product,Product return,Reporting team
+Sales Manager,is.purchase-request,Purchase requisition,Reporting team
+Sales Manager,is.purchase-order,Purchase order,Reporting team
+Sales Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+Sales Manager,is.delivery-in,Delivery in,Reporting team
+Sales Manager,is.check-in,Check in,Reporting team
+Sales Manager,is.delivery-out,Delivery out,Reporting team
+Sales Manager,is.check-out,Check out,Reporting team
+Sales Manager,is.stock-adjust,Stock adjustment,Reporting team
+Sales Manager,is.stock-transfer,Warehouse transfer,Reporting team
+Sales Manager,is.stock-count,Stock count,Reporting team
+Sales Manager,is.invoice,Invoice,Reporting team
+Sales Manager,is.credit-note,Credit note,Reporting team
+Sales Manager,is.debit-note,Debit note,Reporting team
+Sales Manager,is.payment-receipt,Payment receipt,Reporting team
+Sales Manager,is.master-customers,Customers,Reporting team
+Sales Manager,is.master-suppliers,Suppliers,Reporting team
+Sales Manager,is.master-products,Products,Reporting team
+Sales Manager,is.master-warehouses,Warehouses,Reporting team
+Sales Manager,is.shipment,Automatic shipment records,Reporting team
+Sales Manager,is.cycle-count,Physical stock counts,Reporting team
+Sales Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+Sales Manager,is.kits,Product kits and panels,Reporting team
+Sales Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Sales Manager,crm.leads,Sales Plan,Reporting team
+Sales Manager,crm.events,Staff Portal Calendar,Reporting team
+Sales Manager,crm.projects,Project & Activity — projects,Department
+Sales Manager,crm.activities,Project & Activity,Department
+Sales Manager,crm.tickets,External Helpdesk,All records
+Sales Manager,crm.targets,CRM sales targets,Reporting team
+Sales Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+Sales Manager,service.instruments,Instrument Service — Instruments,All records
+Sales Manager,service.jobs,Instrument Service — Jobs,Reporting team
+Sales Manager,service.movements,Instrument Service — Movements,Reporting team
+Sales Manager,service.parts,Instrument Service — Parts,Reporting team
+Sales Manager,service.replacements,Instrument Service — Replacements,Reporting team
+Sales Manager,service.contracts,Instrument Service — Contracts,All records
+Sales Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+Sales Manager,is.service-inventory,Service Inventory,Reporting team
+Sales Manager,application_service,Application Service — view,Reporting team
+Sales Representative,portal.requests,"Travel, leave and general requests",Own + assigned
+Sales Representative,portal.expenses,Expense claims,Own + assigned
+Sales Representative,portal.payments,Payment processing,Own + assigned
+Sales Representative,portal.incentives,Incentive schemes and claims,Own + assigned
+Sales Representative,portal.objectives,Objectives and reviews,Own + assigned
+Sales Representative,portal.tasks,Tasks and action board,Own + assigned
+Sales Representative,portal.helpdesk,Helpdesk tickets,Own + assigned
+Sales Representative,portal.hrprofiles,HR profiles,Own + assigned
+Sales Representative,portal.leavebalance,Leave entitlements,Own + assigned
+Sales Representative,portal.visits,Customer visits,Own + assigned
+Sales Representative,portal.demos,Product demonstrations,Own + assigned
+Sales Representative,portal.appraisals,Performance appraisals,Own + assigned
+Sales Representative,portal.onboarding,Onboarding / promotion / offboarding,Own + assigned
+Sales Representative,portal.training,Training and competency,Own + assigned
+Sales Representative,portal.sales,Sales targets and performance,Own + assigned
+Sales Representative,portal.pipeline,Quotation follow-up and won/lost status,Own + assigned
+Sales Representative,portal.tenders,Tenders,Own + assigned
+Sales Representative,is.quotation,Quotation,Own + assigned
+Sales Representative,is.customer-order,Customer orders,Own + assigned
+Sales Representative,is.sales-order,Sales orders,Own + assigned
+Sales Representative,is.withdrawal,Withdrawal,Own + assigned
+Sales Representative,is.borrowing,Borrowing,Own + assigned
+Sales Representative,is.return-product,Product return,Own + assigned
+Sales Representative,is.purchase-request,Purchase requisition,Own + assigned
+Sales Representative,is.purchase-order,Purchase order,Own + assigned
+Sales Representative,is.supplier-confirm,Supplier confirmation,Own + assigned
+Sales Representative,is.delivery-in,Delivery in,Own + assigned
+Sales Representative,is.check-in,Check in,Own + assigned
+Sales Representative,is.delivery-out,Delivery out,Own + assigned
+Sales Representative,is.check-out,Check out,Own + assigned
+Sales Representative,is.stock-adjust,Stock adjustment,Own + assigned
+Sales Representative,is.stock-transfer,Warehouse transfer,Own + assigned
+Sales Representative,is.stock-count,Stock count,Own + assigned
+Sales Representative,is.invoice,Invoice,Own + assigned
+Sales Representative,is.credit-note,Credit note,Own + assigned
+Sales Representative,is.debit-note,Debit note,Own + assigned
+Sales Representative,is.payment-receipt,Payment receipt,Own + assigned
+Sales Representative,is.master-customers,Customers,Own + assigned
+Sales Representative,is.master-suppliers,Suppliers,Own + assigned
+Sales Representative,is.master-products,Products,Own + assigned
+Sales Representative,is.master-warehouses,Warehouses,Own + assigned
+Sales Representative,is.shipment,Automatic shipment records,Own + assigned
+Sales Representative,is.cycle-count,Physical stock counts,Own + assigned
+Sales Representative,is.warehouse-move,Warehouse location transfers,Own + assigned
+Sales Representative,is.kits,Product kits and panels,Own + assigned
+Sales Representative,is.waiting-purchase,Waiting to be Purchased,Own + assigned
+Sales Representative,crm.leads,Sales Plan,Own + assigned
+Sales Representative,crm.events,Staff Portal Calendar,Own + assigned
+Sales Representative,crm.projects,Project & Activity — projects,Department
+Sales Representative,crm.activities,Project & Activity,Department
+Sales Representative,crm.tickets,External Helpdesk,All records
+Sales Representative,crm.targets,CRM sales targets,Own + assigned
+Sales Representative,crm.finance,Linked IS / Budget snapshots,Own + assigned
+Sales Representative,service.instruments,Instrument Service — Instruments,Own + assigned
+Sales Representative,service.jobs,Instrument Service — Jobs,Own + assigned
+Sales Representative,service.movements,Instrument Service — Movements,Own + assigned
+Sales Representative,service.parts,Instrument Service — Parts,Own + assigned
+Sales Representative,service.replacements,Instrument Service — Replacements,Own + assigned
+Sales Representative,service.contracts,Instrument Service — Contracts,Own + assigned
+Sales Representative,portal.minutes,Minutes & Acknowledgement,Own + assigned
+Sales Representative,is.service-inventory,Service Inventory,Own + assigned
+Sales Representative,application_service,Application Service — view,Own + assigned
+Sales Supervisor,portal.requests,"Travel, leave and general requests",Reporting team
+Sales Supervisor,portal.expenses,Expense claims,Reporting team
+Sales Supervisor,portal.payments,Payment processing,Reporting team
+Sales Supervisor,portal.incentives,Incentive schemes and claims,Reporting team
+Sales Supervisor,portal.objectives,Objectives and reviews,Reporting team
+Sales Supervisor,portal.tasks,Tasks and action board,Reporting team
+Sales Supervisor,portal.helpdesk,Helpdesk tickets,Reporting team
+Sales Supervisor,portal.hrprofiles,HR profiles,Reporting team
+Sales Supervisor,portal.leavebalance,Leave entitlements,Reporting team
+Sales Supervisor,portal.visits,Customer visits,Reporting team
+Sales Supervisor,portal.demos,Product demonstrations,Reporting team
+Sales Supervisor,portal.appraisals,Performance appraisals,Reporting team
+Sales Supervisor,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Sales Supervisor,portal.training,Training and competency,Reporting team
+Sales Supervisor,portal.sales,Sales targets and performance,Reporting team
+Sales Supervisor,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Sales Supervisor,portal.tenders,Tenders,Reporting team
+Sales Supervisor,is.quotation,Quotation,Reporting team
+Sales Supervisor,is.customer-order,Customer orders,Reporting team
+Sales Supervisor,is.sales-order,Sales orders,Reporting team
+Sales Supervisor,is.withdrawal,Withdrawal,Reporting team
+Sales Supervisor,is.borrowing,Borrowing,Reporting team
+Sales Supervisor,is.return-product,Product return,Reporting team
+Sales Supervisor,is.purchase-request,Purchase requisition,Reporting team
+Sales Supervisor,is.purchase-order,Purchase order,Reporting team
+Sales Supervisor,is.supplier-confirm,Supplier confirmation,Reporting team
+Sales Supervisor,is.delivery-in,Delivery in,Reporting team
+Sales Supervisor,is.check-in,Check in,Reporting team
+Sales Supervisor,is.delivery-out,Delivery out,Reporting team
+Sales Supervisor,is.check-out,Check out,Reporting team
+Sales Supervisor,is.stock-adjust,Stock adjustment,Reporting team
+Sales Supervisor,is.stock-transfer,Warehouse transfer,Reporting team
+Sales Supervisor,is.stock-count,Stock count,Reporting team
+Sales Supervisor,is.invoice,Invoice,Reporting team
+Sales Supervisor,is.credit-note,Credit note,Reporting team
+Sales Supervisor,is.debit-note,Debit note,Reporting team
+Sales Supervisor,is.payment-receipt,Payment receipt,Reporting team
+Sales Supervisor,is.master-customers,Customers,Reporting team
+Sales Supervisor,is.master-suppliers,Suppliers,Reporting team
+Sales Supervisor,is.master-products,Products,Reporting team
+Sales Supervisor,is.master-warehouses,Warehouses,Reporting team
+Sales Supervisor,is.shipment,Automatic shipment records,Reporting team
+Sales Supervisor,is.cycle-count,Physical stock counts,Reporting team
+Sales Supervisor,is.warehouse-move,Warehouse location transfers,Reporting team
+Sales Supervisor,is.kits,Product kits and panels,Reporting team
+Sales Supervisor,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Sales Supervisor,crm.leads,Sales Plan,Reporting team
+Sales Supervisor,crm.events,Staff Portal Calendar,Reporting team
+Sales Supervisor,crm.projects,Project & Activity — projects,Department
+Sales Supervisor,crm.activities,Project & Activity,Department
+Sales Supervisor,crm.tickets,External Helpdesk,All records
+Sales Supervisor,crm.targets,CRM sales targets,Reporting team
+Sales Supervisor,crm.finance,Linked IS / Budget snapshots,Reporting team
+Sales Supervisor,service.instruments,Instrument Service — Instruments,All records
+Sales Supervisor,service.jobs,Instrument Service — Jobs,Reporting team
+Sales Supervisor,service.movements,Instrument Service — Movements,Reporting team
+Sales Supervisor,service.parts,Instrument Service — Parts,Reporting team
+Sales Supervisor,service.replacements,Instrument Service — Replacements,Reporting team
+Sales Supervisor,service.contracts,Instrument Service — Contracts,All records
+Sales Supervisor,portal.minutes,Minutes & Acknowledgement,Reporting team
+Sales Supervisor,is.service-inventory,Service Inventory,Reporting team
+Sales Supervisor,application_service,Application Service — view,Reporting team
+Service Engineer Supervisor,portal.requests,"Travel, leave and general requests",Reporting team
+Service Engineer Supervisor,portal.expenses,Expense claims,Reporting team
+Service Engineer Supervisor,portal.payments,Payment processing,Reporting team
+Service Engineer Supervisor,portal.incentives,Incentive schemes and claims,Reporting team
+Service Engineer Supervisor,portal.objectives,Objectives and reviews,Reporting team
+Service Engineer Supervisor,portal.tasks,Tasks and action board,Reporting team
+Service Engineer Supervisor,portal.helpdesk,Helpdesk tickets,Reporting team
+Service Engineer Supervisor,portal.hrprofiles,HR profiles,Reporting team
+Service Engineer Supervisor,portal.leavebalance,Leave entitlements,Reporting team
+Service Engineer Supervisor,portal.visits,Customer visits,Reporting team
+Service Engineer Supervisor,portal.demos,Product demonstrations,Reporting team
+Service Engineer Supervisor,portal.appraisals,Performance appraisals,Reporting team
+Service Engineer Supervisor,portal.onboarding,Onboarding / promotion / offboarding,Reporting team
+Service Engineer Supervisor,portal.training,Training and competency,Reporting team
+Service Engineer Supervisor,portal.sales,Sales targets and performance,Reporting team
+Service Engineer Supervisor,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+Service Engineer Supervisor,portal.tenders,Tenders,Reporting team
+Service Engineer Supervisor,is.quotation,Quotation,Reporting team
+Service Engineer Supervisor,is.customer-order,Customer orders,Reporting team
+Service Engineer Supervisor,is.sales-order,Sales orders,Reporting team
+Service Engineer Supervisor,is.withdrawal,Withdrawal,Reporting team
+Service Engineer Supervisor,is.borrowing,Borrowing,Reporting team
+Service Engineer Supervisor,is.return-product,Product return,Reporting team
+Service Engineer Supervisor,is.purchase-request,Purchase requisition,Reporting team
+Service Engineer Supervisor,is.purchase-order,Purchase order,Reporting team
+Service Engineer Supervisor,is.supplier-confirm,Supplier confirmation,Reporting team
+Service Engineer Supervisor,is.delivery-in,Delivery in,Reporting team
+Service Engineer Supervisor,is.check-in,Check in,Reporting team
+Service Engineer Supervisor,is.delivery-out,Delivery out,Reporting team
+Service Engineer Supervisor,is.check-out,Check out,Reporting team
+Service Engineer Supervisor,is.stock-adjust,Stock adjustment,Reporting team
+Service Engineer Supervisor,is.stock-transfer,Warehouse transfer,Reporting team
+Service Engineer Supervisor,is.stock-count,Stock count,Reporting team
+Service Engineer Supervisor,is.invoice,Invoice,Reporting team
+Service Engineer Supervisor,is.credit-note,Credit note,Reporting team
+Service Engineer Supervisor,is.debit-note,Debit note,Reporting team
+Service Engineer Supervisor,is.payment-receipt,Payment receipt,Reporting team
+Service Engineer Supervisor,is.master-customers,Customers,Reporting team
+Service Engineer Supervisor,is.master-suppliers,Suppliers,Reporting team
+Service Engineer Supervisor,is.master-products,Products,Reporting team
+Service Engineer Supervisor,is.master-warehouses,Warehouses,Reporting team
+Service Engineer Supervisor,is.shipment,Automatic shipment records,Reporting team
+Service Engineer Supervisor,is.cycle-count,Physical stock counts,Reporting team
+Service Engineer Supervisor,is.warehouse-move,Warehouse location transfers,Reporting team
+Service Engineer Supervisor,is.kits,Product kits and panels,Reporting team
+Service Engineer Supervisor,is.waiting-purchase,Waiting to be Purchased,Reporting team
+Service Engineer Supervisor,crm.leads,Sales Plan,Reporting team
+Service Engineer Supervisor,crm.events,Staff Portal Calendar,Reporting team
+Service Engineer Supervisor,crm.projects,Project & Activity — projects,Department
+Service Engineer Supervisor,crm.activities,Project & Activity,Department
+Service Engineer Supervisor,crm.tickets,External Helpdesk,All records
+Service Engineer Supervisor,crm.targets,CRM sales targets,Reporting team
+Service Engineer Supervisor,crm.finance,Linked IS / Budget snapshots,Reporting team
+Service Engineer Supervisor,service.instruments,Instrument Service — Instruments,Department
+Service Engineer Supervisor,service.jobs,Instrument Service — Jobs,Department
+Service Engineer Supervisor,service.movements,Instrument Service — Movements,Department
+Service Engineer Supervisor,service.parts,Instrument Service — Parts,Department
+Service Engineer Supervisor,service.replacements,Instrument Service — Replacements,Department
+Service Engineer Supervisor,service.contracts,Instrument Service — Contracts,Department
+Service Engineer Supervisor,portal.minutes,Minutes & Acknowledgement,Reporting team
+Service Engineer Supervisor,is.service-inventory,Service Inventory,Department
+Service Engineer Supervisor,application_service,Application Service — view,Reporting team
+HR Manager,portal.requests,"Travel, leave and general requests",All records
+HR Manager,portal.expenses,Expense claims,Reporting team
+HR Manager,portal.payments,Payment processing,Reporting team
+HR Manager,portal.incentives,Incentive schemes and claims,Reporting team
+HR Manager,portal.objectives,Objectives and reviews,Reporting team
+HR Manager,portal.tasks,Tasks and action board,Reporting team
+HR Manager,portal.helpdesk,Helpdesk tickets,Reporting team
+HR Manager,portal.hrprofiles,HR profiles,All records
+HR Manager,portal.leavebalance,Leave entitlements,All records
+HR Manager,portal.visits,Customer visits,Reporting team
+HR Manager,portal.demos,Product demonstrations,Reporting team
+HR Manager,portal.appraisals,Performance appraisals,All records
+HR Manager,portal.onboarding,Onboarding / promotion / offboarding,All records
+HR Manager,portal.training,Training and competency,All records
+HR Manager,portal.sales,Sales targets and performance,Reporting team
+HR Manager,portal.pipeline,Quotation follow-up and won/lost status,Reporting team
+HR Manager,portal.tenders,Tenders,Reporting team
+HR Manager,is.quotation,Quotation,Reporting team
+HR Manager,is.customer-order,Customer orders,Reporting team
+HR Manager,is.sales-order,Sales orders,Reporting team
+HR Manager,is.withdrawal,Withdrawal,Reporting team
+HR Manager,is.borrowing,Borrowing,Reporting team
+HR Manager,is.return-product,Product return,Reporting team
+HR Manager,is.purchase-request,Purchase requisition,Reporting team
+HR Manager,is.purchase-order,Purchase order,Reporting team
+HR Manager,is.supplier-confirm,Supplier confirmation,Reporting team
+HR Manager,is.delivery-in,Delivery in,Reporting team
+HR Manager,is.check-in,Check in,Reporting team
+HR Manager,is.delivery-out,Delivery out,Reporting team
+HR Manager,is.check-out,Check out,Reporting team
+HR Manager,is.stock-adjust,Stock adjustment,Reporting team
+HR Manager,is.stock-transfer,Warehouse transfer,Reporting team
+HR Manager,is.stock-count,Stock count,Reporting team
+HR Manager,is.invoice,Invoice,Reporting team
+HR Manager,is.credit-note,Credit note,Reporting team
+HR Manager,is.debit-note,Debit note,Reporting team
+HR Manager,is.payment-receipt,Payment receipt,Reporting team
+HR Manager,is.master-customers,Customers,Reporting team
+HR Manager,is.master-suppliers,Suppliers,Reporting team
+HR Manager,is.master-products,Products,Reporting team
+HR Manager,is.master-warehouses,Warehouses,Reporting team
+HR Manager,is.shipment,Automatic shipment records,Reporting team
+HR Manager,is.cycle-count,Physical stock counts,Reporting team
+HR Manager,is.warehouse-move,Warehouse location transfers,Reporting team
+HR Manager,is.kits,Product kits and panels,Reporting team
+HR Manager,is.waiting-purchase,Waiting to be Purchased,Reporting team
+HR Manager,crm.leads,Sales Plan,Reporting team
+HR Manager,crm.events,Staff Portal Calendar,Reporting team
+HR Manager,crm.projects,Project & Activity — projects,Reporting team
+HR Manager,crm.activities,Project & Activity,Reporting team
+HR Manager,crm.tickets,External Helpdesk,Reporting team
+HR Manager,crm.targets,CRM sales targets,Reporting team
+HR Manager,crm.finance,Linked IS / Budget snapshots,Reporting team
+HR Manager,service.instruments,Instrument Service — Instruments,Reporting team
+HR Manager,service.jobs,Instrument Service — Jobs,Reporting team
+HR Manager,service.movements,Instrument Service — Movements,Reporting team
+HR Manager,service.parts,Instrument Service — Parts,Reporting team
+HR Manager,service.replacements,Instrument Service — Replacements,Reporting team
+HR Manager,service.contracts,Instrument Service — Contracts,Reporting team
+HR Manager,portal.minutes,Minutes & Acknowledgement,Reporting team
+HR Manager,is.service-inventory,Service Inventory,Reporting team
+HR Manager,application_service,Application Service — view,Reporting team
