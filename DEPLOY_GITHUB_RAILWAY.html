@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Biomed · GitHub and Railway deployment</title><style>*{box-sizing:border-box}body{margin:0;background:#f2f7fa;color:#183d51;font:15px/1.65 system-ui}header{background:#10374d;color:white;padding:24px}header h1{font-size:26px;margin:0}.layout{max-width:1350px;margin:auto;padding:22px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px}aside{position:sticky;top:18px;max-height:92dvh;align-self:start;overflow:auto;background:white;border:1px solid #d5e4ec;border-radius:10px;padding:15px}aside a{display:block;color:#075c85;font-size:13px;text-decoration:none;padding:7px}aside input{width:100%;min-height:44px;border:1px solid #c0d5e0;border-radius:7px;padding:9px;font:inherit}main{background:white;border:1px solid #d5e4ec;border-radius:10px;padding:26px;min-width:0}h1,h2,h3{line-height:1.3;overflow-wrap:anywhere}h2{margin-top:30px;scroll-margin-top:20px}a{color:#075f91}pre{background:#10374d;color:#f3f8fb;padding:16px;border-radius:8px;overflow:auto;font:13px/1.6 ui-monospace,monospace}code:not(pre code){background:#edf4f8;padding:2px 4px;overflow-wrap:anywhere}li{margin:6px 0}button{min-height:40px;border:1px solid #bfd5df;background:#edf6fa;color:#16465e;border-radius:7px;padding:8px 12px;font:600 13px system-ui;cursor:pointer}.copy{margin-bottom:5px}input[type=checkbox]{width:18px;height:18px;vertical-align:middle;margin-right:8px}#status{font-size:12px}@media(max-width:850px){.layout{grid-template-columns:1fr;padding:12px}aside{position:static;max-height:40dvh}main{padding:18px}}@media print{header,aside,.copy{display:none}.layout{display:block;padding:0}main{padding:0;border:0}pre{white-space:pre-wrap;background:#edf4f8;color:black}h2{break-after:avoid}}</style></head><body><header><h1>GitHub + Railway deployment guide</h1><p>Biomed Diagnostics · Review placeholders before executing commands.</p></header><div class="layout"><aside><label>Find a step<input id="search" type="search" placeholder="Backup, deployment, login…"></label><button id="print">Print guide</button><p id="status" role="status"></p><nav id="toc" aria-label="Deployment contents"></nav></aside><main><h1 id="biomed-github-and-railway-deployment">Biomed · GitHub and Railway deployment</h1>
+<p>This edition uses SQLite with a persistent Railway volume. It includes the interactive, role-filtered online manual. No SQL Server configuration is required.</p>
+<h2 id="1-preserve-your-live-data">1. Preserve your live data</h2>
+<p>Before deployment, take a consistent backup of the CURRENT live database and retain the existing encryption keys. The SQLite file bundled in a project ZIP is not necessarily your live database. Do not overwrite the existing mounted database with it. Do not delete/recreate the live volume during a code update.</p>
+<p>A GitHub repository backs up source code; it is not a backup of the operational database. Keep database backups and secrets separately under company-controlled access.</p>
+<h2 id="2-prepare-the-github-repository">2. Prepare the GitHub repository</h2>
+<p>Extract <code>Biomed_Portal_With_Admin_Login</code>. The repository root should contain <code>Dockerfile</code>, <code>railway.json</code>, <code>run_server.py</code>, <code>serve.py</code> and <code>requirements.txt</code>. If you retain the wrapper folder in the repository, set Railway Root Directory to that folder.</p>
+<p>Use a private repository. The included <code>.gitignore</code> excludes <code>.env</code>, databases, logs, backups, virtual environments and the test-access file. It does not automatically remove files that were already tracked. Inspect the staged files before committing.</p>
+<p>For a NEW repository, from the project folder:</p>
+<pre><code class="language-bash">git init
+git add .
+git status
+</code></pre>
+<p>Review the file list. Do not commit passwords, API keys, OAuth secrets, encryption keys or operational databases. If a database was previously tracked, remove it from the index without deleting the local file:</p>
+<pre><code class="language-bash">git rm --cached data/biomed.sqlite3
+</code></pre>
+<p>Run that command only if the file is actually tracked. Then commit and push:</p>
+<pre><code class="language-bash">git commit -m &quot;Add role-based user manual and Railway production entry&quot;
+git branch -M main
+git remote add origin YOUR_PRIVATE_GITHUB_REPOSITORY_URL
+git push -u origin main
+</code></pre>
+<p>For an existing repository, retain its history and remote. Review the changes and commit the update rather than recreating the repository blindly.</p>
+<h2 id="3-configure-railway">3. Configure Railway</h2>
+<ol>
+<li>Select the intended Railway project/environment and connect the GitHub repository.</li>
+<li>Check the Root Directory and use the included Dockerfile build.</li>
+<li>Keep the existing volume, or attach a persistent volume at <code>/data</code> for a new service before entering live records.</li>
+<li>Configure the variables below. Railway supplies <code>PORT</code>; do not replace it with the local development port.</li>
+<li>Use <code>python run_server.py</code> as the start command. The supplied <code>railway.json</code> specifies it and the health check.</li>
+<li>Generate/select the HTTPS domain and verify custom-domain DNS and certificate status if applicable.</li>
+</ol>
+<pre><code class="language-dotenv">BIOMED_HOST=0.0.0.0
+BIOMED_DATABASE_PATH=/data/biomed.sqlite3
+BIOMED_HTTPS=1
+BIOMED_ALLOWED_ORIGINS=https://YOUR-RAILWAY-OR-CUSTOM-DOMAIN
+BIOMED_THREADS=8
+</code></pre>
+<p>Do not add SQL Server variables. <code>BIOMED_ALLOWED_ORIGINS</code> accepts comma-separated HTTPS origins without a path or trailing slash. The automatically supplied <code>RAILWAY_PUBLIC_DOMAIN</code> is also recognized.</p>
+<p>The production entry uses Waitress/WSGI. Keep <code>serve.py</code> for local development; the Dockerfile and Railway configuration now use <code>run_server.py</code>.</p>
+<h2 id="4-preserve-optional-integration-settings">4. Preserve optional integration settings</h2>
+<p>Retain the existing <code>BIOMED_AI_ENCRYPTION_KEY</code> and <code>BIOMED_OUTLOOK_ENCRYPTION_KEY</code> when migrating saved encrypted credentials. Replacing them prevents decryption of the previous values.</p>
+<p>Store provider and OAuth secrets in Railway Variables, never in Git. Keep the Outlook redirect URI consistent with the HTTPS hostname. For a standby copy, set <code>BIOMED_ENABLE_OUTLOOK_WORKER=0</code> until deliberate activation, so two deployments do not independently change the same calendar. The existing default keeps the worker enabled if you do not set this variable.</p>
+<h2 id="5-existing-service-versus-new-service">5. Existing service versus new service</h2>
+<h3 id="updating-your-current-live-service">Updating your current live service</h3>
+<p>Deploy code while retaining its existing database path and mounted volume. The application preserves an existing database. Verify the volume/path before deploying and check representative records after startup.</p>
+<h3 id="creating-a-separate-backup-deployment">Creating a separate backup deployment</h3>
+<p>Use a separate volume and a consistent copy of current live data. Transfer it with your IT-approved authenticated method while the destination application is stopped. A raw copy of an active SQLite main file without its WAL transactions may be incomplete; use a proper SQLite backup or a clean shutdown/checkpoint.</p>
+<p>Do not allow two independent deployments to accept normal live writes unless you have a reconciliation plan. GitHub deployment does not synchronize their databases automatically.</p>
+<h3 id="fresh-repository-without-a-committed-database">Fresh repository without a committed database</h3>
+<p>A clean repository normally has no shared test login. After the service starts with the volume, run this ON THE RUNNING SERVICE/container using its mounted <code>/data</code> volume:</p>
+<pre><code class="language-bash">python bootstrap_admin.py
+</code></pre>
+<p>Use your team's authenticated Railway container/SSH execution facility with an interactive terminal. Running it on your own Mac instead creates a local account, not an account on Railway. The script prompts for company email, full name, password and matching confirmation. It rejects an existing account. Never add an initial password to Git or command-line arguments to bypass the interactive prompt.</p>
+<h2 id="6-open-the-manual">6. Open the manual</h2>
+<p>Sign in and select <strong>User manual</strong> in the sidebar beside Database administration (or under Help & support), or visit <code>/user-manual.html</code> on your deployment.</p>
+<p>The server returns only the modules and action instructions available to that account. The role responsibility description comes from current Roles &amp; responsibilities settings. Search, system filtering, bookmarks and chapter printing are available. Refresh access updates permissions; returning to the page and periodic refresh also recheck them. A bookmarked chapter URL cannot bypass authorization.</p>
+<p>Opening the HTML file directly from disk cannot retrieve authenticated manual content; use the running application URL.</p>
+<h2 id="7-acceptance-checks">7. Acceptance checks</h2>
+<ul>
+<li><input type="checkbox" data-check> HTTPS <code>/api/health</code> succeeds and startup logs show no failure.</li>
+<li><input type="checkbox" data-check> Login, sign-out, password reset and a restricted user work.</li>
+<li><input type="checkbox" data-check> A uniquely named test record survives reload, process restart and redeployment.</li>
+<li><input type="checkbox" data-check> A Service Engineer without Financial access receives no Financial manual chapters.</li>
+<li><input type="checkbox" data-check> Updating the role description/actions changes the manual after Refresh access.</li>
+<li><input type="checkbox" data-check> Service and Application jobs save/edit, including optional Calendar and Helpdesk links.</li>
+<li><input type="checkbox" data-check> Existing source documents, stock balances and financial records match the pre-deployment backup.</li>
+<li><input type="checkbox" data-check> Column preferences, Clear filters and inline Details work.</li>
+<li><input type="checkbox" data-check> PDF/HTML reports and email attachment behaviour are tested on your actual Android/iPhone devices.</li>
+<li><input type="checkbox" data-check> Full-system backup and recovery are exercised in a separate TEST environment.</li>
+</ul>
+<h2 id="8-troubleshooting">8. Troubleshooting</h2>
+<p><strong>Health check fails:</strong> inspect build/startup logs, dependencies, Root Directory, start command and volume permissions.</p>
+<p><strong>Invalid origin:</strong> configure the exact current HTTPS origin, including the hostname but no URL path.</p>
+<p><strong>Login loops:</strong> verify HTTPS, cookie retention, database path and the account on the actual deployed database.</p>
+<p><strong>Data disappears after redeployment:</strong> check the mounted <code>/data</code> volume and <code>BIOMED_DATABASE_PATH</code>. Do not fix it by restoring a stale bundled database over live data.</p>
+<p><strong>An old record is missing:</strong> clear filters and check ownership/sharing before assuming the data was deleted.</p>
+<p><strong>Email opens without attachment:</strong> use Email with attachment where supported, or download and attach manually. The Open email app fallback cannot automatically attach the downloaded file.</p>
+<h2 id="9-update-backup-and-rollback">9. Update, backup and rollback</h2>
+<p>For every update: take a recovery point, review/test the change, deploy, verify acceptance checks and record the commit. Keep database backups off the running service too. A source-code rollback is not automatically a database rollback. If new writes have occurred, preserve and reconcile them before restoring an older database. Do not reset the volume just to make a deployment appear successful.</p>
+<p>No deployment has been performed by preparing this package. Device/browser visual validation and real Railway acceptance remain your deployment checks.</p>
+<h2 id="official-references">Official references</h2>
+<ul>
+<li>Railway deployments: https://docs.railway.com/deployments</li>
+<li>Railway volumes: https://docs.railway.com/volumes</li>
+<li>Waitress: https://docs.pylonsproject.org/projects/waitress/en/stable/</li>
+</ul></main></div><script>const headings=[...document.querySelectorAll('main h2')],toc=document.querySelector('#toc');function draw(){const q=document.querySelector('#search').value.toLowerCase();toc.replaceChildren();for(const h of headings){if(!h.textContent.toLowerCase().includes(q))continue;const a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;toc.append(a)}}document.querySelector('#search').oninput=draw;draw();document.querySelector('#print').onclick=()=>window.print();for(const pre of document.querySelectorAll('pre')){const b=document.createElement('button');b.className='copy';b.textContent='Copy command';pre.before(b);b.onclick=async()=>{try{await navigator.clipboard.writeText(pre.textContent);document.querySelector('#status').textContent='Copied. Review placeholders before running.'}catch{const r=document.createRange();r.selectNodeContents(pre);const s=window.getSelection();s.removeAllRanges();s.addRange(r);document.querySelector('#status').textContent='Command selected. Use Copy, then review placeholders.'}}}let saved=[];try{saved=JSON.parse(localStorage.getItem('railway-deployment-checks')||'[]')}catch{}[...document.querySelectorAll('[data-check]')].forEach((c,i)=>{c.checked=saved.includes(i);c.onchange=()=>{try{localStorage.setItem('railway-deployment-checks',JSON.stringify([...document.querySelectorAll('[data-check]')].flatMap((x,j)=>x.checked?[j]:[])))}catch{}}});</script></body></html>
