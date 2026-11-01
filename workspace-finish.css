@@ -1,0 +1,39 @@
+/* Shared spacing for dashboard metrics, filters and adjacent actions. */
+:is(#main,main,#p-view) .grid:has(>.stat){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin-block:20px}
+:is(#main,main) .stat{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;min-width:0;min-height:116px;padding:20px;box-sizing:border-box}
+:is(#main,main) .stat>small{display:block;line-height:1.4;margin:0}
+:is(#main,main) .stat>:is(strong,b){display:block;font-size:clamp(23px,2.1vw,30px);line-height:1.2;margin:0;max-width:100%;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#portal .p-grid:has(.p-stat){gap:16px;margin-block:20px;align-items:stretch}
+#portal .p-grid>.p-card:has(.p-stat){display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:116px;margin:0;padding:20px}
+#portal .p-grid .p-stat{line-height:1.2;margin:0;font-variant-numeric:tabular-nums}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters){gap:12px;align-items:end}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters)>label:has(input,select){display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters)>label>:is(input,select){margin-top:0;box-sizing:border-box;max-width:100%}
+:is(.controls,.filt,.fy-tools,.p-filters,.pc-filters)>:is(button,.btn,.p-btn){align-self:end;margin-bottom:0}
+:is(.row,.p-row,.pc-actions,.actions,.toolbar,.flex){gap:12px}
+:is(.row,.p-row,.pc-actions,.actions,.toolbar,.flex)>:is(button,.btn,.p-btn){max-width:100%;white-space:normal}
+@media(max-width:600px){:is(#main,main) .stat,#portal .p-grid>.p-card:has(.p-stat){padding:16px;min-height:104px}:is(#main,main,#p-view) .grid:has(>.stat){gap:12px}}
+
+/* Compact summaries stay independent of larger dashboard/card styles. */
+#main .bm-function-summary{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:8px 22px!important;padding:10px 14px!important;margin:0 0 14px!important;min-height:0!important;height:auto!important;border:1px solid #d6e3eb;border-radius:8px;background:#fff}
+#main .bm-summary-item{display:flex;align-items:baseline;gap:7px;flex:0 1 auto;min-width:0;max-width:100%;padding:0;margin:0;line-height:1.5}
+#main .bm-summary-item dt{font:400 12px/1.5 system-ui;color:#62798a;margin:0}
+#main .bm-summary-item dd{font:700 15px/1.5 system-ui;color:#075f91;margin:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+:is(#main,main,#p-view) .grid:has(>.stat){margin-block:12px;gap:12px}
+:is(#main,main) .stat{min-height:74px;padding:12px 16px;gap:5px}
+:is(#main,main) .stat>:is(strong,b){font-size:23px;line-height:1.2}
+#portal .p-grid:has(.p-stat){margin-block:12px;gap:12px}
+#portal .p-grid>.p-card:has(.p-stat){min-height:76px;padding:12px 16px;gap:5px}
+#portal .p-grid .p-stat{font-size:25px}
+#portal .pc-an-kpi{padding:12px;gap:5px}#portal .pc-an-kpis{gap:10px}
+@media(max-width:600px){#main .bm-function-summary{gap:7px 16px!important;padding:9px 12px!important}#main .bm-summary-item{flex:1 1 125px}#main .bm-summary-item dt{font-size:11px}#main .bm-summary-item dd{font-size:14px}:is(#main,main) .stat,#portal .p-grid>.p-card:has(.p-stat){min-height:70px;padding:12px;gap:4px}}
+#portal .p-grid>.p-card>.p-stat{display:block!important;min-height:0!important;height:auto!important;padding:0!important;flex:0 0 auto!important;line-height:1.2!important}
+#portal .p-grid .p-stat-label{margin:0;font-size:12px;line-height:1.4}
+#portal .p-statgrid{gap:12px;margin:12px 0}
+#portal .p-statgrid>div{padding:12px 16px;min-height:0;gap:5px}
+#portal .p-statgrid strong{font-size:23px;line-height:1.2}
+#portal .p-statgrid span{font-size:12px;line-height:1.4}
+/* Staff Portal navigation scrolls independently of workspace content. */
+#portal #p-sidebar.p-side{overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior-y:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#9ab6c7 #edf4f8;-webkit-overflow-scrolling:touch}
+#portal #p-sidebar.p-side::-webkit-scrollbar{width:8px}#portal #p-sidebar.p-side::-webkit-scrollbar-thumb{background:#9ab6c7;border-radius:8px}#portal #p-sidebar.p-side::-webkit-scrollbar-track{background:#edf4f8}
+@media(min-width:1101px){#portal #p-sidebar.p-side{position:sticky!important;top:var(--bm-header-height,120px)!important;height:calc(100dvh - var(--bm-header-height,120px))!important;max-height:calc(100dvh - var(--bm-header-height,120px))!important;min-height:0!important;align-self:start;box-sizing:border-box;padding-bottom:24px!important}}
