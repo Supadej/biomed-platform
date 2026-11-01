@@ -1,0 +1,13 @@
+{
+  "users": 44,
+  "roles": 29,
+  "departments": 11,
+  "reportingLinks": 42,
+  "visibilityModulesPerRole": 62,
+  "visibilityAssignments": 1798,
+  "conflictsReviewed": 35,
+  "permissionsEnabled": 33,
+  "permissionsRemoved": 5,
+  "affectedRoles": 25,
+  "workbookSha256": "ac84927a03b382e24b637bf85f419c0e7eef0272d6cd3b6ea244cef4103d41a5"
+}
