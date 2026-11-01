@@ -1,0 +1,101 @@
+{
+  "pages": [
+    {
+      "page": "index.html",
+      "sharedLayout": true,
+      "inlineScripts": 9
+    },
+    {
+      "page": "biomed-budget.html",
+      "sharedLayout": true,
+      "inlineScripts": 1
+    },
+    {
+      "page": "app.html",
+      "sharedLayout": false,
+      "inlineScripts": 1
+    },
+    {
+      "page": "website-header.html",
+      "sharedLayout": false,
+      "inlineScripts": 0
+    },
+    {
+      "page": "catalogue-admin.html",
+      "sharedLayout": true,
+      "inlineScripts": 1
+    },
+    {
+      "page": "COMPANY_ROLE_AUTHORIZATION_69.html",
+      "sharedLayout": false,
+      "inlineScripts": 0
+    },
+    {
+      "page": "careers.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    },
+    {
+      "page": "database-admin.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    },
+    {
+      "page": "biomed-is.html",
+      "sharedLayout": true,
+      "inlineScripts": 1
+    },
+    {
+      "page": "copilot-access.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    },
+    {
+      "page": "user-manual.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    },
+    {
+      "page": "ai-chat-admin.html",
+      "sharedLayout": true,
+      "inlineScripts": 1
+    },
+    {
+      "page": "DEPLOY_GITHUB_RAILWAY.html",
+      "sharedLayout": false,
+      "inlineScripts": 1
+    },
+    {
+      "page": "news.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    },
+    {
+      "page": "integrations.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    },
+    {
+      "page": "instrument-service.html",
+      "sharedLayout": true,
+      "inlineScripts": 1
+    },
+    {
+      "page": "catalogue.html",
+      "sharedLayout": true,
+      "inlineScripts": 1
+    },
+    {
+      "page": "document-flow-guide.html",
+      "sharedLayout": false,
+      "inlineScripts": 0
+    },
+    {
+      "page": "events.html",
+      "sharedLayout": true,
+      "inlineScripts": 0
+    }
+  ],
+  "scriptErrors": [],
+  "externalScriptsChecked": 58
+}

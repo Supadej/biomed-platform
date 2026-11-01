@@ -1,0 +1,45 @@
+﻿Name,Login email,Role,Department,Reports to,Manager email
+ศุภเดช อัครวิเชียร,testadmin@example.invalid,System Admin,Management,Top level,
+ธนิษฐา ขันทอง,bmd-test-user-15@example.invalid,Accounting,Accounting,พัชราภรณ์ เพิ่มอริยะ,bmd-test-user-5@example.invalid
+พัชราภรณ์ เพิ่มอริยะ,bmd-test-user-5@example.invalid,Accounting Manager,Accounting,ธวัชชัย อัครวิเชียร,bmd-test-user-2@example.invalid
+ศศิมา ถวัลย์วีนัสพันธ์,bmd-test-user-17@example.invalid,Administration Officer,Operation,พรพรรณ สัมฤทธิ์ดี,bmd-test-user-8@example.invalid
+ดลพร ชยาภรณ์วงศ์,bmd-test-user-16@example.invalid,Bill Collector,Operation,พรพรรณ สัมฤทธิ์ดี,bmd-test-user-8@example.invalid
+ธนินท์ตรา ช่วงชัย,bmd-test-user-19@example.invalid,Administration Officer,Operation,พรพรรณ สัมฤทธิ์ดี,bmd-test-user-8@example.invalid
+กาญจนา เหมือนฤทธิ์,bmd-test-user-58@example.invalid,Application Specialist,Diagnostics,ธีรพงศ์ นพรัตยาภรณ์,bmd-test-user-57@example.invalid
+ธีรพงศ์ นพรัตยาภรณ์,bmd-test-user-57@example.invalid,Application Specialist Manager,Diagnostics,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+ประชุม เลิศสุทธิโชค,bmd-test-user-50@example.invalid,Product Manager,Diagnostics,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+สุดารัตน์ พันธุ์ภิญญา,bmd-test-user-52@example.invalid,Product Manager,TAS,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+อัยญ์วารินทร์ จันทราภิรมย์,bmd-test-user-51@example.invalid,Product Specialist,Diagnostics,ประชุม เลิศสุทธิโชค,bmd-test-user-50@example.invalid
+นิรชา ทองน้อย,bmd-test-user-40@example.invalid,Sales Manager,TAS,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+ชนันญา พรประเสิรฐ,bmd-test-user-42@example.invalid,Sales Representative,TAS,นิรชา ทองน้อย,bmd-test-user-40@example.invalid
+วรินทร เลิศพิสิฐไพศาล,bmd-test-user-45@example.invalid,Sales Representative,Diagnostics,วราภรณ์ จำนงค์ศรี,bmd-test-user-44@example.invalid
+ธีรเมธ สิงหเกียรติ,bmd-test-user-46@example.invalid,Sales Representative,Diagnostics,วราภรณ์ จำนงค์ศรี,bmd-test-user-44@example.invalid
+อรยา ธรรมสอน,bmd-test-user-47@example.invalid,Sales Representative,Diagnostics,วราภรณ์ จำนงค์ศรี,bmd-test-user-44@example.invalid
+วราภรณ์ จำนงค์ศรี,bmd-test-user-44@example.invalid,Sales Supervisor,Diagnostics,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+ปณิดา ดิษบรรจง,bmd-test-user-31@example.invalid,Director Secretary,Secretary,เพลินพิศ สุคนธรักษ์,bmd-test-user-3@example.invalid
+ณิชกุล มาตขาว,bmd-test-user-18@example.invalid,Inventory Officer,Operation,พรพรรณ สัมฤทธิ์ดี,bmd-test-user-8@example.invalid
+ชูชาติ ทะสะโส,bmd-test-user-10@example.invalid,IT & Infrastructure Manager,IT and Infrastructure,ธวัชชัย อัครวิเชียร,bmd-test-user-2@example.invalid
+เอกชัย แซ่หว่อง,bmd-test-user-25@example.invalid,IT & Infrastructure Officer,IT and Infrastructure,ชูชาติ ทะสะโส,bmd-test-user-10@example.invalid
+เพลินพิศ สุคนธรักษ์,bmd-test-user-3@example.invalid,Business Director,Management,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+รพิณท์นิภา สุจารีพิพัฒน์,bmd-test-user-38@example.invalid,Product Specialist,Life Science Research,เพลินพิศ สุคนธรักษ์,bmd-test-user-3@example.invalid
+ปัถย์ เลิศวัฒนาสมบัติ,bmd-test-user-39@example.invalid,Product Specialist,Life Science Research,เพลินพิศ สุคนธรักษ์,bmd-test-user-3@example.invalid
+ประไพศรี ดิศแพทย์,bmd-test-user-35@example.invalid,Sales Representative,Life Science Research,นวภัสชลักษณ์ พงษ์สนิทกุล,bmd-test-user-34@example.invalid
+พรทิพย์ โตสวัสดิ์,bmd-test-user-36@example.invalid,Sales Representative,Life Science Research,นวภัสชลักษณ์ พงษ์สนิทกุล,bmd-test-user-34@example.invalid
+กฤษณ์ เค้าอ้น,bmd-test-user-37@example.invalid,Sales Representative,Life Science Research,นวภัสชลักษณ์ พงษ์สนิทกุล,bmd-test-user-34@example.invalid
+นวภัสชลักษณ์ พงษ์สนิทกุล,bmd-test-user-34@example.invalid,Sales Supervisor,Life Science Research,เพลินพิศ สุคนธรักษ์,bmd-test-user-3@example.invalid
+นันทาวดี อัครวิเชียร,bmd-test-user-1@example.invalid,Managing Director,Management,Top level,
+พิรชัช นามศรี,bmd-test-user-56@example.invalid,Marketing Communication Specialist,Diagnostics,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+มนัสพล ศิริโสภณ,bmd-test-user-26@example.invalid,Messenger & Delivery,Operation,วสันต์ ชยาภรณ์วงศ์,bmd-test-user-23@example.invalid
+นันทศักดิ์ เซ็นนิ,bmd-test-user-27@example.invalid,Messenger & Delivery,Operation,วสันต์ ชยาภรณ์วงศ์,bmd-test-user-23@example.invalid
+วสันต์ ชยาภรณ์วงศ์,bmd-test-user-23@example.invalid,Messenger & Delivery Supervisor,Operation,พรพรรณ สัมฤทธิ์ดี,bmd-test-user-8@example.invalid
+พรพรรณ สัมฤทธิ์ดี,bmd-test-user-8@example.invalid,Operation Manager,Operation,ธวัชชัย อัครวิเชียร,bmd-test-user-2@example.invalid
+ธวัชชัย อัครวิเชียร,bmd-test-user-2@example.invalid,Operations Director,Management,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+ชลาศัย สาคร,bmd-test-user-24@example.invalid,Procurement & Regulatory Supervisor,Procurement and RA,ธวัชชัย อัครวิเชียร,bmd-test-user-2@example.invalid
+สุมิลตา แตงทอง,bmd-test-user-28@example.invalid,Purchasing Officer,Procurement and RA,ชลาศัย สาคร,bmd-test-user-24@example.invalid
+อรวี อยู่ยงสินธุ์,bmd-test-user-29@example.invalid,Purchasing Officer,Procurement and RA,ชลาศัย สาคร,bmd-test-user-24@example.invalid
+นัทพล แร่เพชร,bmd-test-user-30@example.invalid,Purchasing Officer,Procurement and RA,ชลาศัย สาคร,bmd-test-user-24@example.invalid
+พศิน ชุมสันเทียะ,bmd-test-user-11@example.invalid,QMR,QMR,ศุภเดช อัครวิเชียร,testadmin@example.invalid
+ธนาธิป โชคพิพัฒน์ทวี,bmd-test-user-63@example.invalid,Service Engineer,Field Service Engineer,ปณิธาน ดิษฐี,bmd-test-user-62@example.invalid
+วสุพล จำนงค์,bmd-test-user-64@example.invalid,Service Engineer,Field Service Engineer,ปณิธาน ดิษฐี,bmd-test-user-62@example.invalid
+ยศกร ชยาภรณ์วงศ์,bmd-test-user-65@example.invalid,Service Engineer,Field Service Engineer,ปณิธาน ดิษฐี,bmd-test-user-62@example.invalid
+ปณิธาน ดิษฐี,bmd-test-user-62@example.invalid,Service Engineer Supervisor,Field Service Engineer,ศุภเดช อัครวิเชียร,testadmin@example.invalid

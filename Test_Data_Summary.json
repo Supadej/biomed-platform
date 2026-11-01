@@ -1,0 +1,19 @@
+{
+  "customers": 30,
+  "suppliers": 12,
+  "products": 40,
+  "warehouses": 3,
+  "documents": 107,
+  "movements": 176,
+  "quarantines": 1,
+  "stockChecks": 1,
+  "warehouseMoves": 1,
+  "kits": 1,
+  "portal_users": 7,
+  "budget_years": [
+    "2026",
+    "2027"
+  ],
+  "budget_products_per_year": 39,
+  "budget_expenses_per_year": 144
+}

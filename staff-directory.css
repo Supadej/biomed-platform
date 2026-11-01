@@ -1,0 +1,58 @@
+#portal .staff-workspace{min-width:0;max-width:100%;display:grid;gap:18px}
+#portal .staff-workspace *{box-sizing:border-box;min-width:0}
+#portal .staff-workspace h1{margin:0;font-size:clamp(24px,2.4vw,32px);line-height:1.25}
+#portal .staff-workspace h2{font-size:18px;margin:0;line-height:1.4}
+#portal .staff-workspace h3{font-size:16px;margin:0 0 16px}
+#portal .staff-heading{margin:0 0 4px}
+#portal .staff-toolbar,#portal .staff-profile-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+#portal .staff-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;align-items:start}
+#portal .staff-form label,#portal .staff-filters label,#portal .staff-reference-form label{display:grid;gap:7px;font-size:13px;font-weight:600;line-height:1.5;color:#527286}
+#portal .staff-workspace :is(input,select){display:block;width:100%;max-width:100%;min-width:0;min-height:44px;padding:10px 12px;border:1px solid #bfd3df;border-radius:8px;background:#fff;color:#183b50;font-family:inherit;font-size:14px;line-height:1.4}
+#portal .staff-workspace input[type=file]{padding:8px}
+#portal .staff-workspace input::file-selector-button{max-width:100%;margin-right:8px}
+#portal .staff-workspace :is(input,select):focus-visible{outline:2px solid #168ca1;outline-offset:2px}
+#portal .staff-workspace :is(.staff-actions,.staff-form-actions){display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0;padding:0}
+#portal .staff-workspace .staff-form-actions{grid-column:1/-1;margin-top:4px}
+#portal .staff-workspace .p-btn{flex:0 0 auto;width:auto;max-width:100%;min-height:42px;margin:0!important;padding:10px 14px;line-height:1.4;font-size:13px;white-space:normal;border-radius:8px}
+#portal .staff-filters{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px;margin:0 0 20px;align-items:end}
+#portal .staff-workspace [data-staff-editor]:not([hidden]),#portal .staff-subpanel{padding:18px;border:1px solid #d3e2eb;border-radius:10px;background:#f8fbfc;margin-bottom:20px}
+#portal .staff-workspace [hidden]{display:none!important}
+#portal .staff-error{color:#ae3025;margin:0;grid-column:1/-1;font-size:13px}
+#portal [data-staff-status]{padding:12px 16px;background:#edf6f8;border-radius:8px;margin:0;font-size:14px;overflow-wrap:anywhere}
+#portal .staff-reference-form{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px}
+#portal .staff-reference-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+#portal .staff-reference-list li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid #e0e9ee;overflow-wrap:anywhere}
+#portal .staff-person{display:flex;align-items:center;gap:12px;min-width:180px}
+#portal .staff-avatar{display:block;width:56px;height:56px;min-width:56px;flex:none;border:1px solid #d0e0e8;border-radius:50%;object-fit:cover;background:#eaf4f8}
+#portal .staff-initials{display:grid;place-items:center;font-size:18px;font-weight:700;color:#24566d}
+#portal .staff-workspace .tablewrap{margin-top:12px}
+#portal .staff-workspace table{width:100%;min-width:960px;table-layout:auto}
+#portal .staff-workspace th,#portal .staff-workspace td{padding:12px 14px;text-align:left;vertical-align:middle;overflow-wrap:normal;word-break:normal}
+#portal .staff-workspace th{white-space:nowrap}
+#portal .staff-workspace td:last-child{min-width:240px}
+#portal .staff-status{display:inline-block;white-space:nowrap;background:#e2f4ed;color:#17684a;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:600}
+#portal .staff-status.is-inactive{color:#657783;background:#edf0f3}
+#portal .staff-no-login{display:block;color:#70808c;margin-top:6px;font-size:11px}
+#portal .staff-profile-header{justify-content:flex-start}
+#portal .staff-profile-header .staff-avatar{width:80px;height:80px;min-width:80px}
+#portal .staff-profile-header p{margin:5px 0 0;color:#607d8e;font-size:13px}
+#portal [data-profile-password]:not([hidden]){margin-top:24px}
+#portal .staff-library{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+#portal .staff-library-card{border:1px solid #d7e4ec;border-radius:10px;padding:18px;min-width:0}
+#portal .staff-library-card h2{font-size:16px;overflow-wrap:anywhere}
+#portal .staff-library-card p{font-size:12px;color:#658092;margin:4px 0 0}
+#portal .staff-library-card dl{display:grid;gap:12px;margin:18px 0 0}
+#portal .staff-library-card dl>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;font-size:13px}
+#portal .staff-library-card dt{color:#627f91;font-weight:600}
+#portal .staff-library-card dd{margin:0;overflow-wrap:anywhere}
+@media(max-width:650px){#portal .staff-form,#portal .staff-filters,#portal .staff-reference-form{grid-template-columns:minmax(0,1fr)}#portal .staff-workspace :is(input,select){font-size:16px}#portal .staff-workspace .p-card{padding:16px}#portal .staff-workspace .staff-subpanel,#portal .staff-workspace [data-staff-editor]:not([hidden]){padding:14px}#portal .staff-form-actions{padding-top:4px}#portal .staff-reference-form>button{justify-self:start}#portal .staff-person{min-width:0}}
+
+#portal .staff-form label:has(>select[name=managerId]){grid-column:1/-1}
+
+#portal [data-profile-password] label:has(>input[name=currentPassword]){grid-column:1/-1}
+
+#portal .staff-workspace tr.staff-inline-editor>td{padding:16px!important;white-space:normal!important;min-width:0!important;vertical-align:top;background:#f5fafc}
+#portal .staff-inline-content{width:100%;max-width:900px;margin:0;min-width:0;padding:18px;border:1px solid #d3e2eb;border-radius:10px;background:white}
+#portal .staff-inline-content .staff-subpanel{margin:0;border:0;padding:0;background:transparent}
+#portal .staff-inline-editor .staff-form{min-width:0}
+@media(max-width:650px){#portal .staff-inline-content{width:min(100%,calc(100vw - 112px));padding:14px}#portal .staff-workspace tr.staff-inline-editor>td{padding:12px!important}}

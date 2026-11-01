@@ -1,0 +1,39 @@
+﻿Role,Permission code,Previous value,Final value,Reason
+Director Secretary,is_view,N,Y,Selected quotation preparation and cross-document tracking support director coordination; enable the application gate and keep the selected actions.
+QMR,is_view,N,Y,"Selected stock-count view/print, supplier and warehouse references, approval-rule viewing and audit history form a coherent quality/audit role; enable access without adding posting or approval actions."
+QMR,crm_view,N,Y,Selected Calendar functions and customer-complaint Helpdesk handling require the CRM application gate; enable it without adding other CRM functions.
+HR Manager,is.master-customers.view,Y,N,"Only customer-reference and dashboard viewing were selected, with no HR transaction workflow in Biomed IS. Remove these two isolated selections and retain Staff Portal HR access."
+HR Manager,is.dashboard.view,Y,N,"Only customer-reference and dashboard viewing were selected, with no HR transaction workflow in Biomed IS. Remove these two isolated selections and retain Staff Portal HR access."
+HR Manager,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Accounting Manager,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Accounting,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Operation Manager,is_view,N,Y,"Selected end-to-end purchasing, stock and operational document actions require Biomed IS application access."
+Operation Manager,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Administration Officer,is_view,N,Y,Selected document processing and inventory/administrative support functions require Biomed IS application access.
+Administration Officer,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Inventory Officer,is_view,N,Y,"Selected receiving, issuing, stock counting and inventory document functions require Biomed IS application access."
+Inventory Officer,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Bill Collector,is_view,N,Y,"Selected invoice, receipt and collection-related document functions require Biomed IS application access."
+Bill Collector,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Messenger & Delivery Supervisor,is_view,N,Y,Selected dispatch and delivery document oversight functions require Biomed IS application access.
+Messenger & Delivery Supervisor,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Messenger & Delivery,is_view,N,Y,Selected delivery and dispatch document functions require Biomed IS application access.
+Messenger & Delivery,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Procurement & Regulatory Supervisor,is_view,N,Y,"Selected procurement, supplier and purchasing document functions require Biomed IS application access."
+Procurement & Regulatory Supervisor,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+Purchasing Officer,is_view,N,Y,"Selected purchase requisition, order, supplier and receiving functions require Biomed IS application access."
+Purchasing Officer,crm_view,N,Y,"Seven Staff Portal Calendar permissions were explicitly selected (view/create/edit/delete/import/export/assign). Calendar uses the CRM backend, so enable its application gate; other CRM modules remain governed by their own permissions."
+IT & Infrastructure Manager,is_view,N,Y,The workbook explicitly assigns broad system-support and configuration functions. Enable the gate to make those selections usable; retain the existing detailed permissions.
+IT & Infrastructure Officer,is_view,N,Y,The workbook explicitly assigns extensive support and master-data/document functions. Enable the gate without adding further actions.
+Product Manager,is_view,N,Y,"Selected quotation, order, borrowing and product-support functions require Biomed IS application access."
+Product Specialist,is_view,N,Y,"Selected quotation, order, borrowing and stock-viewing functions require Biomed IS application access."
+Application Specialist Manager,is_view,N,Y,"Selected quotation/order, demonstration-material borrowing and stock-viewing support require Biomed IS application access."
+Application Specialist,is_view,N,Y,Selected quotation/order and borrowing workflows support application work and require Biomed IS application access.
+Marketing Communication Specialist,is.master-customers.view,Y,N,"Only customer-reference viewing, dashboard viewing and quotation-progress updating were selected. There is no quotation View permission or coherent IS transaction workflow. Remove these three isolated grants; retain CRM contacts and Sales Plan access."
+Marketing Communication Specialist,is.dashboard.view,Y,N,"Only customer-reference viewing, dashboard viewing and quotation-progress updating were selected. There is no quotation View permission or coherent IS transaction workflow. Remove these three isolated grants; retain CRM contacts and Sales Plan access."
+Marketing Communication Specialist,is.quotation.progress,Y,N,"Only customer-reference viewing, dashboard viewing and quotation-progress updating were selected. There is no quotation View permission or coherent IS transaction workflow. Remove these three isolated grants; retain CRM contacts and Sales Plan access."
+Sales Manager,is_view,N,Y,"Selected quotation, order, borrowing and sales-document oversight functions require Biomed IS application access."
+Sales Supervisor,is_view,N,Y,"Selected quotation, order, borrowing and team sales-document functions require Biomed IS application access."
+Sales Representative,is_view,N,Y,"Selected quotation preparation, orders, borrowing and invoice viewing form the salesperson workflow; enable application access and keep the configured record scope."
+Service Engineer Supervisor,is_view,N,Y,"Selected service inventory, quotation/order, borrowing and stock functions require Biomed IS application access."
+Service Engineer,is_view,N,Y,Selected Service Inventory request/return/consume and quotation/borrowing support functions require Biomed IS application access.

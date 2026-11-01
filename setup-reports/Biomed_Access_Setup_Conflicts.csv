@@ -1,0 +1,36 @@
+﻿Role,Disabled access permission,Enabled related permission count,Explanation
+Director Secretary,is_view,44,Application access is N; individual functions are Y. Explicit N preserved.
+QMR,is_view,8,Application access is N; individual functions are Y. Explicit N preserved.
+QMR,crm_view,15,Application access is N; individual functions are Y. Explicit N preserved.
+HR Manager,is_view,2,Application access is N; individual functions are Y. Explicit N preserved.
+HR Manager,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Accounting Manager,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Accounting,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Operation Manager,is_view,226,Application access is N; individual functions are Y. Explicit N preserved.
+Operation Manager,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Administration Officer,is_view,125,Application access is N; individual functions are Y. Explicit N preserved.
+Administration Officer,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Inventory Officer,is_view,125,Application access is N; individual functions are Y. Explicit N preserved.
+Inventory Officer,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Bill Collector,is_view,48,Application access is N; individual functions are Y. Explicit N preserved.
+Bill Collector,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Messenger & Delivery Supervisor,is_view,22,Application access is N; individual functions are Y. Explicit N preserved.
+Messenger & Delivery Supervisor,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Messenger & Delivery,is_view,24,Application access is N; individual functions are Y. Explicit N preserved.
+Messenger & Delivery,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Procurement & Regulatory Supervisor,is_view,126,Application access is N; individual functions are Y. Explicit N preserved.
+Procurement & Regulatory Supervisor,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+Purchasing Officer,is_view,82,Application access is N; individual functions are Y. Explicit N preserved.
+Purchasing Officer,crm_view,7,Application access is N; individual functions are Y. Explicit N preserved.
+IT & Infrastructure Manager,is_view,285,Application access is N; individual functions are Y. Explicit N preserved.
+IT & Infrastructure Officer,is_view,206,Application access is N; individual functions are Y. Explicit N preserved.
+Product Manager,is_view,76,Application access is N; individual functions are Y. Explicit N preserved.
+Product Specialist,is_view,42,Application access is N; individual functions are Y. Explicit N preserved.
+Application Specialist Manager,is_view,46,Application access is N; individual functions are Y. Explicit N preserved.
+Application Specialist,is_view,37,Application access is N; individual functions are Y. Explicit N preserved.
+Marketing Communication Specialist,is_view,3,Application access is N; individual functions are Y. Explicit N preserved.
+Sales Manager,is_view,60,Application access is N; individual functions are Y. Explicit N preserved.
+Sales Supervisor,is_view,56,Application access is N; individual functions are Y. Explicit N preserved.
+Sales Representative,is_view,47,Application access is N; individual functions are Y. Explicit N preserved.
+Service Engineer Supervisor,is_view,51,Application access is N; individual functions are Y. Explicit N preserved.
+Service Engineer,is_view,40,Application access is N; individual functions are Y. Explicit N preserved.
