@@ -1,0 +1,15 @@
+html body table tr[hidden]{display:none!important}
+html body table td.bm-disclosure-cell,html body #portal table td.bm-disclosure-cell{padding:0!important;border-top:0!important;border-bottom:0!important;vertical-align:top!important;overflow:visible}
+.bm-disclosure-clip{overflow:hidden;overflow:clip;box-sizing:border-box;will-change:height;overflow-anchor:none}
+.bm-disclosure-content{padding:18px;box-sizing:border-box;display:flow-root;min-width:0}
+.bm-disclosure-content> :first-child{margin-top:0}.bm-disclosure-content> :last-child{margin-bottom:0}
+.bm-disclosure-content :is(.ext-detail-grid,.portal-detail-grid,.crm-detail-sheet,.si-inline-details){max-width:calc(100cqw - 36px);box-sizing:border-box}
+@media(max-width:600px){.bm-disclosure-content{padding:12px}.bm-disclosure-content :is(.ext-detail-grid,.portal-detail-grid,.crm-detail-sheet,.si-inline-details){max-width:calc(100cqw - 24px)}}
+@media(prefers-reduced-motion:reduce){.bm-disclosure-clip{will-change:auto}}
+.commercial-followup-panel{max-width:740px;padding:0;margin:0}.commercial-followup-panel .p-form{margin:0}.commercial-followup-panel label{font-size:12px;font-weight:650;color:#547183}.commercial-followup-panel .p-form input:not([type=checkbox]),.commercial-followup-panel .p-form select{width:100%;min-height:44px;padding:10px 12px;border:1px solid #c6d9e4;border-radius:8px;font:14px system-ui;color:#19394e;background:white}
+.bm-native-disclosure-body>.bm-disclosure-clip>.bm-disclosure-content{padding:0}
+/* Keep detail content inside the visible table viewport without moving its scroll position. */
+.bm-disclosure-clip{position:sticky;left:0}
+button.bm-row-toggle,button[onclick*="extDetails("],button[onclick*="IS.open("],button[data-borrow-key],.service-details-button{min-width:106px!important;justify-content:center}
+button[onclick*="extEdit("]{min-width:90px!important;justify-content:center}
+button[onclick*="crmFollowup("]{min-width:156px!important;justify-content:center}
