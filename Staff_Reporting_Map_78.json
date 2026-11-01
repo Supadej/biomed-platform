@@ -1,0 +1,310 @@
+[
+  {
+    "name": "ศุภเดช อัครวิเชียร",
+    "email": "testadmin@example.invalid",
+    "role": "System Admin",
+    "department": "Management",
+    "reportsTo": "Top level"
+  },
+  {
+    "name": "ธนิษฐา ขันทอง",
+    "email": "bmd-test-user-15@example.invalid",
+    "role": "Accounting",
+    "department": "Accounting",
+    "reportsTo": "พัชราภรณ์ เพิ่มอริยะ"
+  },
+  {
+    "name": "พัชราภรณ์ เพิ่มอริยะ",
+    "email": "bmd-test-user-5@example.invalid",
+    "role": "Accounting Manager",
+    "department": "Accounting",
+    "reportsTo": "ธวัชชัย อัครวิเชียร"
+  },
+  {
+    "name": "ศศิมา ถวัลย์วีนัสพันธ์",
+    "email": "bmd-test-user-17@example.invalid",
+    "role": "Administration Officer",
+    "department": "Operation",
+    "reportsTo": "พรพรรณ สัมฤทธิ์ดี"
+  },
+  {
+    "name": "ดลพร ชยาภรณ์วงศ์",
+    "email": "bmd-test-user-16@example.invalid",
+    "role": "Bill Collector",
+    "department": "Operation",
+    "reportsTo": "พรพรรณ สัมฤทธิ์ดี"
+  },
+  {
+    "name": "ธนินท์ตรา ช่วงชัย",
+    "email": "bmd-test-user-19@example.invalid",
+    "role": "Administration Officer",
+    "department": "Operation",
+    "reportsTo": "พรพรรณ สัมฤทธิ์ดี"
+  },
+  {
+    "name": "กาญจนา เหมือนฤทธิ์",
+    "email": "bmd-test-user-58@example.invalid",
+    "role": "Application Specialist",
+    "department": "Diagnostics",
+    "reportsTo": "ธีรพงศ์ นพรัตยาภรณ์"
+  },
+  {
+    "name": "ธีรพงศ์ นพรัตยาภรณ์",
+    "email": "bmd-test-user-57@example.invalid",
+    "role": "Application Specialist Manager",
+    "department": "Diagnostics",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "ประชุม เลิศสุทธิโชค",
+    "email": "bmd-test-user-50@example.invalid",
+    "role": "Product Manager",
+    "department": "Diagnostics",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "สุดารัตน์ พันธุ์ภิญญา",
+    "email": "bmd-test-user-52@example.invalid",
+    "role": "Product Manager",
+    "department": "TAS",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "อัยญ์วารินทร์ จันทราภิรมย์",
+    "email": "bmd-test-user-51@example.invalid",
+    "role": "Product Specialist",
+    "department": "Diagnostics",
+    "reportsTo": "ประชุม เลิศสุทธิโชค"
+  },
+  {
+    "name": "นิรชา ทองน้อย",
+    "email": "bmd-test-user-40@example.invalid",
+    "role": "Sales Manager",
+    "department": "TAS",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "ชนันญา พรประเสิรฐ",
+    "email": "bmd-test-user-42@example.invalid",
+    "role": "Sales Representative",
+    "department": "TAS",
+    "reportsTo": "นิรชา ทองน้อย"
+  },
+  {
+    "name": "วรินทร เลิศพิสิฐไพศาล",
+    "email": "bmd-test-user-45@example.invalid",
+    "role": "Sales Representative",
+    "department": "Diagnostics",
+    "reportsTo": "วราภรณ์ จำนงค์ศรี"
+  },
+  {
+    "name": "ธีรเมธ สิงหเกียรติ",
+    "email": "bmd-test-user-46@example.invalid",
+    "role": "Sales Representative",
+    "department": "Diagnostics",
+    "reportsTo": "วราภรณ์ จำนงค์ศรี"
+  },
+  {
+    "name": "อรยา ธรรมสอน",
+    "email": "bmd-test-user-47@example.invalid",
+    "role": "Sales Representative",
+    "department": "Diagnostics",
+    "reportsTo": "วราภรณ์ จำนงค์ศรี"
+  },
+  {
+    "name": "วราภรณ์ จำนงค์ศรี",
+    "email": "bmd-test-user-44@example.invalid",
+    "role": "Sales Supervisor",
+    "department": "Diagnostics",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "ปณิดา ดิษบรรจง",
+    "email": "bmd-test-user-31@example.invalid",
+    "role": "Director Secretary",
+    "department": "Secretary",
+    "reportsTo": "เพลินพิศ สุคนธรักษ์"
+  },
+  {
+    "name": "ณิชกุล มาตขาว",
+    "email": "bmd-test-user-18@example.invalid",
+    "role": "Inventory Officer",
+    "department": "Operation",
+    "reportsTo": "พรพรรณ สัมฤทธิ์ดี"
+  },
+  {
+    "name": "ชูชาติ ทะสะโส",
+    "email": "bmd-test-user-10@example.invalid",
+    "role": "IT & Infrastructure Manager",
+    "department": "IT and Infrastructure",
+    "reportsTo": "ธวัชชัย อัครวิเชียร"
+  },
+  {
+    "name": "เอกชัย แซ่หว่อง",
+    "email": "bmd-test-user-25@example.invalid",
+    "role": "IT & Infrastructure Officer",
+    "department": "IT and Infrastructure",
+    "reportsTo": "ชูชาติ ทะสะโส"
+  },
+  {
+    "name": "เพลินพิศ สุคนธรักษ์",
+    "email": "bmd-test-user-3@example.invalid",
+    "role": "Business Director",
+    "department": "Management",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "รพิณท์นิภา สุจารีพิพัฒน์",
+    "email": "bmd-test-user-38@example.invalid",
+    "role": "Product Specialist",
+    "department": "Life Science Research",
+    "reportsTo": "เพลินพิศ สุคนธรักษ์"
+  },
+  {
+    "name": "ปัถย์ เลิศวัฒนาสมบัติ",
+    "email": "bmd-test-user-39@example.invalid",
+    "role": "Product Specialist",
+    "department": "Life Science Research",
+    "reportsTo": "เพลินพิศ สุคนธรักษ์"
+  },
+  {
+    "name": "ประไพศรี ดิศแพทย์",
+    "email": "bmd-test-user-35@example.invalid",
+    "role": "Sales Representative",
+    "department": "Life Science Research",
+    "reportsTo": "นวภัสชลักษณ์ พงษ์สนิทกุล"
+  },
+  {
+    "name": "พรทิพย์ โตสวัสดิ์",
+    "email": "bmd-test-user-36@example.invalid",
+    "role": "Sales Representative",
+    "department": "Life Science Research",
+    "reportsTo": "นวภัสชลักษณ์ พงษ์สนิทกุล"
+  },
+  {
+    "name": "กฤษณ์ เค้าอ้น",
+    "email": "bmd-test-user-37@example.invalid",
+    "role": "Sales Representative",
+    "department": "Life Science Research",
+    "reportsTo": "นวภัสชลักษณ์ พงษ์สนิทกุล"
+  },
+  {
+    "name": "นวภัสชลักษณ์ พงษ์สนิทกุล",
+    "email": "bmd-test-user-34@example.invalid",
+    "role": "Sales Supervisor",
+    "department": "Life Science Research",
+    "reportsTo": "เพลินพิศ สุคนธรักษ์"
+  },
+  {
+    "name": "นันทาวดี อัครวิเชียร",
+    "email": "bmd-test-user-1@example.invalid",
+    "role": "Managing Director",
+    "department": "Management",
+    "reportsTo": "Top level"
+  },
+  {
+    "name": "พิรชัช นามศรี",
+    "email": "bmd-test-user-56@example.invalid",
+    "role": "Marketing Communication Specialist",
+    "department": "Diagnostics",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "มนัสพล ศิริโสภณ",
+    "email": "bmd-test-user-26@example.invalid",
+    "role": "Messenger & Delivery",
+    "department": "Operation",
+    "reportsTo": "วสันต์ ชยาภรณ์วงศ์"
+  },
+  {
+    "name": "นันทศักดิ์ เซ็นนิ",
+    "email": "bmd-test-user-27@example.invalid",
+    "role": "Messenger & Delivery",
+    "department": "Operation",
+    "reportsTo": "วสันต์ ชยาภรณ์วงศ์"
+  },
+  {
+    "name": "วสันต์ ชยาภรณ์วงศ์",
+    "email": "bmd-test-user-23@example.invalid",
+    "role": "Messenger & Delivery Supervisor",
+    "department": "Operation",
+    "reportsTo": "พรพรรณ สัมฤทธิ์ดี"
+  },
+  {
+    "name": "พรพรรณ สัมฤทธิ์ดี",
+    "email": "bmd-test-user-8@example.invalid",
+    "role": "Operation Manager",
+    "department": "Operation",
+    "reportsTo": "ธวัชชัย อัครวิเชียร"
+  },
+  {
+    "name": "ธวัชชัย อัครวิเชียร",
+    "email": "bmd-test-user-2@example.invalid",
+    "role": "Operations Director",
+    "department": "Management",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "ชลาศัย สาคร",
+    "email": "bmd-test-user-24@example.invalid",
+    "role": "Procurement & Regulatory Supervisor",
+    "department": "Procurement and RA",
+    "reportsTo": "ธวัชชัย อัครวิเชียร"
+  },
+  {
+    "name": "สุมิลตา แตงทอง",
+    "email": "bmd-test-user-28@example.invalid",
+    "role": "Purchasing Officer",
+    "department": "Procurement and RA",
+    "reportsTo": "ชลาศัย สาคร"
+  },
+  {
+    "name": "อรวี อยู่ยงสินธุ์",
+    "email": "bmd-test-user-29@example.invalid",
+    "role": "Purchasing Officer",
+    "department": "Procurement and RA",
+    "reportsTo": "ชลาศัย สาคร"
+  },
+  {
+    "name": "นัทพล แร่เพชร",
+    "email": "bmd-test-user-30@example.invalid",
+    "role": "Purchasing Officer",
+    "department": "Procurement and RA",
+    "reportsTo": "ชลาศัย สาคร"
+  },
+  {
+    "name": "พศิน ชุมสันเทียะ",
+    "email": "bmd-test-user-11@example.invalid",
+    "role": "QMR",
+    "department": "QMR",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  },
+  {
+    "name": "ธนาธิป โชคพิพัฒน์ทวี",
+    "email": "bmd-test-user-63@example.invalid",
+    "role": "Service Engineer",
+    "department": "Field Service Engineer",
+    "reportsTo": "ปณิธาน ดิษฐี"
+  },
+  {
+    "name": "วสุพล จำนงค์",
+    "email": "bmd-test-user-64@example.invalid",
+    "role": "Service Engineer",
+    "department": "Field Service Engineer",
+    "reportsTo": "ปณิธาน ดิษฐี"
+  },
+  {
+    "name": "ยศกร ชยาภรณ์วงศ์",
+    "email": "bmd-test-user-65@example.invalid",
+    "role": "Service Engineer",
+    "department": "Field Service Engineer",
+    "reportsTo": "ปณิธาน ดิษฐี"
+  },
+  {
+    "name": "ปณิธาน ดิษฐี",
+    "email": "bmd-test-user-62@example.invalid",
+    "role": "Service Engineer Supervisor",
+    "department": "Field Service Engineer",
+    "reportsTo": "ศุภเดช อัครวิเชียร"
+  }
+]
