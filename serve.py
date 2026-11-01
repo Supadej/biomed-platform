@@ -189,7 +189,9 @@ def valid_origin(handler):
     return origin is None or origin in allowed_origins()
 
 def prepare_database():
-    """Copy the shipped database once; never replace an existing persistent DB."""
+    """Preserve the live DB; allow explicitly requested recovery on mounted storage."""
+    from snapshot_recovery import recover_if_requested
+    recover_if_requested(ROOT,DB)
     if os.environ.get('BIOMED_REQUIRE_EXISTING_DATABASE')=='1' and not DB.is_file():
         raise RuntimeError('Existing Biomed database not found. Reattach the original Railway volume and verify BIOMED_DATABASE_PATH; startup stopped to protect your data.')
     DB.parent.mkdir(parents=True,exist_ok=True)
