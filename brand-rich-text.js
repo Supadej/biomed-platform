@@ -1,8 +1,0 @@
-/* Rebuild brand HTML using safe formatting elements; never insert untrusted nodes. */
-window.BiomedBrandRichText=(()=>{
-const allowed=new Set(['P','BR','UL','OL','LI','STRONG','B','EM','I','U','H2','H3','H4','H5','BLOCKQUOTE','A','HR','DIV','SPAN']);
-const blocked=new Set(['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','SVG','MATH','TEMPLATE','FORM','INPUT','BUTTON','TEXTAREA','SELECT','META','LINK','BASE','NOSCRIPT','IMG','VIDEO','AUDIO']);
-function safeLink(value){const v=String(value||'').trim();if(!v||v.startsWith('//')||v.includes('\\')||/[\x00-\x1f\x7f]/.test(v))return '';return /^(?:https?:|mailto:|tel:|\/|\.\/|#)/i.test(v)?v:''}
-function copy(node,target,doc){if(node.nodeType===3){target.append(doc.createTextNode(node.textContent||''));return}if(node.nodeType!==1)return;const tag=node.tagName.toUpperCase();if(blocked.has(tag))return;let dest=target;if(allowed.has(tag)){if(tag==='A'){const href=safeLink(node.getAttribute('href'));if(href){dest=doc.createElement('a');dest.setAttribute('href',href);dest.setAttribute('target','_blank');dest.setAttribute('rel','noopener noreferrer')}}else dest=doc.createElement(tag.toLowerCase());if(dest!==target)target.append(dest)}for(const child of [...node.childNodes])copy(child,dest,doc)}
-function render(target,value){const doc=target.ownerDocument||document,source=String(value||'');target.replaceChildren();target.classList.add('bm-brand-richtext');if(!source.trim())return;if(!/<\/?[a-z][^>]*>/i.test(source)){const p=doc.createElement('p');p.className='bm-brand-plain';p.textContent=source;target.append(p);return}const template=doc.createElement('template');template.innerHTML=source;for(const node of [...template.content.childNodes])copy(node,target,doc)}
-return {render,safeLink,copy};})();
