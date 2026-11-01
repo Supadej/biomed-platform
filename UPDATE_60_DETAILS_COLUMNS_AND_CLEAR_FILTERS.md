@@ -1,9 +1,0 @@
-# Details, column preferences and date clearing
-
-- Source-style Biomed IS register rows now carry record identifiers and detail-row markers. Details expand/collapse below the clicked document through the shared disclosure helper, without rebuilding the page, clearing filters or moving pagination. Repeated toggles reuse the same nodes. Workflow panels refresh through an event rather than a list redraw.
-- Shared column-layout scope keys ignore sort-arrow glyphs and changing numeric record counts. Column heading labels exclude sorting decorations. Saved visibility, order, heading names and widths reload against the stable scope; exact older keys remain fallback candidates. Preferences remain account-specific on the existing backend.
-- Save columns closes the shared chooser on success. Native Service columns and width saves also close their containing chooser after a successful save. Errors keep the editor open.
-- Clear removes date limits in Biomed IS registers/reports/borrowing, Portal Calendar/CRM, visits, extended record modules, payments/incentives, Application Service and Financial ledger filters. Initial rolling defaults (Calendar today) remain for opening the modules. Financial worksheet Clear selects all fiscal months; new fiscal-year navigation still initializes the normal current-period range.
-- Form/transaction dates are not cleared by these filter changes. No permission or database-schema changes.
-
-Validation: real IS action DOM test forbids redraws and verifies reused rows; column reload tests vary record count and sort decoration; shared table-layout/width DOM suites pass; real Clear handlers and Financial default/clear behavior checked; five account-private table-layout backend checks pass. Changed scripts/inline scripts pass syntax checks. Fresh rendered visual/device verification remains unavailable due to the previously reported browser usage-limit rejection. No deployment performed.
