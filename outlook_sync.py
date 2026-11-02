@@ -214,10 +214,11 @@ def sync(connect,actor,perms,permissions_fn=None):
 
 def refresh_private(connect,aid,token):
  today=datetime.datetime.now(TZ).date();query=urlencode({'startDateTime':(today-datetime.timedelta(days=180)).isoformat()+'T00:00:00+07:00','endDateTime':(today+datetime.timedelta(days=365)).isoformat()+'T00:00:00+07:00','$top':100,'$select':'id,subject,start,end,isAllDay,location,webLink,isCancelled,type'});path='/me/calendarView?'+query;events=[]
- for _ in range(10):
+ for _ in range(100):
   data=graph(token,path);events.extend(data.get('value',[]));path=data.get('@odata.nextLink')
+  if len(events)>10000:raise ValueError('Outlook calendar exceeds 10,000 events in the sync window; the previous complete cache has been retained.')
   if not path:break
- else:raise ValueError('Outlook private calendar has too many events in the sync window. Narrow the calendar before enabling this option.')
+ else:raise ValueError('Outlook calendar exceeds 100 result pages; the previous complete cache has been retained.')
  with connect() as c:
   mapped={r[0] for r in c.execute('SELECT remote_id FROM outlook_events WHERE account_id=? AND remote_id IS NOT NULL',(aid,))};c.execute('DELETE FROM outlook_private WHERE account_id=?',(aid,))
   for r in events:

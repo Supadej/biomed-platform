@@ -302,7 +302,7 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
             page=path.rsplit('/',1)[-1]
             module='calendar' if page in ['event.html'] else 'external_helpdesk' if 'helpdesk' in page or page=='ticket-report.html' else 'projects' if 'project' in page else 'sales_plan'
             self.send_response(302);self.send_header('Location','/?portal=1&module='+module);self.end_headers();return
-        if path=='/api/health':return self.reply(200,{'database':'SQLite','schema_version':1,'release':'budget-navigation-collapsible-outlook-v87','features':['annual-budget','monthly-budget-approval','layout-consistency'],'starter':'44-workbook-users-no-business-records'})
+        if path=='/api/health':return self.reply(200,{'database':'SQLite','schema_version':1,'release':'outlook-calendar-mobile-v88','features':['annual-budget','monthly-budget-approval','layout-consistency'],'starter':'44-workbook-users-no-business-records'})
         resolved=Path(self.translate_path(self.path)).resolve()
         if any(d in resolved.parents for d in [DB.parent.resolve(),(ROOT/'data').resolve(),(ROOT/'.git').resolve(),(ROOT/'reference').resolve()]) or resolved.suffix in ['.py','.sqlite3','.db','.wal','.shm']:return self.send_error(403)
         if path=='/app.html':
