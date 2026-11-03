@@ -1,6 +1,6 @@
-# Biomed v91 Railway deployment
+# Biomed v92 Railway deployment
 
-This is the Railway SQLite save-safeguard release based on v88. PostgreSQL support is a separate migration. Use this guide for v91 in place of earlier deployment or Finance reset instructions.
+This is the Railway SQLite save-safeguard release based on v88. PostgreSQL support is a separate migration. Use this guide for v92 in place of earlier deployment or Finance reset instructions.
 
 ## 1. Back up production
 
