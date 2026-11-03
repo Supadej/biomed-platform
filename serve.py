@@ -194,6 +194,8 @@ def prepare_database():
     DB.parent.mkdir(parents=True,exist_ok=True)
     seed=(ROOT/'data'/'biomed.sqlite3').resolve()
     if not DB.exists():
+        if os.environ.get('BIOMED_REQUIRE_EXISTING_DB')=='1':
+            raise RuntimeError('Configured database file is missing; startup stopped to protect production data.')
         if not seed.is_file():raise RuntimeError('Admin-only starter database is missing from the project data folder.')
         import tempfile
         fd,name=tempfile.mkstemp(prefix='admin-only-',suffix='.sqlite3',dir=DB.parent);os.close(fd)
@@ -206,8 +208,6 @@ def prepare_database():
             except FileExistsError:pass
         finally:temporary.unlink(missing_ok=True)
     initialize()
-    import finance_reset
-    finance_reset.apply(DB)
     import cost_centers
     with connect() as c:cost_centers.migrate_legacy(c)
 
@@ -488,6 +488,12 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
             self.reply(200,{'value':policy.read_filter(account_permissions(actor),key,value),'revision':revision})
         except policy.PermissionDenied as e:self.reply(403,{'error':str(e)})
         except (ValueError,KeyError,sqlite3.IntegrityError) as e:self.reply(400,{'error':str(e)})
+        except sqlite3.OperationalError as e:
+            if (getattr(e,'sqlite_errorcode',0) & 255) in (sqlite3.SQLITE_BUSY,sqlite3.SQLITE_LOCKED):
+                print('Workspace save rolled back due to SQLite contention',flush=True)
+                return self.reply(503,{'code':'workspace_busy','error':'Database busy; your change was not saved'})
+            print(f'Workspace database error: {type(e).__name__}',flush=True)
+            self.reply(500,{'error':'Database write failed; contact your administrator'})
         except Exception as e:
             print(f'Database write failed for {self.key()}: {type(e).__name__}: {e}',flush=True)
             self.reply(500,{'error':'Database write failed; check the server Terminal for details'})
