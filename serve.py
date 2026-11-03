@@ -350,9 +350,9 @@ class Handler(crm_http.CRMHandlerMixin,SimpleHTTPRequestHandler):
         if path=='/api/operational-brands':return operational_brands.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
         if path=='/api/express-import':return express_import.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
         if path=='/api/finance-workspace':return finance_workspace.handle(self,'POST',connect,session_account,account_permissions,valid_origin)
-        if path=='/api/announcement-history' and self.command=='GET':
+        if path=='/api/announcements/acknowledge':
             import announcement_history
-            return announcement_history.handle(self,connect,session_account,account_permissions)
+            return announcement_history.handle_acknowledge(self,connect,session_account,account_permissions,valid_origin)
         if path=='/api/cost-centers' and self.command=='GET':
             import cost_centers
             return cost_centers.handle(self,connect,session_account)

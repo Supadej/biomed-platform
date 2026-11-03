@@ -599,7 +599,21 @@ const P=(()=>{
  function removeAnnouncementAttachment(id,fileId){if(!(can('portal.announcements.create')||can('portal.announcements.edit')||can('portal.announcements.upload')))return;const a=data.announcements.find(x=>x.id===id);if(!a||!confirm('Remove this file from the announcement? A new revision will be issued.'))return;
  a.attachments=(a.attachments||[]).filter(f=>f.id!==fileId);a.version=(a.version||1)+1;a.date=new Date().toISOString().slice(0,10);save();draw()}
 
- function ackAnnouncement(id){const a=data.announcements.find(a=>a.id===id);if(!a)return;a.acks ||= [];const version=a.version||1;if(!a.acks.some(x=>x.user===user.id&&x.version===version))a.acks.push({user:user.id,name:user.name,version,at:new Date().toISOString()});save();draw()}
+ async function ackAnnouncement(id){
+   const announcement=data.announcements.find(item=>item.id===id);
+   if(!announcement)return;
+   try{
+     const response=await fetch('/api/announcements/acknowledge',{
+       method:'POST',headers:{'Content-Type':'application/json'},
+       body:JSON.stringify({id,version:announcement.version||1})
+     });
+     const result=await response.json();
+     if(!response.ok)throw Error(result.error||'Acknowledgement failed.');
+     data=JSON.parse(BiomedStorage.getItem(key));
+     BiomedPermissions.invalidate();
+     draw();
+   }catch(error){notify(error.message||'Could not confirm acknowledgement. Reload and check before trying again.')}
+ }
  function showAck(id){if(!(can('portal.announcements.create')||can('portal.announcements.edit')||can('portal.announcements.upload')))return;ackReportId=ackReportId===id?null:id;draw()}
  function reviseAnnouncement(id){if(!can('portal.announcements.edit'))return;editingAnnouncementId=id;draw();document.getElementById('announcement-editor')?.scrollIntoView({block:'start',behavior:'smooth'});document.querySelector('#announcement-editor input[name=title]')?.focus()}
  let editingResource=null;

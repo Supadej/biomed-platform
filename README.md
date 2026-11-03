@@ -4,6 +4,6 @@ Readable mobile calendar, Outlook event counts/date range, filter visibility and
 
 Keep the existing database path, Railway volume and Outlook encryption key. No additional reset was introduced; the previously requested one-time v83 Finance reset remains included only if it has not already run.
 
-## Railway v90
+## Railway v91
 
 Start with [INSTALL_RAILWAY_AND_GO_LIVE.md](INSTALL_RAILWAY_AND_GO_LIVE.md). It supersedes earlier Railway deployment and Finance reset instructions.

@@ -1,6 +1,6 @@
-# Biomed v90 Railway deployment
+# Biomed v91 Railway deployment
 
-This is the Railway SQLite save-safeguard release based on v88. PostgreSQL support is a separate migration. Use this guide for v90 in place of earlier deployment or Finance reset instructions.
+This is the Railway SQLite save-safeguard release based on v88. PostgreSQL support is a separate migration. Use this guide for v91 in place of earlier deployment or Finance reset instructions.
 
 ## 1. Back up production
 
@@ -32,6 +32,7 @@ Use two browsers or private browser sessions and two staff test accounts with ap
 | Open two quotations before either user saves. Create a different quotation in each session and click Save at nearly the same time. | Both quotations are present after refresh and have different server-assigned references. |
 | Open the same draft quotation in both sessions. Make different changes in each session. Save the first, then the second. | The second session shows a conflict. After refresh, the first change is still present. |
 | Repeat separate saves for orders and invoices, and exercise your usual quotation-to-order workflow. | Required document links, line items, and references are intact. |
+| Two staff acknowledge the same announcement revision while an editor has it open. Save an unrelated Portal change from the editor’s session, then refresh. | Both acknowledgements remain present. Publishing a new revision requires a new acknowledgement, and the earlier revision keeps its records. |
 | Test with ordinary staff roles, then redeploy staging and sign back in. | Saved records persist and visibility follows each user's existing role. |
 
 Record the time, module, and document ID for any failure. A temporary busy response permits one retry of the rolled-back workspace save. If a browser loses its connection, check the record after reconnecting before re-entering it.
